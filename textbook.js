@@ -1,6 +1,7 @@
 (() => {
   const courses = window.BIOCS_BOOK;
   const sources = window.BIOCS_SOURCES;
+  const uiuc = window.BIOCS_UIUC;
   const chapters = courses.flatMap(course => course.chapters.map((chapter, index) => ({...chapter, course, index})));
   const byId = new Map(chapters.map(ch => [ch.id, ch]));
   const state = {active: chapters[0]?.id, completed: new Set()};
@@ -15,15 +16,22 @@
   function save() { try { localStorage.setItem(key, JSON.stringify([...state.completed])); } catch (_) {} }
   function renderToc(query = '') {
     const term = query.trim().toLocaleLowerCase();
-    $('#book-toc').innerHTML = courses.map(course => {
-      const matches = course.chapters.filter(ch => !term || [ch.id,course.title,ch.title,ch.subtitle,ch.intro,...ch.sections.map(s => s[0]+' '+s[1]),...(ch.terms||[]).map(t => t[0]+' '+t[1])].join(' ').replace(/<[^>]+>/g,'').toLocaleLowerCase().includes(term));
+    const renderCourse = course => {
+      const matches = course.chapters.filter(ch => !term || [ch.id,course.title,ch.title,ch.subtitle,ch.intro,ch.core,...(ch.intuition||window.BIOCS_INTUITION?.[ch.id]||[]),...ch.sections.map(s => s[0]+' '+s[1]),...(ch.terms||[]).map(t => t[0]+' '+t[1])].join(' ').replace(/<[^>]+>/g,'').toLocaleLowerCase().includes(term));
       if (!matches.length) return '';
       return `<section class="toc-course"><h2><span>${escape(course.code)}</span>${escape(course.title)}</h2>${matches.map(ch => `<a href="#${escape(ch.id)}" data-id="${escape(ch.id)}" ${ch.id===state.active?'aria-current="page"':''} class="${state.completed.has(ch.id)?'is-complete':''}"><b>${escape(ch.id.toUpperCase())}</b><span>${escape(ch.title)}</span></a>`).join('')}</section>`;
-    }).join('') || '<p class="toc-empty">没有匹配的章节。试试 DNA、细胞、RNA 或 TCGA。</p>';
+    };
+    $('#book-toc').innerHTML = uiuc.stages.map((stage,index) => {
+      const contents=stage.courseCodes.map(code=>courses.find(course=>course.code===code)).filter(Boolean).map(renderCourse).join('');
+      if(!contents)return '';
+      return `<section class="toc-stage"><header><b>${String(index+1).padStart(2,'0')}</b><span>${escape(stage.year)} · ${escape(stage.short)}</span></header>${contents}</section>`;
+    }).join('') || '<p class="toc-empty">没有匹配的章节。试试 DNA、enhancer、signaling 或 TCGA。</p>';
     $('#search-status').textContent = term ? `找到 ${$('#book-toc').querySelectorAll('a').length} 章；清空搜索可查看全部。` : `全部 ${chapters.length} 章`;
   }
   function renderCurriculum() {
-    $('#curriculum-grid').innerHTML = courses.map(course => `<section class="curriculum-course"><div><h3><span>COURSE ${escape(course.code)}</span>${escape(course.title)}</h3><p>${escape(course.description)}</p></div><ul>${course.chapters.map(ch => `<li><a href="#${escape(ch.id)}">${escape(ch.id.toUpperCase())} · ${escape(ch.title)}</a></li>`).join('')}</ul></section>`).join('');
+    $('#curriculum-tracks').innerHTML=uiuc.tracks.map(track=>`<section><span>${escape(track.label)}</span><h3>${escape(track.title)}</h3><p>${escape(track.description)}</p><div>${track.chapters.map(id=>`<a href="#${id}">${id.toUpperCase()}</a>`).join('')}</div></section>`).join('');
+    $('#curriculum-grid').innerHTML = uiuc.stages.map((stage,index)=>`<section class="curriculum-stage"><header><b>${String(index+1).padStart(2,'0')}</b><div><span>${escape(stage.year)} · ${escape(stage.official.join(' + '))}</span><h3>${escape(stage.title)}</h3><p>${escape(stage.description)}</p></div></header>${stage.courseCodes.map(code=>courses.find(course=>course.code===code)).filter(Boolean).map(course => `<section class="curriculum-course"><div><h3><span>COURSE ${escape(course.code)} · ${course.chapters.length} CHAPTERS</span>${escape(course.title)}</h3><p>${escape(course.description)}</p></div><ul>${course.chapters.map(ch => `<li><a href="#${escape(ch.id)}">${escape(ch.id.toUpperCase())} · ${escape(ch.title)}</a></li>`).join('')}</ul></section>`).join('')}</section>`).join('');
+    $('#book-scope').textContent=`UIUC 5 阶段 · ${courses.length} 门课 · ${chapters.length} 章；Genetics 深入。`;
   }
   function renderProgress() {
     $('#book-progress-fill').style.width = `${state.completed.size / chapters.length * 100}%`;
@@ -36,6 +44,14 @@
     if (!chapter) return;
     state.active = chapter.id;
     const number = chapters.indexOf(chapter), sourceKeys = new Set();
+    const uiucStage=uiuc.stageByCourse[chapter.course.code];
+    const intuition=chapter.intuition||window.BIOCS_INTUITION?.[chapter.id];
+    const core=chapter.core||({b:'Structure & Function / 结构与功能',g:'Information Flow / 信息流',m:'Information Flow / 信息流',c:'Systems / 系统',t:'Evolution & Systems / 演化与系统',d:'Science Practice / 科学实践',r:'Science Practice / 科学实践',s:'Structure & Function / 结构与功能',k:'Science Practice / 科学实践',q:'Information Flow / 信息流'})[chapter.id[0]];
+    const anchorTerms=(chapter.terms||[]).slice(0,4).map(item=>item[0]);
+    const intuitionHTML=intuition?`<section class="intuition-panel" aria-labelledby="intuition-title"><div class="intuition-meta"><span>INTUITION FIRST · 先建立直觉</span>${core?`<b>${escape(core)}</b>`:''}</div><h2 id="intuition-title">${escape(intuition[0])}</h2><p>${escape(intuition[1])}</p>${anchorTerms.length?`<div class="intuition-terms"><span>本章英文锚点</span>${anchorTerms.map(item=>`<b>${escape(item.split(' / ')[0])}</b>`).join('')}</div>`:''}</section>`:'';
+    const practiceMap={x06:['#regulation','调控逻辑：同时改变 chromatin、TF 与 enhancer contact'],x14:['#vaf','VAF 分母：拖动 purity、CNV、mutant copy 与 CCF'],l05:['#dynamics','信号时间：比较 pulse、sustained input 与 feedback']};
+    const practice=practiceMap[chapter.id];
+    const practiceHTML=practice?`<a class="chapter-practice-link" href="genetics-lab.html${practice[0]}"><span>可操作模型 · INTERACTIVE</span><b>${escape(practice[1])}</b><i aria-hidden="true">→</i></a>`:'';
     const lens = window.BIOCS_DATA_LENS?.[chapter.id];
     const dataBridge = lens ? (() => {
       (lens[3] || []).forEach(key => sourceKeys.add(key));
@@ -60,9 +76,9 @@
     const check = chapter.check ? `<section class="book-check"><h2>CHECK YOUR UNDERSTANDING</h2><p>${escape(chapter.check[0])}</p><details><summary>展开答案与理由</summary><p>${chapter.check[1]}</p></details></section>` : '';
     const refs = `<section class="book-sources"><h2>来源与继续阅读</h2><ol>${[...sourceKeys].map(key=>`<li>${sourceLink(key)}</li>`).join('')}</ol></section>`;
     const prereq = chapter.prereq?.length ? `<p class="prereq">建议先读：${chapter.prereq.map(id=>`<a href="#${escape(id)}">${escape(byId.get(id)?.title||id)}</a>`).join(' · ')}</p>` : '<p class="prereq">不要求生物学前置知识。</p>';
-    $('#chapter-body').innerHTML = `<div class="book-article"><header class="book-hero"><span class="book-kicker">COURSE ${escape(chapter.course.code)} · CHAPTER ${escape(chapter.id.toUpperCase())} · ${number+1} / ${chapters.length}</span><h1>${escape(chapter.title)}</h1><p class="book-subtitle">${escape(chapter.subtitle)}</p><ul class="book-objectives">${chapter.goals.map(g=>`<li>${escape(g)}</li>`).join('')}</ul>${prereq}</header><p class="book-intro">${chapter.intro}</p>${dataBridge}${visual}${sectionHTML}${worked}${terms}${check}${refs}</div>`;
+    $('#chapter-body').innerHTML = `<div class="book-article"><header class="book-hero"><span class="book-kicker">${escape(uiucStage.year)} · ${escape(uiucStage.subtitle)} · CHAPTER ${escape(chapter.id.toUpperCase())} · ${number+1} / ${chapters.length}</span><h1>${escape(chapter.title)}</h1><p class="book-subtitle">${escape(chapter.subtitle)}</p><p class="uiuc-alignment"><b>UIUC PATH · ${escape(uiucStage.short)}</b><span>${escape(uiucStage.title)} → ${escape(chapter.course.title)}</span></p><ul class="book-objectives">${chapter.goals.map(g=>`<li>${escape(g)}</li>`).join('')}</ul>${prereq}</header>${intuitionHTML}${practiceHTML}<p class="book-intro">${chapter.intro}</p>${dataBridge}${visual}${sectionHTML}${worked}${terms}${check}${refs}</div>`;
     $('#chapter-position').textContent = `${chapter.course.title} · ${number+1} / ${chapters.length}`;
-    if(window.BIOCS_MOTION){
+    if(window.BIOCS_MOTION?.scenes?.some(scene=>scene.chapters.includes(chapter.id))){
       const motionHost=document.createElement('section');
       motionHost.id='chapter-motion';
       const bridge=$('.data-bridge');

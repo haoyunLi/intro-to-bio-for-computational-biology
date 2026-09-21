@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="给零生物基础 CS 研究者的计算生物学教材：69 章、10 门课程，从化学、遗传学到肿瘤多组学，并逐步精讲测序原理和 RNA 归一化。">
+  <meta name="description" content="按 UIUC MCB 本科先修结构组织的直觉生物学教材：19 门课程、128 章，以 Molecular Genetics、Cell Signaling 与计算项目证据链为主线。">
   <meta name="theme-color" content="#f8fbff">
   <title>Bio/CS · 从代码到细胞</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
@@ -22,9 +22,9 @@
       <a class="brand" href="#top" aria-label="Bio/CS 首页"><span>Bio<span class="brand-slash">/</span>CS</span><small>BIOLOGY FOR COMPUTATIONAL MINDS</small></a>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="打开导航">☰</button>
       <nav class="site-nav" id="site-nav" aria-label="主导航">
-        <a href="textbook.html">零基础教材</a><a href="motion-lab.html">动效图解</a><a href="course.html">12 课复习</a><a href="data-lab.html">Data Lab</a><a href="#life">生命系统</a><a href="#omics">Omics</a><a href="#datasets">数据集</a><a href="#tcga">TCGA 实战</a>
+        <a href="uiuc-path.html">UIUC 路径</a><a href="textbook.html">系统教材</a><a href="textbook.html#x01">Molecular Genetics</a><a href="textbook.html#l01">Cell Signaling</a><a href="genetics-lab.html">Genetics Lab</a><a href="data-lab.html">Data Lab</a>
       </nav>
-      <a class="header-cta" href="textbook.html#b01">从第 0 课开始 <span aria-hidden="true">↗</span></a>
+      <a class="header-cta" href="uiuc-path.html">查看 UIUC 路径 <span aria-hidden="true">↗</span></a>
     </div>
   </header>
 
@@ -33,9 +33,9 @@
       <div class="hero-copy">
         <h1 id="hero-title">从代码到<span>细胞</span></h1>
         <p class="hero-en">From code to cells.</p>
-        <p class="hero-lead">给完全没有生物背景、正在进入 computational biology 的你：用 10 门课程、69 章，从生命的物质基础逐步走到 Genetics、细胞、多组学、空间技术、测序原理与计算数据实战。</p>
-        <div class="hero-actions"><a class="button button-primary" href="textbook.html#b01">从零开始读教材 <span aria-hidden="true">→</span></a><a class="text-link" href="foundations-lab.html">先动手理解数据 ↗</a></div>
-        <p class="hero-note">研究方向可并行：肿瘤多组学 / TCGA · Visium HD / Xenium / CODEX · enhancer / splicing · 生物影像 · 数据建模</p>
+        <p class="hero-lead">以 UIUC MCB 本科先修关系为骨架，从共同基础进入 Molecular Genetics、cells / development、biochemistry、advanced MCB 与 computational discovery；英文术语保留，解释先讲直觉。</p>
+        <div class="hero-actions"><a class="button button-primary" href="uiuc-path.html">选择 UIUC 学习路线 <span aria-hidden="true">→</span></a><a class="text-link" href="textbook.html#x01">直接进入 Molecular Genetics ↗</a></div>
+        <p class="hero-note">为你的研究优先：gene regulation · ligand–receptor · scRNA / spatial · tumor purity / CNV / VAF · TCGA</p>
       </div>
       <figure class="hero-figure">
         <img src="assets/life-map.svg" alt="原创示意图：细胞中的 DNA 经 RNA、蛋白质及环境共同影响表型；旁侧标出肿瘤多组学可观测的层次" width="800" height="540">
@@ -43,12 +43,18 @@
       </figure>
     </section>
 
-    <div class="page-shell"><section data-bio-motion="transcription,sequencing,normalization,bulk-mixture" aria-label="从生物过程到数据的动画预览"></section></div>
     <section class="path-section" id="path" aria-labelledby="path-title">
       <div class="page-shell">
-        <div class="section-heading"><div><span class="section-index">01 / LEARNING PATH</span><h2 id="path-title">以读懂数据为终点</h2></div><p>69 章可以按学科系统学习。零基础读者先走下面这条短路线，反复追问：材料是什么、测了什么、文件里的数是什么。</p></div>
+        <div class="section-heading"><div><span class="section-index">01 / UIUC CURRICULUM SPINE</span><h2 id="path-title">先修关系就是网站骨架</h2></div><p>共同基础 → Molecular Genetics → Cells & Development → Biochemistry → Advanced MCB / Research。你的 Genetics 和 MCB + Data Science 路线在这条主干上加深。</p></div>
+        <ol class="uiuc-spine" aria-label="UIUC MCB 五阶段学习路径">
+          <li><a href="uiuc-path.html#curriculum-map"><span>YEAR 1</span><b>MCB 150 + IB 150</b><small>生命系统、细胞、遗传、演化与生态基础</small></a></li>
+          <li><a href="textbook.html#g01"><span>YEAR 2 · FALL</span><b>MCB 250 + 251</b><small>Molecular Genetics 与实验逻辑</small></a></li>
+          <li><a href="textbook.html#c01"><span>YEAR 2 · SPRING</span><b>MCB 252 + 253</b><small>Cells、Tissues、Development 与 lab reasoning</small></a></li>
+          <li><a href="textbook.html#b02"><span>YEAR 3</span><b>MCB 354</b><small>Biochemical & Physical Basis of Life</small></a></li>
+          <li><a href="uiuc-path.html#advanced-title"><span>YEAR 3–4</span><b>Advanced + Research</b><small>Genetics、cancer、immunity、neuro、computing</small></a></li>
+        </ol>
         <div class="data-route" aria-label="读懂数据的核心路线">
-          <div class="data-route-intro"><span class="eyebrow">START HERE · 数据理解主线</span><p>从一份肿瘤组织出发，沿 DNA / RNA / 蛋白的生物过程走到测量、文件、数值和病例级分析。每一步都要能解释观测单位与推断边界。<a href="foundations-lab.html">先玩三个互动模型 ↗</a></p></div>
+          <div class="data-route-intro"><span class="eyebrow">MCB + DATA SCIENCE · 项目主线</span><p>从一份肿瘤组织出发，沿 DNA / RNA / 蛋白的生物过程走到测量、文件、数值和病例级分析。每一步都要能解释观测单位与推断边界。<a href="foundations-lab.html">先玩三个互动模型 ↗</a></p></div>
           <ol>
             <li><a href="textbook.html#b01"><b>01</b><span><strong>研究对象</strong><small>患者、组织、细胞、样本</small></span></a></li>
             <li><a href="textbook.html#g01"><b>02</b><span><strong>基因是什么</strong><small>顺读 G01–G02：DNA、双链、gene</small></span></a></li>
@@ -61,18 +67,11 @@
             <li><a href="real-cohort-lab.html"><b>09</b><span><strong>完整队列 → 配对子集</strong><small>1,095 case 库存、clinical join、真实配对</small></span></a></li>
           </ol>
         </div>
-        <h3 class="path-catalogue-title">完整课程目录 <small>需要时按研究问题深入</small></h3>
+        <h3 class="path-catalogue-title">三个工作入口 <small>完整 19 门课程已归入 UIUC 五阶段</small></h3>
         <ol class="path-list">
-          <li><a href="textbook.html#b01"><span class="path-num">00</span><span><strong>零基础预备</strong><small>生命 · 化学 · 细胞</small></span><span aria-hidden="true">↗</span></a></li>
-          <li><a href="textbook.html#g01"><span class="path-num">01</span><span><strong>遗传学</strong><small>DNA · gene · inheritance</small></span><span aria-hidden="true">↗</span></a></li>
-          <li><a href="textbook.html#m01"><span class="path-num">02</span><span><strong>分子生物学</strong><small>replication · RNA · protein</small></span><span aria-hidden="true">↗</span></a></li>
-          <li><a href="textbook.html#c01"><span class="path-num">03</span><span><strong>细胞生物学</strong><small>membrane · signaling · cycle</small></span><span aria-hidden="true">↗</span></a></li>
-          <li><a href="textbook.html#t01"><span class="path-num">04</span><span><strong>肿瘤生物学</strong><small>evolution · immunity · clinic</small></span><span aria-hidden="true">↗</span></a></li>
-          <li><a href="textbook.html#d01"><span class="path-num">05</span><span><strong>实验与组学</strong><small>sequencing · omics · images</small></span><span aria-hidden="true">↗</span></a></li>
-          <li><a href="textbook.html#r01"><span class="path-num">06</span><span><strong>计算研究 / TCGA</strong><small>datasets · statistics · evidence</small></span><span aria-hidden="true">↗</span></a></li>
-          <li><a href="textbook.html#s01"><span class="path-num">07</span><span><strong>空间与调控专题</strong><small>Visium HD · Xenium · CODEX · enhancer · splicing</small></span><span aria-hidden="true">↗</span></a></li>
-          <li><a href="textbook.html#k01"><span class="path-num">08</span><span><strong>计算数据实战</strong><small>formats · IDs · matrices · QC · modeling</small></span><span aria-hidden="true">↗</span></a></li>
-          <li><a href="textbook.html#q01"><span class="path-num">09</span><span><strong>测序与表达定量精讲</strong><small>SBS · FASTQ · counts · CPM · FPKM · TPM · DESeq2</small></span><span aria-hidden="true">↗</span></a></li>
+          <li><a href="uiuc-path.html"><span class="path-num">01</span><span><strong>课程导航</strong><small>UIUC stages · tracks · advanced clusters</small></span><span aria-hidden="true">↗</span></a></li>
+          <li><a href="textbook.html#x01"><span class="path-num">02</span><span><strong>系统学习</strong><small>128 章 · intuition first · English terms</small></span><span aria-hidden="true">↗</span></a></li>
+          <li><a href="genetics-lab.html"><span class="path-num">03</span><span><strong>机制实验</strong><small>enhancer · VAF · signal dynamics</small></span><span aria-hidden="true">↗</span></a></li>
         </ol>
       </div>
     </section>

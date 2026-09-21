@@ -127,7 +127,6 @@
   function mountChapter(id,host){
     chapterCleanup();
     const relevant=scenes.filter(scene=>scene.chapters.includes(id));
-    const guide=dataGuide(id);if(guide)relevant.push(guide);
     chapterCleanup=mount(host,relevant);
   }
   window.BIOCS_MOTION={mount,mountChapter,scenes};
