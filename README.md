@@ -8,7 +8,7 @@
 
 ## 本地预览
 
-全站 8 个页面、69 章教材与 12 课复习均有静态结构检查。动效页现有 16 个场景、79 个步骤；新增的临床连接、空间分割误差和完整队列工作台同时检查桌面、390 px 手机布局、键盘焦点、播放暂停、离屏暂停与减少动态效果设置。详细范围见 [`coverage-audit.md`](coverage-audit.md)。
+全站 8 个页面、69 章教材与 12 课复习均有静态结构检查。动效页现有 16 个场景、79 个步骤；临床连接、空间分割误差和完整队列工作台同时检查桌面、390 px 手机布局、键盘焦点、播放暂停、离屏暂停与减少动态效果设置。Data Lab 还固定提示 row、column、unit/denominator 与 independent n，并在每种 RNA 尺度下说明用途和推断边界。详细范围见 [`coverage-audit.md`](coverage-audit.md)。
 
 建议用本地 HTTP 服务打开 `index.html`；真实队列页通过 `fetch` 读取随站点保存的 JSON 快照，直接以 `file://` 打开会被浏览器拦截。可在本目录运行：
 
@@ -30,11 +30,11 @@ npx serve .
 ## 内容与来源
 
 - 系统教材按知识依赖排成 10 门课、69 章。章节分别讲化学与细胞基础、遗传学、Central Dogma、细胞生物学、肿瘤演化、组学实验、TCGA 研究、空间组学和调控专题、文件与数据结构，以及测序和表达定量。九章测序专题从 RNA 文库、Sanger 与 Illumina SBS、FASTQ、比对/计数一路讲到 CPM、RPKM/FPKM、GDC FPKM-UQ、TPM、DESeq2 size factor、TMM、变换和 TCGA 实战。每章的“实验信号 / 文件与单位 / 推断边界”卡片与教学小节分别标明来源。
-- Data Lab 使用虚构的教学数据，交互展示 case/sample join、raw count/CPM、VCF/BED 坐标、tile/患者级拆分、SBS 循环、三条 FASTQ read 的质量/比对/计数路径、五种表达尺度、四种缺失状态，以及 nucleus-only、5 µm-style、过度扩张和配准偏移下的空间细胞分割误差；每个练习都链接官方格式或方法文档。
+- Data Lab 使用虚构的教学数据，交互展示 case/sample join、raw count/CPM、VCF/BED 坐标、tile/患者级拆分、SBS 循环、三条 FASTQ read 的质量/比对/计数路径、五种表达尺度、四种缺失状态，以及 nucleus-only、5 µm-style、过度扩张和配准偏移下的空间细胞分割误差。每种表达尺度都显示数值含义、适用问题、不能直接回答的问题和下一步；分割练习逐点列出 true assignment → observed assignment。每个练习都链接官方格式或方法文档。
 - Foundations Lab 的序列和数字是虚构教学模型；它展示改变序列、细胞组成和文库深度如何改变可观察值。页面写明模型假设、零值与证据边界，并链接原始论文或官方文档。
 - 动效图解把复制、转录、剪接、翻译、细胞周期、受体信号、膜运输、enhancer、测序、read→count、归一化、bulk 混合、spatial binning、细胞分割、cohort join 和数据泄漏做成可逐帧观察的原创 SVG。播放器提供播放/暂停、前后帧、进度拖动与倍速；平滑过渡尊重系统减少动态效果设置，离屏自动暂停，手机上图像容器可横向滚动。每帧有解释，每个场景标出教学假设和来源；播放速度不代表真实生物反应速率。
 - 真实文件练习选用 [NCI GDC 公开文件 UUID `ead53b27-6ad9-4b96-b5d4-0d4f06fb2d13`](https://api.gdc.cancer.gov/files/ead53b27-6ad9-4b96-b5d4-0d4f06fb2d13?expand=cases,cases.samples,analysis)。站内仅附九行非连续真实摘录与精简元数据快照；完整文件由 GDC 提供。下载内容的 MD5 与 API 记录一致（`0948d5b1ea684cd62a6ec7dafbeda026`）。此页训练单文件语义，不声称一份文件可完成组间比较。
-- 真实队列练习先展示 2026-09-21 通过 GDC API 查询得到的 TCGA-BRCA 公开 STAR Counts 库存：1,231 个文件、1,226 个样本、1,095 个病例，其中 113 个病例同时有 Primary Tumor 与 Solid Tissue Normal。随后用 `case_id` 把 2 个示例病例的临床表与 4 个已核验 assay 文件连接，并以四份真实文件演示 raw/TPM 的病例内差值。四份完整 TSV 的 file size 与 MD5 均经下载核验；[站内快照](data/gdc-tcga-brca-paired-star-counts-snapshot.json)保存 API 筛选条件、查询时间、聚合数、临床字段、文件元数据和每份文件 4 个真实基因行。两病例子集只用于逐行核验，不支持统计、因果或临床推断。
+- 真实队列练习先展示 2026-09-21 通过 GDC API 查询得到的 TCGA-BRCA 公开 STAR Counts 库存：1,231 个文件、1,226 个样本、1,095 个病例，其中 113 个病例在当前元数据中同时有 Primary Tumor 与 Solid Tissue Normal；113 还不是经过唯一文件选择、QC 与排除规则的最终分析配对数。页面区分人类可读的 `case.submitter_id` 与 GDC UUID `case_id`，再用 UUID 把 2 个示例病例的临床表与 4 个已核验 assay 文件连接，并逐例说明 `vital_status`、随访时间与右删失。四份完整 TSV 的 file size 与 MD5 均经下载核验；[站内快照](data/gdc-tcga-brca-paired-star-counts-snapshot.json)保存 API 筛选条件、查询时间、聚合数、临床字段、文件元数据和每份文件 4 个真实基因行。两病例子集只用于逐行核验，不支持统计、因果或临床推断。
 - 12 课快速复习仍从 Genetics、DNA、染色体、遗传、变异进入 Central Dogma、细胞、实验、组学和 TCGA。第 6 课逐步推演转录、RNA 加工、密码子翻译、变异后果与组学读数；第 8 课补充细胞器、细胞周期和信号通路。完成进度只保存在当前浏览器。
 - 概念地图中的数字脚注链接到页面底部的官方来源；详细课程的专有名词和本课来源直接链接到维护机构。
 - 页面中的科学图、矩阵与细胞对比图均为本站绘制的教学示意，并在相关图注或正文标明参考资料；没有复制外部图像。

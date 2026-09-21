@@ -28,7 +28,7 @@
   }
   function renderInventory(){
     const inv=snapshot.cohort_inventory;
-    const metrics=[['files','公开文件'],['unique_samples','不重复 sample'],['unique_cases','不重复 case'],['paired_primary_normal_cases','肿瘤/正常配对 case']];
+    const metrics=[['files','公开文件'],['unique_samples','不重复 sample'],['unique_cases','不重复 case'],['paired_primary_normal_cases','具有两类材料的 case']];
     $('#inventory-metrics').innerHTML=metrics.map(([key,label],index)=>`<article style="--delay:${index*90}ms"><strong>${inv[key].toLocaleString()}</strong><span>${label}</span></article>`).join('');
     const max=inv.files;
     $('#inventory-funnel').innerHTML=metrics.map(([key,label])=>`<div><span>${label}</span><i style="--target:${Math.max(10,inv[key]/max*100)}%"></i><b>${inv[key].toLocaleString()}</b></div>`).join('');
@@ -37,8 +37,25 @@
     requestAnimationFrame(()=>host.classList.add('inventory-ready'));
   }
   function renderClinicalTables(){
-    $('#clinical-rows').innerHTML=snapshot.clinical_cases.map(item=>`<tr><td>${item.submitter_id}</td><td>${item.diagnosis.ajcc_pathologic_stage}</td><td>${item.demographic.vital_status}</td><td>${item.diagnosis.days_to_last_follow_up??'NA'}</td></tr>`).join('');
-    $('#assay-rows').innerHTML=snapshot.files.map(file=>`<tr><td>${caseOf(file).submitter_id}</td><td>${sampleOf(file).submitter_id}</td><td>${sampleOf(file).sample_type}</td><td title="${file.file_id}">${short(file.file_id)}</td></tr>`).join('');
+    $('#clinical-rows').innerHTML=snapshot.clinical_cases.map(item=>`<tr><td>${item.submitter_id}</td><td title="${item.case_id}">${short(item.case_id)}</td><td>${item.diagnosis.ajcc_pathologic_stage}</td><td>${item.demographic.vital_status}</td><td>${item.diagnosis.days_to_last_follow_up??'NA'}</td></tr>`).join('');
+    $('#assay-rows').innerHTML=snapshot.files.map(file=>`<tr><td>${caseOf(file).submitter_id}</td><td title="${caseOf(file).case_id}">${short(caseOf(file).case_id)}</td><td>${sampleOf(file).submitter_id}</td><td>${sampleOf(file).sample_type}</td><td title="${file.file_id}">${short(file.file_id)}</td></tr>`).join('');
+    $('#clinical-survival-rows').innerHTML=snapshot.clinical_cases.map(item=>{
+      const status=item.demographic.vital_status;
+      const followUp=item.diagnosis.days_to_last_follow_up;
+      const daysToDeath=item.demographic.days_to_death??item.diagnosis.days_to_death;
+      const died=status==='Dead';
+      const alive=status==='Alive';
+      const time=died?daysToDeath:alive?followUp:null;
+      const event=died?'1 · 已记录死亡':alive?'0 · 当前未记录死亡':'NA · 事件状态未知';
+      const interpretation=!alive&&!died
+        ?'事件状态未知；先核对源字段，不能自行归为删失。'
+        :time==null
+          ?'缺少可用观察时间；不能填 0，也不能只凭状态构造 survival time。'
+        :died
+          ?`若 time zero 一致，可把 day ${time} 作为已发生死亡事件的观察时间。`
+          :`若 time zero 和死亡终点预先统一，可在 day ${time} 右删失。`;
+      return `<tr><td>${item.submitter_id}</td><td>${event}</td><td>${time==null?'NA':`${time} days`}</td><td>${interpretation}</td></tr>`;
+    }).join('');
     renderJoin('case_id');
   }
   function renderJoin(key){

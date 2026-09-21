@@ -77,6 +77,12 @@
     $('#seg-false').textContent=String(falsePositive);
     $('#seg-mode-title').textContent=mode.label;
     $('#seg-mode-note').textContent=mode.note;
+    const errors=assigned.filter(spot=>(spot.truth&&spot.assigned!==spot.truth)||(!spot.truth&&spot.assigned));
+    $('#seg-error-list').innerHTML=errors.length?errors.map(spot=>{
+      const type=!spot.truth?'误纳入':!spot.assigned?'漏分':'错分';
+      const state=!spot.truth?'false-positive':!spot.assigned?'missed':'wrong';
+      return `<span data-error-type="${state}"><b>${spot.id} · ${spot.gene}</b><small>true ${spot.truth||'outside'} → assigned ${spot.assigned||'none'}</small><em>${type}</em></span>`;
+    }).join(''):'<p class="seg-no-errors">本模式没有错误点；真实数据仍需要抽样核验边界与点位。</p>';
     $('#segmentation-status').textContent=`${mode.label}：正确归属 ${correct}/${biological.length}，错分 ${wrong}，漏分 ${missed}，误纳入细胞外点 ${falsePositive}。`;
     host.querySelectorAll('[data-seg-mode]').forEach((button,i)=>button.setAttribute('aria-pressed',String(i===index)));
     if(announce) $('#segmentation-status').focus({preventScroll:true});

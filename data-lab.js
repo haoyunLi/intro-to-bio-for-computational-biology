@@ -164,6 +164,14 @@
     $('#norm-formula').textContent=formulas[mode];
     const denominators={raw:'没有做分母缩放。以下每次变换均从原始 count 重新计算，不在前一种结果上重复归一化。',cpm:'本题分母：S1 = 1,000；S2 = 2,000（纳入的 count 合计）。',fpkm:'本题分母：每行长度 kb × 样本总量 million；S1 总量 = 0.001 million，S2 = 0.002 million。',tpm:`先 count ÷ 长度 kb；再除以本题 rate 合计：S1 = ${fmt(rates.s1)}，S2 = ${fmt(rates.s2)}。`,median:`本题分母为 size factor：S1 = ${fmt(sizeFactors.s1)}，S2 = ${fmt(sizeFactors.s2)}。总 count 翻倍不强制 size factor 翻倍。`};
     const denominator=$('#norm-denominator'),previous=denominator.textContent;denominator.textContent=denominators[mode];if(previous&&previous!==denominator.textContent)changeHighlight(denominator);
+    const purposes={
+      raw:{meaning:'定量流程分配给 gene 的 read 或 fragment 计数。',use:'保存最接近定量输出的证据；作为支持计数分布的模型起点。',avoid:'不能跨文库直接比较，也不是每细胞绝对 RNA 分子数。',next:'核对 workflow、样本设计和 QC，再让模型估计规模与离散度。'},
+      cpm:{meaning:'每一百万纳入 count 中，这个 gene 占多少。',use:'快速检查文库规模校正后的相对比例、过滤阈值和 QC。',avoid:'没有长度校正；CPM 本身不是正式差异表达检验。',next:'描述或过滤时写清分母；组间推断回到合适的 count 模型。'},
+      fpkm:{meaning:'同时按 feature 长度和每百万 mapped reads 或 fragments 缩放的 rate。',use:'理解较长 feature 获得更多计数机会的问题，或读取遗留结果。',avoid:'列和不固定，gene-level length 还会受 transcript 与 isoform 定义影响。',next:'核对 R/F、长度定义和流程版本；不要把它直接作为常规 DESeq2 输入。'},
+      tpm:{meaning:'长度校正后的相对 RNA 组成；每个样本纳入 feature 的总和为一百万。',use:'在相同流程与 feature 集下描述样本内部的相对 abundance。',avoid:'不是每细胞绝对分子数，也不自带重复、离散度或 p 值。',next:'展示时报告病例点和组成限制；正式差异表达使用相应的 count 输入。'},
+      median:{meaning:'raw count 除以模型从许多 gene 估计的相对 size factor。',use:'理解“多数 gene 没有整体同向变化”假设下的有效文库规模调整。',avoid:'不会自动消除 batch、肿瘤纯度或细胞组成，也不是统计显著性。',next:'把 size factor 放入包含设计和离散度的计数模型，再定义 contrast。'}
+    };
+    document.querySelectorAll('[data-norm-purpose]').forEach(node=>{node.textContent=purposes[mode][node.dataset.normPurpose];});
   }
   document.querySelectorAll('[data-norm]').forEach(button=>button.addEventListener('click',()=>showNormalization(button.dataset.norm)));
 
