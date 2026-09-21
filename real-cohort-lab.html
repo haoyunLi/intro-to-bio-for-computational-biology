@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="从四份真实 TCGA-BRCA RNA-seq 文件学会辨认 case、sample、file，筛选并配对样本，阅读 raw counts 与 TPM，判断推断边界。">
+  <meta name="description" content="从完整 TCGA-BRCA 队列清单到四份真实配对 RNA-seq 文件：练习 case/sample/file/clinical 连接、队列筛选、raw counts、TPM、配对效应与分析边界。">
   <link rel="icon" href="data:,">
   <title>真实队列实验室 · TCGA-BRCA | Intro to Bio</title>
   <link rel="stylesheet" href="./real-cohort-lab.css">
@@ -12,6 +12,7 @@
   <script src="bio-motion-data.js" defer></script>
   <script src="bio-motion.js" defer></script>
   <script src="./real-cohort-lab.js" defer></script>
+  <script src="./cohort-workbench.js" defer></script>
 </head>
 <body>
   <header class="topbar">
@@ -23,9 +24,9 @@
     <section class="hero" aria-labelledby="page-title">
       <div class="hero-copy">
         <p class="eyebrow">真实公开数据 · TCGA-BRCA · RNA-Seq</p>
-        <h1 id="page-title">从四份文件<br>拼出一个小队列</h1>
-        <p class="lead">假如你是刚接触生物数据的 CS 学生：表格里的四行，究竟是四个人、四个组织，还是四次测量？请先做判断，再展开答案。</p>
-        <div class="hero-tags"><span>从 case → sample → file</span><span>真实 STAR Counts</span><span>约 12 分钟</span></div>
+        <h1 id="page-title">从完整清单<br>走到可核验分析</h1>
+        <p class="lead">先看完整 TCGA-BRCA 公开 STAR Counts 队列有多少 file、sample 与 case，再用四份真实配对文件走完临床连接、矩阵构建、配对效应和推断边界。</p>
+        <div class="hero-tags"><span>clinical ↔ case ↔ sample ↔ file</span><span>真实 STAR Counts</span><span>完整工作流 + 可计算子集</span></div>
       </div>
       <div class="hero-diagram" aria-label="病例到样本到文件再到基因读数的示意图">
         <div><b>CASE</b><small>谁提供了组织？</small></div><i aria-hidden="true">↓</i>
@@ -37,6 +38,34 @@
 
     <div class="workspace" id="workspace" tabindex="-1">
       <section data-bio-motion="cohort-join,data-leakage" aria-label="队列连接与独立患者的动态图解"></section>
+      <section class="cohort-workbench" id="cohort-workbench" aria-labelledby="workbench-title">
+        <header><div><p class="eyebrow">REAL COHORT WORKBENCH</p><h2 id="workbench-title">完整队列分析，不是把文件横向拼起来</h2></div><p>三个视角使用同一份可追溯快照：先冻结全队列清单，再按 case_id 连接临床表，最后把筛选、矩阵、QC、design 和模型串成完整流程。</p></header>
+        <p id="workbench-loading" class="load-state" role="status">正在读取完整队列库存、临床字段与配对子集…</p>
+        <div id="workbench-content" hidden>
+          <div class="workbench-tabs" role="group" aria-label="选择队列分析视角"><button type="button" data-workbench-tab="inventory" aria-pressed="true">01 完整队列库存</button><button type="button" data-workbench-tab="clinical" aria-pressed="false">02 临床表连接</button><button type="button" data-workbench-tab="pipeline" aria-pressed="false">03 完整分析流程</button></div>
+          <section class="workbench-panel" id="workbench-inventory" aria-labelledby="inventory-title">
+            <div class="workbench-panel-head"><div><span>COHORT INVENTORY</span><h3 id="inventory-title">先数每一层，再决定分析单位</h3></div><p>筛选：TCGA-BRCA · Gene Expression Quantification · STAR - Counts · open。API 快照：<b id="inventory-date"></b>；后续 release 可能改变数量。</p></div>
+            <div class="inventory-metrics" id="inventory-metrics"></div>
+            <div class="inventory-layout"><div class="inventory-funnel" id="inventory-funnel" aria-label="从文件数到配对病例数的收缩图"></div><div><h4>sample_type 分层</h4><div class="table-scroll" tabindex="0" role="region" aria-label="完整队列按样本类型统计，可横向滚动"><table><thead><tr><th>sample_type</th><th>samples</th><th>files</th><th>额外 file</th></tr></thead><tbody id="inventory-types"></tbody></table></div></div></div>
+            <p class="workbench-boundary"><strong>为什么 1,231 files ≠ 1,231 patients？</strong> 同一 sample 可能关联多个文件，本次库存中 file 比不重复 sample 多 5；而 1,226 个 sample 来自 1,095 个 case。用于患者层推断时，应回到 case 粒度。</p>
+          </section>
+          <section class="workbench-panel" id="workbench-clinical" aria-labelledby="clinical-title" hidden>
+            <div class="workbench-panel-head"><div><span>CLINICAL JOIN</span><h3 id="clinical-title">临床表该用哪个 key 连接？</h3></div><p>左表是一行一个 case 的公开临床字段；右表是一行一份 file 的 assay 元数据。切换连接键，看行数和独立病例数怎样变化。</p></div>
+            <div class="clinical-pair"><div><h4>Clinical · case grain</h4><div class="table-scroll"><table><thead><tr><th>case_id</th><th>stage</th><th>vital_status</th><th>last follow-up</th></tr></thead><tbody id="clinical-rows"></tbody></table></div></div><div><h4>Assay · file grain</h4><div class="table-scroll"><table><thead><tr><th>case_id</th><th>sample_id</th><th>sample_type</th><th>file_id</th></tr></thead><tbody id="assay-rows"></tbody></table></div></div></div>
+            <div class="join-key-controls" role="group" aria-label="选择临床表连接键"><span>JOIN ON</span><button type="button" data-join-key="case_id" aria-pressed="true">case_id</button><button type="button" data-join-key="sample_id" aria-pressed="false">sample_id</button><button type="button" data-join-key="file_id" aria-pressed="false">file_id</button><b id="join-key-token">case_id</b></div>
+            <div class="result-bar" id="clinical-join-summary" aria-live="polite"></div><p class="join-empty" id="join-empty" hidden>∅ 没有匹配行</p><div class="table-scroll" id="clinical-join-table"><table><thead><tr><th>case</th><th>sample</th><th>type</th><th>stage</th><th>vital</th><th>file</th></tr></thead><tbody id="clinical-join-result"></tbody></table></div>
+            <p class="workbench-boundary">公开字段中的 <code>days_to_last_follow_up = NA</code> 仍是缺失值；不能只因 <code>vital_status = Alive</code> 就自行补成删失时间。临床结局分析必须同时定义事件与可用观察时间。</p>
+          </section>
+          <section class="workbench-panel" id="workbench-pipeline" aria-labelledby="pipeline-heading" hidden>
+            <div class="workbench-panel-head"><div><span>END-TO-END ANALYSIS</span><h3 id="pipeline-heading">从 API 查询到可复现结论的八个关口</h3></div><p>播放或逐步点击。每一步都明确输出物，以及最容易把数据意义弄错的地方。</p></div>
+            <div class="pipeline-rail" id="pipeline-steps" role="group" aria-label="完整队列分析步骤"></div><div class="pipeline-progress"><i id="pipeline-progress"></i></div>
+            <div class="pipeline-controls"><button type="button" id="pipeline-play" aria-pressed="false">▶ 播放完整流程</button><button type="button" id="pipeline-prev">← 上一步</button><button type="button" id="pipeline-next">下一步 →</button><output id="pipeline-counter"></output></div>
+            <div class="pipeline-stage"><div><span>当前问题</span><h4 id="pipeline-title" tabindex="-1"></h4><p id="pipeline-body"></p></div><dl><div><dt>应保存的输出物</dt><dd id="pipeline-artifact"></dd></div><div><dt>这一关的边界</dt><dd id="pipeline-guard"></dd></div></dl></div>
+            <div class="pair-effect"><header><div><span>REAL PAIRED SUBSET</span><h4>用真实数值看 within-case 差值</h4></div><div><label>gene <select id="pair-gene"></select></label><label>尺度 <select id="pair-metric"><option value="tpm_unstranded">TPM</option><option value="unstranded">raw count</option></select></label></div></header><div id="pair-bars" class="pair-bars"></div><p id="pair-effect-summary" class="table-note"></p></div>
+            <details class="cohort-query"><summary>查看完整队列筛选条件与扩展方式</summary><pre><code>project = TCGA-BRCA&#10;data_type = Gene Expression Quantification&#10;workflow = STAR - Counts&#10;access = open&#10;&#10;files → sample sheet / manifest&#10;case_id → clinical table&#10;sample_id → expression matrix columns&#10;raw count + design → count model</code></pre><p>本站把完整 API 库存和一个经 MD5 核验的四文件子集分开保存。全队列统计应重新下载完整 manifest、表达文件与临床表，并冻结当次 release；不能把本站四行基因摘录当成完整矩阵。</p></details>
+          </section>
+        </div>
+      </section>
       <nav class="stage-nav" aria-label="实验步骤"><ol id="stage-nav-list"></ol></nav>
       <div class="restart-row"><p>答对后保留答案；想重新尝试，可重置本次练习。</p><button id="restart-lab" type="button">重新练习</button></div>
       <div id="load-error" class="load-error" role="alert" hidden></div>
@@ -112,9 +141,9 @@
 
       <section class="sources" aria-labelledby="sources-title">
         <p class="eyebrow">SOURCE & REPRODUCIBILITY</p><h2 id="sources-title">每个数字从哪里来</h2>
-        <p>数据来自 NCI <a href="https://portal.gdc.cancer.gov/" target="_blank" rel="noopener noreferrer">Genomic Data Commons (GDC)</a> 的公开 <strong>TCGA-BRCA / RNA-Seq / STAR - Counts</strong> 文件。获取时间、原文件 UUID、文件名、大小、MD5、workflow version 与摘录基因行均固定在 <a href="./data/gdc-tcga-brca-paired-star-counts-snapshot.json" download>本站 JSON 快照 ↓</a>。页面只读该快照，离线静态托管不请求 GDC API。</p>
+        <p>数据来自 NCI <a href="https://portal.gdc.cancer.gov/" target="_blank" rel="noopener noreferrer">Genomic Data Commons (GDC)</a>。<a href="./data/gdc-tcga-brca-paired-star-counts-snapshot.json" download>本站 JSON 快照 ↓</a> 同时保存：完整 TCGA-BRCA 公开 STAR Counts 清单的聚合计数、两位病例的公开临床字段，以及四份经原文件 MD5 核验的配对表达摘录。页面只读该快照，离线静态托管不请求 GDC API。</p>
         <div id="source-files" class="source-files"></div>
-        <details><summary>如何复现与核对</summary><ol><li>在下方点击每份 <strong>file_id</strong>，到 GDC 官方 API 核对 <code>cases</code>、<code>samples</code>、<code>analysis</code>、<code>md5sum</code>。</li><li>用 <code>https://api.gdc.cancer.gov/data/{file_id}</code> 下载对应完整 TSV；计算文件 MD5，应与快照记录相同。</li><li>按原 TSV 的 <code>gene_name</code> 精确选出 TSPAN6、ESR1、ERBB2、INS 四行，并逐列与快照比对。本站没有修改表达值。</li></ol></details>
+        <details><summary>如何复现与核对</summary><ol><li>向 GDC <code>/files</code> 端点提交快照中的 project、data_type、workflow 与 access 过滤条件；分别对 file、sample、case 去重，并按 sample_type 汇总。</li><li>通过 <code>case_id</code> 到 <code>/cases</code> 端点取得 clinical/demographic/diagnosis 字段；不要用 sample_id 或 file_id 直接连接病例级临床表。</li><li>点击下方每份 <strong>file_id</strong>，核对 <code>cases</code>、<code>samples</code>、<code>analysis</code>、<code>md5sum</code>；再从 <code>/data/{file_id}</code> 下载完整 TSV 并核对 MD5。</li><li>按原 TSV 的 <code>gene_name</code> 精确选出 TSPAN6、ESR1、ERBB2、INS 四行。本站未修改表达值；这些行只支持教学计算，不等于完整表达矩阵。</li></ol></details>
         <p class="source-notes">背景与字段解释：<a href="https://docs.gdc.cancer.gov/API/Users_Guide/Search_and_Retrieval/" target="_blank" rel="noopener noreferrer">GDC API</a>、<a href="https://docs.gdc.cancer.gov/API/Users_Guide/Downloading_Files/" target="_blank" rel="noopener noreferrer">文件下载</a>、<a href="https://docs.gdc.cancer.gov/Data/Bioinformatics_Pipelines/Expression_mRNA_Pipeline/" target="_blank" rel="noopener noreferrer">mRNA 定量与 TPM</a>、<a href="https://docs.gdc.cancer.gov/Encyclopedia/pages/TCGA_Barcode/" target="_blank" rel="noopener noreferrer">TCGA barcode</a>。本站仅重现一小部分公开数据，并注明来源；GDC 数据使用请遵守其 <a href="https://gdc.cancer.gov/about-gdc/gdc-policies" target="_blank" rel="noopener noreferrer">数据政策</a>。</p>
       </section>
     </div>

@@ -9,6 +9,53 @@
     "source_validation": "Each downloaded full TSV matched the GDC file_size and MD5, then rows were selected by exact gene_name; no expression values were edited.",
     "scope": "Four explicitly chosen open files; not a random or representative TCGA-BRCA cohort. Only four gene rows per file are reproduced."
   },
+  "cohort_inventory": {
+    "queried_at_utc": "2026-09-21T14:00:46.5780545Z",
+    "endpoint": "https://api.gdc.cancer.gov/files",
+    "project": "TCGA-BRCA",
+    "filters": {
+      "data_type": "Gene Expression Quantification",
+      "workflow_type": "STAR - Counts",
+      "access": "open"
+    },
+    "files": 1231,
+    "unique_samples": 1226,
+    "unique_cases": 1095,
+    "paired_primary_normal_cases": 113,
+    "duplicate_file_excess": 5,
+    "sample_types": [
+      {"sample_type": "Primary Tumor", "samples": 1106, "files": 1111},
+      {"sample_type": "Solid Tissue Normal", "samples": 113, "files": 113},
+      {"sample_type": "Metastatic", "samples": 7, "files": 7}
+    ],
+    "scope": "Counts reflect the public GDC API response at the recorded time. A case is counted as paired when it has at least one Primary Tumor and one Solid Tissue Normal sample among these files; later releases can change the inventory."
+  },
+  "clinical_cases": [
+    {
+      "case_id": "cb9f5e50-f49d-4899-8895-9367afcc1015",
+      "submitter_id": "TCGA-A7-A0DC",
+      "demographic": {"sex_at_birth": "female", "age_at_index": 63, "vital_status": "Alive"},
+      "diagnosis": {
+        "ajcc_pathologic_stage": "Stage IA",
+        "primary_diagnosis": "Infiltrating duct carcinoma, NOS",
+        "tissue_or_organ_of_origin": "Breast, NOS",
+        "age_at_diagnosis_days": 23294,
+        "days_to_last_follow_up": 906
+      }
+    },
+    {
+      "case_id": "33fe5833-d7a0-43d7-a03d-56985ea448a6",
+      "submitter_id": "TCGA-GI-A2C8",
+      "demographic": {"sex_at_birth": "female", "age_at_index": 63, "vital_status": "Alive"},
+      "diagnosis": {
+        "ajcc_pathologic_stage": "Stage IIIB",
+        "primary_diagnosis": "Infiltrating duct carcinoma, NOS",
+        "tissue_or_organ_of_origin": "Breast, NOS",
+        "age_at_diagnosis_days": 23103,
+        "days_to_last_follow_up": null
+      }
+    }
+  ],
   "original_tsv_columns": [
     "gene_id",
     "gene_name",

@@ -119,23 +119,25 @@
     return root(`固定十个 RNA 检测点；${label}${count===null?'':`，左上 bin 含 ${count} 点`}${stage===4?'，虚线细胞轮廓跨多个 bin':''}`,art);
   }
 
-  const molecules=[[151,115],[185,188],[219,152],[371,122],[402,215],[440,161],[290,242]];
+  const molecules=[[151,115],[185,188],[219,152],[371,122],[402,215],[440,161],[295,205]];
   function segmentation(stage) {
     let art=heading('RNA 点位 → 分割边界 → cell matrix','Xenium 式输出的简化 toy 图');
     art+=rect(48,60,441,220,'#edf5ff',C.line,14);
     art+=group('nucleus-a',circle(184,160,34,'#b8c9f9',C.blue));
     art+=group('nucleus-b',circle(402,160,34,'#d9c7ff',C.violet));
     if(stage>=2){
-      art+=group('mask-a',`<ellipse cx="184" cy="160" rx="${stage===2?42:101}" ry="${stage===2?42:92}" fill="none" stroke="${C.blue}" stroke-width="4" stroke-dasharray="8 5"/>`);
-      art+=group('mask-b',`<ellipse cx="402" cy="160" rx="${stage===2?42:101}" ry="${stage===2?42:92}" fill="none" stroke="${C.violet}" stroke-width="4" stroke-dasharray="8 5"/>`);
+      const small=stage===2,over=stage===4,shift=stage>=5;
+      const rx=small?42:over?125:101,ry=small?42:over?108:92;
+      art+=group('mask-a',`<ellipse cx="${shift?214:184}" cy="${shift?168:160}" rx="${rx}" ry="${ry}" fill="${stage>=6?'#2b6cb010':'none'}" stroke="${C.blue}" stroke-width="4" stroke-dasharray="8 5"/>`);
+      art+=group('mask-b',`<ellipse cx="${shift?374:402}" cy="${shift?170:160}" rx="${rx}" ry="${ry}" fill="${stage>=6?'#7653c510':'none'}" stroke="${C.violet}" stroke-width="4" stroke-dasharray="8 5"/>`);
     }
-    molecules.forEach(([x,y],i)=>{const color=stage===4?(i<3?C.blue:i<6?C.violet:C.orange):C.cyan;art+=group(`rna-spot-${i+1}`,circle(x,y,7,color,C.white));});
+    molecules.forEach(([x,y],i)=>{const color=stage>=6?(i<3?C.blue:i<6?C.violet:C.orange):C.cyan;art+=group(`rna-spot-${i+1}`,circle(x,y,7,color,C.white));});
     art+=rect(512,65,174,190,C.white,C.line,14);
-    const labels=[['RNA detections','7 point coordinates'],['Nuclear masks','2 nuclei'],['Cell boundaries','larger than nuclei'],['Cell × gene','A 3 · B 3']][stage-1];
+    const labels=[['RNA detections','7 point coordinates'],['Nuclear masks','边界过小'],['5 µm-style','A 3 · B 3 · NA 1'],['Over-expansion','候选区域重叠'],['Registration shift','边界中心偏移'],['Assignments','A 3 · B 4'],['Cell × gene','假阳性进入 B']][stage-1];
     art+=text(529,98,labels[0],C.ink,19)+text(529,137,labels[1],C.muted,18);
-    if(stage===4)art+=text(529,190,'1 unassigned',C.orange,18);
-    else art+=text(529,190,stage===1?'无 cell ID':stage===2?'边界仍待定义':'点位准备分配',C.muted,17);
-    return root(`七个教学 RNA 点位，${labels[0]}：${labels[1]}${stage===4?'，另有一点未分配到细胞':''}`,art);
+    if(stage===7){art+=text(529,178,'G1  A:2 · B:3',C.blue,16)+text(529,207,'G2  A:1 · B:1',C.violet,16);}
+    else art+=text(529,190,stage===1?'无 cell ID':stage===2?'细胞质点可能漏分':stage===3?'1 点未分配':stage===4?'邻近细胞有歧义':stage===5?'点未动，mask 动了':stage===6?'橙点被误纳入 B':'',stage>=4?C.orange:C.muted,17);
+    return root(`七个教学 RNA 点位，${labels[0]}：${labels[1]}；边界变化会改变归属和 cell × gene 数值`,art);
   }
 
   function node(key,x,y,w,label,kind='blue',dim=false) {
@@ -143,6 +145,23 @@
     return group(key,rect(x,y,w,37,dim?'#eef1f5':C.white,dim?C.gray:color,8,dim?'opacity="0.55"':'')+text(x+12,y+19,label,dim?C.muted:C.ink,17));
   }
   function cohortJoin(stage) {
+    if(stage===5){
+      let clinical=heading('Clinical 表按 case_id 连接','病例级字段不能直接用 sample_id 或 file_id 匹配');
+      clinical+=text(85,78,'Case table',C.blue,19)+text(450,78,'Clinical table',C.orange,19);
+      clinical+=node('case-p01',75,102,155,'P01')+node('case-p02',75,204,155,'P02');
+      clinical+=line(230,120,430,120,C.orange,3,'marker-end="url(#tip)"')+line(230,222,430,222,C.orange,3,'marker-end="url(#tip)"');
+      clinical+=group('clinical-p01',rect(430,101,220,38,'#fff7df',C.orange,8)+text(443,120,'P01 · Stage II',C.ink,17));
+      clinical+=group('clinical-p02',rect(430,203,220,38,'#fff7df',C.orange,8)+text(443,222,'P02 · Stage III',C.ink,17));
+      clinical+=text(360,275,'JOIN ON case_id · 2 matched cases',C.ink,19,'middle');
+      return root('病例表与临床表都以 case 为粒度，按 case_id 得到两位匹配病例',clinical);
+    }
+    if(stage===6){
+      let table=heading('连接后仍要记住分析粒度','Clinical 字段在 file-level 表中重复');
+      table+=rect(55,66,610,177,C.white,C.line,13);
+      [['file row','case_id','sample_type','stage'],['F01','P01','Tumor','II'],['F02','P01','Tumor','II'],['F04','P02','Tumor','III']].forEach((row,r)=>row.forEach((value,c)=>{if(r===0)table+=rect(55+c*152,66,152,39,C.pale,C.line,0);table+=text(67+c*152,86+r*42,value,r===0?C.blue:C.ink,r===0?16:17);}));
+      table+=text(360,274,'3 file rows · 2 independent cases',C.orange,19,'middle');
+      return root('临床字段按 case_id 连接后会在同一病例的多份文件上重复；三行仍只有两位独立患者',table);
+    }
     let art=heading('Case → sample → file','GDC 数据实体的 toy ID');
     art+=text(55,76,'Case',C.blue,20)+text(280,76,'Sample / type',C.cyan,20)+text(515,76,'File',C.violet,20);
     const dim=stage===4;
@@ -233,22 +252,27 @@
     },
     {
       id:'segmentation', title:'细胞边界怎么改变空间表达矩阵？', subtitle:'同一批 RNA 点位，经不同边界与分配规则变成 cell × gene', chapters:['d07','s03','k07','k08'], sources:['xeniumSeg','xeniumOutput'],
-      assumption:'七个虚构已检测 RNA 点位与两个示意细胞；图中的轮廓是手绘教学 mask，不是 Xenium 算法结果。这里只统计同一 marker；一个未落入 cell mask 的点保持未分配。',
+      assumption:'七个虚构已检测 RNA 点位与两个示意细胞；图中的轮廓是手绘教学 mask，不是 Xenium 算法结果或精度评估。前六个点设为细胞内，第七个设为细胞外；边界扩张和偏移只为展示归属误差。',
       steps:[
         {title:'先有点位和细胞核',body:'点位和核的位置只是图像/检测数据；此时还不能把每个 RNA 点归到 cell ID。',svg:segmentation(1)},
-        {title:'画出核轮廓',body:'核分割得到两个较小的 mask。只用核轮廓会漏掉细胞质中的 RNA，不能把核边界直接当细胞边界。',svg:segmentation(2)},
-        {title:'估计细胞边界',body:'教学轮廓扩到细胞范围；点位自身未变，潜在分配对象却改变。真实输出要查实际分割方法与版本。',svg:segmentation(3)},
-        {title:'按 cell ID 汇总',body:'本题 cell A=3、B=3，另有 1 点未分配；同一检测点列表经边界和质量规则才成为 cell × gene 值，不是无误差的“真实每细胞分子数”。',svg:segmentation(4)}
+        {title:'只画核轮廓会漏分',body:'核分割得到两个较小的 mask。只用核轮廓会漏掉细胞质中的 RNA，不能把核边界直接当细胞边界。',svg:segmentation(2)},
+        {title:'适度扩张估计细胞边界',body:'教学轮廓扩到细胞范围，前六个点进入 A/B，第七点仍未分配。点位没有移动，潜在 cell ID 已由算法边界决定。',svg:segmentation(3)},
+        {title:'过度扩张产生重叠',body:'两个候选轮廓变大并重叠。落在重叠区的点需要额外分配规则；细胞外点也更可能被纳入。',svg:segmentation(4)},
+        {title:'配准偏移移动的是 mask',body:'核或图像配准偏移时，估计边界整体错位。RNA 坐标仍相同，但它落在哪个 mask 内可能改变。',svg:segmentation(5)},
+        {title:'错误归属进入 cell ID',body:'橙点在教学真值中属于细胞外，却因偏移轮廓被分到 B。分割误差已经从图像层进入细胞标签。',svg:segmentation(6)},
+        {title:'矩阵继承所有边界决定',body:'汇总后 A=3、B=4，看起来只是一个普通 cell × gene 表；若不保留点位、mask、算法版本与 QC，就看不出 B 多出的一个是假阳性。',svg:segmentation(7)}
       ]
     },
     {
       id:'cohort-join', title:'为什么 4 个 file 不是 4 位患者？', subtitle:'GDC 的 case、sample、file 是不同实体', chapters:['r01','r02','r06','k02'], sources:['gdcBarcode','gdcDoc','gdcRNA'],
-      assumption:'完全虚构的 P01/P02、S01–S03、F01–F04；P01 同时有 tumor/normal，S01 有两个 RNA file。实际队列须核对 sample_type、workflow 和 file 元数据。',
+      assumption:'完全虚构的 P01/P02、S01–S03、F01–F04 与 Stage II/III；P01 同时有 tumor/normal，S01 有两个 RNA file。实际队列须核对实体 ID、sample_type、workflow、file 元数据和临床字段缺失。',
       steps:[
         {title:'先数 case：2',body:'如果研究目标是患者层面的推断，toy 中独立 case 只有 P01/P02 两位。病例 ID 是临床表连接键。',svg:cohortJoin(1)},
         {title:'再接 sample：3',body:'P01 有 tumor 和 normal 两份材料，P02 有一份 tumor。三份 sample 仍只来自两位患者。',svg:cohortJoin(2)},
         {title:'再接 file：4',body:'S01 对应两个 RNA 文件，文件行数增加并没有创造新患者；还要核对 assay/workflow 及是否重复处理。',svg:cohortJoin(3)},
-        {title:'按 sample_type 筛选',body:'保留 tumor 后是 2 case、2 sample、3 file。按 case 接临床字段，避免把 P01 的两个 file 当成两个独立结局。',svg:cohortJoin(4)}
+        {title:'按 sample_type 筛选',body:'保留 tumor 后是 2 case、2 sample、3 file。筛选改变文件集合，没有改变独立病例数。',svg:cohortJoin(4)},
+        {title:'临床表按 case_id 连接',body:'病例级 Stage 以 case_id 匹配；sample_id 和 file_id 属于更低层实体，不能直接当临床表主键。',svg:cohortJoin(5)},
+        {title:'连接后再声明分析粒度',body:'Stage 会复制到同一病例的多个 file 行。三行 joined table 仍只有两位独立 case；模型、拆分和 n 都要按研究问题的粒度定义。',svg:cohortJoin(6)}
       ]
     },
     {

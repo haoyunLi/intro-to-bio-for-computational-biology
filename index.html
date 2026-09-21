@@ -58,7 +58,7 @@
             <li><a href="textbook.html#q05"><b>06</b><span><strong>数值为何要换尺度</strong><small>raw count、CPM、TPM</small></span></a></li>
             <li><a href="textbook.html#k01"><b>07</b><span><strong>表怎样连接</strong><small>case / sample / file / ID</small></span></a></li>
             <li><a href="real-data-walkthrough.html"><b>08</b><span><strong>读一份真实文件</strong><small>TCGA 病例、STAR counts、零值</small></span></a></li>
-            <li><a href="real-cohort-lab.html"><b>09</b><span><strong>拼出真实小队列</strong><small>2 case、4 sample、配对与推断</small></span></a></li>
+            <li><a href="real-cohort-lab.html"><b>09</b><span><strong>完整队列 → 配对子集</strong><small>1,095 case 库存、clinical join、真实配对</small></span></a></li>
           </ol>
         </div>
         <h3 class="path-catalogue-title">完整课程目录 <small>需要时按研究问题深入</small></h3>
@@ -168,7 +168,7 @@
       <h2 id="tcga-title">把一个 TCGA 问题走完整</h2>
       <p class="chapter-intro">示例问题：在一个指定癌种中，某基因的表达与临床结局是否相关？先把“可分析的 cohort”定义清楚，再写模型。TCGA 是研究项目，GDC 提供访问与协调处理后的数据。<a class="cite" href="#ref-tcga">[14]</a> <a class="cite" href="#ref-gdc">[7]</a></p>
       <ol class="workflow"><li><span>01</span><div><h3>Define question</h3><p>指定癌种、样本类型、暴露变量、结局和预期混杂因素。不要从一个显著 p 值倒推问题。</p></div></li><li><span>02</span><div><h3>Define units</h3><p>区分 <strong>case / 病例</strong>、<strong>sample / 样本</strong>、<strong>aliquot / 分装物</strong>、<strong>file / 文件</strong>。多个文件不代表多个独立病人。<a class="cite" href="#ref-barcode">[23]</a></p></div></li><li><span>03</span><div><h3>Build cohort</h3><p>在 GDC 选项目、primary tumor 或 matched normal、assay 和可用临床字段；记录纳排标准和缺失情况。<a class="cite" href="#ref-gdc">[7]</a></p></div></li><li><span>04</span><div><h3>Join modalities</h3><p>按明确的 ID 层级对齐 RNA、变异、甲基化与临床资料；不同组学的样本交集可能变小。检查参考基因组与处理版本。<a class="cite" href="#ref-harmonized">[24]</a></p></div></li><li><span>05</span><div><h3>Analyze and challenge</h3><p>检查批次、组织来源、肿瘤纯度、缺失和多重检验；对结局模型核对随访与删失定义。寻找独立队列或实验支持。</p></div></li></ol>
-      <p class="tcga-case-link">先看一个可核对的输入：<a href="real-data-walkthrough.html">逐行读一份公开 TCGA-BRCA STAR counts 文件 ↗</a>。再用 <a href="real-cohort-lab.html">四份真实文件拼出两位病例的配对小队列 ↗</a>，练习筛选、连接、读数单位与推断边界。这是经过选择的教学子集，不代表可做组间统计的完整队列。</p>
+      <p class="tcga-case-link">先看一个可核对的输入：<a href="real-data-walkthrough.html">逐行读一份公开 TCGA-BRCA STAR counts 文件 ↗</a>。再用 <a href="real-cohort-lab.html">完整库存、临床连接与真实配对子集工作台 ↗</a>，从 1,231 个文件 / 1,095 个病例的 API 聚合数走到两病例四文件的逐行核验，并练习筛选、连接、读数单位与推断边界。配对子集用于教学核验，不支持组间显著性或临床结论。</p>
       <div class="tcga-warning"><b>研究结论的边界</b><p>“表达与生存相关”只是 association，不证明该基因驱动疾病，也不等于临床可用 biomarker。GDC 也将其数据定位为研究探索。<a class="cite" href="#ref-gdc">[7]</a></p></div>
     </div></div></section>
 
@@ -220,7 +220,7 @@
       <li id="ref-replicates"><a href="https://www.ebi.ac.uk/training/online/courses/functional-genomics-ii-common-technologies-and-data-analysis-methods/rna-sequencing/performing-a-rna-seq-experiment/design-considerations/number-of-replicates/" target="_blank" rel="noopener noreferrer">EMBL-EBI · Number of biological replicates</a> — 生物学重复与推断。</li>
       <li id="ref-cancer"><a href="https://www.cancer.gov/about-cancer/understanding/what-is-cancer" target="_blank" rel="noopener noreferrer">NCI · What Is Cancer?</a> — 肿瘤细胞生长、异质性与扩散。</li>
       <li id="ref-tme"><a href="https://www.cancer.gov/publications/dictionaries/cancer-terms/def/tumor-microenvironment" target="_blank" rel="noopener noreferrer">NCI · Tumor microenvironment</a> — 肿瘤周围的细胞、分子与血管。</li>
-    </ol><p class="source-updated">来源核对：2026-09-20。数据库界面、文件类型与使用条件会更新，开展研究时请以对应项目文档和数据 release 为准。</p></section>
+    </ol><p class="source-updated">来源核对：2026-09-21。数据库界面、文件类型与使用条件会更新，开展研究时请以对应项目文档和数据 release 为准。</p></section>
   </main>
 
   <footer class="site-footer"><div class="page-shell"><a class="brand" href="#top"><span>Bio<span class="brand-slash">/</span>CS</span><small>BIOLOGY FOR COMPUTATIONAL MINDS</small></a><p>给从计算走向生命科学的人。<br>Build a biological question before building a model.</p><a href="#top">返回顶部 ↑</a></div></footer>
