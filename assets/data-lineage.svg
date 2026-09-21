@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="420" viewBox="0 0 1040 420" role="img" aria-labelledby="title desc">
+  <title id="title">From patient to analysis matrix</title>
+  <desc id="desc">Original diagram of patient, tissue sample, assay, raw files, processed files, and analysis table, showing metadata relationships.</desc>
+  <defs>
+    <linearGradient id="bg" x2="1" y2="1"><stop stop-color="#f8fbff"/><stop offset="1" stop-color="#eaf2ff"/></linearGradient>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#4a76ad"/></marker>
+  </defs>
+  <rect width="1040" height="420" rx="24" fill="url(#bg)"/>
+  <text x="35" y="40" fill="#235388" font-size="15" font-family="Arial,sans-serif" font-weight="700" letter-spacing="2">DATA LINEAGE · FOLLOW THE BIOLOGICAL UNIT</text>
+  <g fill="#fff" stroke="#c6daf0" stroke-width="2">
+    <rect x="35" y="75" width="142" height="225" rx="14"/>
+    <rect x="208" y="75" width="142" height="225" rx="14"/>
+    <rect x="381" y="75" width="142" height="225" rx="14"/>
+    <rect x="554" y="75" width="142" height="225" rx="14"/>
+    <rect x="727" y="75" width="142" height="225" rx="14"/>
+    <rect x="900" y="75" width="105" height="225" rx="14"/>
+  </g>
+  <g stroke="#4a76ad" stroke-width="2.5" marker-end="url(#arr)">
+    <path d="M181 187H201"/><path d="M354 187H374"/><path d="M527 187H547"/><path d="M700 187H720"/><path d="M873 187H893"/>
+  </g>
+  <g font-family="Arial,sans-serif" fill="#153d73" font-weight="700" font-size="17">
+    <text x="53" y="111">Patient</text><text x="225" y="111">Specimen</text><text x="400" y="111">Assay</text><text x="572" y="111">Raw file</text><text x="743" y="111">Processed</text><text x="914" y="111">Model</text>
+  </g>
+  <g fill="#517092" font-size="12" font-family="Arial,sans-serif">
+    <text x="53" y="141">case ID</text><text x="53" y="161">clinical context</text><text x="53" y="181">time zero</text>
+    <text x="225" y="141">sample ID</text><text x="225" y="161">tumor / normal</text><text x="225" y="181">time / region</text>
+    <text x="400" y="141">DNA / RNA</text><text x="400" y="161">spatial / image</text><text x="400" y="181">panel + protocol</text>
+    <text x="572" y="141">FASTQ</text><text x="572" y="161">pixels</text><text x="572" y="181">instrument data</text>
+    <text x="743" y="141">VCF / counts</text><text x="743" y="161">cell matrix</text><text x="743" y="181">coordinates</text>
+    <text x="914" y="141">features</text><text x="914" y="161">splits</text><text x="914" y="181">metrics</text>
+  </g>
+  <g fill="#dceaff"><rect x="52" y="221" width="106" height="53" rx="5"/><rect x="225" y="221" width="106" height="53" rx="5"/><rect x="398" y="221" width="106" height="53" rx="5"/><rect x="571" y="221" width="106" height="53" rx="5"/><rect x="744" y="221" width="106" height="53" rx="5"/><rect x="916" y="221" width="72" height="53" rx="5"/></g>
+  <g fill="#20599a" font-size="11" font-family="Arial,sans-serif" font-weight="700">
+    <text x="61" y="242">WHO?</text><text x="61" y="259">独立患者</text><text x="234" y="242">WHERE?</text><text x="234" y="259">哪个组织</text><text x="407" y="242">HOW?</text><text x="407" y="259">测量方式</text><text x="580" y="242">WHAT?</text><text x="580" y="259">原始信号</text><text x="753" y="242">UNITS?</text><text x="753" y="259">数值单位</text><text x="921" y="242">VALID?</text><text x="921" y="259">验证</text>
+  </g>
+  <path d="M105 325H949" stroke="#98b8d9" stroke-width="2" stroke-dasharray="6 5"/>
+  <text x="35" y="358" fill="#385f8a" font-size="14" font-family="Arial,sans-serif" font-weight="700">Keep the mapping from each output row back to its patient, material, assay, and processing version.</text>
+  <text x="35" y="387" fill="#6f86a1" font-size="11" font-family="Arial,sans-serif">ORIGINAL TEACHING SCHEMATIC  ·  One patient can have many samples; one sample can generate multiple files.</text>
+</svg>

@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 350" role="img" aria-labelledby="title desc">
+<title id="title">From cell to allele</title>
+<desc id="desc">A conceptual zoom from a cell nucleus and chromosome, to a DNA segment and one gene locus, then two possible alleles.</desc>
+<defs>
+ <linearGradient id="bg" x2="1" y2="1"><stop stop-color="#e7f1ff"/><stop offset="1" stop-color="#f7fbff"/></linearGradient>
+ <linearGradient id="dna" x2="1" y2="1"><stop stop-color="#235ab1"/><stop offset="1" stop-color="#6a9de3"/></linearGradient>
+ <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8" fill="#6d91c3"/></marker>
+</defs>
+<rect width="980" height="350" rx="20" fill="url(#bg)"/>
+<g fill="none" stroke="#bcd2ee" stroke-width="2"><path d="M195 172 H290" marker-end="url(#arrow)"/><path d="M454 172 H544" marker-end="url(#arrow)"/><path d="M711 172 H803" marker-end="url(#arrow)"/></g>
+<g font-family="Arial,Microsoft YaHei,sans-serif" fill="#11294e">
+ <text x="30" y="39" font-size="12" letter-spacing="3" fill="#2b63af" font-weight="700">01 / CELL</text>
+ <circle cx="100" cy="168" r="74" fill="#d2e5fb" stroke="#7ea8d8" stroke-width="2"/>
+ <circle cx="100" cy="168" r="38" fill="#a8c8ef" stroke="#3970b3" stroke-width="2"/>
+ <path d="M88 148l12 19-11 20m22-39l-11 19 12 20" stroke="#234f9b" stroke-width="7" stroke-linecap="round" fill="none"/>
+ <text x="100" y="273" text-anchor="middle" font-size="18" font-weight="700">Cell / 细胞</text>
+ <text x="100" y="296" text-anchor="middle" font-size="12" fill="#5b7494">nucleus / 细胞核</text>
+ <text x="290" y="39" font-size="12" letter-spacing="3" fill="#2b63af" font-weight="700">02 / CHROMOSOME</text>
+ <path d="M343 100 C365 118 371 142 372 170 C373 199 359 222 342 241 M405 100 C382 123 376 145 376 170 C376 199 390 222 407 241" fill="none" stroke="#2c65b5" stroke-width="23" stroke-linecap="round"/>
+ <path d="M345 101 C359 126 366 149 374 170 C383 190 393 219 406 241 M405 101 C392 125 383 148 374 170 C366 194 357 220 343 241" fill="none" stroke="#598ed3" stroke-width="8" stroke-linecap="round"/>
+ <circle cx="375" cy="171" r="10" fill="#e68270"/>
+ <text x="375" y="273" text-anchor="middle" font-size="18" font-weight="700">Chromosome / 染色体</text>
+ <text x="375" y="296" text-anchor="middle" font-size="12" fill="#5b7494">DNA packaged with proteins</text>
+ <text x="542" y="39" font-size="12" letter-spacing="3" fill="#2b63af" font-weight="700">03 / DNA · GENE</text>
+ <path d="M560 116 C610 155 655 182 697 224 M560 224 C610 184 655 155 697 116" fill="none" stroke="url(#dna)" stroke-width="7" stroke-linecap="round"/>
+ <path d="M575 128l110 85 M589 139l97 64 M603 151l75 50 M620 164l52 38 M640 179l20 15" stroke="#7fa7d9" stroke-width="3"/>
+ <rect x="612" y="148" width="64" height="50" rx="10" fill="none" stroke="#df735f" stroke-width="3" stroke-dasharray="5 4"/>
+ <text x="629" y="273" text-anchor="middle" font-size="18" font-weight="700">DNA</text>
+ <text x="629" y="296" text-anchor="middle" font-size="12" fill="#5b7494">gene = functional region</text>
+ <text x="797" y="39" font-size="12" letter-spacing="3" fill="#2b63af" font-weight="700">04 / LOCUS · ALLELE</text>
+ <rect x="803" y="111" width="144" height="55" rx="9" fill="#fff" stroke="#c1d6ef"/>
+ <rect x="803" y="180" width="144" height="55" rx="9" fill="#fff" stroke="#c1d6ef"/>
+ <text x="875" y="143" text-anchor="middle" font-size="18" font-family="Consolas,monospace" font-weight="700">A C <tspan fill="#d96352">G</tspan> T</text>
+ <text x="875" y="212" text-anchor="middle" font-size="18" font-family="Consolas,monospace" font-weight="700">A C <tspan fill="#326ab3">A</tspan> T</text>
+ <text x="875" y="273" text-anchor="middle" font-size="18" font-weight="700">Alleles / 等位基因</text>
+ <text x="875" y="296" text-anchor="middle" font-size="12" fill="#5b7494">versions at one locus</text>
+</g>
+<text x="30" y="328" font-family="Arial,Microsoft YaHei,sans-serif" font-size="10" fill="#7c91aa">Conceptual teaching illustration · not to scale</text>
+</svg>

@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1040 430" role="img" aria-labelledby="title desc">
+  <title id="title">酶底物结合与简单饱和曲线</title>
+  <desc id="desc">左侧显示酶和底物形成复合物后释放产物；右侧显示固定酶量时，底物浓度增加而反应速度逐渐接近 Vmax。Km 对应半最大速度。</desc>
+  <rect width="1040" height="430" rx="18" fill="#f4f8ff"/>
+  <text x="34" y="47" fill="#123d70" font-size="26" font-weight="700" font-family="Arial, sans-serif">结合与催化：两个不同问题</text>
+  <text x="34" y="78" fill="#617b99" font-size="15" font-family="Arial, sans-serif">左：E + S ⇌ ES → E + P；右：固定酶量的简化底物饱和模型</text>
+  <g font-family="Arial, sans-serif">
+    <rect x="26" y="112" width="470" height="279" rx="13" fill="#ffffff" stroke="#d6e4f4" stroke-width="2"/>
+    <text x="48" y="150" fill="#1f5a99" font-size="18" font-weight="700">反应步骤</text>
+    <path d="M70 248q0-51 55-51h48v43h-30v55H99q-29 0-29-47" fill="#5b9fba"/>
+    <circle cx="205" cy="246" r="20" fill="#e4a968"/>
+    <text x="110" y="339" fill="#31577d" font-size="16" text-anchor="middle">E · 酶</text>
+    <text x="205" y="339" fill="#31577d" font-size="16" text-anchor="middle">S · 底物</text>
+    <path d="M240 250h38m-10-10 10 10-10 10" stroke="#5f84b0" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <path d="M299 247q0-49 52-49h48v43h-29v50h-39q-32 0-32-44" fill="#5b9fba"/>
+    <circle cx="368" cy="247" r="17" fill="#e4a968"/>
+    <text x="351" y="339" fill="#31577d" font-size="16" text-anchor="middle">ES · 短暂复合物</text>
+    <text x="48" y="373" fill="#627d99" font-size="14">产物释放后，酶可再次催化</text>
+    <rect x="516" y="112" width="498" height="279" rx="13" fill="#ffffff" stroke="#d6e4f4" stroke-width="2"/>
+    <text x="539" y="150" fill="#1f5a99" font-size="18" font-weight="700">反应速度 v</text>
+    <path d="M594 337V181M594 337H969" stroke="#587b9e" stroke-width="3" fill="none"/>
+    <path d="M594 335C659 243 714 215 780 201S907 187 959 184" stroke="#50a396" stroke-width="5" fill="none" stroke-linecap="round"/>
+    <path d="M595 183H970" stroke="#a6bdd3" stroke-width="2" stroke-dasharray="7 6"/>
+    <path d="M594 260H707V337" stroke="#9c84bd" stroke-width="2" stroke-dasharray="6 5" fill="none"/>
+    <text x="545" y="188" fill="#607996" font-size="14">Vmax</text>
+    <text x="541" y="265" fill="#7e619f" font-size="13">½ Vmax</text>
+    <text x="694" y="361" fill="#7e619f" font-size="13">Km</text>
+    <text x="811" y="367" fill="#607996" font-size="14">底物浓度 [S] →</text>
+  </g>
+</svg>

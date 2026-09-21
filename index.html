@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="给零生物基础 CS 研究者的计算生物学教材：69 章、10 门课程，从化学、遗传学到肿瘤多组学，并逐步精讲测序原理和 RNA 归一化。">
+  <meta name="theme-color" content="#f8fbff">
+  <title>Bio/CS · 从代码到细胞</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="bio-motion.css">
+  <script src="textbook-data.js" defer></script>
+  <script src="bio-motion-biology.js" defer></script>
+  <script src="bio-motion-data.js" defer></script>
+  <script src="bio-motion.js" defer></script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到正文</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="#top" aria-label="Bio/CS 首页"><span>Bio<span class="brand-slash">/</span>CS</span><small>BIOLOGY FOR COMPUTATIONAL MINDS</small></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="打开导航">☰</button>
+      <nav class="site-nav" id="site-nav" aria-label="主导航">
+        <a href="textbook.html">零基础教材</a><a href="motion-lab.html">动效图解</a><a href="course.html">12 课复习</a><a href="data-lab.html">Data Lab</a><a href="#life">生命系统</a><a href="#omics">Omics</a><a href="#datasets">数据集</a><a href="#tcga">TCGA 实战</a>
+      </nav>
+      <a class="header-cta" href="textbook.html#b01">从第 0 课开始 <span aria-hidden="true">↗</span></a>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero page-shell" id="top" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <h1 id="hero-title">从代码到<span>细胞</span></h1>
+        <p class="hero-en">From code to cells.</p>
+        <p class="hero-lead">给完全没有生物背景、正在进入 computational biology 的你：用 10 门课程、69 章，从生命的物质基础逐步走到 Genetics、细胞、多组学、空间技术、测序原理与计算数据实战。</p>
+        <div class="hero-actions"><a class="button button-primary" href="textbook.html#b01">从零开始读教材 <span aria-hidden="true">→</span></a><a class="text-link" href="foundations-lab.html">先动手理解数据 ↗</a></div>
+        <p class="hero-note">研究方向可并行：肿瘤多组学 / TCGA · Visium HD / Xenium / CODEX · enhancer / splicing · 生物影像 · 数据建模</p>
+      </div>
+      <figure class="hero-figure">
+        <img src="assets/life-map.svg" alt="原创示意图：细胞中的 DNA 经 RNA、蛋白质及环境共同影响表型；旁侧标出肿瘤多组学可观测的层次" width="800" height="540">
+        <figcaption>原创示意图 · 生物层级与信息流；概念依据 <a href="#ref-nhgri">[1]</a> <a href="#ref-dogma">[2]</a> <a href="#ref-gdc">[7]</a></figcaption>
+      </figure>
+    </section>
+
+    <div class="page-shell"><section data-bio-motion="transcription,sequencing,normalization,bulk-mixture" aria-label="从生物过程到数据的动画预览"></section></div>
+    <section class="path-section" id="path" aria-labelledby="path-title">
+      <div class="page-shell">
+        <div class="section-heading"><div><span class="section-index">01 / LEARNING PATH</span><h2 id="path-title">以读懂数据为终点</h2></div><p>69 章可以按学科系统学习。零基础读者先走下面这条短路线，反复追问：材料是什么、测了什么、文件里的数是什么。</p></div>
+        <div class="data-route" aria-label="读懂数据的核心路线">
+          <div class="data-route-intro"><span class="eyebrow">START HERE · 数据理解主线</span><p>从一份肿瘤组织出发，沿 DNA / RNA / 蛋白的生物过程走到测量、文件、数值和病例级分析。每一步都要能解释观测单位与推断边界。<a href="foundations-lab.html">先玩三个互动模型 ↗</a></p></div>
+          <ol>
+            <li><a href="textbook.html#b01"><b>01</b><span><strong>研究对象</strong><small>患者、组织、细胞、样本</small></span></a></li>
+            <li><a href="textbook.html#g01"><b>02</b><span><strong>基因是什么</strong><small>顺读 G01–G02：DNA、双链、gene</small></span></a></li>
+            <li><a href="textbook.html#m02"><b>03</b><span><strong>信息怎样流动</strong><small>Central Dogma 与各层读数</small></span></a></li>
+            <li><a href="textbook.html#d01"><b>04</b><span><strong>实验测到什么</strong><small>assay、材料、信号</small></span></a></li>
+            <li><a href="textbook.html#q01"><b>05</b><span><strong>信号怎样成文件</strong><small>测序、FASTQ、gene count</small></span></a></li>
+            <li><a href="textbook.html#q05"><b>06</b><span><strong>数值为何要换尺度</strong><small>raw count、CPM、TPM</small></span></a></li>
+            <li><a href="textbook.html#k01"><b>07</b><span><strong>表怎样连接</strong><small>case / sample / file / ID</small></span></a></li>
+            <li><a href="real-data-walkthrough.html"><b>08</b><span><strong>读一份真实文件</strong><small>TCGA 病例、STAR counts、零值</small></span></a></li>
+            <li><a href="real-cohort-lab.html"><b>09</b><span><strong>拼出真实小队列</strong><small>2 case、4 sample、配对与推断</small></span></a></li>
+          </ol>
+        </div>
+        <h3 class="path-catalogue-title">完整课程目录 <small>需要时按研究问题深入</small></h3>
+        <ol class="path-list">
+          <li><a href="textbook.html#b01"><span class="path-num">00</span><span><strong>零基础预备</strong><small>生命 · 化学 · 细胞</small></span><span aria-hidden="true">↗</span></a></li>
+          <li><a href="textbook.html#g01"><span class="path-num">01</span><span><strong>遗传学</strong><small>DNA · gene · inheritance</small></span><span aria-hidden="true">↗</span></a></li>
+          <li><a href="textbook.html#m01"><span class="path-num">02</span><span><strong>分子生物学</strong><small>replication · RNA · protein</small></span><span aria-hidden="true">↗</span></a></li>
+          <li><a href="textbook.html#c01"><span class="path-num">03</span><span><strong>细胞生物学</strong><small>membrane · signaling · cycle</small></span><span aria-hidden="true">↗</span></a></li>
+          <li><a href="textbook.html#t01"><span class="path-num">04</span><span><strong>肿瘤生物学</strong><small>evolution · immunity · clinic</small></span><span aria-hidden="true">↗</span></a></li>
+          <li><a href="textbook.html#d01"><span class="path-num">05</span><span><strong>实验与组学</strong><small>sequencing · omics · images</small></span><span aria-hidden="true">↗</span></a></li>
+          <li><a href="textbook.html#r01"><span class="path-num">06</span><span><strong>计算研究 / TCGA</strong><small>datasets · statistics · evidence</small></span><span aria-hidden="true">↗</span></a></li>
+          <li><a href="textbook.html#s01"><span class="path-num">07</span><span><strong>空间与调控专题</strong><small>Visium HD · Xenium · CODEX · enhancer · splicing</small></span><span aria-hidden="true">↗</span></a></li>
+          <li><a href="textbook.html#k01"><span class="path-num">08</span><span><strong>计算数据实战</strong><small>formats · IDs · matrices · QC · modeling</small></span><span aria-hidden="true">↗</span></a></li>
+          <li><a href="textbook.html#q01"><span class="path-num">09</span><span><strong>测序与表达定量精讲</strong><small>SBS · FASTQ · counts · CPM · FPKM · TPM · DESeq2</small></span><span aria-hidden="true">↗</span></a></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="chapter page-shell" id="start" aria-labelledby="start-title">
+      <div class="chapter-rail"><span>00</span><span>THE BIG PICTURE</span></div>
+      <div class="chapter-main">
+        <h2 id="start-title">生命是一个有层级的系统</h2>
+        <p class="chapter-intro">不要一上来背通路名。先把研究对象看清楚：一个人的肿瘤由组织组成，组织里有多种细胞；细胞内有分子，分子之间的相互作用会改变细胞行为。<a class="cite" href="#ref-cell">[3]</a></p>
+        <div class="scale-line" role="img" aria-label="层级示意：分子到细胞到组织到个体，箭头表示不同分析尺度">
+          <div><b>分子</b><small>Molecule</small><em>DNA / RNA / Protein</em></div><span aria-hidden="true">→</span><div><b>细胞</b><small>Cell</small><em>状态与类型</em></div><span aria-hidden="true">→</span><div><b>组织</b><small>Tissue</small><em>细胞与微环境</em></div><span aria-hidden="true">→</span><div><b>个体</b><small>Organism</small><em>疾病与结局</em></div>
+        </div>
+        <div class="insight-grid">
+          <div><h3>CS 类比 / A useful analogy</h3><p>基因组像一份长期保存的指令集合；RNA 更像当前运行状态的读数；蛋白质参与执行功能。这个类比只帮助定位层级，<strong>不等于</strong>“一个基因决定一个结果”。<a class="cite" href="#ref-dogma">[2]</a> <a class="cite" href="#ref-phenotype">[4]</a></p></div>
+          <div><h3>研究问题 / A better question</h3><p>“这个基因在癌症中重要吗？”太宽。更可操作的是：“在同一癌种、同一种样本定义下，它的表达是否与某种表型相关？这个信号可能来自哪类细胞？”</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="chapter chapter-tint" id="life" aria-labelledby="life-title">
+      <div class="page-shell chapter-wrap"><div class="chapter-rail"><span>01</span><span>CELL & GENETICS</span></div><div class="chapter-main">
+        <h2 id="life-title">先认识细胞，再谈基因</h2>
+        <p class="chapter-intro">细胞 <em>cell</em> 是生命的基本单位。人体组织不是同一种细胞的复制品；肿瘤样本也混有肿瘤细胞、免疫细胞和基质细胞。因此，bulk 测量常是多种细胞信号的混合。<a class="cite" href="#ref-cell">[3]</a> <a class="cite" href="#ref-rnaseq">[5]</a></p>
+        <div class="cell-layout"><figure><img src="assets/cell-layers.svg" alt="原创细胞示意图：细胞膜、细胞质、细胞核、染色体、DNA，以及肿瘤组织中不同细胞的混合" width="740" height="420"><figcaption>原创示意图 · 细胞结构与肿瘤组织；概念依据 <a href="#ref-cell">[3]</a> <a href="#ref-nhgri">[1]</a></figcaption></figure><div class="mini-lessons"><div><span>01</span><h3>Cell ≠ sample</h3><p>一个测序样本可以来自一块组织；一块组织可以含有很多种细胞。分析单位先于算法。</p></div><div><span>02</span><h3>Nucleus / 细胞核</h3><p>在人类细胞中，主要的核基因组装在染色体里；线粒体也有少量 DNA。<a class="cite" href="#ref-genome">[6]</a></p></div><div><span>03</span><h3>Phenotype / 表型</h3><p>可观察的特征来自遗传、环境和细胞状态共同作用。<a class="cite" href="#ref-phenotype">[4]</a></p></div></div></div>
+        <div class="cancer-context"><div><span class="eyebrow">WHY CANCER IS A SYSTEMS PROBLEM</span><h3>为什么肿瘤需要多组学？</h3></div><p>癌症涉及细胞生长和分裂调控失常；同一个肿瘤内的细胞也可能携带不同改变。它还与免疫细胞、基质和血管构成的 <em>tumor microenvironment / 肿瘤微环境</em> 相互影响。DNA、RNA、蛋白和影像分别看到这个过程的一部分。<a class="cite" href="#ref-cancer">[28]</a> <a class="cite" href="#ref-tme">[29]</a></p></div>
+      </div></div>
+    </section>
+
+    <section class="chapter page-shell" id="genetics" aria-labelledby="genetics-title"><div class="chapter-rail"><span>02</span><span>GENETIC BASICS</span></div><div class="chapter-main">
+      <h2 id="genetics-title">DNA、gene、variant 到底是什么？</h2>
+      <p class="chapter-intro"><a href="#ref-nhgri">DNA</a> 是储存遗传信息的分子；<a href="#ref-chromosome">chromosome / 染色体</a> 是 DNA 与蛋白质组成的结构；<a href="#ref-genome">genome / 基因组</a> 指一个细胞里的整套 DNA 信息；<a href="#ref-gene">gene / 基因</a> 是其中具有功能信息的区域。它们是不同层级，不能互换。<a class="cite" href="#ref-nhgri">[1]</a> <a class="cite" href="#ref-chromosome">[8]</a> <a class="cite" href="#ref-genome">[6]</a> <a class="cite" href="#ref-gene">[9]</a></p>
+      <div class="definition-row"><div><span>SEQUENCE</span><h3>变异 / Variant</h3><p>DNA 序列与参考序列的差异。<strong>Somatic mutation</strong> 在体细胞中获得；<strong>germline variant</strong> 可从父母遗传。肿瘤研究常关心体细胞改变。<a class="cite" href="#ref-mutation">[10]</a></p></div><div><span>AMOUNT</span><h3>拷贝数 / CNV</h3><p>某段 DNA 的份数增加或减少。它可能影响表达，但不能单凭 CNV 推断蛋白质功能。<a class="cite" href="#ref-gdc">[7]</a></p></div><div><span>CONTEXT</span><h3>调控 / Regulation</h3><p>相同 DNA 在不同细胞里可以被不同方式使用；表观遗传标记与调控元件参与这个过程。<a class="cite" href="#ref-epigenome">[11]</a> <a class="cite" href="#ref-encode">[12]</a></p></div></div>
+      <aside class="plain-note"><b>读论文时先问：</b>作者说的“mutation”是肿瘤体细胞突变、胚系变异，还是只是表达量变化？这三者不能当同一个变量。</aside>
+    </div></section>
+
+    <section class="chapter chapter-tint" id="flow" aria-labelledby="flow-title"><div class="page-shell chapter-wrap"><div class="chapter-rail"><span>03</span><span>INFORMATION FLOW</span></div><div class="chapter-main">
+      <h2 id="flow-title">DNA → RNA → Protein → phenotype</h2>
+      <p class="chapter-intro">Central dogma 提供最简信息流：DNA 经 <em>transcription / 转录</em> 产生 RNA，RNA 经 <em>translation / 翻译</em> 参与蛋白质合成。真实系统还有剪接、调控、降解、蛋白修饰和环境反馈，所以各层数据不会一一对应。<a class="cite" href="#ref-dogma">[2]</a> <a class="cite" href="#ref-rnaseq">[5]</a> <a class="cite" href="#ref-epigenome">[11]</a></p>
+      <figure class="flow-figure"><img src="assets/central-dogma.svg" alt="原创信息流示意图：DNA 通过转录到 RNA，通过翻译到蛋白质，再在细胞环境中影响表型；调控影响每一步" width="960" height="310"><figcaption>原创示意图 · Central dogma 是入门地图，不是无例外的完整因果图。依据 <a href="#ref-dogma">[2]</a> <a href="#ref-phenotype">[4]</a></figcaption></figure>
+      <p class="course-deep-link"><b>想一步一步看懂？</b> 教材第 M02–M05 章分别讲信息流、转录、RNA 加工和翻译。<a href="textbook.html#m02">从 Central Dogma 开始 ↗</a></p>
+      <div class="three-notes"><p><b>DNA 看“可能性”</b><br>变异或拷贝数提示机制候选，不能直接读出活性。</p><p><b>RNA 看“测得的丰度”</b><br>RNA-seq 提供采样时 RNA 的计数或相对丰度，不直接测转录速率，也不等于蛋白量。<a class="cite" href="#ref-rnaseq">[5]</a></p><p><b>蛋白看“功能机器”</b><br>丰度、修饰与位置都可能重要；一种测量往往只覆盖其中一部分。<a class="cite" href="#ref-pride">[17]</a></p></div>
+    </div></div></section>
+
+    <section class="chapter page-shell" id="omics" aria-labelledby="omics-title"><div class="chapter-rail"><span>04</span><span>OMICS ATLAS</span></div><div class="chapter-main">
+      <h2 id="omics-title">Omics：在不同层面给生命拍快照</h2>
+      <p class="chapter-intro">“组学”通常是大规模测量某一类分子或特征。先记住每种技术的<strong>观测对象、单位和盲点</strong>，再学工具。下面的表是入门抽象；具体文件格式和实验设计会随平台改变。<a class="cite" href="#ref-gdc">[7]</a> <a class="cite" href="#ref-geo">[13]</a></p>
+      <div class="table-scroll"><table class="omics-table"><caption>常见测量层与典型数据形状</caption><thead><tr><th scope="col">层 / Modality</th><th scope="col">测到什么</th><th scope="col">常见数据形状</th><th scope="col">不能直接说明</th></tr></thead><tbody>
+        <tr><th scope="row">Genomics <small>基因组学</small></th><td>DNA 序列、体细胞变异、拷贝数</td><td>variant × sample；segment × sample</td><td>变异是否真的改变功能<a class="cite" href="#ref-gdc">[7]</a></td></tr>
+        <tr><th scope="row">Epigenomics <small>表观组学</small></th><td>甲基化、染色质或调控相关信号</td><td>CpG/region × sample</td><td>单个标记与表达之间的因果<a class="cite" href="#ref-encode">[12]</a></td></tr>
+        <tr><th scope="row">Transcriptomics <small>转录组学</small></th><td>RNA 的种类与丰度</td><td>gene/transcript × sample</td><td>蛋白量与细胞组成<a class="cite" href="#ref-rnaseq">[5]</a></td></tr>
+        <tr><th scope="row">Proteomics <small>蛋白质组学</small></th><td>蛋白或肽段的鉴定、丰度、修饰</td><td>protein/peptide × sample</td><td>所有蛋白的完整覆盖<a class="cite" href="#ref-pride">[17]</a></td></tr>
+        <tr><th scope="row">Single-cell <small>单细胞</small></th><td>每个细胞的表达或其他特征</td><td>cell × gene；细胞 metadata</td><td>细胞空间位置（若无空间测量）<a class="cite" href="#ref-cellxgene">[18]</a></td></tr>
+        <tr><th scope="row">Spatial / imaging <small>空间与影像</small></th><td>细胞/组织位置、形态、像素强度</td><td>image × channel × x × y；ROI</td><td>所有分子机制<a class="cite" href="#ref-idr">[19]</a></td></tr>
+      </tbody></table></div>
+      <div class="matrix-demo"><div><span class="eyebrow">DATA SHAPE</span><h3>一张矩阵不是“生物真相”</h3><p>表达矩阵中的每个值都依赖于样本定义、实验平台、预处理和归一化。先读 metadata，再做模型。列名中一个 ID 的层级可能是 patient、sample、aliquot 或 cell。</p></div><div class="matrix-art" aria-label="示例表达矩阵，行是基因，列是样本，颜色深浅表示示意值"><div class="matrix-labels"><span>GENE</span><span>S01</span><span>S02</span><span>S03</span><span>S04</span></div><div class="matrix-row"><b>G1</b><i class="v2"></i><i class="v5"></i><i class="v3"></i><i class="v1"></i></div><div class="matrix-row"><b>G2</b><i class="v1"></i><i class="v3"></i><i class="v5"></i><i class="v4"></i></div><div class="matrix-row"><b>G3</b><i class="v4"></i><i class="v2"></i><i class="v1"></i><i class="v5"></i></div><small>Illustrative values only · 原创示意</small></div></div>
+    </div></section>
+
+    <section class="chapter chapter-tint" id="resolution" aria-labelledby="resolution-title"><div class="page-shell chapter-wrap"><div class="chapter-rail"><span>05</span><span>RESOLUTION</span></div><div class="chapter-main">
+      <h2 id="resolution-title">同一块肿瘤，三种观察方式</h2>
+      <p class="chapter-intro">Bulk RNA-seq 把一块组织里的 RNA 合在一起读；single-cell RNA-seq 把读数分配给单个细胞，帮助辨认细胞类型和状态；spatial transcriptomics 再把信号放回组织坐标。三者回答的问题不同，分辨率也各有代价。<a class="cite" href="#ref-rnaseq">[5]</a> <a class="cite" href="#ref-sc-course">[25]</a> <a class="cite" href="#ref-geo-seq">[26]</a></p>
+      <div class="resolution-grid"><div><div class="resolution-art bulk-art" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div><h3>Bulk <small>一块组织 → 一个读数</small></h3><p>适合研究群体差异，但基因表达改变可能来自细胞比例变化，也可能来自细胞内状态变化。</p><code>gene × tissue sample</code></div><div><div class="resolution-art single-art" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div><h3>Single-cell <small>一个细胞 → 一个读数</small></h3><p>可以发现少数细胞群和细胞状态；组织位置通常在解离时丢失，且需要质量控制和注释。</p><code>cell × gene + metadata</code></div><div><div class="resolution-art spatial-art" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div><h3>Spatial <small>表达 + 位置</small></h3><p>把分子信号与组织结构联系起来；测量单位可能是 spot、区域或单细胞，须看平台说明。</p><code>location × gene + x/y</code></div></div>
+      <aside class="plain-note"><b>统计单位提醒：</b>一位病人的上万个细胞并不等于上万个独立病人。若结论要推广到病人群体，要考虑生物学重复、病人层级和相应的统计设计。<a class="cite" href="#ref-replicates">[27]</a></aside>
+    </div></div></section>
+
+    <section class="chapter page-shell" id="images" aria-labelledby="images-title"><div class="chapter-rail"><span>06</span><span>BIOIMAGE</span></div><div class="chapter-main">
+      <h2 id="images-title">图像也是一种生物数据</h2>
+      <p class="chapter-intro">显微镜图像看细胞与亚细胞结构；病理全切片 <em>whole-slide image, WSI</em> 看组织形态；CT/MRI 看更大尺度的解剖结构。它们的标签、分辨率与分析单位不同，不能统称为“图片分类”。<a class="cite" href="#ref-idr">[19]</a> <a class="cite" href="#ref-tcia">[20]</a></p>
+      <div class="image-stages"><div><span class="image-glyph microscopy" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><h3>Microscopy</h3><p>像素 → 细胞分割 → 形态、位置、共定位</p><small>常见资源：IDR<a class="cite" href="#ref-idr">[19]</a></small></div><div><span class="image-glyph pathology" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><h3>Pathology / WSI</h3><p>整张切片 → tiles → 组织区域 → 病例级汇总</p><small>TCGA/GDC 可包含数字病理切片<a class="cite" href="#ref-gdc">[7]</a></small></div><div><span class="image-glyph radiology" aria-hidden="true"><i></i><i></i><i></i></span><h3>CT / MRI</h3><p>体素 → 器官或肿瘤区域 → 影像特征</p><small>常见资源：TCIA<a class="cite" href="#ref-tcia">[20]</a></small></div></div>
+      <aside class="plain-note"><b>做 ML 时的关键：</b>如果同一位病人的多个 tile 或切片落在 train 和 test 两边，评估会泄漏病人特征。按 patient/case 切分，并检查扫描仪、染色或中心是否成为 shortcut。</aside>
+    </div></section>
+
+    <section class="chapter page-shell" id="datasets" aria-labelledby="datasets-title"><div class="chapter-rail"><span>07</span><span>OPEN DATA ATLAS</span></div><div class="chapter-main">
+      <h2 id="datasets-title">公开数据集地图</h2>
+      <p class="chapter-intro">先找“资源的角色”，再找下载按钮：有的是研究项目，有的是提交型仓库，有的是原始 reads 档案，也有的是影像集合。以下链接直达维护机构的官方页面。<a class="cite" href="#ref-tcga">[14]</a> <a class="cite" href="#ref-geo">[13]</a> <a class="cite" href="#ref-sra">[15]</a></p>
+      <fieldset class="filter-group" id="dataset-filters"><legend>多选你关心的方向 <small>可同时选多个 / Multiple selections</small></legend><label><input type="checkbox" value="cancer"> 肿瘤多组学</label><label><input type="checkbox" value="single"> 单细胞</label><label><input type="checkbox" value="regulation"> 基因调控</label><label><input type="checkbox" value="imaging"> 生物影像</label><button type="button" id="reset-filters">显示全部</button></fieldset>
+      <p class="filter-status" id="filter-status" aria-live="polite">显示全部 10 个资源</p>
+      <div class="dataset-list" id="dataset-list">
+        <article class="dataset-item" data-tags="cancer regulation imaging"><div><span class="dataset-type">PROGRAM + PORTAL</span><h3>TCGA <small>via GDC</small></h3></div><p>跨癌种肿瘤分子与临床资料。入门可从一个癌种、一个分子层开始；样本并非每种 assay 都齐全。</p><div><span>肿瘤 · multi-omics</span><a href="https://www.cancer.gov/ccg/research/genome-sequencing/tcga" target="_blank" rel="noopener noreferrer">官方介绍 ↗</a><a href="https://portal.gdc.cancer.gov/" target="_blank" rel="noopener noreferrer">GDC Portal ↗</a></div></article>
+        <article class="dataset-item" data-tags="cancer single regulation"><div><span class="dataset-type">REPOSITORY</span><h3>GEO</h3></div><p>研究者提交的功能基因组学实验；常有 series、sample、platform 等层级，可找到 bulk 与 single-cell 研究。</p><div><span>表达 · 功能基因组学</span><a href="https://www.ncbi.nlm.nih.gov/geo/info/overview.html" target="_blank" rel="noopener noreferrer">NCBI GEO ↗</a></div></article>
+        <article class="dataset-item" data-tags="cancer single regulation"><div><span class="dataset-type">RAW READS ARCHIVE</span><h3>SRA</h3></div><p>高通量测序原始 reads 与比对信息的档案；适合需要重新做上游处理时查找。</p><div><span>FASTQ / sequencing</span><a href="https://www.ncbi.nlm.nih.gov/sra/docs/" target="_blank" rel="noopener noreferrer">NCBI SRA ↗</a></div></article>
+        <article class="dataset-item" data-tags="regulation cancer"><div><span class="dataset-type">REFERENCE PROJECT</span><h3>GTEx</h3></div><p>跨非疾病组织的基因表达与遗传调控参考；做肿瘤比较时要注意来源、组织和处理差异。</p><div><span>正常组织 · eQTL</span><a href="https://gtexportal.org/home/documentationPage" target="_blank" rel="noopener noreferrer">GTEx Portal ↗</a></div></article>
+        <article class="dataset-item" data-tags="regulation"><div><span class="dataset-type">CONSORTIUM + PORTAL</span><h3>ENCODE</h3></div><p>功能性基因组元件与调控实验数据；适合解释非编码区域、转录调控和染色质信号。</p><div><span>调控元件 · epigenomics</span><a href="https://www.encodeproject.org/pages/homepage/" target="_blank" rel="noopener noreferrer">ENCODE ↗</a></div></article>
+        <article class="dataset-item" data-tags="single cancer"><div><span class="dataset-type">SINGLE-CELL PORTAL</span><h3>CZ CELLxGENE</h3></div><p>可按组织、疾病、assay 等 metadata 搜索、探索和下载单细胞数据集。</p><div><span>cell × gene</span><a href="https://cellxgene.cziscience.com/docs/02__Find%20Published%20Data" target="_blank" rel="noopener noreferrer">Discover docs ↗</a></div></article>
+        <article class="dataset-item" data-tags="cancer"><div><span class="dataset-type">PROTEOMICS REPOSITORY</span><h3>PRIDE</h3></div><p>质谱蛋白质组数据与证据；与 RNA 数据并读时要先核对样本和平台。</p><div><span>蛋白 / 肽段</span><a href="https://www.ebi.ac.uk/training/online/courses/pride-quick-tour/what-is-pride/" target="_blank" rel="noopener noreferrer">PRIDE ↗</a></div></article>
+        <article class="dataset-item" data-tags="imaging single"><div><span class="dataset-type">BIOIMAGE REPOSITORY</span><h3>IDR</h3></div><p>已发表生命科学研究的多维影像及注释；适合显微影像、细胞表型和方法验证。</p><div><span>microscopy · annotations</span><a href="https://idr.openmicroscopy.org/about/" target="_blank" rel="noopener noreferrer">IDR ↗</a></div></article>
+        <article class="dataset-item" data-tags="imaging cancer"><div><span class="dataset-type">MEDICAL IMAGE ARCHIVE</span><h3>TCIA</h3></div><p>去标识化的癌症医学影像集合，常见 CT、MRI、数字病理与相关标注。</p><div><span>radiology · pathology</span><a href="https://www.cancerimagingarchive.net/about-the-cancer-imaging-archive-tcia/" target="_blank" rel="noopener noreferrer">TCIA ↗</a></div></article>
+        <article class="dataset-item" data-tags="regulation cancer"><div><span class="dataset-type">ASSOCIATION CATALOG</span><h3>GWAS Catalog</h3></div><p>人类性状与基因组变异的关联研究索引及部分 summary statistics；关联不自动等于因果。</p><div><span>variant · trait</span><a href="https://www.ebi.ac.uk/gwas/docs" target="_blank" rel="noopener noreferrer">GWAS Catalog ↗</a></div></article>
+      </div>
+      <p class="source-line">资源描述依据各维护机构：<a href="#ref-tcga">[14]</a>–<a href="#ref-gwas">[22]</a>。访问权限、数据版本及使用条款以各资源当前页面为准。</p>
+    </div></section>
+
+    <section class="chapter chapter-dark" id="tcga" aria-labelledby="tcga-title"><div class="page-shell chapter-wrap"><div class="chapter-rail"><span>08</span><span>TCGA CASE STUDY</span></div><div class="chapter-main">
+      <h2 id="tcga-title">把一个 TCGA 问题走完整</h2>
+      <p class="chapter-intro">示例问题：在一个指定癌种中，某基因的表达与临床结局是否相关？先把“可分析的 cohort”定义清楚，再写模型。TCGA 是研究项目，GDC 提供访问与协调处理后的数据。<a class="cite" href="#ref-tcga">[14]</a> <a class="cite" href="#ref-gdc">[7]</a></p>
+      <ol class="workflow"><li><span>01</span><div><h3>Define question</h3><p>指定癌种、样本类型、暴露变量、结局和预期混杂因素。不要从一个显著 p 值倒推问题。</p></div></li><li><span>02</span><div><h3>Define units</h3><p>区分 <strong>case / 病例</strong>、<strong>sample / 样本</strong>、<strong>aliquot / 分装物</strong>、<strong>file / 文件</strong>。多个文件不代表多个独立病人。<a class="cite" href="#ref-barcode">[23]</a></p></div></li><li><span>03</span><div><h3>Build cohort</h3><p>在 GDC 选项目、primary tumor 或 matched normal、assay 和可用临床字段；记录纳排标准和缺失情况。<a class="cite" href="#ref-gdc">[7]</a></p></div></li><li><span>04</span><div><h3>Join modalities</h3><p>按明确的 ID 层级对齐 RNA、变异、甲基化与临床资料；不同组学的样本交集可能变小。检查参考基因组与处理版本。<a class="cite" href="#ref-harmonized">[24]</a></p></div></li><li><span>05</span><div><h3>Analyze and challenge</h3><p>检查批次、组织来源、肿瘤纯度、缺失和多重检验；对结局模型核对随访与删失定义。寻找独立队列或实验支持。</p></div></li></ol>
+      <p class="tcga-case-link">先看一个可核对的输入：<a href="real-data-walkthrough.html">逐行读一份公开 TCGA-BRCA STAR counts 文件 ↗</a>。再用 <a href="real-cohort-lab.html">四份真实文件拼出两位病例的配对小队列 ↗</a>，练习筛选、连接、读数单位与推断边界。这是经过选择的教学子集，不代表可做组间统计的完整队列。</p>
+      <div class="tcga-warning"><b>研究结论的边界</b><p>“表达与生存相关”只是 association，不证明该基因驱动疾病，也不等于临床可用 biomarker。GDC 也将其数据定位为研究探索。<a class="cite" href="#ref-gdc">[7]</a></p></div>
+    </div></div></section>
+
+    <section class="chapter page-shell" id="practice" aria-labelledby="practice-title"><div class="chapter-rail"><span>09</span><span>WHAT TO MASTER</span></div><div class="chapter-main"><h2 id="practice-title">CS 背景真正要补的能力</h2><p class="chapter-intro">你的编程、统计和建模能力已经很有价值。优先补齐这些“从数据返回生物问题”的接口。</p>
+      <div class="skill-columns"><div><h3>生物概念</h3><ul><li>细胞、组织、肿瘤微环境</li><li>DNA / RNA / protein / phenotype</li><li>变异、调控与基因表达</li><li>实验单位与测量误差</li></ul></div><div><h3>数据素养</h3><ul><li>metadata、样本 ID 与队列定义</li><li>原始 reads、count、归一化值</li><li>bulk、single-cell、spatial、image</li><li>版本、批次、缺失与权限</li></ul></div><div><h3>研究判断</h3><ul><li>探索与验证分开</li><li>病人级切分与数据泄漏</li><li>效应量、混杂、多重检验</li><li>关联、机制、因果的边界</li></ul></div></div>
+      <div class="try-box"><div><span class="eyebrow">TRY IT / 15 MIN</span><h3>今天就读一份真实文件</h3></div><ol><li>打开本站的 <a href="real-data-walkthrough.html">TCGA-BRCA 公开文件练习</a>，找出 case、sample 与 file ID。</li><li>指出 gene 行、<code>unstranded</code> 列、TPM 列分别是什么。</li><li>解释一个 0、一个空白以及 38670 的不同含义。</li><li>写一句这份单样本文件能说明什么，再写一句它<strong>不能</strong>证明什么；之后再到 <a href="https://portal.gdc.cancer.gov/" target="_blank" rel="noopener noreferrer">GDC Portal</a> 试着找同类文件。</li></ol></div>
+    </div></section>
+
+    <section class="glossary-section" id="glossary" aria-labelledby="glossary-title"><div class="page-shell"><div class="section-heading"><div><span class="section-index">10 / GLOSSARY</span><h2 id="glossary-title">术语表 / Keep these close</h2></div><p>简短解释用于入门；点击术语可查看原始定义或数据库文档。</p></div><div class="glossary-grid">
+      <div><a href="https://www.genome.gov/genetics-glossary/Gene" target="_blank" rel="noopener noreferrer">Gene / 基因 ↗</a><p>具有功能信息的 DNA 区域，可编码蛋白或功能性 RNA。</p></div>
+      <div><a href="https://www.genome.gov/genetics-glossary/Genome" target="_blank" rel="noopener noreferrer">Genome / 基因组 ↗</a><p>细胞中的整套 DNA 指令。</p></div>
+      <div><a href="https://www.genome.gov/genetics-glossary/Mutation" target="_blank" rel="noopener noreferrer">Mutation / 突变 ↗</a><p>DNA 序列改变；注意胚系与体细胞来源。</p></div>
+      <div><a href="https://www.genome.gov/genetics-glossary/RNA-seq" target="_blank" rel="noopener noreferrer">RNA-seq / 转录组测序 ↗</a><p>通过测序估计 RNA 的种类与丰度。</p></div>
+      <div><a href="https://www.genome.gov/genetics-glossary/Epigenome" target="_blank" rel="noopener noreferrer">Epigenome / 表观基因组 ↗</a><p>参与调控基因组使用方式的化学标记集合。</p></div>
+      <div><a href="https://www.genome.gov/genetics-glossary/Phenotype" target="_blank" rel="noopener noreferrer">Phenotype / 表型 ↗</a><p>可以观察到的特征，不由 DNA 单独决定。</p></div>
+      <div><a href="https://docs.gdc.cancer.gov/Encyclopedia/pages/TCGA_Barcode/" target="_blank" rel="noopener noreferrer">TCGA barcode ↗</a><p>追踪项目、病例、样本、分析物和 aliquot 等层级的标识。</p></div>
+      <div><a href="https://www.ncbi.nlm.nih.gov/geo/info/overview.html" target="_blank" rel="noopener noreferrer">GSE / GSM / GPL ↗</a><p>GEO 的 series / sample / platform 记录类型。</p></div>
+      <div><a href="https://www.ebi.ac.uk/gwas/docs" target="_blank" rel="noopener noreferrer">GWAS ↗</a><p>寻找基因组变异与性状统计关联的研究设计。</p></div>
+      <div><a href="https://www.cancerimagingarchive.net/about-the-cancer-imaging-archive-tcia/" target="_blank" rel="noopener noreferrer">DICOM ↗</a><p>医学影像及其元数据的常见标准格式。</p></div>
+    </div></div></section>
+
+    <section class="references page-shell" id="sources" aria-labelledby="sources-title"><div class="section-heading"><div><span class="section-index">SOURCES & METHODS</span><h2 id="sources-title">来源与图解说明</h2></div><p>文字为教学性改写；页面中的科学图解均为本站原创示意，没有复用第三方图像。</p></div><ol class="reference-list">
+      <li id="ref-nhgri"><a href="https://www.genome.gov/genetics-glossary" target="_blank" rel="noopener noreferrer">NHGRI · Talking Glossary of Genomic and Genetic Terms</a> — 基础遗传学术语。</li>
+      <li id="ref-dogma"><a href="https://www.genome.gov/genetics-glossary/Central-Dogma" target="_blank" rel="noopener noreferrer">NHGRI · Central Dogma</a> — DNA、RNA、蛋白质的信息流。</li>
+      <li id="ref-cell"><a href="https://www.genome.gov/genetics-glossary/Cell" target="_blank" rel="noopener noreferrer">NHGRI · Cell</a> — 细胞基础定义。</li>
+      <li id="ref-phenotype"><a href="https://www.genome.gov/genetics-glossary/Phenotype" target="_blank" rel="noopener noreferrer">NHGRI · Phenotype</a> — 表型与环境影响。</li>
+      <li id="ref-rnaseq"><a href="https://www.genome.gov/genetics-glossary/RNA-seq" target="_blank" rel="noopener noreferrer">NHGRI · RNA-seq</a> — RNA 测序与表达。</li>
+      <li id="ref-genome"><a href="https://www.genome.gov/genetics-glossary/Genome" target="_blank" rel="noopener noreferrer">NHGRI · Genome</a> — 基因组。</li>
+      <li id="ref-gdc"><a href="https://gdc.cancer.gov/about-data" target="_blank" rel="noopener noreferrer">NCI GDC · About the Data</a> — 肿瘤多组学数据与研究用途。</li>
+      <li id="ref-chromosome"><a href="https://www.genome.gov/genetics-glossary/Chromosome" target="_blank" rel="noopener noreferrer">NHGRI · Chromosome</a> — 染色体。</li>
+      <li id="ref-gene"><a href="https://www.genome.gov/genetics-glossary/Gene" target="_blank" rel="noopener noreferrer">NHGRI · Gene</a> — 基因。</li>
+      <li id="ref-mutation"><a href="https://www.genome.gov/genetics-glossary/Mutation" target="_blank" rel="noopener noreferrer">NHGRI · Mutation</a> — 体细胞与胚系突变。</li>
+      <li id="ref-epigenome"><a href="https://www.genome.gov/genetics-glossary/Epigenome" target="_blank" rel="noopener noreferrer">NHGRI · Epigenome</a> — 表观调控。</li>
+      <li id="ref-encode"><a href="https://www.encodeproject.org/pages/homepage/" target="_blank" rel="noopener noreferrer">ENCODE · Project overview</a> — 功能基因组元件。</li>
+      <li id="ref-geo"><a href="https://www.ncbi.nlm.nih.gov/geo/info/overview.html" target="_blank" rel="noopener noreferrer">NCBI · GEO Overview</a> — GEO 的角色与 GSE/GSM/GPL 结构。</li>
+      <li id="ref-tcga"><a href="https://www.cancer.gov/ccg/research/genome-sequencing/tcga" target="_blank" rel="noopener noreferrer">NCI · The Cancer Genome Atlas Program</a> — TCGA 项目。</li>
+      <li id="ref-sra"><a href="https://www.ncbi.nlm.nih.gov/sra/docs/" target="_blank" rel="noopener noreferrer">NCBI · Sequence Read Archive</a> — 原始测序数据档案。</li>
+      <li id="ref-gtex"><a href="https://gtexportal.org/home/documentationPage" target="_blank" rel="noopener noreferrer">GTEx Portal · Documentation</a> — 正常组织表达与 eQTL。</li>
+      <li id="ref-pride"><a href="https://www.ebi.ac.uk/training/online/courses/pride-quick-tour/what-is-pride/" target="_blank" rel="noopener noreferrer">EMBL-EBI · What is PRIDE?</a> — 蛋白质组仓库。</li>
+      <li id="ref-cellxgene"><a href="https://cellxgene.cziscience.com/docs/02__Find%20Published%20Data" target="_blank" rel="noopener noreferrer">CZ CELLxGENE · Finding Published Data</a> — 单细胞数据。</li>
+      <li id="ref-idr"><a href="https://idr.openmicroscopy.org/about/" target="_blank" rel="noopener noreferrer">Image Data Resource · About</a> — 多维生物影像。</li>
+      <li id="ref-tcia"><a href="https://www.cancerimagingarchive.net/about-the-cancer-imaging-archive-tcia/" target="_blank" rel="noopener noreferrer">The Cancer Imaging Archive · About</a> — 癌症医学影像。</li>
+      <li id="ref-arrayexpress"><a href="https://www.ebi.ac.uk/training/online/courses/arrayexpress-in-biostudies/what-is-the-arrayexpress-collection/" target="_blank" rel="noopener noreferrer">EMBL-EBI · ArrayExpress in BioStudies</a> — 另一功能基因组学仓库。</li>
+      <li id="ref-gwas"><a href="https://www.ebi.ac.uk/gwas/docs" target="_blank" rel="noopener noreferrer">NHGRI-EBI · GWAS Catalog</a> — 人类性状关联研究。</li>
+      <li id="ref-barcode"><a href="https://docs.gdc.cancer.gov/Encyclopedia/pages/TCGA_Barcode/" target="_blank" rel="noopener noreferrer">GDC Docs · TCGA Barcode</a> — case/sample/aliquot 层级。</li>
+      <li id="ref-harmonized"><a href="https://docs.gdc.cancer.gov/Encyclopedia/pages/Harmonized_Data/" target="_blank" rel="noopener noreferrer">GDC Docs · Harmonized Data</a> — 协调处理与版本。</li>
+      <li id="ref-sc-course"><a href="https://www.ebi.ac.uk/training/materials/single-cell-rna-seq-analysis-using-r/" target="_blank" rel="noopener noreferrer">EMBL-EBI · Single-cell RNA-seq analysis</a> — 原始 reads 到细胞聚类。</li>
+      <li id="ref-geo-seq"><a href="https://www.ncbi.nlm.nih.gov/geo/info/seq.html" target="_blank" rel="noopener noreferrer">NCBI GEO · High-throughput sequencing submissions</a> — bulk、single-cell 与空间表达的实验类型。</li>
+      <li id="ref-replicates"><a href="https://www.ebi.ac.uk/training/online/courses/functional-genomics-ii-common-technologies-and-data-analysis-methods/rna-sequencing/performing-a-rna-seq-experiment/design-considerations/number-of-replicates/" target="_blank" rel="noopener noreferrer">EMBL-EBI · Number of biological replicates</a> — 生物学重复与推断。</li>
+      <li id="ref-cancer"><a href="https://www.cancer.gov/about-cancer/understanding/what-is-cancer" target="_blank" rel="noopener noreferrer">NCI · What Is Cancer?</a> — 肿瘤细胞生长、异质性与扩散。</li>
+      <li id="ref-tme"><a href="https://www.cancer.gov/publications/dictionaries/cancer-terms/def/tumor-microenvironment" target="_blank" rel="noopener noreferrer">NCI · Tumor microenvironment</a> — 肿瘤周围的细胞、分子与血管。</li>
+    </ol><p class="source-updated">来源核对：2026-09-20。数据库界面、文件类型与使用条件会更新，开展研究时请以对应项目文档和数据 release 为准。</p></section>
+  </main>
+
+  <footer class="site-footer"><div class="page-shell"><a class="brand" href="#top"><span>Bio<span class="brand-slash">/</span>CS</span><small>BIOLOGY FOR COMPUTATIONAL MINDS</small></a><p>给从计算走向生命科学的人。<br>Build a biological question before building a model.</p><a href="#top">返回顶部 ↑</a></div></footer>
+</body>
+</html>

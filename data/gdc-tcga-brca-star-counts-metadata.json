@@ -1,0 +1,32 @@
+{
+  "source": "https://api.gdc.cancer.gov/files/ead53b27-6ad9-4b96-b5d4-0d4f06fb2d13?expand=cases,cases.samples,analysis",
+  "retrieved_utc": "2026-09-21",
+  "file_id": "ead53b27-6ad9-4b96-b5d4-0d4f06fb2d13",
+  "file_name": "dadd1789-354a-4abb-8d4e-8556166cf341.rna_seq.augmented_star_gene_counts.tsv",
+  "md5sum": "0948d5b1ea684cd62a6ec7dafbeda026",
+  "file_size": 4235051,
+  "version": "1",
+  "data_release": "32.0 - 46.0",
+  "access": "open",
+  "data_category": "Transcriptome Profiling",
+  "data_type": "Gene Expression Quantification",
+  "experimental_strategy": "RNA-Seq",
+  "analysis": {
+    "workflow_type": "STAR - Counts",
+    "workflow_version": "5d8c131bbff59fb0c969217fc1d44e6d1503cd1f"
+  },
+  "cases": [
+    {
+      "case_id": "dfefb76a-ec6b-4cd2-9d45-2e1e4befc7ea",
+      "submitter_id": "TCGA-A8-A09E",
+      "project": {"project_id": "TCGA-BRCA"},
+      "samples": [
+        {
+          "sample_id": "b9140410-1ed1-4012-9637-412b7c688d68",
+          "submitter_id": "TCGA-A8-A09E-01A",
+          "sample_type": "Primary Tumor"
+        }
+      ]
+    }
+  ]
+}

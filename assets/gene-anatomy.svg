@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1020 570" role="img" aria-labelledby="title desc">
+  <title id="title">一条蛋白编码基因从 DNA 到成熟 RNA 的结构</title>
+  <desc id="desc">正链教学基因从 promoter 与 TSS 开始，含三段 exon 与两段 intron。剪接后成熟 RNA 保留 5' UTR、CDS 和 3' UTR；翻译只读取编码区域。</desc>
+  <rect width="1020" height="570" rx="18" fill="#f4f8ff"/>
+  <text x="35" y="43" fill="#123c72" font-size="27" font-weight="700" font-family="Arial, sans-serif">同一基因有多张不同的“地图”</text>
+  <text x="35" y="72" fill="#5c7391" font-size="15" font-family="Arial, sans-serif">教学用正链转录本；方框长度不是实际比例</text>
+  <g font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#234d7b">
+    <text x="35" y="159">DNA 基因座</text>
+    <text x="35" y="287">pre-mRNA</text>
+    <text x="35" y="412">成熟 mRNA</text>
+    <text x="35" y="504">蛋白产物</text>
+  </g>
+  <g stroke="#91a9c8" stroke-width="5" stroke-linecap="round">
+    <line x1="175" y1="151" x2="937" y2="151"/>
+    <line x1="175" y1="282" x2="937" y2="282"/>
+    <line x1="175" y1="406" x2="822" y2="406"/>
+  </g>
+  <rect x="178" y="125" width="122" height="52" rx="8" fill="#e1d6fa" stroke="#9e88cd" stroke-width="2"/>
+  <text x="239" y="157" text-anchor="middle" fill="#63478e" font-size="17" font-weight="700" font-family="Arial, sans-serif">promoter</text>
+  <g stroke="#2b67aa" stroke-width="3">
+    <line x1="333" y1="105" x2="333" y2="193"/>
+    <line x1="399" y1="107" x2="399" y2="189"/>
+    <line x1="852" y1="107" x2="852" y2="189"/>
+  </g>
+  <g fill="#1f5b9e" font-size="15" font-weight="700" font-family="Arial, sans-serif" text-anchor="middle">
+    <text x="333" y="99">TSS</text><text x="399" y="99">start codon</text><text x="852" y="99">stop codon</text>
+  </g>
+  <g stroke="#2b67aa" stroke-width="2">
+    <rect x="333" y="125" width="66" height="52" rx="5" fill="#f5c778"/>
+    <rect x="399" y="125" width="119" height="52" rx="5" fill="#67b6ae"/>
+    <rect x="614" y="125" width="132" height="52" rx="5" fill="#67b6ae"/>
+    <rect x="799" y="125" width="53" height="52" rx="5" fill="#67b6ae"/>
+    <rect x="852" y="125" width="84" height="52" rx="5" fill="#f5c778"/>
+    <rect x="333" y="257" width="66" height="50" rx="5" fill="#f5c778"/>
+    <rect x="399" y="257" width="119" height="50" rx="5" fill="#67b6ae"/>
+    <rect x="614" y="257" width="132" height="50" rx="5" fill="#67b6ae"/>
+    <rect x="799" y="257" width="53" height="50" rx="5" fill="#67b6ae"/>
+    <rect x="852" y="257" width="84" height="50" rx="5" fill="#f5c778"/>
+  </g>
+  <g fill="#5d7491" font-size="15" font-family="Arial, sans-serif" text-anchor="middle">
+    <text x="566" y="213">intron 1</text><text x="772" y="213">intron 2</text>
+    <text x="566" y="291">intron 1</text><text x="772" y="291">intron 2</text>
+  </g>
+  <g fill="#14486f" font-size="15" font-weight="700" font-family="Arial, sans-serif" text-anchor="middle">
+    <text x="427" y="238">exon 1</text><text x="680" y="238">exon 2</text><text x="868" y="238">exon 3</text>
+  </g>
+  <path d="M536 329l0 21m-8-8 8 8 8-8" fill="none" stroke="#4a80b3" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="567" y="349" fill="#4a6d94" font-size="15" font-family="Arial, sans-serif">剪接移除内含子</text>
+  <g stroke="#2b67aa" stroke-width="2">
+    <rect x="333" y="381" width="66" height="50" rx="5" fill="#f5c778"/>
+    <rect x="399" y="381" width="253" height="50" rx="5" fill="#67b6ae"/>
+    <rect x="652" y="381" width="84" height="50" rx="5" fill="#f5c778"/>
+  </g>
+  <g font-family="Arial, sans-serif" font-size="17" font-weight="700" fill="#174a70" text-anchor="middle">
+    <text x="366" y="413">5′ UTR</text><text x="525" y="413">CDS</text><text x="694" y="413">3′ UTR</text>
+  </g>
+  <path d="M536 442l0 24m-8-8 8 8 8-8" fill="none" stroke="#4a80b3" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="574" y="466" fill="#4a6d94" font-size="15" font-family="Arial, sans-serif">翻译读取编码区</text>
+  <rect x="399" y="482" width="253" height="39" rx="19" fill="#2d698f"/>
+  <text x="525" y="508" text-anchor="middle" fill="#ffffff" font-size="16" font-weight="700" font-family="Arial, sans-serif">氨基酸链 → 折叠蛋白</text>
+  <text x="35" y="550" fill="#607895" font-size="14" font-family="Arial, sans-serif">promoter 在转录本之外；UTR 留在成熟 RNA 中；genomic span、RNA 长度与 CDS 长度各不相同。</text>
+</svg>

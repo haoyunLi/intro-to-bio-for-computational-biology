@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="从四份真实 TCGA-BRCA RNA-seq 文件学会辨认 case、sample、file，筛选并配对样本，阅读 raw counts 与 TPM，判断推断边界。">
+  <link rel="icon" href="data:,">
+  <title>真实队列实验室 · TCGA-BRCA | Intro to Bio</title>
+  <link rel="stylesheet" href="./real-cohort-lab.css">
+  <link rel="stylesheet" href="bio-motion.css">
+  <script src="textbook-data.js" defer></script>
+  <script src="bio-motion-data.js" defer></script>
+  <script src="bio-motion.js" defer></script>
+  <script src="./real-cohort-lab.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="home-link" href="./real-data-walkthrough.html">← 先读单文件</a>
+    <span>INTRO TO BIO / REAL DATA LAB 02</span>
+  </header>
+  <a class="skip-link" href="#workspace">跳到数据练习</a>
+  <main>
+    <section class="hero" aria-labelledby="page-title">
+      <div class="hero-copy">
+        <p class="eyebrow">真实公开数据 · TCGA-BRCA · RNA-Seq</p>
+        <h1 id="page-title">从四份文件<br>拼出一个小队列</h1>
+        <p class="lead">假如你是刚接触生物数据的 CS 学生：表格里的四行，究竟是四个人、四个组织，还是四次测量？请先做判断，再展开答案。</p>
+        <div class="hero-tags"><span>从 case → sample → file</span><span>真实 STAR Counts</span><span>约 12 分钟</span></div>
+      </div>
+      <div class="hero-diagram" aria-label="病例到样本到文件再到基因读数的示意图">
+        <div><b>CASE</b><small>谁提供了组织？</small></div><i aria-hidden="true">↓</i>
+        <div><b>SAMPLE</b><small>取了哪种组织？</small></div><i aria-hidden="true">↓</i>
+        <div><b>FILE</b><small>哪一份测量结果？</small></div><i aria-hidden="true">↓</i>
+        <div><b>GENE ROW</b><small>读到了多少？</small></div>
+      </div>
+    </section>
+
+    <div class="workspace" id="workspace" tabindex="-1">
+      <section data-bio-motion="cohort-join,data-leakage" aria-label="队列连接与独立患者的动态图解"></section>
+      <nav class="stage-nav" aria-label="实验步骤"><ol id="stage-nav-list"></ol></nav>
+      <div class="restart-row"><p>答对后保留答案；想重新尝试，可重置本次练习。</p><button id="restart-lab" type="button">重新练习</button></div>
+      <div id="load-error" class="load-error" role="alert" hidden></div>
+      <p id="load-state" class="load-state" role="status">正在读取随页面保存的、经 GDC 原文件 MD5 校验的小型快照…</p>
+
+      <section class="stage" data-stage="0" hidden aria-labelledby="s1-title">
+        <div class="stage-heading"><span class="stage-number">01 / 06</span><p>先认清层级</p><h2 id="s1-title">四行元数据，数出几个对象？</h2></div>
+        <p class="concept">一个 <strong>case</strong> 是 GDC 数据模型中的病例/受试对象；同一 case 可以贡献多个 <strong>sample</strong>（组织样本），一个 sample 又可以关联一个或多个 <strong>file</strong>（数据文件）。所以文件数不能直接当人数。<a href="https://docs.gdc.cancer.gov/Encyclopedia/pages/Case/" target="_blank" rel="noopener noreferrer">GDC Case 定义 ↗</a></p>
+        <div class="data-caption"><span>GDC 文件元数据 · 每行是一份 file</span><span>点击 file ID 查看官方记录</span></div>
+        <p class="table-note">窄屏时左右滑动表格，可查看 sample_type 和 file_id。</p>
+        <div class="table-scroll" tabindex="0" role="region" aria-label="四份文件的元数据表，可横向滚动"><table><thead><tr><th>case.submitter_id</th><th>sample.submitter_id</th><th>sample_type</th><th>file_id</th></tr></thead><tbody id="metadata-rows"></tbody></table></div>
+        <form id="count-form" class="quiz-card">
+          <h3>你的判断</h3><p>分别数<strong>不重复</strong>的 case、sample、file。一个 case 重复出现在两行时只算一次。</p>
+          <div class="count-inputs"><label>case 数 <input name="cases" type="number" min="0" max="10" required inputmode="numeric"></label><label>sample 数 <input name="samples" type="number" min="0" max="10" required inputmode="numeric"></label><label>file 数 <input name="files" type="number" min="0" max="10" required inputmode="numeric"></label></div>
+          <button class="check-button" type="submit">核对答案</button><p class="feedback" aria-live="polite"></p>
+        </form>
+        <div class="reveal" hidden><strong>把它想成数据库的三张表。</strong> case ID 是病例键，sample ID 是一次组织采样的键，file UUID 是一份输出文件的键。这里每个病例正好有两种 sample；这是我们挑出的练习子集，不代表整个 TCGA-BRCA 的结构。<a href="https://docs.gdc.cancer.gov/Data/Data_Model/GDC_Data_Model/" target="_blank" rel="noopener noreferrer">GDC Data Model ↗</a></div>
+        <button class="next-button" type="button" hidden>继续：筛选样本 →</button>
+      </section>
+
+      <section class="stage" data-stage="1" hidden aria-labelledby="s2-title">
+        <div class="stage-heading"><span class="stage-number">02 / 06</span><p>筛选 sample_type</p><h2 id="s2-title">哪些是肿瘤样本？</h2></div>
+        <p class="concept"><strong>sample_type</strong> 是元数据字段。这里有 <em>Primary Tumor</em> 和 <em>Solid Tissue Normal</em> 两类。TCGA barcode 中的 01 与 11 也编码样本类型，但实际筛选先看显式字段，并保留原标签。<a href="https://docs.gdc.cancer.gov/Encyclopedia/pages/TCGA_Barcode/" target="_blank" rel="noopener noreferrer">TCGA Barcode ↗</a></p>
+        <p class="task-prompt">请选择所有 <strong>Primary Tumor</strong> 样本。按 sample 选择，不要按 case 选择。</p>
+        <div id="sample-choices" class="choice-grid"></div>
+        <button class="check-button" id="check-filter" type="button">检查筛选</button><p class="feedback" aria-live="polite"></p>
+        <div class="reveal" hidden><strong>同一病例也可能有不同组织类型。</strong> 这里每个 case 各有一份 Primary Tumor 和一份 Solid Tissue Normal。后者是 GDC 的样本分类名称，不表示“完全健康”，也不是独立人群的对照组。文件之间仍需用 case ID 配对。</div>
+        <button class="next-button" type="button" hidden>继续：按 case 连接 →</button>
+      </section>
+
+      <section class="stage" data-stage="2" hidden aria-labelledby="s3-title">
+        <div class="stage-heading"><span class="stage-number">03 / 06</span><p>做一次 join</p><h2 id="s3-title">给每份肿瘤找到同案正常组织</h2></div>
+        <p class="concept">数据库语言是 <code>tumor.case_id = normal.case_id</code>。sample 的末尾 <code>-01A</code> 与 <code>-11A</code> 告诉你类型，但配对是否同一病例，应该核对完整的 <strong>case ID</strong>。<a href="https://docs.gdc.cancer.gov/Data/Data_Model/GDC_Data_Model/" target="_blank" rel="noopener noreferrer">GDC 关系模型 ↗</a></p>
+        <div id="join-choices" class="join-grid"></div>
+        <button class="check-button" id="check-join" type="button">检查配对</button><p class="feedback" aria-live="polite"></p>
+        <div class="reveal" hidden><strong>配对是数据结构，不是实验结论。</strong> 这两对文件可按病例比较观察值；还没有检验统计差异，也不知道正常组织的细胞组成、取材位置或任何临床结局。</div>
+        <button class="next-button" type="button" hidden>继续：打开基因表 →</button>
+      </section>
+
+      <section class="stage" data-stage="3" hidden aria-labelledby="s4-title">
+        <div class="stage-heading"><span class="stage-number">04 / 06</span><p>读懂一个数</p><h2 id="s4-title">基因的 0 和高值说明什么？</h2></div>
+        <p class="concept">GDC 的 STAR 流程把测序片段比对到参考基因组，再给基因计数。<code>unstranded</code> 是本文件中的原始基因读数；<code>tpm_unstranded</code> 是由读数计算出的标准化量。下面只展示完整 TSV 中的四条真实基因行；原文件还包含更多基因与 QC 行。<a href="https://docs.gdc.cancer.gov/Data/Bioinformatics_Pipelines/Expression_mRNA_Pipeline/" target="_blank" rel="noopener noreferrer">GDC mRNA 流程 ↗</a></p>
+        <label class="gene-picker">查看基因 <select id="gene-picker"></select></label>
+        <div class="table-scroll" tabindex="0" role="region" aria-label="四份文件的基因读数表，可横向滚动"><table><thead><tr><th>case</th><th>sample_type</th><th>gene_id</th><th>gene_name</th><th>unstranded<br><small>raw count</small></th><th>tpm_unstranded<br><small>TPM</small></th></tr></thead><tbody id="gene-rows"></tbody></table></div>
+        <p class="table-note">字段名与小数位保留自 GDC TSV；上表不是整份表达矩阵。切换基因可见不同观察值。</p>
+        <fieldset class="quiz-card" id="zero-quiz"><legend>如果 INS 在某份文件里 <code>unstranded = 0</code>，可以怎么读？</legend><label><input type="radio" name="zero" value="absent"> 该病例的 INS 基因不存在</label><label><input type="radio" name="zero" value="observed"> 在这份样本、该流程和注释下，分配给 INS 的 unstranded 读数为 0</label><label><input type="radio" name="zero" value="clinical"> 此人没有胰岛素，也可据此诊断</label></fieldset>
+        <button class="check-button" id="check-zero" type="button">检查解释</button><p class="feedback" aria-live="polite"></p>
+        <div class="reveal" hidden><strong>0 是测量结果，不是“生物学上绝对不存在”。</strong> 读深、组织中细胞比例、转录本水平、比对和注释都会影响观测。一个很高的数也只是该样本在该流程下的较高读数；不能单凭这四行解释原因。</div>
+        <button class="next-button" type="button" hidden>继续：选择量纲 →</button>
+      </section>
+
+      <section class="stage" data-stage="4" hidden aria-labelledby="s5-title">
+        <div class="stage-heading"><span class="stage-number">05 / 06</span><p>raw counts 与 TPM</p><h2 id="s5-title">同一个基因，为何有两列数？</h2></div>
+        <p class="concept">举例看 <strong>ESR1</strong>：同一行同时有原始 <code>unstranded</code> 与 <code>tpm_unstranded</code>。TPM 结合基因长度与样本总量做相对尺度转换；两列单位不同，不能把它们当作重复测量。<a href="https://docs.gdc.cancer.gov/Data/Bioinformatics_Pipelines/Expression_mRNA_Pipeline/" target="_blank" rel="noopener noreferrer">GDC TPM 计算说明 ↗</a></p>
+        <div id="metric-comparison" class="metric-comparison"></div>
+        <div class="quiz-card metric-quiz"><h3>把字段放到合适的任务</h3>
+          <label>① 将来若有足够重复与合理设计，要给基于计数分布的差异表达模型输入哪列？<select id="de-field"><option value="">请选择</option><option value="unstranded">unstranded</option><option value="tpm_unstranded">tpm_unstranded</option></select></label>
+          <label>② 想展示这个样本中经过长度/总量换算的相对表达量，先看哪列？<select id="display-field"><option value="">请选择</option><option value="unstranded">unstranded</option><option value="tpm_unstranded">tpm_unstranded</option></select></label>
+        </div>
+        <button class="check-button" id="check-metric" type="button">检查用途</button><p class="feedback" aria-live="polite"></p>
+        <div class="reveal" hidden><strong>数据用途取决于问题。</strong> raw counts 保留计数特性，是计数模型常用输入；TPM 可作描述性展示和探索。TPM 不是基因拷贝数，也不是 0–100 的百分比；跨样本 TPM 差别仍会受组成及采样影响，不能自行当作显著性检验。</div>
+        <button class="next-button" type="button" hidden>继续：判断结论 →</button>
+      </section>
+
+      <section class="stage" data-stage="5" hidden aria-labelledby="s6-title">
+        <div class="stage-heading"><span class="stage-number">06 / 06</span><p>推断边界</p><h2 id="s6-title">现在你能说什么？</h2></div>
+        <p class="concept">我们是<strong>有意选出</strong>两组有配对样本的病例，仅保留四个基因行，没有完整样本质控、临床结局、混杂因素或足够的独立重复。下面选出<strong>仅凭本页数据能够核验</strong>的陈述。</p>
+        <div id="claim-choices" class="claim-grid"></div>
+        <button class="check-button" id="check-claims" type="button">检查结论</button><p class="feedback" aria-live="polite"></p>
+        <div class="reveal" hidden><strong>能描述观察值，不能替代研究设计。</strong> 此页不能宣称“某基因在乳腺癌中显著上调”、推断肿瘤导致了变化、估计总体效应，或预测治疗效果。若要做差异表达，需要明确生物学重复、比较组、质控、潜在混杂因素与统计模型；若要做临床问题，还要取得相应临床资料并定义结局。</div>
+        <div id="completion" class="completion" hidden><span>LAB COMPLETE</span><h3>你已从文件走回数据含义</h3><p>下一次拿到任何组学表，先问：一行是什么对象？一列是什么测量？如何连接到 sample 和 case？数字的单位是什么？哪些结论需要更多设计和数据？</p><a href="./index.html">回到课程首页 →</a></div>
+      </section>
+
+      <section class="sources" aria-labelledby="sources-title">
+        <p class="eyebrow">SOURCE & REPRODUCIBILITY</p><h2 id="sources-title">每个数字从哪里来</h2>
+        <p>数据来自 NCI <a href="https://portal.gdc.cancer.gov/" target="_blank" rel="noopener noreferrer">Genomic Data Commons (GDC)</a> 的公开 <strong>TCGA-BRCA / RNA-Seq / STAR - Counts</strong> 文件。获取时间、原文件 UUID、文件名、大小、MD5、workflow version 与摘录基因行均固定在 <a href="./data/gdc-tcga-brca-paired-star-counts-snapshot.json" download>本站 JSON 快照 ↓</a>。页面只读该快照，离线静态托管不请求 GDC API。</p>
+        <div id="source-files" class="source-files"></div>
+        <details><summary>如何复现与核对</summary><ol><li>在下方点击每份 <strong>file_id</strong>，到 GDC 官方 API 核对 <code>cases</code>、<code>samples</code>、<code>analysis</code>、<code>md5sum</code>。</li><li>用 <code>https://api.gdc.cancer.gov/data/{file_id}</code> 下载对应完整 TSV；计算文件 MD5，应与快照记录相同。</li><li>按原 TSV 的 <code>gene_name</code> 精确选出 TSPAN6、ESR1、ERBB2、INS 四行，并逐列与快照比对。本站没有修改表达值。</li></ol></details>
+        <p class="source-notes">背景与字段解释：<a href="https://docs.gdc.cancer.gov/API/Users_Guide/Search_and_Retrieval/" target="_blank" rel="noopener noreferrer">GDC API</a>、<a href="https://docs.gdc.cancer.gov/API/Users_Guide/Downloading_Files/" target="_blank" rel="noopener noreferrer">文件下载</a>、<a href="https://docs.gdc.cancer.gov/Data/Bioinformatics_Pipelines/Expression_mRNA_Pipeline/" target="_blank" rel="noopener noreferrer">mRNA 定量与 TPM</a>、<a href="https://docs.gdc.cancer.gov/Encyclopedia/pages/TCGA_Barcode/" target="_blank" rel="noopener noreferrer">TCGA barcode</a>。本站仅重现一小部分公开数据，并注明来源；GDC 数据使用请遵守其 <a href="https://gdc.cancer.gov/about-gdc/gdc-policies" target="_blank" rel="noopener noreferrer">数据政策</a>。</p>
+      </section>
+    </div>
+  </main>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 380" role="img" aria-labelledby="title desc">
+  <title id="title">Two unphased heterozygous sites allow two chromosome arrangements</title>
+  <desc id="desc">At both sites the genotype is heterozygous. In cis, A and B lie on the same chromosome. In trans, A and B lie on different chromosomes. The two sitewise genotype calls alone cannot distinguish these arrangements.</desc>
+  <rect width="920" height="380" rx="24" fill="#f7f5ef"/>
+  <text x="32" y="43" fill="#183e42" font-family="Arial, sans-serif" font-size="25" font-weight="700">Two 0/1 calls: which allele is on which chromosome?</text>
+  <text x="32" y="70" fill="#546966" font-family="Arial, sans-serif" font-size="15">位点 1 和位点 2 都是杂合；逐位点 GT 相同，组合却可能不同</text>
+  <g font-family="Arial, sans-serif">
+    <rect x="30" y="98" width="420" height="220" rx="18" fill="#fff" stroke="#c8d9d3" stroke-width="2"/>
+    <rect x="470" y="98" width="420" height="220" rx="18" fill="#fff" stroke="#c8d9d3" stroke-width="2"/>
+    <text x="50" y="131" fill="#193f43" font-size="20" font-weight="700">cis: AB | ab</text>
+    <text x="490" y="131" fill="#193f43" font-size="20" font-weight="700">trans: Ab | aB</text>
+    <text x="50" y="158" fill="#617571" font-size="14">两个大写 allele 在同一条</text>
+    <text x="490" y="158" fill="#617571" font-size="14">两个大写 allele 分居两条</text>
+    <text x="68" y="193" fill="#60716f" font-size="13">位点 1</text>
+    <text x="326" y="193" fill="#60716f" font-size="13">位点 2</text>
+    <text x="508" y="193" fill="#60716f" font-size="13">位点 1</text>
+    <text x="766" y="193" fill="#60716f" font-size="13">位点 2</text>
+    <line x1="98" y1="220" x2="376" y2="220" stroke="#1e817b" stroke-width="9" stroke-linecap="round"/>
+    <line x1="98" y1="267" x2="376" y2="267" stroke="#a47761" stroke-width="9" stroke-linecap="round"/>
+    <line x1="538" y1="220" x2="816" y2="220" stroke="#1e817b" stroke-width="9" stroke-linecap="round"/>
+    <line x1="538" y1="267" x2="816" y2="267" stroke="#a47761" stroke-width="9" stroke-linecap="round"/>
+    <g font-size="21" font-weight="700" text-anchor="middle">
+      <circle cx="112" cy="220" r="17" fill="#d5ece7"/><text x="112" y="227" fill="#1d625e">A</text>
+      <circle cx="362" cy="220" r="17" fill="#d5ece7"/><text x="362" y="227" fill="#1d625e">B</text>
+      <circle cx="112" cy="267" r="17" fill="#f0e4db"/><text x="112" y="274" fill="#805845">a</text>
+      <circle cx="362" cy="267" r="17" fill="#f0e4db"/><text x="362" y="274" fill="#805845">b</text>
+      <circle cx="552" cy="220" r="17" fill="#d5ece7"/><text x="552" y="227" fill="#1d625e">A</text>
+      <circle cx="802" cy="220" r="17" fill="#f0e4db"/><text x="802" y="227" fill="#805845">b</text>
+      <circle cx="552" cy="267" r="17" fill="#f0e4db"/><text x="552" y="274" fill="#805845">a</text>
+      <circle cx="802" cy="267" r="17" fill="#d5ece7"/><text x="802" y="274" fill="#1d625e">B</text>
+    </g>
+  </g>
+  <rect x="30" y="333" width="860" height="29" rx="14" fill="#e4eee9"/>
+  <text x="460" y="353" fill="#214a48" font-family="Arial, sans-serif" font-size="15" text-anchor="middle">两种排列在每个位点都得到 0/1；需要 phasing 信息才能区分</text>
+</svg>

@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="面向零生物基础计算研究者的系统生物学教材：从化学、遗传学、分子与细胞生物学，到肿瘤、多组学、TCGA、空间组学和数据实战。">
+  <title>零基础生物学教材 · Bio/CS</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="textbook.css">
+  <link rel="stylesheet" href="bio-motion.css">
+  <script src="textbook-data.js" defer></script>
+  <script src="textbook-part-0.js" defer></script>
+  <script src="textbook-part-1.js" defer></script>
+  <script src="textbook-part-2.js" defer></script>
+  <script src="textbook-part-3.js" defer></script>
+  <script src="textbook-part-4.js" defer></script>
+  <script src="textbook-part-5.js" defer></script>
+  <script src="textbook-part-6.js" defer></script>
+  <script src="textbook-part-7.js" defer></script>
+  <script src="textbook-part-8.js" defer></script>
+  <script src="textbook-part-9.js" defer></script>
+  <script src="textbook-data-lens.js" defer></script>
+  <script src="bio-motion-biology.js" defer></script>
+  <script src="bio-motion-data.js" defer></script>
+  <script src="bio-motion.js" defer></script>
+  <script src="textbook.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#chapter">跳到教材正文</a>
+  <header class="book-header">
+    <a class="book-brand" href="index.html" aria-label="Bio/CS 首页">Bio<span>/</span>CS</a>
+    <nav aria-label="网站导航"><a href="textbook.html" aria-current="page">零基础教材</a><a href="motion-lab.html">动效图解</a><a href="foundations-lab.html">概念实验</a><a href="real-data-walkthrough.html">真实文件</a><a href="data-lab.html">数据练习</a></nav>
+    <span class="book-header-sub">FROM MOLECULES TO MULTI-OMICS</span>
+  </header>
+  <div class="book-layout">
+    <aside id="book-sidebar" class="book-sidebar" aria-label="教材目录">
+      <button type="button" id="toc-close" class="toc-close" aria-label="关闭目录">关闭目录 ×</button>
+      <div class="book-sidebar-top"><span class="eyebrow">A FIELD GUIDE FOR CS READERS</span><h1>从零认识<br>计算生物学</h1><p>先理解生命系统，再解释数据。</p><div class="progress-bar" aria-hidden="true"><span id="book-progress-fill"></span></div><small id="book-progress-label">0 / 0 章已完成</small></div>
+      <label class="search-label" for="chapter-search">查找章节或术语</label><input id="chapter-search" type="search" placeholder="例如 Q06、DNA、TCGA" autocomplete="off" aria-describedby="search-status">
+      <p id="search-status" class="search-status" role="status"></p>
+      <nav id="book-toc" class="book-toc" aria-label="教材章节"></nav>
+      <p class="sidebar-note">章节顺序从零基础起步。术语、图例、例题和来源均在正文内。完成进度仅保存在此浏览器。</p>
+    </aside>
+    <main id="chapter" class="book-main" tabindex="-1">
+      <div class="book-topline"><a href="index.html">← 概念地图</a><span id="chapter-position">课程目录</span><button type="button" id="toc-toggle" aria-expanded="false" aria-controls="book-sidebar">打开目录</button></div>
+      <article id="chapter-body" aria-live="polite"></article>
+      <nav class="book-bottom-nav" aria-label="章节导航"><button type="button" id="prev-chapter">← 上一章</button><button type="button" id="mark-chapter">标记本章已学完</button><button type="button" id="next-chapter">下一章 →</button></nav>
+      <section class="curriculum-panel" id="curriculum" aria-labelledby="curriculum-title"><span class="eyebrow">THE COMPLETE PATH</span><h2 id="curriculum-title">课程总目录</h2><p>按知识依赖排序；每一门课都可独立回看。后半部分从肿瘤多组学与空间平台进入文件、数据结构、测序原理和表达定量。</p><div id="curriculum-grid"></div></section>
+      <footer class="book-footer"><p>本站正文为原创教学内容；科学事实与术语链接至维护机构、教材或数据库文档。示意图不表示真实比例。内容核对：2026-09-20。</p><a href="README.md">网站与来源说明 ↗</a></footer>
+    </main>
+  </div>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="440" viewBox="0 0 1000 440" role="img" aria-labelledby="title desc">
+  <title id="title">Three routes through a tissue section</title>
+  <desc id="desc">Original teaching diagram comparing Visium HD spatial barcode capture, Xenium in situ RNA imaging, and CODEX cyclic protein imaging.</desc>
+  <defs>
+    <linearGradient id="bg" x2="1" y2="1"><stop stop-color="#f8fbff"/><stop offset="1" stop-color="#eaf3ff"/></linearGradient>
+    <pattern id="grid" width="11" height="11" patternUnits="userSpaceOnUse"><path d="M11 0H0V11" fill="none" stroke="#87b5ed" stroke-width=".8"/></pattern>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#4979b5"/></marker>
+    <clipPath id="tissue"><path d="M91 107C143 71 208 82 233 129C261 181 219 256 157 253C92 250 60 169 91 107Z"/></clipPath>
+  </defs>
+  <rect width="1000" height="440" rx="24" fill="url(#bg)"/>
+  <text x="48" y="43" fill="#193f77" font-size="15" font-family="Arial,sans-serif" font-weight="700" letter-spacing="2">ONE TISSUE · THREE MEASUREMENTS</text>
+  <rect x="43" y="70" width="240" height="305" rx="16" fill="#fff" stroke="#cbdcf2"/>
+  <text x="67" y="99" fill="#173b70" font-size="19" font-family="Arial,sans-serif" font-weight="700">Tissue section</text>
+  <path d="M91 107C143 71 208 82 233 129C261 181 219 256 157 253C92 250 60 169 91 107Z" fill="#f4d7e0" stroke="#c990ae" stroke-width="3"/>
+  <g clip-path="url(#tissue)">
+    <path d="M72 164Q132 128 264 182M77 213Q153 172 253 219" fill="none" stroke="#d89fb5" stroke-width="16" opacity=".65"/>
+    <g fill="#9278a9"><circle cx="120" cy="139" r="9"/><circle cx="187" cy="123" r="10"/><circle cx="217" cy="171" r="8"/><circle cx="143" cy="188" r="10"/><circle cx="192" cy="211" r="9"/><circle cx="111" cy="221" r="8"/></g>
+  </g>
+  <text x="67" y="292" fill="#345879" font-size="14" font-family="Arial,sans-serif">Cells keep their neighborhood</text>
+  <text x="67" y="319" fill="#6882a2" font-size="12" font-family="Arial,sans-serif">患者 → 组织块 → 切片 → 区域</text>
+  <path d="M283 221H331" stroke="#4979b5" stroke-width="3" marker-end="url(#arrow)"/>
+  <rect x="345" y="70" width="201" height="305" rx="16" fill="#fff" stroke="#cbdcf2"/>
+  <text x="365" y="100" fill="#174784" font-size="18" font-family="Arial,sans-serif" font-weight="700">Visium HD</text>
+  <rect x="370" y="124" width="152" height="121" rx="6" fill="#eaf2ff" stroke="#8ab4e4"/>
+  <rect x="370" y="124" width="152" height="121" fill="url(#grid)"/>
+  <path d="M393 173Q444 133 501 192" fill="none" stroke="#b46b8d" stroke-width="18" opacity=".38"/>
+  <g fill="#225bab"><circle cx="397" cy="157" r="3"/><circle cx="432" cy="171" r="3"/><circle cx="477" cy="160" r="3"/><circle cx="468" cy="208" r="3"/><circle cx="420" cy="219" r="3"/></g>
+  <text x="365" y="277" fill="#345879" font-size="14" font-family="Arial,sans-serif">RNA · barcoded squares</text>
+  <text x="365" y="302" fill="#6882a2" font-size="12" font-family="Arial,sans-serif">matrix + coordinates + image</text>
+  <text x="365" y="334" fill="#366bb3" font-size="12" font-family="Arial,sans-serif" font-weight="700">捕获式空间测序</text>
+  <rect x="563" y="70" width="201" height="305" rx="16" fill="#fff" stroke="#cbdcf2"/>
+  <text x="583" y="100" fill="#174784" font-size="18" font-family="Arial,sans-serif" font-weight="700">Xenium</text>
+  <rect x="588" y="124" width="152" height="121" rx="6" fill="#f9ecf2" stroke="#d8a7bd"/>
+  <g fill="none" stroke="#af89aa" stroke-width="2"><ellipse cx="636" cy="174" rx="34" ry="31"/><ellipse cx="696" cy="186" rx="28" ry="32"/></g>
+  <g fill="#2872be"><circle cx="614" cy="161" r="4"/><circle cx="653" cy="179" r="4"/><circle cx="629" cy="195" r="4"/><circle cx="712" cy="168" r="4"/><circle cx="698" cy="208" r="4"/></g>
+  <g fill="#cd6d87"><circle cx="642" cy="157" r="4"/><circle cx="673" cy="189" r="4"/><circle cx="690" cy="163" r="4"/><circle cx="718" cy="199" r="4"/></g>
+  <text x="583" y="277" fill="#345879" font-size="14" font-family="Arial,sans-serif">RNA · decoded molecules</text>
+  <text x="583" y="302" fill="#6882a2" font-size="12" font-family="Arial,sans-serif">points → segmented cells</text>
+  <text x="583" y="334" fill="#366bb3" font-size="12" font-family="Arial,sans-serif" font-weight="700">原位 RNA 成像</text>
+  <rect x="781" y="70" width="176" height="305" rx="16" fill="#fff" stroke="#cbdcf2"/>
+  <text x="801" y="100" fill="#174784" font-size="18" font-family="Arial,sans-serif" font-weight="700">CODEX</text>
+  <rect x="803" y="124" width="132" height="121" rx="6" fill="#1f3156"/>
+  <g fill="none" stroke="#6494db" stroke-width="2"><ellipse cx="835" cy="164" rx="19" ry="23"/><ellipse cx="899" cy="180" rx="23" ry="27"/><ellipse cx="852" cy="212" rx="20" ry="17"/></g>
+  <g fill="#f2a9bc"><circle cx="832" cy="154" r="5"/><circle cx="847" cy="210" r="5"/><circle cx="899" cy="175" r="5"/></g>
+  <g fill="#9fe2d7"><circle cx="844" cy="179" r="5"/><circle cx="875" cy="211" r="5"/><circle cx="911" cy="191" r="5"/></g>
+  <text x="801" y="277" fill="#345879" font-size="14" font-family="Arial,sans-serif">Protein · antibody markers</text>
+  <text x="801" y="302" fill="#6882a2" font-size="12" font-family="Arial,sans-serif">image cycles → cell markers</text>
+  <text x="801" y="334" fill="#366bb3" font-size="12" font-family="Arial,sans-serif" font-weight="700">多重蛋白成像</text>
+  <text x="45" y="411" fill="#5e7798" font-size="12" font-family="Arial,sans-serif">ORIGINAL TEACHING SCHEMATIC  ·  Units and scales are conceptual.</text>
+</svg>

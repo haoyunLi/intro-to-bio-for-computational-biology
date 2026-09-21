@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="用一份真实公开 TCGA-BRCA RNA-seq STAR Counts 文件，从 case、sample、file 一步步读到原始计数、零值和推断边界。">
+  <title>读懂一份真实 TCGA RNA 文件 · Bio/CS</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="real-data-walkthrough.css">
+  <link rel="stylesheet" href="bio-motion.css">
+  <script src="textbook-data.js" defer></script>
+  <script src="bio-motion-data.js" defer></script>
+  <script src="bio-motion.js" defer></script>
+  <script src="real-data-walkthrough.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#lesson">跳到练习</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="index.html" aria-label="Bio/CS 首页">Bio<span>/</span>CS</a>
+      <nav aria-label="网站导航"><a href="textbook.html#b01">零基础教材</a><a href="foundations-lab.html">概念实验</a><a href="data-lab.html">Data Lab</a></nav>
+    </div>
+  </header>
+
+  <main id="lesson" class="page-shell" tabindex="-1">
+    <div class="intro">
+      <p class="eyebrow">ONE PUBLIC FILE · FIVE DECISIONS</p>
+      <h1>一行 count，<br><em>从哪里来？</em></h1>
+      <p class="lede">我们只看一位 TCGA 病例的一份公开 RNA-seq 文件。每一步先自己选解释，再展开理由；最后把数字放回它所属的患者、材料与实验。全程使用 <strong>GDC 原始字段和真实数值</strong>。</p>
+      <p class="provenance-strip"><span>TCGA-BRCA</span><span>Primary Tumor</span><span>RNA-Seq</span><span>STAR - Counts</span><span>公开文件 · 2026-09-20 核对</span></p>
+    </div>
+
+    <section data-bio-motion="read-count,cohort-join" aria-label="先动态认识文件的生成与 ID 层级"></section>
+    <div class="workbench">
+      <aside class="rail" aria-label="练习步骤">
+        <p class="rail-label">当前路线</p>
+        <ol id="step-list">
+          <li data-step-index="0"><button type="button">01 <span>谁被测量？</span></button></li>
+          <li data-step-index="1"><button type="button">02 <span>怎样变成文件？</span></button></li>
+          <li data-step-index="2"><button type="button">03 <span>读一行 count</span></button></li>
+          <li data-step-index="3"><button type="button">04 <span>零值的含义</span></button></li>
+          <li data-step-index="4"><button type="button">05 <span>结论到哪里为止？</span></button></li>
+        </ol>
+        <p class="rail-note">记录来自 NCI GDC API；摘录中的行并非连续原文，保留了原始列名与各行数值。<a href="#sources">核对来源 ↓</a></p>
+        <button type="button" id="restart-walkthrough">重新练习</button>
+      </aside>
+
+      <div class="stage-area">
+        <div class="stage-position"><span id="progress-label">步骤 1 / 5</span><div class="progress-track" aria-hidden="true"><span id="progress-fill"></span></div></div>
+
+        <section class="stage" data-stage="0" aria-labelledby="stage-0-title">
+          <span class="stage-kicker">01 · MATERIAL BEFORE MATRIX</span>
+          <h2 id="stage-0-title">先找人，再找那块组织。</h2>
+          <p>GDC 用不同 ID 区分<strong>病例 case</strong>、从病例取得的<strong>材料 sample</strong>和处理后生成的<strong>文件 file</strong>。这里每种实体恰好显示一条记录，但这个关系在完整项目里通常是一对多。</p>
+          <div class="lineage" aria-label="这个真实文件的病例、样本与文件关系">
+            <div><small>PROJECT / 项目</small><strong>TCGA-BRCA</strong><p>癌症研究项目</p></div>
+            <span aria-hidden="true">→</span>
+            <div><small>CASE / 病例</small><strong>TCGA-A8-A09E</strong><p>case UUID: dfefb76a…</p></div>
+            <span aria-hidden="true">→</span>
+            <div><small>SAMPLE / 材料</small><strong>TCGA-A8-A09E-01A</strong><p>Primary Tumor</p></div>
+            <span aria-hidden="true">→</span>
+            <div><small>FILE / 输出</small><strong>ead53b27…</strong><p>Gene Expression Quantification</p></div>
+          </div>
+          <div class="quiz" data-quiz>
+            <h3>先猜：若要按独立患者划分训练与测试，哪一个 ID 代表这位病例？</h3>
+            <div class="choices" role="group" aria-label="选择病例 ID"><button type="button">TCGA-A8-A09E-01A</button><button type="button" data-correct="true">TCGA-A8-A09E</button><button type="button">ead53b27-6ad9-4b96-b5d4-0d4f06fb2d13</button></div>
+            <p class="feedback" aria-live="polite" hidden></p>
+            <p class="explanation" hidden><strong>为什么：</strong>GDC 返回的 <code>cases.submitter_id</code> 是 TCGA-A8-A09E；<code>cases.samples.submitter_id</code> 才是 TCGA-A8-A09E-01A。样本和文件都嵌套于病例。此题只查 ID 层级，不据此推断任何临床结局。</p>
+          </div>
+          <p class="source-note">字段核对：<a href="https://api.gdc.cancer.gov/files/ead53b27-6ad9-4b96-b5d4-0d4f06fb2d13?expand=cases,cases.samples,analysis" target="_blank" rel="noopener noreferrer">GDC 文件元数据 API</a>；层级定义见 <a href="https://docs.gdc.cancer.gov/Encyclopedia/pages/Biospecimen_Data/" target="_blank" rel="noopener noreferrer">GDC Biospecimen Data</a>。</p>
+        </section>
+
+        <section class="stage" data-stage="1" aria-labelledby="stage-1-title" hidden>
+          <span class="stage-kicker">02 · ASSAY TO FILE</span>
+          <h2 id="stage-1-title">仪器没有直接吐出“基因表达表”。</h2>
+          <p>这份材料的 <strong>experimental_strategy = RNA-Seq</strong>。GDC 的 <strong>workflow_type = STAR - Counts</strong>：测序产生 RNA 来源的读段，软件把读段放到参考序列上，按基因注释生成计数，并附上变换后的 TPM / FPKM。</p>
+          <div class="signal-flow" role="img" aria-label="肿瘤样本的 RNA 经文库和测序产生 reads，再经 STAR 比对与计数得到 TSV 文件"><span>组织样本<small>材料</small></span><b>→</b><span>RNA 文库与测序<small>仪器信号</small></span><b>→</b><span>STAR + GENCODE v36<small>算法与注释</small></span><b>→</b><span>counts TSV<small>本练习的文件</small></span></div>
+          <dl class="facts"><div><dt>data_type</dt><dd>Gene Expression Quantification</dd></div><div><dt>access</dt><dd>open</dd></div><div><dt>analysis.workflow_version</dt><dd><code>5d8c131bbff59fb0c969217fc1d44e6d1503cd1f</code></dd></div><div><dt>data_release</dt><dd><code>32.0 - 46.0</code>（API 原字段；文件 UUID 与 MD5 固定本例内容）</dd></div></dl>
+          <div class="quiz" data-quiz>
+            <h3>先猜：这个 <code>.tsv</code> 文件最接近流程中的哪一步？</h3>
+            <div class="choices" role="group" aria-label="选择文件阶段"><button type="button">显微镜直接看到的细胞图像</button><button type="button">仪器最初输出的 FASTQ 读段</button><button type="button" data-correct="true">比对与基因计数后形成的表</button></div>
+            <p class="feedback" aria-live="polite" hidden></p>
+            <p class="explanation" hidden><strong>为什么：</strong>这是处理后的 gene-level 量化文件。表里的 count 依赖参考基因组、GENCODE 注释与 STAR 分配规则，不是细胞内 RNA 分子的逐个绝对点数。</p>
+          </div>
+          <p class="source-note">处理过程、GRCh38、GENCODE v36、unstranded 及 TPM/FPKM 说明：<a href="https://docs.gdc.cancer.gov/Data/Bioinformatics_Pipelines/Expression_mRNA_Pipeline/" target="_blank" rel="noopener noreferrer">GDC mRNA Analysis Pipeline</a>。</p>
+        </section>
+
+        <section class="stage" data-stage="2" aria-labelledby="stage-2-title" hidden>
+          <span class="stage-kicker">03 · READ THE TSV</span>
+          <h2 id="stage-2-title">一行是 gene，一列不一定是 sample。</h2>
+          <p>原文件是<strong>一个样本的一张表</strong>：<code>gene_id</code>、<code>gene_name</code>、<code>gene_type</code> 描述行；后面六列是<strong>同一个样本的不同计数/变换</strong>。开头的 <code>N_</code> 行是非基因汇总行，不能当作 ENSG gene 合并。下表保留原始字段、原值；多行从原文件不同位置摘取。</p>
+          <div class="file-label"><span>原文件首行</span><code># gene-model: GENCODE v36</code><a href="data/gdc-tcga-brca-star-counts-excerpt.tsv" download>下载精确摘录 TSV ↓</a></div>
+          <p class="table-hint">← 左右滑动表格可查看所有原始字段；滑动时基因名会留在左侧。</p>
+          <div class="table-scroll" tabindex="0" aria-label="真实 GDC 文件非连续行摘录，可水平滚动"><table><caption>GDC 原始列名与真实值；非连续摘录，完整文件见页面底部</caption><thead><tr><th>gene_id</th><th>gene_name</th><th>gene_type</th><th>unstranded</th><th>stranded_first</th><th>stranded_second</th><th>tpm_unstranded</th><th>fpkm_unstranded</th><th>fpkm_uq_unstranded</th></tr></thead><tbody><tr class="summary-row"><th>N_unmapped</th><td></td><td></td><td>2976444</td><td>2976444</td><td>2976444</td><td></td><td></td><td></td></tr><tr><th>ENSG00000000003.15</th><td>TSPAN6</td><td>protein_coding</td><td class="highlight">3928</td><td>2013</td><td>1915</td><td>59.4987</td><td>17.2434</td><td>16.5964</td></tr><tr><th>ENSG00000002745.13</th><td>WNT16</td><td>protein_coding</td><td class="highlight">0</td><td>0</td><td>0</td><td>0.0000</td><td>0.0000</td><td>0.0000</td></tr><tr><th>ENSG00000141736.14</th><td>ERBB2</td><td>protein_coding</td><td class="highlight">38670</td><td>21096</td><td>20736</td><td>257.4313</td><td>74.6066</td><td>71.8074</td></tr></tbody></table></div>
+          <div class="quiz" data-quiz>
+            <h3>先猜：TSPAN6 的 <code>unstranded = 3928</code> 最准确地表示什么？</h3>
+            <div class="choices" role="group" aria-label="解释 TSPAN6 count"><button type="button">这块组织有 3928 个 TSPAN6 阳性细胞</button><button type="button" data-correct="true">此样本中按 STAR 规则归到该基因的 unstranded 读段计数</button><button type="button">这个病例有 3928 个 DNA 突变</button></div>
+            <p class="feedback" aria-live="polite" hidden></p>
+            <p class="explanation" hidden><strong>为什么：</strong>原始 <code>unstranded</code> 是 gene-level count。一个组织含许多细胞；RNA 提取、建库、测序和 read 分配会共同影响这个数字。<code>tpm_unstranded = 59.4987</code> 是另一个尺度，不能与 3928 当同一单位比较。</p>
+          </div>
+          <p class="source-note">文件摘录来自 <a href="https://api.gdc.cancer.gov/data/ead53b27-6ad9-4b96-b5d4-0d4f06fb2d13" target="_blank" rel="noopener noreferrer">GDC 官方完整 TSV</a>；计数与变换定义见 <a href="https://docs.gdc.cancer.gov/Data/Bioinformatics_Pipelines/Expression_mRNA_Pipeline/" target="_blank" rel="noopener noreferrer">GDC mRNA 管线</a>。</p>
+          <p class="source-note">要理解为何同一行还有 TPM / FPKM：<a href="foundations-lab.html#counts">动手切换 raw count、CPM 与 TPM ↗</a>，再读 <a href="textbook.html#q05">Q05–Q07 的分母与用途</a>。这一份文件没有生物重复，不能在这里做差异表达检验。</p>
+        </section>
+
+        <section class="stage" data-stage="3" aria-labelledby="stage-3-title" hidden>
+          <span class="stage-kicker">04 · ZERO IS A MEASUREMENT RESULT</span>
+          <h2 id="stage-3-title">WNT16 = 0：是“没有这个基因”吗？</h2>
+          <p>这份真实文件中，<code>ENSG00000002745.13 / WNT16</code> 的 <code>unstranded = 0</code> 且 <code>tpm_unstranded = 0.0000</code>。它和 <code>N_unmapped</code> 行的空白字段也不一样：WNT16 是注释中的基因行，数值确实写为 0。</p>
+          <div class="zero-comparison"><div><small>真实基因行</small><strong>WNT16</strong><span>unstranded <b>0</b></span></div><div><small>非基因汇总行</small><strong>N_unmapped</strong><span>gene_name <b>空白</b></span></div></div>
+          <div class="quiz" data-quiz>
+            <h3>先猜：读到 WNT16 的 0，现阶段能写出的结论是什么？</h3>
+            <div class="choices" role="group" aria-label="解释零值"><button type="button">这位患者的所有细胞都没有 WNT16 DNA</button><button type="button" data-correct="true">在此样本与工作流下，未分配到该基因的 unstranded count</button><button type="button">这个基因没有任何生物功能</button></div>
+            <p class="feedback" aria-live="polite" hidden></p>
+            <p class="explanation" hidden><strong>为什么：</strong>0 是这次量化的输出；它不证明基因从基因组中消失，也不证明每个细胞绝对没有该 RNA。测序深度、组织组成、注释与多重映射都可能影响低值或零值。GDC 文档也特别说明，某些被其他基因完全包围的基因可因计数规则而显示零。</p>
+          </div>
+          <p class="source-note">真实零值：<a href="data/gdc-tcga-brca-star-counts-excerpt.tsv">本站精确摘录</a>；计数歧义说明：<a href="https://docs.gdc.cancer.gov/Data/Bioinformatics_Pipelines/Expression_mRNA_Pipeline/" target="_blank" rel="noopener noreferrer">GDC mRNA 管线，Expression Workflow</a>。</p>
+        </section>
+
+        <section class="stage" data-stage="4" aria-labelledby="stage-4-title" hidden>
+          <span class="stage-kicker">05 · THE BOUNDARY OF ONE FILE</span>
+          <h2 id="stage-4-title">38670 不是“ERBB2 导致癌症”。</h2>
+          <p>同一文件中 ERBB2 的 <code>unstranded = 38670</code>、<code>tpm_unstranded = 257.4313</code>。这些是<strong>这份材料</strong>经指定流程得到的 RNA 层数值。没有第二组独立病例、对照与设计，就没有“组间差异”；没有蛋白、临床或干预证据，也不能宣布 HER2 状态、治疗效果或致病机制。</p>
+          <div class="quiz" data-quiz>
+            <h3>先猜：只凭这个文件，哪一句可以成立？</h3>
+            <div class="choices" role="group" aria-label="选择可成立的结论"><button type="button">ERBB2 比正常患者显著过表达</button><button type="button">患者一定适合某种 HER2 靶向治疗</button><button type="button" data-correct="true">此文件中 ERBB2 的 unstranded count 为 38670；组间差异与临床作用还未检验</button></div>
+            <p class="feedback" aria-live="polite" hidden></p>
+            <div class="explanation" hidden><p><strong>为什么：</strong>差异表达至少需要明确比较组与独立生物重复；临床因果和治疗预测需要另外的设计与证据。现在唯一稳妥的结果是一个带来源、单位和限制的文件级观察。</p>
+              <div class="schema-card"><h3>你现在可以写出的 schema 卡</h3><dl><div><dt>真实材料</dt><dd>TCGA-A8-A09E-01A，Primary Tumor，来自病例 TCGA-A8-A09E</dd></div><div><dt>Assay → file</dt><dd>RNA-Seq → STAR - Counts → 单样本 gene quantification TSV</dd></div><div><dt>行</dt><dd>大部分为 gene_id 对应基因；开头 N_ 是非基因汇总行</dd></div><div><dt>列</dt><dd><code>gene_id</code> 等描述基因行；<code>unstranded</code> 与 TPM/FPKM 等列是同一样本的不同读数尺度，并非多个患者</dd></div><div><dt>一个值</dt><dd>例如 ERBB2 的 <code>unstranded = 38670</code>，是算法分配后的 gene count</dd></div><div><dt>下一步</dt><dd>取更多同流程且设计可比的独立样本，按 case/sample 对齐，再做 QC 和统计比较</dd></div></dl></div>
+            </div>
+          </div>
+          <p class="source-note">这个文件的数值与身份可由 <a href="https://api.gdc.cancer.gov/data/ead53b27-6ad9-4b96-b5d4-0d4f06fb2d13" target="_blank" rel="noopener noreferrer">GDC 原文件</a>和<a href="https://api.gdc.cancer.gov/files/ead53b27-6ad9-4b96-b5d4-0d4f06fb2d13?expand=cases,cases.samples,analysis" target="_blank" rel="noopener noreferrer">元数据 API</a>复核。</p>
+        </section>
+
+        <nav class="stage-nav" aria-label="练习步骤导航"><button type="button" id="previous-step">← 上一步</button><button type="button" id="next-step" disabled>答对后继续 →</button></nav>
+      </div>
+    </div>
+
+    <section class="verification" id="sources" aria-labelledby="sources-title">
+      <span class="eyebrow">TRACE EVERY NUMBER</span>
+      <h2 id="sources-title">来源与复核方式</h2>
+      <p>读懂这一份文件后，进入 <a href="real-cohort-lab.html">真实队列实验室：四份 TCGA-BRCA 文件的筛选、配对与尺度判断 ↗</a>。那里仍是教学子集，不提供显著性或临床结论。</p>
+      <p>想把同样的读法带到陌生文件？复制 <a href="data-reading-card.md">组学数据阅读卡 / Omics Data Reading Card ↗</a>，逐格填写材料、assay、行列、单位、ID 和证据边界。</p>
+      <p>本站只附带 <a href="data/gdc-tcga-brca-star-counts-excerpt.tsv" download>9 行真实数据的非连续摘录</a>和<a href="data/gdc-tcga-brca-star-counts-metadata.json" download>精简元数据快照</a>。列名、数值与 ID 来自 NCI GDC；病人代号为 GDC 已公开的 submitter ID。下载、核验发生于 <strong>2026-09-20（America/Chicago）</strong>。GDC 后续元数据可能更新，所以本例以文件 UUID 和 MD5 固定所读文件。</p>
+      <dl class="source-facts"><div><dt>file_id / UUID</dt><dd><code>ead53b27-6ad9-4b96-b5d4-0d4f06fb2d13</code></dd></div><div><dt>file_name</dt><dd><code>dadd1789-354a-4abb-8d4e-8556166cf341.rna_seq.augmented_star_gene_counts.tsv</code></dd></div><div><dt>GDC API reported MD5</dt><dd><code>0948d5b1ea684cd62a6ec7dafbeda026</code>，本站下载后计算一致</dd></div><div><dt>file size</dt><dd>4,235,051 bytes（GDC 元数据和下载文件一致）</dd></div></dl>
+      <p class="repro-head">自行重现下载与核验（PowerShell）：</p>
+      <pre><code>Invoke-WebRequest -Uri 'https://api.gdc.cancer.gov/data/ead53b27-6ad9-4b96-b5d4-0d4f06fb2d13' -OutFile 'gdc-counts.tsv'
+Get-FileHash -Algorithm MD5 'gdc-counts.tsv'</code></pre>
+      <p class="repro-head">查看来源与处理定义：</p>
+      <ul class="sources-list"><li><a href="https://api.gdc.cancer.gov/files/ead53b27-6ad9-4b96-b5d4-0d4f06fb2d13?expand=cases,cases.samples,analysis" target="_blank" rel="noopener noreferrer">GDC 文件元数据 API · file_id、case、sample、access、workflow、MD5</a></li><li><a href="https://api.gdc.cancer.gov/data/ead53b27-6ad9-4b96-b5d4-0d4f06fb2d13" target="_blank" rel="noopener noreferrer">GDC data endpoint · 完整公开 TSV</a></li><li><a href="https://docs.gdc.cancer.gov/Data/Bioinformatics_Pipelines/Expression_mRNA_Pipeline/" target="_blank" rel="noopener noreferrer">GDC mRNA Analysis Pipeline · STAR、GENCODE v36、counts、FPKM、TPM</a></li><li><a href="https://docs.gdc.cancer.gov/API/Users_Guide/Downloading_Files/" target="_blank" rel="noopener noreferrer">GDC API Downloading Files · 用 UUID 取得公开文件</a></li><li><a href="https://gdc.cancer.gov/about-gdc/gdc-policies" target="_blank" rel="noopener noreferrer">GDC Policies · 开放数据须正确致谢，不尝试重新识别参与者</a></li></ul>
+      <p class="citation">数据致谢：NCI Genomic Data Commons (GDC), TCGA-BRCA, file UUID <code>ead53b27-6ad9-4b96-b5d4-0d4f06fb2d13</code>。本站是教学摘录与解读，不代表 NCI/GDC 官方课程。</p>
+    </section>
+  </main>
+  <footer class="footer"><div class="page-shell"><a href="index.html">← Bio/CS 首页</a><a href="real-cohort-lab.html">下一站：真实小队列 →</a><a href="textbook.html#q09">继续读：把尺度接回 TCGA</a></div></footer>
+</body>
+</html>

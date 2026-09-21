@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 495" role="img" aria-labelledby="title desc">
+  <title id="title">RNA-seq 常见数值尺度的不同目的</title>
+  <desc id="desc">从 raw count 出发，CPM 除以文库总数，RPKM 或 FPKM 再按长度缩放，TPM 先按长度缩放再固定总和，而差异表达模型估计相对 size factor 并保留计数。</desc>
+  <rect width="1200" height="495" rx="18" fill="#f4f8fe"/>
+  <text x="34" y="48" fill="#245b9c" font-family="Arial,sans-serif" font-size="15" font-weight="700" letter-spacing="2">SAME COUNTS · DIFFERENT QUESTIONS</text>
+  <text x="34" y="82" fill="#17395f" font-family="Arial,sans-serif" font-size="25" font-weight="700">“Normalized”不是一种统一单位</text>
+  <g font-family="Arial,sans-serif">
+    <rect x="34" y="119" width="206" height="270" rx="12" fill="#143861"/>
+    <text x="54" y="163" fill="#a4cafa" font-size="15" font-weight="700">INPUT</text>
+    <text x="54" y="212" fill="#fff" font-size="25" font-weight="700">Raw count</text>
+    <text x="54" y="248" fill="#d4e7ff" font-size="15">读段或片段数</text>
+    <text x="54" y="291" fill="#d4e7ff" font-size="15">仍受深度、长度、</text>
+    <text x="54" y="318" fill="#d4e7ff" font-size="15">组成与实验影响</text>
+    <rect x="275" y="119" width="202" height="270" rx="12" fill="#fff" stroke="#bfd2ea" stroke-width="2"/>
+    <text x="295" y="163" fill="#3876bb" font-size="15" font-weight="700">DEPTH</text>
+    <text x="295" y="212" fill="#17395f" font-size="24" font-weight="700">CPM</text>
+    <text x="295" y="248" fill="#466482" font-size="15">count / library total</text>
+    <text x="295" y="291" fill="#466482" font-size="15">深度尺度更可读</text>
+    <text x="295" y="318" fill="#9c627c" font-size="15">组成偏差仍在</text>
+    <rect x="512" y="119" width="202" height="270" rx="12" fill="#fff" stroke="#bfd2ea" stroke-width="2"/>
+    <text x="532" y="163" fill="#3876bb" font-size="15" font-weight="700">DEPTH + LENGTH</text>
+    <text x="532" y="212" fill="#17395f" font-size="22" font-weight="700">RPKM / FPKM</text>
+    <text x="532" y="248" fill="#466482" font-size="15">count / kb / million</text>
+    <text x="532" y="291" fill="#466482" font-size="15">读段 R / 片段 F</text>
+    <text x="532" y="318" fill="#9c627c" font-size="15">每列总和不固定</text>
+    <rect x="749" y="119" width="202" height="270" rx="12" fill="#fff" stroke="#bfd2ea" stroke-width="2"/>
+    <text x="769" y="163" fill="#3876bb" font-size="15" font-weight="700">LENGTH → TOTAL</text>
+    <text x="769" y="212" fill="#17395f" font-size="24" font-weight="700">TPM</text>
+    <text x="769" y="248" fill="#466482" font-size="15">先 / kb，再 / Σrate</text>
+    <text x="769" y="291" fill="#466482" font-size="15">每列总和约 10⁶</text>
+    <text x="769" y="318" fill="#9c627c" font-size="15">仍是相对组成</text>
+    <rect x="986" y="119" width="180" height="270" rx="12" fill="#fff" stroke="#bfd2ea" stroke-width="2"/>
+    <text x="1006" y="163" fill="#3876bb" font-size="15" font-weight="700">GROUP TEST</text>
+    <text x="1006" y="212" fill="#17395f" font-size="21" font-weight="700">Size factor</text>
+    <text x="1006" y="248" fill="#466482" font-size="15">估计有效规模</text>
+    <text x="1006" y="291" fill="#466482" font-size="15">配合 count 模型</text>
+    <text x="1006" y="318" fill="#9c627c" font-size="15">仍需重复与设计</text>
+  </g>
+  <g fill="none" stroke="#5b86ba" stroke-width="3"><path d="M242 252h29"/><path d="M479 252h29"/><path d="M716 252h29"/><path d="M953 252h29"/></g>
+  <text x="34" y="437" fill="#526f91" font-family="Arial,sans-serif" font-size="15">箭头表示学习顺序，不表示必须依次把 CPM → FPKM → TPM 输入同一个模型。</text>
+  <text x="34" y="461" fill="#526f91" font-family="Arial,sans-serif" font-size="15">正式差异表达通常从原始或合适的估计 counts 出发，并在模型中处理规模、离散度和协变量。</text>
+</svg>

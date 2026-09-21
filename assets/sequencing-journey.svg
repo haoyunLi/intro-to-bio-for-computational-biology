@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 390" role="img" aria-labelledby="title desc">
+  <title id="title">从肿瘤组织到 RNA 计数矩阵</title>
+  <desc id="desc">六个教学步骤依次为取样、提取并选择 RNA、制作 cDNA 文库、在 flow cell 上逐轮合成测序、生成 FASTQ、把 reads 分配到基因。</desc>
+  <rect width="1200" height="390" rx="18" fill="#f4f8fe"/>
+  <text x="32" y="47" fill="#245b9c" font-family="Arial,sans-serif" font-size="15" font-weight="700" letter-spacing="2">MOLECULE → SIGNAL → DATA</text>
+  <text x="32" y="80" fill="#17395f" font-family="Arial,sans-serif" font-size="24" font-weight="700">一个 gene count 经历了六次选择与推断</text>
+  <g font-family="Arial,sans-serif" text-anchor="middle">
+    <g transform="translate(32 120)">
+      <rect width="174" height="185" rx="12" fill="#fff" stroke="#bfd2ea" stroke-width="2"/>
+      <circle cx="87" cy="46" r="22" fill="#dceaff" stroke="#3872b6" stroke-width="3"/>
+      <circle cx="79" cy="41" r="7" fill="#6896d0"/><circle cx="98" cy="54" r="5" fill="#e69ab2"/>
+      <text x="87" y="100" fill="#1a4f8d" font-size="17" font-weight="700">01 取样</text><text x="87" y="128" fill="#506c8c" font-size="14">患者 → 组织</text><text x="87" y="154" fill="#738aa4" font-size="12">细胞混合 / 纯度</text>
+    </g>
+    <g transform="translate(225 120)">
+      <rect width="174" height="185" rx="12" fill="#fff" stroke="#bfd2ea" stroke-width="2"/>
+      <path d="M40 45 Q62 22 87 45 T134 45" fill="none" stroke="#2d79b0" stroke-width="4"/><path d="M40 60 Q62 37 87 60 T134 60" fill="none" stroke="#cc7996" stroke-width="4"/>
+      <text x="87" y="100" fill="#1a4f8d" font-size="17" font-weight="700">02 RNA 选择</text><text x="87" y="128" fill="#506c8c" font-size="14">提取 / 富集</text><text x="87" y="154" fill="#738aa4" font-size="12">poly(A) 或去 rRNA</text>
+    </g>
+    <g transform="translate(418 120)">
+      <rect width="174" height="185" rx="12" fill="#fff" stroke="#bfd2ea" stroke-width="2"/>
+      <path d="M30 47h30l18-14 18 28 18-28 18 14h25" fill="none" stroke="#3978ba" stroke-width="4" stroke-linecap="round"/>
+      <text x="87" y="100" fill="#1a4f8d" font-size="17" font-weight="700">03 建库</text><text x="87" y="128" fill="#506c8c" font-size="14">cDNA + adapter</text><text x="87" y="154" fill="#738aa4" font-size="12">index / UMI / PCR</text>
+    </g>
+    <g transform="translate(611 120)">
+      <rect width="174" height="185" rx="12" fill="#fff" stroke="#bfd2ea" stroke-width="2"/>
+      <circle cx="44" cy="47" r="11" fill="#6b9ad1"/><circle cx="73" cy="47" r="11" fill="#e4a3b4"/><circle cx="102" cy="47" r="11" fill="#80bca1"/><circle cx="131" cy="47" r="11" fill="#eac279"/>
+      <text x="87" y="100" fill="#1a4f8d" font-size="17" font-weight="700">04 SBS</text><text x="87" y="128" fill="#506c8c" font-size="14">逐轮加入 / 成像</text><text x="87" y="154" fill="#738aa4" font-size="12">信号 → base call</text>
+    </g>
+    <g transform="translate(804 120)">
+      <rect width="174" height="185" rx="12" fill="#fff" stroke="#bfd2ea" stroke-width="2"/>
+      <text x="87" y="51" fill="#3b74b3" font-family="Consolas,monospace" font-size="18" font-weight="700">ACGT</text><text x="87" y="72" fill="#9e718f" font-family="Consolas,monospace" font-size="18">IIII</text>
+      <text x="87" y="100" fill="#1a4f8d" font-size="17" font-weight="700">05 FASTQ</text><text x="87" y="128" fill="#506c8c" font-size="14">序列 + 质量</text><text x="87" y="154" fill="#738aa4" font-size="12">read 不是完整 RNA</text>
+    </g>
+    <g transform="translate(997 120)">
+      <rect width="174" height="185" rx="12" fill="#fff" stroke="#bfd2ea" stroke-width="2"/>
+      <rect x="35" y="29" width="104" height="42" rx="4" fill="#e5effc"/><text x="87" y="56" fill="#265f9f" font-family="Consolas,monospace" font-size="18" font-weight="700">X = 100</text>
+      <text x="87" y="100" fill="#1a4f8d" font-size="17" font-weight="700">06 定量</text><text x="87" y="128" fill="#506c8c" font-size="14">比对 / 分配</text><text x="87" y="154" fill="#738aa4" font-size="12">gene × sample</text>
+    </g>
+  </g>
+  <g fill="none" stroke="#5b86ba" stroke-width="3" stroke-linecap="round"><path d="M208 211h14m-6-7 7 7-7 7"/><path d="M401 211h14m-6-7 7 7-7 7"/><path d="M594 211h14m-6-7 7 7-7 7"/><path d="M787 211h14m-6-7 7 7-7 7"/><path d="M980 211h14m-6-7 7 7-7 7"/></g>
+  <text x="32" y="356" fill="#5b7697" font-family="Arial,sans-serif" font-size="14">图为原创教学示意；具体顺序与测量偏差随平台、试剂盒和样本而变化。</text>
+</svg>

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 340" role="img" aria-labelledby="title desc">
+  <title id="title">从分子到组织的长度尺度</title>
+  <desc id="desc">对数轴依次标记 1 纳米、10 纳米、100 纳米、1 微米、10 微米、100 微米和 1 毫米。蛋白、线粒体、红细胞及组织区域放在对应量级附近。</desc>
+  <rect width="960" height="340" rx="18" fill="#f4f8ff"/>
+  <text x="34" y="45" fill="#123c72" font-size="25" font-weight="700" font-family="Arial, sans-serif">生命系统跨越许多数量级</text>
+  <text x="34" y="73" fill="#5c7391" font-size="15" font-family="Arial, sans-serif">横轴按 10 倍间隔排列；物体图形只作识别，不按真实比例绘制</text>
+  <line x1="86" y1="228" x2="874" y2="228" stroke="#3b67a0" stroke-width="4" stroke-linecap="round"/>
+  <g font-family="Arial, sans-serif" font-size="14" fill="#335579" text-anchor="middle">
+    <g><line x1="86" y1="217" x2="86" y2="240" stroke="#3b67a0" stroke-width="3"/><text x="86" y="266">1 nm</text></g>
+    <g><line x1="217" y1="217" x2="217" y2="240" stroke="#3b67a0" stroke-width="3"/><text x="217" y="266">10 nm</text></g>
+    <g><line x1="348" y1="217" x2="348" y2="240" stroke="#3b67a0" stroke-width="3"/><text x="348" y="266">100 nm</text></g>
+    <g><line x1="480" y1="217" x2="480" y2="240" stroke="#3b67a0" stroke-width="3"/><text x="480" y="266">1 μm</text></g>
+    <g><line x1="611" y1="217" x2="611" y2="240" stroke="#3b67a0" stroke-width="3"/><text x="611" y="266">10 μm</text></g>
+    <g><line x1="742" y1="217" x2="742" y2="240" stroke="#3b67a0" stroke-width="3"/><text x="742" y="266">100 μm</text></g>
+    <g><line x1="874" y1="217" x2="874" y2="240" stroke="#3b67a0" stroke-width="3"/><text x="874" y="266">1 mm</text></g>
+  </g>
+  <g font-family="Arial, sans-serif" font-size="15" font-weight="700" text-anchor="middle">
+    <rect x="126" y="125" width="135" height="62" rx="13" fill="#dbeaff" stroke="#8bb5e7"/>
+    <circle cx="193" cy="142" r="12" fill="#2465af"/><text x="193" y="174" fill="#1d4a83">蛋白等分子</text>
+    <rect x="414" y="125" width="135" height="62" rx="13" fill="#e5def7" stroke="#aa94d4"/>
+    <ellipse cx="481" cy="143" rx="26" ry="12" fill="#7958b0"/><text x="481" y="174" fill="#5e418c">线粒体</text>
+    <rect x="551" y="125" width="135" height="62" rx="13" fill="#d8f1ec" stroke="#82c9b9"/>
+    <circle cx="618" cy="143" r="19" fill="#db745e" stroke="#a94537" stroke-width="3"/><text x="618" y="174" fill="#26695d">红细胞 ≈ 8 μm</text>
+    <rect x="807" y="125" width="126" height="62" rx="13" fill="#ffe9d8" stroke="#e6b58e"/>
+    <path d="M827 137h87v17h-87z" fill="#d99762"/><text x="870" y="174" fill="#90542e">组织区域</text>
+  </g>
+  <text x="34" y="311" fill="#637a98" font-size="15" font-family="Arial, sans-serif">1 μm = 1,000 nm　·　1 mm = 1,000 μm　·　放大率 ≠ 分辨率</text>
+</svg>

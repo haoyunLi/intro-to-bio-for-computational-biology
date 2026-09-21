@@ -1,0 +1,329 @@
+{
+  "provenance": {
+    "repository": "NCI Genomic Data Commons (GDC)",
+    "project": "TCGA-BRCA",
+    "retrieved_at_utc": "2026-09-21T02:33:18.220Z",
+    "metadata_api": "https://api.gdc.cancer.gov/files",
+    "full_file_download_template": "https://api.gdc.cancer.gov/data/{file_id}",
+    "pipeline_documentation": "https://docs.gdc.cancer.gov/Data/Bioinformatics_Pipelines/Expression_mRNA_Pipeline/",
+    "source_validation": "Each downloaded full TSV matched the GDC file_size and MD5, then rows were selected by exact gene_name; no expression values were edited.",
+    "scope": "Four explicitly chosen open files; not a random or representative TCGA-BRCA cohort. Only four gene rows per file are reproduced."
+  },
+  "original_tsv_columns": [
+    "gene_id",
+    "gene_name",
+    "gene_type",
+    "unstranded",
+    "stranded_first",
+    "stranded_second",
+    "tpm_unstranded",
+    "fpkm_unstranded",
+    "fpkm_uq_unstranded"
+  ],
+  "files": [
+    {
+      "file_id": "0e1999e0-9c02-4804-88b6-60b46d100739",
+      "file_name": "db5dab56-838e-4784-a7cf-f05296e356f7.rna_seq.augmented_star_gene_counts.tsv",
+      "file_size": 4250358,
+      "md5sum": "331108d6b22c2bddaf114649f714c220",
+      "data_release": "32.0 - 46.0",
+      "access": "open",
+      "experimental_strategy": "RNA-Seq",
+      "analysis": {
+        "workflow_version": "5d8c131bbff59fb0c969217fc1d44e6d1503cd1f",
+        "workflow_type": "STAR - Counts"
+      },
+      "cases": [
+        {
+          "case_id": "cb9f5e50-f49d-4899-8895-9367afcc1015",
+          "submitter_id": "TCGA-A7-A0DC",
+          "project": {
+            "project_id": "TCGA-BRCA"
+          },
+          "samples": [
+            {
+              "sample_id": "36cafcfc-cc5e-4203-b018-c2c949e24c12",
+              "submitter_id": "TCGA-A7-A0DC-01A",
+              "sample_type": "Primary Tumor"
+            }
+          ]
+        }
+      ],
+      "gene_model": "# gene-model: GENCODE v36",
+      "rows": [
+        {
+          "gene_id": "ENSG00000000003.15",
+          "gene_name": "TSPAN6",
+          "gene_type": "protein_coding",
+          "unstranded": "4091",
+          "stranded_first": "2067",
+          "stranded_second": "2024",
+          "tpm_unstranded": "20.5496",
+          "fpkm_unstranded": "18.1367",
+          "fpkm_uq_unstranded": "19.2431"
+        },
+        {
+          "gene_id": "ENSG00000091831.24",
+          "gene_name": "ESR1",
+          "gene_type": "protein_coding",
+          "unstranded": "193443",
+          "stranded_first": "96823",
+          "stranded_second": "96634",
+          "tpm_unstranded": "321.1109",
+          "fpkm_unstranded": "283.4066",
+          "fpkm_uq_unstranded": "300.6967"
+        },
+        {
+          "gene_id": "ENSG00000141736.14",
+          "gene_name": "ERBB2",
+          "gene_type": "protein_coding",
+          "unstranded": "19907",
+          "stranded_first": "10346",
+          "stranded_second": "10511",
+          "tpm_unstranded": "43.9471",
+          "fpkm_unstranded": "38.7869",
+          "fpkm_uq_unstranded": "41.1532"
+        },
+        {
+          "gene_id": "ENSG00000254647.7",
+          "gene_name": "INS",
+          "gene_type": "protein_coding",
+          "unstranded": "0",
+          "stranded_first": "0",
+          "stranded_second": "0",
+          "tpm_unstranded": "0.0000",
+          "fpkm_unstranded": "0.0000",
+          "fpkm_uq_unstranded": "0.0000"
+        }
+      ]
+    },
+    {
+      "file_id": "9e056a2a-a643-478a-b96c-85d5221f487a",
+      "file_name": "c6a90de3-979b-46b0-9f84-2875c1e38742.rna_seq.augmented_star_gene_counts.tsv",
+      "file_size": 4241593,
+      "md5sum": "1bb465b8dc478393abcc76b84b530f1c",
+      "data_release": "32.0 - 46.0",
+      "access": "open",
+      "experimental_strategy": "RNA-Seq",
+      "analysis": {
+        "workflow_version": "5d8c131bbff59fb0c969217fc1d44e6d1503cd1f",
+        "workflow_type": "STAR - Counts"
+      },
+      "cases": [
+        {
+          "case_id": "cb9f5e50-f49d-4899-8895-9367afcc1015",
+          "submitter_id": "TCGA-A7-A0DC",
+          "project": {
+            "project_id": "TCGA-BRCA"
+          },
+          "samples": [
+            {
+              "sample_id": "5bfd69f5-406a-4b28-b4f4-a6655e03e4db",
+              "submitter_id": "TCGA-A7-A0DC-11A",
+              "sample_type": "Solid Tissue Normal"
+            }
+          ]
+        }
+      ],
+      "gene_model": "# gene-model: GENCODE v36",
+      "rows": [
+        {
+          "gene_id": "ENSG00000000003.15",
+          "gene_name": "TSPAN6",
+          "gene_type": "protein_coding",
+          "unstranded": "3931",
+          "stranded_first": "1972",
+          "stranded_second": "1959",
+          "tpm_unstranded": "62.4320",
+          "fpkm_unstranded": "18.3294",
+          "fpkm_uq_unstranded": "19.1454"
+        },
+        {
+          "gene_id": "ENSG00000091831.24",
+          "gene_name": "ESR1",
+          "gene_type": "protein_coding",
+          "unstranded": "29946",
+          "stranded_first": "14904",
+          "stranded_second": "15047",
+          "tpm_unstranded": "157.1708",
+          "fpkm_unstranded": "46.1438",
+          "fpkm_uq_unstranded": "48.1981"
+        },
+        {
+          "gene_id": "ENSG00000141736.14",
+          "gene_name": "ERBB2",
+          "gene_type": "protein_coding",
+          "unstranded": "9309",
+          "stranded_first": "5078",
+          "stranded_second": "4857",
+          "tpm_unstranded": "64.9768",
+          "fpkm_unstranded": "19.0766",
+          "fpkm_uq_unstranded": "19.9258"
+        },
+        {
+          "gene_id": "ENSG00000254647.7",
+          "gene_name": "INS",
+          "gene_type": "protein_coding",
+          "unstranded": "0",
+          "stranded_first": "0",
+          "stranded_second": "0",
+          "tpm_unstranded": "0.0000",
+          "fpkm_unstranded": "0.0000",
+          "fpkm_uq_unstranded": "0.0000"
+        }
+      ]
+    },
+    {
+      "file_id": "db921dd3-3d39-4b42-b2ff-dbe0f6c9f093",
+      "file_name": "93f26994-d3de-4c8a-bfde-86af8d85b01a.rna_seq.augmented_star_gene_counts.tsv",
+      "file_size": 4246279,
+      "md5sum": "7700377948fb5a2f2fbaa3eda999397b",
+      "data_release": "32.0 - 46.0",
+      "access": "open",
+      "experimental_strategy": "RNA-Seq",
+      "analysis": {
+        "workflow_version": "5d8c131bbff59fb0c969217fc1d44e6d1503cd1f",
+        "workflow_type": "STAR - Counts"
+      },
+      "cases": [
+        {
+          "case_id": "33fe5833-d7a0-43d7-a03d-56985ea448a6",
+          "submitter_id": "TCGA-GI-A2C8",
+          "project": {
+            "project_id": "TCGA-BRCA"
+          },
+          "samples": [
+            {
+              "sample_id": "4a21e922-a294-43f0-89cb-862dabed4f8c",
+              "submitter_id": "TCGA-GI-A2C8-01A",
+              "sample_type": "Primary Tumor"
+            }
+          ]
+        }
+      ],
+      "gene_model": "# gene-model: GENCODE v36",
+      "rows": [
+        {
+          "gene_id": "ENSG00000000003.15",
+          "gene_name": "TSPAN6",
+          "gene_type": "protein_coding",
+          "unstranded": "8544",
+          "stranded_first": "4358",
+          "stranded_second": "4186",
+          "tpm_unstranded": "89.5530",
+          "fpkm_unstranded": "28.0181",
+          "fpkm_uq_unstranded": "30.5158"
+        },
+        {
+          "gene_id": "ENSG00000091831.24",
+          "gene_name": "ESR1",
+          "gene_type": "protein_coding",
+          "unstranded": "24599",
+          "stranded_first": "12429",
+          "stranded_second": "12178",
+          "tpm_unstranded": "85.2050",
+          "fpkm_unstranded": "26.6578",
+          "fpkm_uq_unstranded": "29.0342"
+        },
+        {
+          "gene_id": "ENSG00000141736.14",
+          "gene_name": "ERBB2",
+          "gene_type": "protein_coding",
+          "unstranded": "1947",
+          "stranded_first": "1309",
+          "stranded_second": "1350",
+          "tpm_unstranded": "8.9688",
+          "fpkm_unstranded": "2.8060",
+          "fpkm_uq_unstranded": "3.0562"
+        },
+        {
+          "gene_id": "ENSG00000254647.7",
+          "gene_name": "INS",
+          "gene_type": "protein_coding",
+          "unstranded": "0",
+          "stranded_first": "0",
+          "stranded_second": "0",
+          "tpm_unstranded": "0.0000",
+          "fpkm_unstranded": "0.0000",
+          "fpkm_uq_unstranded": "0.0000"
+        }
+      ]
+    },
+    {
+      "file_id": "84cff855-d17a-4c09-b432-53893ae69c1e",
+      "file_name": "03d891b3-8faf-4384-94ce-2015f1ca5df0.rna_seq.augmented_star_gene_counts.tsv",
+      "file_size": 4217372,
+      "md5sum": "a047d3255bf04eed49d33a5f41787b6c",
+      "data_release": "32.0 - 46.0",
+      "access": "open",
+      "experimental_strategy": "RNA-Seq",
+      "analysis": {
+        "workflow_version": "5d8c131bbff59fb0c969217fc1d44e6d1503cd1f",
+        "workflow_type": "STAR - Counts"
+      },
+      "cases": [
+        {
+          "case_id": "33fe5833-d7a0-43d7-a03d-56985ea448a6",
+          "submitter_id": "TCGA-GI-A2C8",
+          "project": {
+            "project_id": "TCGA-BRCA"
+          },
+          "samples": [
+            {
+              "sample_id": "2a679581-38ad-4742-8d7b-89015df11e7d",
+              "submitter_id": "TCGA-GI-A2C8-11A",
+              "sample_type": "Solid Tissue Normal"
+            }
+          ]
+        }
+      ],
+      "gene_model": "# gene-model: GENCODE v36",
+      "rows": [
+        {
+          "gene_id": "ENSG00000000003.15",
+          "gene_name": "TSPAN6",
+          "gene_type": "protein_coding",
+          "unstranded": "420",
+          "stranded_first": "231",
+          "stranded_second": "189",
+          "tpm_unstranded": "3.2198",
+          "fpkm_unstranded": "1.1840",
+          "fpkm_uq_unstranded": "2.3394"
+        },
+        {
+          "gene_id": "ENSG00000091831.24",
+          "gene_name": "ESR1",
+          "gene_type": "protein_coding",
+          "unstranded": "1304",
+          "stranded_first": "663",
+          "stranded_second": "641",
+          "tpm_unstranded": "3.3036",
+          "fpkm_unstranded": "1.2148",
+          "fpkm_uq_unstranded": "2.4002"
+        },
+        {
+          "gene_id": "ENSG00000141736.14",
+          "gene_name": "ERBB2",
+          "gene_type": "protein_coding",
+          "unstranded": "3371",
+          "stranded_first": "1943",
+          "stranded_second": "1797",
+          "tpm_unstranded": "11.3578",
+          "fpkm_unstranded": "4.1763",
+          "fpkm_uq_unstranded": "8.2520"
+        },
+        {
+          "gene_id": "ENSG00000254647.7",
+          "gene_name": "INS",
+          "gene_type": "protein_coding",
+          "unstranded": "0",
+          "stranded_first": "0",
+          "stranded_second": "0",
+          "tpm_unstranded": "0.0000",
+          "fpkm_unstranded": "0.0000",
+          "fpkm_uq_unstranded": "0.0000"
+        }
+      ]
+    }
+  ]
+}
