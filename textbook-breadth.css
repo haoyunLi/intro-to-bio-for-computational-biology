@@ -7,6 +7,7 @@
 .intuition-terms{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:21px 24px 0;padding-top:15px;border-top:1px solid #ccdaea}
 .intuition-terms span{color:#6f849b;font-size:10px;letter-spacing:.1em;font-weight:800;margin-right:4px}
 .intuition-terms b{border:1px solid #aec8e5;background:#f8fbff;color:#215995;padding:4px 7px;font:750 11px/1 var(--sans)}
+.understanding-guide{margin:28px 0 38px;border-top:1px solid #b9cde4;border-bottom:1px solid #b9cde4;padding:24px 0 27px}.understanding-guide>header{display:flex;align-items:baseline;gap:16px;margin-bottom:16px}.understanding-guide>header span{font-size:10px;letter-spacing:.14em;font-weight:850;color:#1b5eab}.understanding-guide>header h2{font:700 24px/1.3 var(--display);letter-spacing:-.025em;margin:0}.understanding-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-top:1px solid #d5e1ef;border-left:1px solid #d5e1ef}.understanding-grid>section{padding:18px 20px;border-right:1px solid #d5e1ef;border-bottom:1px solid #d5e1ef;background:#fbfdff}.understanding-grid>section>b{font-size:9px;letter-spacing:.14em;color:#2a64aa}.understanding-grid h3{font:700 18px/1.35 var(--display);margin:6px 0 10px;color:#163b69}.understanding-grid p,.understanding-grid li,.understanding-grid dd{font-size:12px;line-height:1.7;color:#58718e}.understanding-grid ol{margin:0;padding-left:19px}.understanding-grid li+li{margin-top:4px}.understanding-grid dl{margin:0}.understanding-grid dl>div+div{margin-top:8px;padding-top:8px;border-top:1px solid #e2eaf3}.understanding-grid dt{font-size:11px;font-weight:850;color:#215995}.understanding-grid dd{margin:2px 0 0}
 .curriculum-tracks{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin:26px 0 35px}
 .curriculum-tracks section{padding:19px 18px 20px 0}
 .curriculum-tracks section+section{border-left:1px solid var(--line);padding-left:18px}
@@ -41,6 +42,7 @@
   .intuition-meta{display:block}
   .intuition-meta b{display:block;margin:6px 0 0}
   .intuition-panel h2{font-size:27px}
+  .understanding-guide>header{display:block}.understanding-guide>header h2{margin-top:6px}.understanding-grid{grid-template-columns:1fr}
   .curriculum-tracks{grid-template-columns:1fr}
   .curriculum-tracks section,.curriculum-tracks section+section{padding:17px 0;border-left:0}
   .curriculum-tracks section+section{border-top:1px solid var(--line)}
@@ -50,3 +52,6 @@
   .chapter-practice-link{grid-template-columns:1fr 25px}
   .chapter-practice-link span{grid-column:1/-1}
 }
+
+/* Replace stacked blue cards with a quieter ruled reading hierarchy. */
+.intuition-panel{border-top:2px solid #1e5b96;border-bottom-color:#d4dce2;background:#f0f2f2}.intuition-terms b{border-color:#cbd6dc;background:#fff;color:#244f73}.understanding-guide{border-color:#d4dce2}.understanding-grid{border-left:0;border-color:#d4dce2}.understanding-grid>section{background:transparent;border-color:#d4dce2}.understanding-grid h3{color:#183b5b}.understanding-grid p,.understanding-grid li,.understanding-grid dd{color:#53697d}.curriculum-tracks a{background:#f1f3f3;border-color:#d0d9de}.curriculum-tracks a:hover{background:#e6ebed}.chapter-practice-link{background:#fff;border-color:#d4dce2}.chapter-practice-link:hover{background:#f0f3f4}

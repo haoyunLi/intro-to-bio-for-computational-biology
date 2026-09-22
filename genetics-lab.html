@@ -6,12 +6,14 @@
   <meta name="description" content="三个可操作的遗传学因果模型：enhancer 调控逻辑、肿瘤 purity/CNV/VAF、细胞信号的 pulse 与持续时间。">
   <title>Genetics Lab · 遗传学因果实验台 · Bio/CS</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="genetics-lab.css">
+  <link rel="stylesheet" href="genetics-lab.css?v=20260921-3">
   <script src="genetics-lab.js" defer></script>
+  <script src="textbook-terminology.js" defer></script>
+  <script src="legacy-terminology.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">跳到正文</a>
-  <header class="gl-header"><a class="gl-brand" href="index.html">Bio<span>/</span>CS</a><nav aria-label="网站导航"><a href="uiuc-path.html">UIUC 路径</a><a href="textbook.html#x01">Molecular Genetics</a><a href="textbook.html#l01">Cell Signaling</a><a href="data-lab.html">Data Lab</a></nav><span>GENETICS CAUSAL LAB</span></header>
+  <header class="gl-header"><a class="gl-brand" href="index.html">Bio<span>/</span>CS</a><nav aria-label="网站导航"><a href="index.html">学习路径</a><a href="textbook.html#x01">Molecular Genetics</a><a href="project-lab.html">Project Lab</a><a href="data-lab.html">Data Lab</a></nav><span>GENETICS CAUSAL LAB</span></header>
   <main id="main">
     <section class="gl-hero"><div><span class="gl-eyebrow">CHANGE ONE CAUSE · WATCH THE CONSEQUENCE</span><h1>不要背箭头。<br><em>动手改因果。</em></h1><p>三个模型只保留真正帮助理解的交互：调控元件怎样共同决定 transcription、为什么 VAF 不是 cancer-cell fraction、为什么相同 endpoint 会藏住完全不同的 signaling history。</p><a href="#regulation">从 enhancer 模型开始 →</a></div><ol><li><b>01</b><span>Gene regulation<strong>必要但不充分</strong></span></li><li><b>02</b><span>Tumor genetics<strong>分母决定 VAF</strong></span></li><li><b>03</b><span>Signal dynamics<strong>时间形状也是信息</strong></span></li></ol></section>
 
@@ -21,7 +23,7 @@
 
     <section class="gl-model" id="dynamics"><header><span>03 / SIGNAL DYNAMICS</span><h2>终点一样，不代表细胞经历过同一条路。</h2><p>选择短 pulse、持续输入或重复 pulse，再改变 feedback。图中每根柱是一个时间点；比较 peak、duration 和晚期 target 的累积，而不是只看最后一根柱。</p></header><div class="gl-workspace"><form class="gl-controls" id="signal-form"><fieldset><legend>Input pattern</legend><label><input type="radio" name="pattern" value="short" checked>Short pulse</label><label><input type="radio" name="pattern" value="sustained">Sustained</label><label><input type="radio" name="pattern" value="pulsed">Repeated pulses</label></fieldset><label>Negative feedback <output id="feedback-value">45%</output><input id="feedback" type="range" min="0" max="100" value="45"></label><button type="button" id="signal-reset">恢复短 pulse</button></form><div class="gl-result"><div class="signal-summary"><div><span>Peak</span><strong id="signal-peak">—</strong></div><div><span>Duration above threshold</span><strong id="signal-duration">—</strong></div><div><span>Late target output</span><strong id="signal-late">—</strong></div></div><div class="timeline-chart" id="signal-chart" role="img" aria-label="模拟 signaling response 时间序列"></div><p id="signal-explanation" class="gl-explanation" aria-live="polite"></p></div></div><aside class="gl-boundary"><b>模型边界</b><p>这是离散时间的抽象 network，不代表特定 pathway 速率。它只展示一个关键事实：feedback 与 input pattern 能改变 amplitude、duration、pulse 和 integrated target output。</p><a href="textbook.html#l05">继续读 L05 · Feedback、crosstalk 与 dynamics →</a></aside></section>
 
-    <section class="gl-next"><span>WHAT TO LEARN NEXT</span><h2>现在把模型接回真实数据。</h2><div><a href="textbook.html#x01"><b>Molecular Genetics · 16 章</b><small>Chromatin → enhancer → splicing → GWAS → tumor clone → CRISPR</small></a><a href="textbook.html#l01"><b>Cell Signaling · 6 章</b><small>Binding → GPCR/RTK → pathway dynamics → cell–cell communication</small></a><a href="data-lab.html"><b>Data Lab</b><small>从 assay、文件和分母判断一个 biological claim 能走多远</small></a></div></section>
+    <section class="gl-next"><span>WHAT TO LEARN NEXT</span><h2>现在把模型接回真实项目。</h2><div><a href="textbook.html#x01"><b>Molecular Genetics · 22 章</b><small>Chromatin → enhancer → ASE/QTL → HLA → tumor phylogeny</small></a><a href="project-lab.html"><b>Project Lab</b><small>同一 tumor case 串起 DNA、RNA、protein、immune、metabolism 与 outcome</small></a><a href="data-lab.html"><b>Data Lab</b><small>从 assay、文件和分母判断一个 biological claim 能走多远</small></a></div></section>
   </main>
   <footer class="gl-footer"><a href="index.html">Bio/CS 首页</a><span>所有数值为原创教学模型，不是实验或患者数据。</span></footer>
 </body>

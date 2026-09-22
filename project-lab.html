@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="沿同一位教学患者的多个时间点，把 Genetics、raw assay、signaling dynamics、tumor immunity 与 metabolism 连成一条可检验的证据链。">
+  <meta name="theme-color" content="#ffffff">
+  <title>Project Lab · One tumor, many measurements · Bio/CS</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="project-lab.css?v=20260921-3">
+  <script src="project-lab.js?v=20260921-1" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#project-main">跳到 case workspace</a>
+  <header class="pl-header">
+    <a class="pl-brand" href="index.html" aria-label="Bio/CS 首页">Bio<span>/</span>CS</a>
+    <nav aria-label="网站导航"><a href="index.html">学习路径</a><a href="textbook.html">系统教材</a><a href="genetics-lab.html">Genetics Lab</a><a href="data-lab.html">Data Lab</a><a href="project-lab.html" aria-current="page">Project Lab</a></nav>
+    <span>ONE CASE · MANY LAYERS</span>
+  </header>
+
+  <main id="project-main">
+    <section class="pl-hero" aria-labelledby="pl-title">
+      <div>
+        <h1 id="pl-title">One tumor.<br><em>Many measurements.</em></h1>
+        <p>跟随同一位教学患者的纵向多组学数据，从 specimen 走到 DNA、RNA、protein、cell state、tissue 与 clinical outcome。目标不是猜一个故事，而是学会判断每一层证据能把结论推到哪里。</p>
+        <a href="#case-workspace">开始 case →</a>
+      </div>
+      <aside aria-label="本页学习目标"><b>完成后你应该能</b><ol><li>区分 biological change 与 measurement change</li><li>把 VAF、expression、protein activity 与 phenotype 放回各自分母</li><li>写出有 evidence level 与 alternative explanation 的结论</li></ol></aside>
+    </section>
+
+    <section class="pl-timeline" aria-labelledby="timeline-title">
+      <h2 id="timeline-title" class="visually-hidden">选择患者时间点</h2>
+      <div class="pl-timeline-line" aria-hidden="true"></div>
+      <div id="timepoint-controls" class="pl-timepoints" role="group" aria-label="选择 specimen 与时间点"></div>
+    </section>
+
+    <section class="pl-workspace" id="case-workspace" aria-labelledby="workspace-title">
+      <header class="pl-section-head"><div><span>CASE WORKSPACE</span><h2 id="workspace-title">先固定 specimen，再解释数据。</h2></div><p>本页是 fictional composite case，数值只用于教学。不同时间点来自不同材料，不能把变化自动归因于治疗或同一批细胞。</p></header>
+      <div class="pl-workspace-grid">
+        <aside class="pl-context" aria-labelledby="context-title"><h3 id="context-title">Specimen context</h3><div id="specimen-context"></div></aside>
+        <section class="pl-chain" aria-labelledby="chain-title"><h3 id="chain-title">From molecule to outcome</h3><div id="evidence-chain" class="pl-chain-row"></div><p id="chain-summary" class="pl-chain-summary" aria-live="polite"></p></section>
+        <aside class="pl-boundary" aria-labelledby="boundary-title"><h3 id="boundary-title">Inference boundary</h3><div id="inference-boundary"></div></aside>
+      </div>
+    </section>
+
+    <section class="pl-module" id="genetics-reasoning" aria-labelledby="genetics-title">
+      <header class="pl-section-head"><div><span>01 · GENETICS REASONING</span><h2 id="genetics-title">Variant row 不是 clone。</h2></div><p>先把 read-level observation、copy number、purity 与 clone model 分开，再讨论 driver、resistance 或 functional consequence。</p></header>
+      <div class="pl-split">
+        <div><div class="pl-table-wrap"><table><caption>Selected specimen · DNA-seq teaching calls</caption><thead><tr><th>Variant</th><th>REF reads</th><th>ALT reads</th><th>VAF</th><th>Total CN</th></tr></thead><tbody id="variant-table"></tbody></table></div><p class="pl-small">VAF = ALT reads / (REF + ALT reads)。它首先是 read ratio，不是 cell fraction。</p></div>
+        <div class="pl-reason-box"><h3>逐层推理</h3><ol id="genetics-steps"></ol><details><summary>展开一个可接受的有限结论</summary><p id="genetics-answer"></p></details><a href="genetics-lab.html#vaf">打开 purity/CNV/VAF 可调模型 →</a></div>
+      </div>
+    </section>
+
+    <section class="pl-module pl-pale" id="raw-assay" aria-labelledby="raw-title">
+      <header class="pl-section-head"><div><span>02 · RAW ASSAY READING</span><h2 id="raw-title">仪器给 signal；分析者给 interpretation。</h2></div><p>切换 assay，先辨认直接观察、处理后数值与不能直接推出的机制。</p></header>
+      <div class="pl-assay-tabs" id="assay-tabs" role="tablist" aria-label="选择 assay"></div>
+      <div class="pl-assay-grid" id="assay-panel" role="tabpanel" aria-live="polite">
+        <section aria-labelledby="assay-panel-title"><h3 id="assay-panel-title">Assay output</h3><div id="assay-visual" class="pl-assay-visual"></div></section>
+        <section class="pl-assay-reading" aria-labelledby="assay-reading-title"><h3 id="assay-reading-title">怎样读</h3><dl id="assay-reading"></dl></section>
+        <section class="pl-assay-question" aria-labelledby="assay-question-title"><h3 id="assay-question-title">先选再看解释</h3><p id="assay-question"></p><div id="assay-options"></div><p id="assay-feedback" role="status"></p></section>
+      </div>
+    </section>
+
+    <section class="pl-module pl-dark" id="dynamics" aria-labelledby="dynamics-title">
+      <header class="pl-section-head"><div><span>03 · SIGNALING DYNAMICS</span><h2 id="dynamics-title">相同 endpoint，可以藏着不同 history。</h2></div><p>切换显示方式，比较一次短暂 inhibition 与持续 inhibition。只有纵向取样才能观察 peak、duration、adaptation 与 rebound。</p></header>
+      <div class="pl-dynamics-controls" role="group" aria-label="时间序列显示方式"><button type="button" data-view="trajectory" aria-pressed="true">完整 trajectory</button><button type="button" data-view="endpoint" aria-pressed="false">只看 endpoint</button></div>
+      <div class="pl-dynamics-grid"><div><h3>Pathway activity over time</h3><div id="dynamics-chart" class="pl-dynamics-chart" role="img" aria-label="两种 signaling response 的时间序列比较"></div></div><aside><h3>Counterfactual</h3><p>如果只在 24 h 取样，两组可能看起来相近。你是否还能判断哪一组早期被强烈抑制、哪一组发生 rebound？</p><p id="dynamics-explanation" aria-live="polite"></p></aside></div>
+    </section>
+
+    <section class="pl-module" id="integration" aria-labelledby="integration-title">
+      <header class="pl-section-head"><div><span>04 · TUMOR–IMMUNE–METABOLISM</span><h2 id="integration-title">多层数据不是自动拼成机制。</h2></div><p>选择一个 hypothesis，逐条看哪些证据支持、哪些只是兼容、哪些仍然缺失。</p></header>
+      <div class="pl-hypotheses" id="hypothesis-controls" role="group" aria-label="选择待评估假说"></div>
+      <div class="pl-integration-grid"><section><h3>Across-layer evidence</h3><div id="integration-evidence"></div></section><aside><h3>What would distinguish alternatives?</h3><ul id="integration-next"></ul></aside></div>
+    </section>
+
+    <section class="pl-module pl-claim" id="claim-builder" aria-labelledby="claim-title">
+      <header class="pl-section-head"><div><span>05 · BUILD YOUR CLAIM</span><h2 id="claim-title">先标 evidence level，再写结论。</h2></div><p>模型输出高置信度不等于 biological mechanism 已被证明。这里训练的是 claim 与 evidence 是否匹配。</p></header>
+      <label for="claim-example">选择一句待分类陈述</label><select id="claim-example"></select>
+      <fieldset><legend>这句话最接近哪一层？</legend><div id="claim-levels"></div></fieldset>
+      <button type="button" id="check-claim">检查判断</button><div id="claim-feedback" class="pl-claim-feedback" role="status"></div>
+    </section>
+
+    <section class="pl-traps" aria-labelledby="traps-title"><div><span>COMPUTATIONAL-BACKGROUND TRAPS</span><h2 id="traps-title">九个需要形成条件反射的“不等于”。</h2></div><ul><li>gene ≠ transcript</li><li>RNA ≠ protein activity</li><li>read ≠ molecule</li><li>zero ≠ absence</li><li>cluster ≠ cell type</li><li>cell ≠ independent patient</li><li>accessibility ≠ enhancer function</li><li>metabolite abundance ≠ flux</li><li>prediction ≠ mechanism</li></ul></section>
+
+    <section class="pl-sources" aria-labelledby="sources-title"><h2 id="sources-title">Case design 与继续学习</h2><p>病例为原创教学合成，不代表真实患者。机制和测量边界依据 <a href="https://docs.gdc.cancer.gov/Data/Bioinformatics_Pipelines/" target="_blank" rel="noopener noreferrer">GDC data pipelines ↗</a>、<a href="https://www.cancer.gov/about-cancer/understanding/what-is-cancer" target="_blank" rel="noopener noreferrer">NCI cancer biology ↗</a>、<a href="https://www.cancer.gov/about-cancer/treatment/types/immunotherapy" target="_blank" rel="noopener noreferrer">NCI immunotherapy ↗</a> 与 <a href="https://app.mcb.illinois.edu/courses/advanced" target="_blank" rel="noopener noreferrer">UIUC advanced MCB course map ↗</a> 组织。更深入的概念请进入 <a href="textbook.html#x14">X14 Somatic genetics</a>、<a href="textbook.html#a09">A09 Cancer & immune metabolism</a>、<a href="textbook.html#i10">I10 Cancer immunology</a>。</p></section>
+  </main>
+  <footer class="pl-footer"><a href="index.html">Bio/CS 首页</a><span>Fictional composite case · teaching use only</span><a href="textbook.html#x01">继续系统教材 →</a></footer>
+</body>
+</html>

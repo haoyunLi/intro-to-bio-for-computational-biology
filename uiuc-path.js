@@ -46,7 +46,7 @@
   }
 
   function renderSources() {
-    const labels = {mcb:'MCB BSLAS', mcbds:'MCB + Data Science', ib:'Integrative Biology', advanced:'Advanced MCB Courses', biology:'Choosing Your Major'};
+    const labels = {mcb:'MCB BSLAS', mcbds:'MCB + Data Science', ib:'Integrative Biology', advanced:'Advanced MCB Courses', mcb354:'MCB 354 Syllabus', mcb408:'MCB 408 Syllabus', mcb364:'MCB 364 Lab Syllabus', biop401:'BIOP 401 Syllabus', mcb438:'MCB 438 Virology Syllabus', mcb466:'MCB 466 Pharmacology Syllabus', biology:'Choosing Your Major'};
     document.querySelector('#official-links').innerHTML = Object.entries(data.sources).map(([key, url]) => `<a href="${escape(url)}" target="_blank" rel="noopener noreferrer">${escape(labels[key])} ↗</a>`).join('');
   }
 

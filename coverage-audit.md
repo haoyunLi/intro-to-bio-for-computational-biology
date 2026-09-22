@@ -1,6 +1,6 @@
 # 从头复查：零基础计算生物学网站还能补什么
 
-复查日期：2026-09-21。当前网站有 19 门课、128 章、512 个教学小节、199 个教材来源条目，共 10 个 HTML 页面。网站架构现按 UIUC 2026–2027 MCB 本科顺序分为共同基础、Molecular Genetics、Cells/Development/Biochemistry、Advanced MCB、Data & Discovery 五阶段；另提供 MCB + Data Science 项目路线。原有 69 章的数据与肿瘤组学主线保持不变；新增 16 章 Molecular Genetics、6 章 Cell Signaling，以及 evolution、microbiology、physiology、development、immunology、neuroscience 和 ecology。Plant Biology 已按学习目标排除。全章新增“先建立直觉”入口，章节动效只在拥有专属机制图时显示，不再为其余章节生成泛化三步动画。
+复查日期：2026-09-21。当前网站有 24 门课、180 章、779 个教学小节、218 个去重来源条目，共 11 个 HTML 页面。网站架构按 UIUC 2026–2027 MCB 本科顺序分为共同基础、Molecular Genetics、Cells/Development/Biochemistry、Advanced MCB、Data & Discovery 五阶段；另用 IB 的 non-plant organismal core 与 MCB + Data Science 补充完整 organism 和项目路线。重点内容包括 22 章 Molecular Genetics、10 章 Metabolism & Metabolomics、10 章 Immunology、10 章 Experimental Biology、7 章 Structural Biology & Biophysics、8 章 Infection/Virology/Pharmacology、6 章 Organismal Biology & Behavior 与 6 章 Cell Signaling。Plant Biology 已按学习目标排除。首页与原 UIUC 路径已合并；全章使用 English technical terms，并采用 object → mechanism → evidence → inference boundary 的零基础阅读导航。章节动效只在拥有专属 mechanism 图时显示。
 
 ## 本轮全站复核与修正
 
@@ -18,10 +18,16 @@
 | 归一化解释 | Data Lab 在 Raw、CPM、RPKM/FPKM、TPM 与 size factor 的数值和分母之外，逐项回答“这个数表示什么、适合回答什么、不能回答什么、下一步是什么”，避免把任何一种归一化数字当成通用分析输入。 |
 | 空间分割误差 | Data Lab 第 9 题固定教学 true cell 与 transcript 位置，只改变观测边界；即时重算正确分配、错分、漏分、假阳性和 cell × gene 矩阵，并逐点列出 true assignment → observed assignment。四种模式明确把分割误差传播到下游计数。 |
 | 完整队列与临床连接 | 真实队列页区分完整 metadata inventory、真实四文件子集、本站实际计算和未执行的完整模型。库存记录 1,231 file→1,226 sample→1,095 case→113 个同时具有两类材料的候选 case；113 不等于 QC 后的最终配对数。临床页分开 `case.submitter_id` 与 GDC UUID `case_id`，并逐病例解释 vital status、观察时间、右删失和缺失随访。 |
+| UIUC laboratory core | 新增 10 章 measurement、controls、cloning/PCR、RT–qPCR、Western blot、microscopy、cell culture、flow cytometry、perturbation 与 reproducibility；每章都把 assay signal 接回 biological claim。 |
+| Structural Biology & Biophysics | 按 BIOP 401 补 7 章 protein structure/folding、binding thermodynamics、kinetics、membrane biophysics、structural methods 与 AlphaFold confidence boundary。 |
+| Infection & Pharmacology | 按 MCB 426/435/438/466 补 8 章 host–pathogen、bacterial pathogenesis、viral replication/life cycle、phage/CRISPR、drug resistance、spillover/biosecurity 与 PK/PD。 |
+| Non-plant IB breadth | 按 IB curriculum 补 6 章 comparative anatomy、biomechanics、animal behavior、behavioral ecology、communication/navigation 与 acclimation/adaptation；不含 Plant Biology。 |
+| Genetics advanced extension | Molecular Genetics 从 16 章扩为 22 章，新增 mosaicism/imprinting/X-inactivation/heteroplasmy、structural variation/aneuploidy/whole-genome doubling、allele-specific expression、eQTL/sQTL/colocalization、HLA immunogenetics 与 multi-region tumor phylogeny。 |
+| One-case Project Lab | 新增四时间点 fictional composite tumor case；同页连接 DNA→RNA→protein→cell state→tissue→outcome，训练 specimen context、VAF/CN、raw-like assay、signaling trajectory、tumor–immune–metabolism 假说与 evidence-level claim。 |
 
 ### 验证范围
 
-- 全站 10 个 HTML 页面及 128 章内容已重新做结构检查：章节 ID 无重复、前置知识 ID 均存在、章节来源键均可解析；新增 Genetics Lab 的三个纯模型已用固定输入验证关键数值。
+- 全站 11 个 HTML 页面及 180 章内容重新做结构检查：chapter ID 无重复、prerequisite ID 均存在、source key 均可解析、term label 为 English、每章都有 goals/intuition/check/source，且没有 Plant Biology chapter；Genetics Lab 的三个模型与 Project Lab 的核心状态切换均已检查。
 - 八个页面均在 1,280 px 桌面和 390 px 手机断点巡检：没有整页横向溢出、缺图或 console error/warning；宽表和示意图只在自己的容器内横向滚动。临床双表曾有 50 px 内部溢出，加入 grid 子项收缩规则后复查归零。
 - 实际完成 Foundations 的序列输入/提前终止、细胞比例与 TPM 切换，Data Lab 九个练习、真实单文件五步、队列六步和完整队列工作台；检查错误反馈、步骤解锁、重置、临床 join 键切换与空间分割模式切换。
 - 新膜运输与分泌通路 SVG 已渲染目检，并在手机端确认图像载入、横向滚动及判断题展开。归一化例题数值用脚本重算，读段/缺失值状态机检查通过。
@@ -73,9 +79,9 @@
 
 这些是目前的**课程深度缺口**，按对 CS 背景肿瘤多组学读者的实用程度排列。
 
-1. **遗传学进阶练习。** 已有 Punnett、外显率、X 连锁、单倍型、Hardy–Weinberg 和纯度影响 VAF 的基础例题；仍需完整 pedigree 判读、亲属间条件概率、等位基因特异 CNV、非整倍体及多区域肿瘤克隆频率的联合练习。可从 [OpenStax 遗传章节](https://openstax.org/books/biology-2e/pages/12-introduction)和 [NCI 癌症遗传说明](https://www.cancer.gov/about-cancer/causes-prevention/genetics)继续。
+1. **遗传学进阶练习。** 已有 Punnett、外显率、X 连锁、单倍型、Hardy–Weinberg、purity/VAF，以及 mosaicism、aneuploidy、allele-specific expression、eQTL/HLA 和 multi-region tumor phylogeny 的概念与 worked example；仍需完整 pedigree 条件概率和 allele-specific CNV × purity × subclone fraction 的联合计算工作台。可从 [OpenStax 遗传章节](https://openstax.org/books/biology-2e/pages/12-introduction)和 [NCI 癌症遗传说明](https://www.cancer.gov/about-cancer/causes-prevention/genetics)继续。
 2. **细胞结构与时间过程。** 已补细胞周期、DNA 含量、膜运输、ER–Golgi 分泌路线与数据判断；细胞死亡途径、免疫细胞分化和时间序列实验仍可扩成更完整的图解练习。参照 [OpenStax 细胞章节](https://openstax.org/books/biology-2e/pages/4-introduction)。
-3. **实验方法的实操判读。** 已补 PCR/qPCR 和对照逻辑；还需抗体免疫染色、Western blot、流式、CRISPR 干预、救援实验以及各方法的假阳性来源。参照 [OpenStax 生物技术章节](https://openstax.org/books/biology-2e/pages/17-introduction)。
+3. **实验方法的真实 raw-data 练习。** Project Lab 已加入 DNA-seq、RNA-seq、Western blot 与 spatial 的 raw-like teaching output，并强制区分 direct observation、processed value 与不能直接推出的结论；下一步仍应加入可下载的真实 FCS、uncropped blot、microscopy stack 与 plate map，让读者从 raw signal 重建一次完整结论。
 4. **从教学队列走向可复现统计。** 现在已有完整 GDC 文件库存漏斗、case 级临床连接、固定配对子集和八步分析管线。下一步需要下载完整 count 矩阵，系统处理临床缺失、样本 QC、批次、协变量、差异表达设计与敏感性分析，并发布可复现脚本。数据版本和流程应固定并引用 [GDC mRNA 管线](https://docs.gdc.cancer.gov/Data/Bioinformatics_Pipelines/Expression_mRNA_Pipeline/)与 [GEO 数据说明](https://www.ncbi.nlm.nih.gov/geo/info/overview.html)。
 5. **影像与空间数据的物理测量。** 现有分割练习已说明边界误差如何传播到 cell × gene 矩阵；下一步可加入真实切片、染色误差、像素到微米校准、配准评估、邻域统计以及病例级独立重复。
 6. **计算推断与统计基础。** 为初学者增加概率模型、测量误差、multiple testing、effect size、批次混杂、训练/验证/测试划分，以及“模型预测”和“生物机制解释”之间的边界；用同一份小数据贯穿这些步骤。

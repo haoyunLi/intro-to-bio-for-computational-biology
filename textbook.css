@@ -15,4 +15,12 @@ html{scroll-behavior:auto}body{background:#f7faff}.book-header{height:62px;posit
 @media(max-width:760px){.book-sidebar.open{position:fixed;top:56px;left:0;right:0;bottom:0;height:calc(100vh - 56px);z-index:30;overflow-y:auto;padding-top:54px}.toc-close{display:block;position:fixed;top:65px;right:17px;z-index:31;background:white;border:1px solid var(--line);border-radius:4px;color:var(--blue);font-size:11px;font-weight:800;padding:6px 10px}}
 @media(max-width:490px){.book-header nav a:nth-child(2){display:inline}}
 
-.search-status{font-size:11px;color:#4a668c;margin:7px 0 0}.toc-is-open{overflow:hidden}.chapter-section code,.worked code,.book-check code{white-space:normal;overflow-wrap:anywhere}
+.search-status{font-size:11px;color:#4a668c;margin:7px 0 0}.toc-is-open{overflow:hidden}.book-hero h1,.book-topline span{overflow-wrap:anywhere}.book-topline span{min-width:0}.chapter-section code,.worked code,.book-check code{white-space:normal;overflow-wrap:anywhere}
+
+/* Editorial reading surface: fewer blue blocks, stronger hierarchy, safer wrapping. */
+body{background:var(--paper)}.book-header{background:rgba(255,255,255,.97);gap:30px}.book-header nav{gap:21px;min-width:0}.book-header nav a{white-space:nowrap}.book-header-sub{white-space:nowrap;flex:0 0 auto}.book-layout{grid-template-columns:minmax(270px,300px) minmax(0,1fr)}.book-sidebar{background:#f0f2f2}.book-sidebar-top h1{letter-spacing:-.035em}.progress-bar{background:#d9e0e3}.toc-course{border-color:#d4dce2}.toc-course a:hover{background:#e5eaed}.toc-course a[aria-current]{background:#dfe8ed;color:#174f7e;box-shadow:inset 3px 0 #d8622d}
+.book-hero h1{font-size:clamp(38px,4.2vw,61px);letter-spacing:-.035em;overflow-wrap:anywhere;text-wrap:balance}.book-subtitle,.book-intro,.chapter-section p{color:#384f65}.book-objectives li{background:#edf1f2;color:#274f70;border:1px solid #d5dde1}.concept-figure{background:#f1f3f3;border-color:#d7dfe2}.concept-flow>div{border-color:#d6dee2}.book-check{background:#f2f4f4;border-color:#d5dde1}.worked{background:var(--deep)}
+@media(max-width:1280px){.book-header-sub{display:none}}
+@media(max-width:760px){.book-header{gap:17px}.book-header nav{gap:12px}.book-header nav a:nth-child(n+3){display:none}.book-topline span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.book-hero h1{font-size:clamp(32px,9.4vw,39px);line-height:1.17}.book-main{min-width:0}.book-objectives{gap:5px}}
+@media(max-width:490px){.book-header nav a:nth-child(2){display:none}.book-brand{font-size:25px}.book-topline{gap:10px}}
+.progress-bar span{transition:none}.lesson-formula{border-left:0;border-top:1px solid #397bc0}.data-bridge{border-top-width:1px}

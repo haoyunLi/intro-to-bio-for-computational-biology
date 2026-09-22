@@ -7,8 +7,8 @@
       title: '共同生物基础',
       subtitle: 'MCB 150 + IB 150',
       official: ['MCB 150', 'IB 150'],
-      description: '先建立分子、细胞、遗传、演化与生态尺度。本站保留 UIUC 共同基础所需的 organismal / evolutionary reasoning，但按你的要求不设置 Plant Biology。',
-      courseCodes: ['00', '10', '17']
+      description: '先建立分子、细胞、遗传、演化与生态尺度，再用 comparative anatomy 与 animal behavior 把 cell 接回完整 organism。本站按你的要求不设置 Plant Biology。',
+      courseCodes: ['00', '10', '17', '22']
     },
     {
       id: 'genetics',
@@ -17,8 +17,8 @@
       title: '分子遗传学与实验逻辑',
       subtitle: 'MCB 250 + MCB 251',
       official: ['MCB 250', 'MCB 251'],
-      description: '从 DNA replication、mutation 和 repair 走到 transcription、enhancer、chromatin、splicing、inheritance 与实验验证；这是你的最重点阶段。',
-      courseCodes: ['01', '01B', '02']
+      description: '从 DNA replication、mutation 和 repair 走到 transcription、enhancer、chromatin、splicing、inheritance、allele-specific regulation、immunogenetics 与 tumor evolution，并配上 MCB 251 式 cloning、PCR 与 quantitative measurement；这是你的最重点阶段。',
+      courseCodes: ['01', '01B', '02', '19']
     },
     {
       id: 'cells',
@@ -27,8 +27,8 @@
       title: '细胞、组织、发育与生化机制',
       subtitle: 'MCB 252 + MCB 253 + MCB 354',
       official: ['MCB 252', 'MCB 253', 'MCB 354'],
-      description: '理解 membrane、organelle、cell cycle、development、signal transduction、physiology，以及能量与分子相互作用怎样驱动细胞行为。',
-      courseCodes: ['03', '13', '14', '12']
+      description: '理解 membrane、organelle、cell cycle、development、signal transduction、physiology，以及 thermodynamics、structure、binding 与 metabolic flux 怎样驱动细胞行为。',
+      courseCodes: ['03', '13', '14', '18', '20', '12']
     },
     {
       id: 'advanced',
@@ -37,8 +37,8 @@
       title: '高级方向选修',
       subtitle: '300 / 400-level MCB',
       official: ['MCB 300+', 'MCB 400+'],
-      description: '按项目问题进入 cancer、microbiology、immunology、neurobiology 与 systems physiology；对应 UIUC 至少四门 advanced MCB、其中一门 lab 的选修结构。',
-      courseCodes: ['04', '11', '15', '16']
+      description: '按项目问题进入 cancer、microbiology、virology、pharmacology、immunology、neurobiology 与 systems physiology；对应 UIUC advanced MCB 的选修结构。',
+      courseCodes: ['04', '11', '15', '16', '21']
     },
     {
       id: 'discovery',
@@ -57,22 +57,22 @@
       id: 'regulation',
       title: 'Genetics & Gene Regulation',
       courses: 'MCB 317 · MCB 406 · MCB 421',
-      description: 'genome organization、gene expression、microbial genetics，以及调控因果实验。',
-      chapters: ['x01', 'x04', 'x06', 'x07', 'x08', 'x10', 'x13', 'x16']
+      description: 'genome organization、gene expression、molecular QTL、immunogenetics、tumor phylogeny，以及调控因果实验。',
+      chapters: ['x01', 'x04', 'x06', 'x07', 'x08', 'x10', 'x13', 'x16', 'x17', 'x18', 'x19', 'x20', 'x21', 'x22']
     },
     {
       id: 'disease',
       title: 'Disease & Cancer',
       courses: 'MCB 320 · MCB 400',
       description: '从 somatic evolution、cell cycle 和 microenvironment 理解疾病机制。',
-      chapters: ['t01', 't02', 't03', 'x14', 'l03', 'l05']
+      chapters: ['t01', 't02', 't03', 'x14', 'l03', 'l05', 'j08']
     },
     {
       id: 'immunity',
       title: 'Microbes & Immunity',
-      courses: 'MCB 300 · MCB 408 · MCB 426 · MCB 430',
-      description: '微生物怎样生存、致病，免疫系统怎样识别并形成记忆。',
-      chapters: ['u01', 'u03', 'u04', 'i01', 'i02', 'i03', 'i05']
+      courses: 'MCB 300 · MCB 408 · MCB 426 · MCB 435 · MCB 438',
+      description: '微生物与 virus 怎样复制、致病和演化，免疫系统怎样识别并形成记忆。',
+      chapters: ['u01', 'u03', 'u04', 'j01', 'j02', 'j03', 'j04', 'j06', 'j07', 'i01', 'i02', 'i03', 'i06', 'i07', 'i08', 'i09', 'i10']
     },
     {
       id: 'systems',
@@ -80,6 +80,13 @@
       courses: 'MCB 314 · MCB 401 · MCB 402 · MCB 413',
       description: '从膜电位与 receptor 走到神经、内分泌和器官稳态。',
       chapters: ['h01', 'h03', 'h06', 'l01', 'l02', 'n01', 'n02', 'n04']
+    },
+    {
+      id: 'metabolism',
+      title: 'Biophysics & Metabolism',
+      courses: 'BIOP 401 · MCB 354 · MCB 424 · MCB 465',
+      description: '从 thermodynamics、structure、binding 与 kinetics 走到 integrated metabolism、disease 和 metabolomics。',
+      chapters: ['z01', 'z03', 'z04', 'z05', 'z06', 'z07', 'a01', 'a02', 'a03', 'a05', 'a08', 'a09', 'a10']
     },
     {
       id: 'development',
@@ -94,6 +101,20 @@
       courses: 'MCB 432 · MCB 290 · MCB + DS',
       description: '让模型、数据管理和实验设计服务于可检验的 biological claim。',
       chapters: ['d01', 'd04', 'k01', 'k06', 'q04', 'r02', 'r03', 'r05']
+    },
+    {
+      id: 'laboratory',
+      title: 'Experimental Biology',
+      courses: 'MCB 251 · MCB 253 · MCB 301 · MCB 364 · BIOC 455',
+      description: '从 measurement、control 和 molecular assay 走到 microscopy、cell culture、causal perturbation 与 reproducibility。',
+      chapters: ['w01', 'w02', 'w03', 'w04', 'w05', 'w06', 'w07', 'w08', 'w09', 'w10']
+    },
+    {
+      id: 'organismal',
+      title: 'Organismal Biology & Behavior',
+      courses: 'IB 202 · IB 303 · IB 329 · IB 431 · IB 438',
+      description: '在 non-plant 范围内补足 comparative anatomy、biomechanics、animal behavior 与 organism–environment integration。',
+      chapters: ['y01', 'y02', 'y03', 'y04', 'y05', 'y06']
     }
   ];
 
@@ -103,21 +124,21 @@
       label: 'UIUC MCB Core',
       title: '按正式 core sequence 建立完整骨架',
       description: '适合系统补齐：共同基础 → molecular genetics → cells / development → biochemistry → advanced MCB。',
-      chapters: ['b01', 'b03', 'b05', 'g01', 'g04', 'm01', 'm03', 'm05', 'c01', 'c04', 'v01', 'l01', 'h01', 'u01', 'i01']
+      chapters: ['b01', 'b03', 'b05', 'g01', 'g04', 'm01', 'm03', 'm05', 'w01', 'w03', 'w06', 'c01', 'c04', 'v01', 'l01', 'z01', 'z03', 'a01', 'a03', 'a05', 'a08', 'h01', 'u01', 'j01', 'i01', 'i03', 'i07', 'y01', 'y03']
     },
     {
       id: 'genetics',
       label: 'Deep Genetics',
       title: '围绕你最需要的调控遗传学深入',
-      description: '重点连接 enhancer、chromatin、splicing、GWAS、somatic evolution 与 perturbation evidence。',
-      chapters: ['g01', 'g04', 'x01', 'x02', 'x04', 'x06', 'x07', 'x08', 'x10', 'x11', 'x13', 'x14', 'x16']
+      description: '重点连接 enhancer、chromatin、splicing、GWAS、ASE/QTL、HLA、somatic evolution 与 perturbation evidence。',
+      chapters: ['g01', 'g04', 'x01', 'x02', 'x04', 'x06', 'x07', 'x08', 'x10', 'x11', 'x13', 'x14', 'x16', 'x17', 'x18', 'x19', 'x20', 'x21', 'x22', 'w03', 'w04', 'w09', 'z07']
     },
     {
       id: 'computational',
       label: 'MCB + Data Science',
       title: '为 computational biology 项目组织知识',
       description: '先掌握生物机制，再追踪样本、assay、matrix、normalization 与 inference boundary。',
-      chapters: ['b01', 'x06', 'x08', 'l06', 'd01', 'd02', 'd04', 'k01', 'k06', 'q04', 'r02', 'r03', 'r05', 's01']
+      chapters: ['b01', 'x06', 'x08', 'x14', 'x19', 'x20', 'x22', 'l06', 'z07', 'a02', 'a09', 'a10', 'w01', 'w06', 'w08', 'w10', 'j07', 'y04', 'd01', 'd02', 'd04', 'k01', 'k06', 'q04', 'r02', 'r03', 'r05', 's01']
     }
   ];
 
@@ -142,6 +163,12 @@
       mcbds: 'https://catalog.illinois.edu/undergraduate/las/molecular-cellular-biology-data-science-bslas/',
       ib: 'https://catalog.illinois.edu/undergraduate/las/integrative-biology-bslas/',
       advanced: 'https://app.mcb.illinois.edu/courses/advanced',
+      mcb354: 'https://app.mcb.illinois.edu/courses/syllabi/MCB_354_syllabus.pdf',
+      mcb408: 'https://app.mcb.illinois.edu/courses/syllabi/MCB_408_syllabus.pdf',
+      mcb364: 'https://app.mcb.illinois.edu/courses/syllabi/MCB_364_syllabus.pdf',
+      biop401: 'https://app.mcb.illinois.edu/courses/syllabi/BIOP_401_syllabus.pdf',
+      mcb438: 'https://app.mcb.illinois.edu/courses/syllabi/MCB_438_syllabus.pdf',
+      mcb466: 'https://app.mcb.illinois.edu/courses/syllabi/MCB_466_syllabus.pdf',
       biology: 'https://biology.illinois.edu/choosing-your-major'
     }
   };

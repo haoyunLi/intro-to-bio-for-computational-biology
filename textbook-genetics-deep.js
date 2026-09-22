@@ -1,6 +1,5 @@
 /* Molecular genetics deep dive, placed immediately after the introductory genetics course. */
 (() => {
-  window.BIOCS_BOOK = window.BIOCS_BOOK.filter(course => course.title !== '植物生物学 Plant Biology');
   const chapter = window.BIOCS_MAKE_BREADTH_CHAPTER;
   const term = window.BIOCS_TERM;
   const course = {code:'01B',title:'分子遗传学精讲 Molecular Genetics',description:'16 章深入连接 chromosome、replication、repair、transcription、enhancer、chromatin、splicing、inheritance、GWAS 与肿瘤克隆。',chapters:[
