@@ -1,0 +1,59 @@
+/* A single visible course spine; the UIUC catalog remains a reference below it. */
+.guided-route{padding:92px clamp(24px,7vw,110px) 105px;background:#f5f2eb;scroll-margin-top:66px}
+.guided-route-intro{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(270px,.55fr);gap:clamp(40px,7vw,110px);align-items:end;border-top:1px solid #183751;padding:18px 0 48px}
+.guided-route-intro h2{font:400 clamp(44px,5.2vw,72px)/1.05 var(--serif);letter-spacing:-.035em;margin:0 0 17px;max-width:12ch;text-wrap:balance}
+.guided-route-intro p{font-size:15px;line-height:1.85;color:#455d70;margin:0;max-width:64ch}
+.guided-resume{border-top:1px solid #b9c6cd;padding-top:12px;display:grid;gap:12px;align-content:start}
+.guided-resume span{color:#526d81;font-size:12px;font-weight:750}
+.guided-resume a:nth-child(2){color:#15517e;font:600 18px/1.45 var(--serif);text-underline-offset:4px}
+.guided-resume a:last-child{font-size:12px;color:#486a85;line-height:1.55;text-underline-offset:3px}
+.guided-units{border-top:1px solid #183751}
+.guided-unit{border-bottom:1px solid #bfcbd0}
+.guided-unit summary{list-style:none;display:grid;grid-template-columns:90px minmax(0,1fr) 86px;gap:20px;align-items:start;padding:25px 0 27px;cursor:pointer;min-height:105px}
+.guided-unit summary::-webkit-details-marker{display:none}
+.guided-unit summary:focus-visible{outline:3px solid #bc6637;outline-offset:5px}
+.guided-unit-number{font:400 36px/1 var(--serif);color:#b95629;letter-spacing:-.03em}
+.guided-unit-heading strong{display:block;font:400 clamp(24px,2.8vw,36px)/1.15 var(--serif);letter-spacing:-.025em;color:#102d47}
+.guided-unit-heading small{display:block;margin-top:7px;font-size:13px;color:#536b7b;line-height:1.55}
+.guided-unit-progress{text-align:right;font-size:12px;font-weight:750;color:#5c7080;font-variant-numeric:tabular-nums;white-space:nowrap;padding-top:5px}
+.guided-unit[open] .guided-unit-heading strong{color:#0f5789}
+.guided-unit-body{margin:0 86px 34px 110px;max-width:850px}
+.guided-outcome{margin:0 0 17px;color:#344e61;font-size:13px;line-height:1.7}
+.guided-unit ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:30px}
+.guided-unit li{border-top:1px solid #d0d9da;min-width:0}
+.guided-unit li a{display:flex;align-items:baseline;gap:9px;padding:10px 0;color:#153c5a;font-size:13px;line-height:1.5;min-height:46px}
+.guided-unit li a span{color:#9a765c;font-size:10px;font-weight:800;min-width:20px}
+.guided-unit li a b{font-weight:600;min-width:0}
+.guided-unit li.is-complete a b{color:#627a76}
+.guided-unit li.is-complete a b:after{content:' ✓';color:#26745a}
+.guided-unit li.is-next a b{color:#0a5589}
+.guided-unit li a em{font-style:normal;color:#ba5826;font-size:10px;font-weight:800;white-space:nowrap;margin-left:auto}
+.guided-bridge{border-top:1px solid #bfcbd0;margin:23px 0 0;padding-top:13px;color:#395c73;font:400 16px/1.65 var(--serif)}
+.guided-apply{border-top:1px solid #d1d9dc;margin-top:18px;padding-top:15px;display:grid;grid-template-columns:minmax(0,.42fr) minmax(0,1fr) auto;gap:16px;align-items:baseline}
+.guided-apply b{font-size:11px;color:#295c78}
+.guided-apply p{font-size:12px;line-height:1.65;color:#465f70;margin:0}
+.guided-apply a{font-size:11px;font-weight:750;color:#125b8b;white-space:nowrap;text-underline-offset:3px}
+.guided-unit-more{display:grid;grid-template-columns:minmax(0,1fr) minmax(180px,.5fr);gap:26px;margin-top:19px}
+.guided-unit-more p{margin:0;color:#667c88;font-size:11px;line-height:1.85}
+.guided-unit-more p b{display:block;color:#395a6f;font-size:11px}
+.guided-unit-more p a{color:#245b80;text-decoration:underline;text-decoration-color:#a8c0ce;text-underline-offset:3px}
+.guided-practice{color:#145b8b;font-size:12px;font-weight:750;line-height:1.6;align-self:start;text-underline-offset:4px}
+@media(max-width:980px){.guided-route-intro{grid-template-columns:1fr;gap:24px}.guided-resume{max-width:580px}.guided-unit-body{margin-right:0}}
+@media(max-width:760px){
+  .path-header nav a:nth-child(n+4){display:none}
+  .path-header nav a:nth-child(3){display:inline}
+  .guided-route{padding:64px 22px 72px;scroll-margin-top:58px}
+  .guided-route-intro{padding-bottom:31px}
+  .guided-route-intro h2{font-size:clamp(40px,11vw,52px)}
+  .guided-route-intro p{font-size:14px}
+  .guided-unit summary{grid-template-columns:46px minmax(0,1fr) 48px;gap:12px;padding:20px 0;min-height:0}
+  .guided-unit-number{font-size:27px}
+  .guided-unit-heading strong{font-size:25px}
+  .guided-unit-heading small{font-size:12px}
+  .guided-unit-progress{font-size:10px}
+  .guided-unit-body{margin:0 0 28px 58px}
+  .guided-unit ol{grid-template-columns:1fr}
+  .guided-unit-more,.guided-apply{grid-template-columns:1fr;gap:9px}
+  .guided-apply a{white-space:normal}
+}
+@media(max-width:380px){.path-header{gap:12px}.path-header nav{gap:9px}.path-header nav a{font-size:9px}.path-brand{font-size:22px}}

@@ -120,18 +120,18 @@
 
   const tracks = [
     {
-      id: 'core',
-      label: 'UIUC MCB Core',
-      title: '按正式 core sequence 建立完整骨架',
-      description: '适合系统补齐：共同基础 → molecular genetics → cells / development → biochemistry → advanced MCB。',
-      chapters: ['b01', 'b03', 'b05', 'g01', 'g04', 'm01', 'm03', 'm05', 'w01', 'w03', 'w06', 'c01', 'c04', 'v01', 'l01', 'z01', 'z03', 'a01', 'a03', 'a05', 'a08', 'h01', 'u01', 'j01', 'i01', 'i03', 'i07', 'y01', 'y03']
-    },
-    {
       id: 'genetics',
       label: 'Deep Genetics',
       title: '围绕你最需要的调控遗传学深入',
       description: '重点连接 enhancer、chromatin、splicing、GWAS、ASE/QTL、HLA、somatic evolution 与 perturbation evidence。',
       chapters: ['g01', 'g04', 'x01', 'x02', 'x04', 'x06', 'x07', 'x08', 'x10', 'x11', 'x13', 'x14', 'x16', 'x17', 'x18', 'x19', 'x20', 'x21', 'x22', 'w03', 'w04', 'w09', 'z07']
+    },
+    {
+      id: 'immune-metabolism',
+      label: 'Immune × Metabolism',
+      title: '从物质流与免疫识别理解 tumor microenvironment',
+      description: '按需比较能量、carbon flow、antigen presentation、T cell response 与免疫逃逸，不把 pathway 图当作直接证据。',
+      chapters: ['a01', 'a02', 'a03', 'a05', 'a08', 'a09', 'a10', 'i01', 'i03', 'i04', 'i05', 'i07', 'i10']
     },
     {
       id: 'computational',

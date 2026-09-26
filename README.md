@@ -4,13 +4,13 @@
 
 内容重点为 22 章 **Molecular Genetics**、6 章 **Cell Signaling**、10 章 **Metabolism & Metabolomics** 和 10 章 **Immunology**。本轮再按 UIUC laboratory 与 advanced-course 结构加入 10 章 **Experimental Cell & Molecular Biology**、7 章 **Structural Biology & Biophysics**、8 章 **Infection, Virology & Pharmacology**、6 章 **Organismal Biology & Behavior**。本科广度还覆盖 evolution、microbiology、physiology、development、neuroscience 和 ecology；按当前学习目标不纳入 Plant Biology。
 
-`index.html` 现在是唯一课程导航：直接显示五阶段 prerequisite map、UIUC MCB Core / Deep Genetics / MCB + Data Science 三种进入路线、advanced MCB 问题域和 supporting sciences；旧 `uiuc-path.html` 只负责保留旧链接并重定向到首页。每章增加 zero-background map，先拆清 object、mechanism、evidence 与 inference boundary。`project-lab.html` 用同一位 fictional composite patient 的四个 longitudinal specimens，把 Genetics、raw assay、signaling dynamics、tumor immunity、metabolism 与 claim building 串成一条证据链；`genetics-lab.html` 提供 chromatin/TF/enhancer contact、purity/CNV/CCF→VAF 和 signaling dynamics 三个可操作因果模型；`motion-lab.html` 只保留 **16 个有明确机制状态变化的原创图解、79 个步骤**。
+`index.html` 是唯一课程导航：先显示 **13 个连续单元、78 个先修顺序核对过的核心步骤**，每个单元末尾再给一个“换成自己的数据”的迁移问题；Deep Genetics、Immune × Metabolism 与 MCB + Data Science 是选读主题，UIUC 五阶段课程对照与完整 180 章目录是参考层。旧 `uiuc-path.html` 只负责保留旧链接并重定向到首页。教材侧栏默认显示同一条主线，“下一步”沿主线移动；原有 180 章都保留在可展开目录和搜索中，旧进度不丢失。`glossary.html` 提供可搜索的 602 个 English terms；**全部 602 个**都有简明释义、具体例子、常见误区及相关章节，其中 93 个核心概念默认先展示。正文首次遇到的关键术语可直接点开解释。每章增加 zero-background map，先拆清 object、mechanism、evidence 与 inference boundary；102 个拓展章节现有各章专属的逐步例题，全部 180 章都给出 assay signal、data unit 与 inference boundary 的桥接卡。`project-lab.html` 先用 fictional composite patient 的四个 longitudinal specimens，把 Genetics、raw assay、signaling dynamics、tumor immunity、metabolism 与 claim building 串成一条证据链；最后用“自己的项目”工作页把 biological question、sample、assay、数值分母、analysis design、有限结论和替代解释写成一个可检查的草稿。方法提示还包括 spatial bin-to-cell、pseudobulk pathway age 与 methylation age 三类分析场景，用来练习独立单位、原始测量、数据泄漏和结论边界，不代表本站知道读者当前的真实数据。这个检查只验证结构是否覆盖关键问题，不会替读者判定科学正确性，也不上传真实数据。`genetics-lab.html` 提供 chromatin/TF/enhancer contact、purity/CNV/CCF→VAF 和 signaling dynamics 三个可操作因果模型；`motion-lab.html` 只保留 **16 个有明确机制状态变化的原创图解、79 个步骤**。
 
 零基础段包括测量信号与生物对象、DNA/RNA、数量/浓度/通量、物理尺度、基因结构、蛋白结构、酶动力学、复制叉、细胞周期、实验对照、PCR/RT-qPCR、遗传概率、单倍型、Hardy–Weinberg 和肿瘤纯度下的 VAF。B01–B05 与 G01–G06 另加 11 个“先猜再揭示”数据对象/分母练习。具体增补和后续缺口见 [`coverage-audit.md`](coverage-audit.md)。
 
 ## 本地预览
 
-全站现有 11 个 HTML 页面、180 章教材与 12 课复习。教材侧栏和总目录均按 UIUC 五阶段分组，每章标明所在阶段，并提供 intuition、English term anchors、zero-background map、worked example、understanding check 与 sources。
+全站现有 12 个 HTML 页面、180 章教材与 12 课复习。教材侧栏默认按 13 个连续单元分组，课程对照和拓展章节按需展开；每章标明所在 UIUC 阶段，并提供 intuition、English term anchors、zero-background map、worked example、understanding check 与 sources。
 
 建议用本地 HTTP 服务打开 `index.html`；真实队列页通过 `fetch` 读取随站点保存的 JSON 快照，直接以 `file://` 打开会被浏览器拦截。可在本目录运行：
 
@@ -45,17 +45,19 @@ npx serve .
 
 ## 文件
 
-- `index.html`、`uiuc-path.css`、`uiuc-path.js`：唯一 UIUC 五阶段学习入口、三条推荐路线与 advanced MCB 问题域
+- `index.html`、`guided-path.js`、`guided-path.css`、`uiuc-path.css`、`uiuc-path.js`：13 单元连续学习主线、选读主题与 UIUC 课程对照
 - `uiuc-path.html`：兼容旧链接的重定向页
 - `uiuc-curriculum.js`：UIUC 课程结构、阶段、advanced clusters 与 supporting sciences 元数据
-- `textbook.html`：系统教材；24 门课、180 章
+- `textbook.html`、`learning-support.css`：系统教材；默认连续主线，完整 24 门课、180 章可搜索、可展开
+- `glossary.html`、`glossary.js`、`glossary.css`、`glossary-data.js`、`glossary-expansion-*.js`：602 个带例子与误区的 English term 索引与章内解释
 - `textbook-data.js`、`textbook-part-*.js`：来源库与原创章节内容
 - `textbook-undergrad-*.js`、`textbook-genetics-deep.js`、`textbook-genetics-extension.js`、`textbook-metabolism.js`、`textbook-immunology-deep.js`、`textbook-uiuc-expansion.js`：本科广度、22 章 Molecular Genetics、10 章 Metabolism、10 章 Immunology，以及 UIUC laboratory、biophysics、infection/pharmacology 与 organismal behavior 扩展
 - `textbook-intuition.js`、`textbook-terminology.js`、`legacy-terminology.js`：全章 intuition 与全站 English technical-term display policy
-- `textbook-data-lens.js`：原有 69 章的生物概念→数据语义卡片
+- `textbook-extension-worked-*.js`：把拓展章的通用模板替换为该章专属的逐步例题
+- `textbook-data-lens.js`、`textbook-extension-lens-*.js`、`textbook-core-lens.js`：全部 180 章的生物概念→数据语义卡片
 - `textbook.css`、`textbook.js`：教材布局、搜索、导航与本地进度
 - `genetics-lab.html`、`.css`、`.js`：enhancer 调控、VAF 分母与 signaling dynamics 三个因果模型
-- `project-lab.html`、`.css`、`.js`：一位 fictional composite patient 的四时间点、六层证据链、四种 raw assay 判读、resistance dynamics 与 tumor–immune–metabolism 假说检验
+- `project-lab.html`、`.css`、`.js`、`project-transfer.css`、`project-transfer.js`：一位 fictional composite patient 的四时间点、六层证据链、四种 raw assay 判读、resistance dynamics、tumor–immune–metabolism 假说检验，以及读者自己项目的八问工作页
 - `motion-lab.html`、`bio-motion.css`、`bio-motion.js`、`bio-motion-biology.js`、`bio-motion-data.js`：16 个机制图解、79 个步骤
 - `foundations-lab.html`、`.css`、`.js`：三个互动生物与数据模型；新增序列逐碱基/逐 codon 播放与 bulk 比例扫描
 - `data-lab.html`、`data-lab.css`、`data-lab.js`、`data-lab-mapping.js`、`data-lab-missingness.js`、`data-lab-segmentation.js`：九个交互式数据练习；SBS 逐轮加入/成像/解除阻断、空间分割边界与 cell × gene 矩阵误差，以及柱和 tile 变化动效
@@ -68,6 +70,6 @@ npx serve .
 - `styles.css`：布局与响应式样式
 - `script.js`：移动导航和数据集多选筛选
 - `assets/*.svg`：原创示意图与图标
-- `coverage-audit.md`：从零基础复查后的已补内容和后续扩写清单
+- `coverage-audit.md`、`teaching-design-roadmap.md`：从零基础复查后的已补内容、逐章扩写与教学设计清单
 
-内容核对日期：2026-09-21。
+内容核对日期：2026-09-26。可运行 `node scripts/audit-zero-background.mjs` 检查课程结构、602 个术语解释、102 个拓展例题、180 张数据语义卡及学习顺序，运行 `node scripts/test-project-transfer.mjs` 检查项目工作页。主线解决“下一步读什么”，术语库解决“遇到词时在哪里解释”；自动检查与代理模拟阅读不等同于零基础真人可理解性验证，更不能保证每位读者仅靠本站就掌握每个专题。

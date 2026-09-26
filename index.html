@@ -8,6 +8,8 @@
   <title>UIUC Biology Learning Path · Bio/CS</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="uiuc-path.css?v=20260921-3">
+  <link rel="stylesheet" href="uiuc-story.css?v=20260925-1">
+  <link rel="stylesheet" href="guided-path.css?v=20260925-2">
   <script src="textbook-data.js" defer></script>
   <script src="textbook-undergrad-sources.js" defer></script>
   <script src="textbook-part-0.js" defer></script>
@@ -30,52 +32,53 @@
   <script src="textbook-uiuc-expansion.js" defer></script>
   <script src="textbook-intuition.js" defer></script>
   <script src="textbook-terminology.js" defer></script>
-  <script src="uiuc-curriculum.js" defer></script>
-  <script src="uiuc-path.js?v=20260921-2" defer></script>
+  <script src="uiuc-curriculum.js?v=20260925-1" defer></script>
+  <script src="guided-path.js?v=20260925-2" defer></script>
+  <script src="uiuc-path.js?v=20260925-3" defer></script>
 </head>
 <body>
-  <a class="skip-link" href="#curriculum-map">跳到课程路径</a>
+  <a class="skip-link" href="#guided-route">跳到学习主线</a>
   <header class="path-header">
     <a class="path-brand" href="index.html" aria-label="Bio/CS 学习路径首页">Bio<span>/</span>CS</a>
-    <nav aria-label="网站导航"><a href="index.html" aria-current="page">学习路径</a><a href="textbook.html">系统教材</a><a href="genetics-lab.html">Genetics Lab</a><a href="project-lab.html">Project Lab</a><a href="data-lab.html">Data Lab</a></nav>
+    <nav aria-label="网站导航"><a href="#guided-route" aria-current="page">学习主线</a><a href="textbook.html">系统教材</a><a href="glossary.html">术语解释</a><a href="project-lab.html">Project Lab</a><a href="data-lab.html">Data Lab</a></nav>
     <span class="path-header-meta">UIUC · 2026–2027</span>
   </header>
 
   <main>
     <section class="path-hero" aria-labelledby="path-title">
       <div class="path-hero-copy">
-        <p class="overline">BIOLOGY DEGREE LOGIC · REBUILT FOR COMPUTATIONAL WORK</p>
-        <h1 id="path-title">沿着 UIUC 的<br><em>先修关系</em><br><span class="path-hero-line">学生物</span></h1>
-        <p class="path-deck">为生物零基础的 computational learner 重建本科主干：先用 high-level intuition 看懂对象和因果，再用 English 记 biological terms，最后连接 assay、data 与 inference boundary。</p>
-        <div class="path-actions"><a href="#choose-track">选择学习路线 ↓</a><a href="project-lab.html">用一个 tumor case 串起全站 →</a></div>
+        <h1 id="path-title">从 DNA 到疾病，<br><em>看懂每一步。</em></h1>
+        <p class="path-deck">一处 DNA variant 怎样影响 RNA、protein、cell 与 tissue？从零理解机制与测量，最后能用同一套问题解释自己项目里的数据与结论。</p>
+        <div class="path-actions"><a id="hero-resume" href="textbook.html#b01">开始连续主线 →</a><a href="#guided-route">先看学习顺序 ↓</a></div>
+        <a class="path-route-shortcut" href="project-lab.html#your-project">已经有项目？直接整理自己的证据链 →</a>
       </div>
-      <div class="path-hero-visual" aria-label="UIUC MCB 课程先修结构示意">
-        <div class="helix" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      <div class="path-hero-visual evidence-ladder" aria-label="从 DNA 变化到患者结果的六层问题；层与层之间需要额外证据">
+        <h2>同一个问题，六层证据</h2>
         <ol>
-          <li><span>01</span><b>MCB 150 + IB 150</b><small>shared foundation</small></li>
-          <li><span>02</span><b>MCB 250 + 251</b><small>molecular genetics</small></li>
-          <li><span>03</span><b>MCB 252 + 253</b><small>cells & development</small></li>
-          <li><span>04</span><b>MCB 354</b><small>biochemistry & metabolism</small></li>
-          <li><span>05</span><b>Advanced + Research</b><small>immunity · cancer · data</small></li>
+          <li><span>01</span><b>DNA variant</b><small>序列真的改变了吗？</small></li>
+          <li><span>02</span><b>RNA expression</b><small>转录量是否随之改变？</small></li>
+          <li><span>03</span><b>Protein activity</b><small>功能是否受到影响？</small></li>
+          <li><span>04</span><b>Cell behavior</b><small>cell 的状态和行为改变了吗？</small></li>
+          <li><span>05</span><b>Tissue context</b><small>周围 cell 与空间结构参与了吗？</small></li>
+          <li><span>06</span><b>Patient outcome</b><small>患者层面的结果是什么？</small></li>
         </ol>
+        <p>每跨一层都需要额外证据，不能自动串成因果链。</p>
       </div>
     </section>
 
-    <section class="path-orientation" aria-label="架构说明">
-      <p><b>唯一学习入口</b><span>UIUC prerequisite path</span></p>
-      <p><b>最深重点</b><span>Genetics · regulation · signaling</span></p>
-      <p><b>新增主干</b><span>Lab · Biophysics · Infection · Behavior</span></p>
-      <p><b>明确排除</b><span>Plant Biology</span></p>
+    <section class="guided-route" id="guided-route" aria-labelledby="guided-title">
+      <div class="guided-route-intro"><div><h2 id="guided-title">按一条主线学过去。</h2><p>13 个连续单元、78 个先修顺序已核对的核心章节。每一步都回答「上一章为什么是下一章的前提」；每个单元末尾再把知识换成你自己数据中的一个判断。完整 180 章保留为参考库，深入内容按项目需要选读。</p></div><div class="guided-resume"><span id="guided-progress">载入进度…</span><a id="guided-next" href="textbook.html#b01">从第一步开始 →</a><a href="glossary.html">不认识术语？在这里查，也能在章内点开</a></div></div>
+      <div id="guided-units" class="guided-units"></div>
     </section>
 
     <section class="track-section" id="choose-track" aria-labelledby="track-title">
-      <div class="section-intro"><span>01 / CHOOSE A ROUTE</span><h2 id="track-title">同一套知识，三种进入方式</h2><p>切换路线只改变推荐顺序，不删掉本科核心内容。零基础建议从 UIUC MCB Core 开始；已有项目问题可从 Genetics 或 Data Science 路线切入。</p></div>
-      <div class="track-switch" role="group" aria-label="选择学习路线" id="track-switch"></div>
+      <div class="section-intro"><span>OPTIONAL DEPTH</span><h2 id="track-title">主线之外，按问题加深</h2><p>这里是选读清单，不是另一套必修顺序。Genetics、Metabolism、Immunology 和 data topics 也已嵌在上面的主线中。</p></div>
+      <div class="track-switch" role="group" aria-label="选择深入主题" id="track-switch"></div>
       <div class="track-summary" id="track-summary" aria-live="polite"></div>
     </section>
 
     <section class="curriculum-section" id="curriculum-map" aria-labelledby="curriculum-title">
-      <div class="section-intro"><span>02 / PREREQUISITE MAP</span><h2 id="curriculum-title">五个阶段，而不是孤立课程</h2><p>每一阶段说明对应的 UIUC 课程、本网站覆盖范围、chapter 数量与下一步；MCB core、laboratory、biophysics 与 IB 的 non-plant organismal core 被放进同一张依赖图。</p></div>
+      <div class="section-intro"><span>CURRICULUM REFERENCE</span><h2 id="curriculum-title">UIUC 课程怎样对应</h2><p>这是课程范围与先修结构的对照，不是推荐阅读顺序。要顺着知识学习，请用上方的连续主线。</p></div>
       <div id="stage-list" class="stage-list"></div>
     </section>
 
@@ -95,6 +98,6 @@
     </section>
   </main>
 
-  <footer><a class="path-brand" href="index.html">Bio<span>/</span>CS</a><p>Learn the dependency graph, not a glossary.</p><a href="textbook.html">开始系统教材 →</a></footer>
+  <footer><a class="path-brand" href="index.html">Bio<span>/</span>CS</a><p>沿主线理解机制；需要时就查术语。</p><a href="textbook.html#b01">从第一步开始 →</a></footer>
 </body>
 </html>

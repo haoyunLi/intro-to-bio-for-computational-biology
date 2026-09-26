@@ -1,0 +1,61 @@
+.pl-hero-actions{display:flex;flex-wrap:wrap;gap:8px 15px;align-items:center}
+.pl-hero-actions a:last-child{background:transparent;color:#165994;border:1px solid #b4c8db}
+.pl-transfer{max-width:1280px;margin:auto;padding:84px 32px 95px;scroll-margin-top:62px;border-top:1px solid var(--pl-line)}
+.pl-transfer-head{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(250px,.65fr);gap:60px;align-items:end;padding-bottom:31px;border-bottom:2px solid var(--pl-deep)}
+.pl-transfer-head h2{font:700 clamp(35px,4.2vw,58px)/1.1 Georgia,"Noto Serif SC","Songti SC",serif;letter-spacing:-.035em;margin:0 0 15px;color:#102b50}
+.pl-transfer-head p{font-size:14px;line-height:1.8;color:#4c647c;max-width:66ch;margin:0}
+.pl-transfer-head>p{font-size:13px;border-top:1px solid #b8c9d7;padding-top:13px}
+.pl-transfer-head strong{color:#173f68}
+.transfer-example{border-bottom:1px solid var(--pl-line)}
+.transfer-example summary{list-style:none;cursor:pointer;padding:18px 0;color:#15578f;font-size:13px;font-weight:800;line-height:1.5}
+.transfer-example summary::-webkit-details-marker{display:none}
+.transfer-example summary:after{content:' ＋';color:#c15c31}
+.transfer-example[open] summary:after{content:' −'}
+.transfer-example dl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 35px;margin:0 0 24px}
+.transfer-example dl>div{border-top:1px solid #d7e0e8;padding:13px 0}
+.transfer-example dt{font-size:11px;font-weight:800;color:#1b5e8d;margin-bottom:5px}
+.transfer-example dd{font-size:12px;line-height:1.7;color:#445d73;margin:0}
+.transfer-workspace{display:grid;grid-template-columns:minmax(250px,.34fr) minmax(0,1fr);gap:clamp(35px,5vw,72px);margin-top:38px}
+.transfer-guide{min-width:0;align-self:start}
+.transfer-guide h3{font:700 27px/1.2 Georgia,"Noto Serif SC","Songti SC",serif;margin:0 0 14px;color:#123a5f}
+.transfer-guide>label{display:block;color:#435d76;font-size:12px;font-weight:750;margin-bottom:8px}
+.transfer-guide select{width:100%;background:white;color:#173e64;border:1px solid #a9bdcf;border-radius:2px;padding:11px 12px;font-size:13px;min-height:44px}
+.transfer-guide>p{font-size:11px;line-height:1.7;color:#586f83;border-top:1px solid var(--pl-line);padding-top:12px}
+.transfer-method-guide{margin-top:20px;border-top:2px solid var(--pl-blue);padding-top:17px}
+.transfer-method-guide h4{font:700 19px/1.3 Georgia,serif;color:#173e64;margin:0 0 11px}
+.transfer-method-guide dl{margin:0}
+.transfer-method-guide dl>div{border-top:1px solid #d4e0e8;padding:10px 0}
+.transfer-method-guide dt{font-size:10px;color:#1f5d89;font-weight:850;margin-bottom:4px}
+.transfer-method-guide dd{font-size:11px;line-height:1.7;color:#435e76;margin:0}
+.transfer-mini{border-top:1px solid #d4e0e8;padding-top:13px;margin-top:4px;color:#3c5871;font-size:11px;line-height:1.65}
+.transfer-mini summary{cursor:pointer;min-height:35px;color:#185a87;font-weight:750}
+.transfer-mini p{margin:5px 0 10px}
+.transfer-method-links{display:flex;flex-wrap:wrap;gap:7px 16px;margin-top:14px}
+.transfer-method-guide a{font-size:11px;color:#135b91;font-weight:750;text-underline-offset:3px}
+.pl-transfer form{min-width:0}
+.pl-transfer fieldset{border:0;border-top:2px solid #1b456c;padding:0 0 27px;margin:0 0 24px;min-width:0}
+.pl-transfer legend{float:left;width:100%;font:700 22px/1.3 Georgia,"Noto Serif SC","Songti SC",serif;color:#173c5e;padding:15px 0 2px;margin-bottom:10px}
+.pl-transfer fieldset:after{content:'';display:block;clear:both}
+.transfer-field{clear:both;border-top:1px solid #d7e1e9;padding:16px 0 17px;scroll-margin-top:78px}
+.transfer-field label{display:block;font-size:14px;line-height:1.5;font-weight:800;color:#183b5b}
+.transfer-field p{font-size:12px;line-height:1.7;color:#5d7184;margin:4px 0 9px}
+.transfer-field textarea{display:block;width:100%;min-height:86px;resize:vertical;border:1px solid #b8c9d8;border-radius:2px;background:#fff;color:#193e5c;padding:11px 12px;font:400 13px/1.65 var(--sans,Arial,sans-serif)}
+.transfer-field textarea::placeholder{color:#536b7e;opacity:1}
+.transfer-field.is-empty textarea{border-color:#bc7854}
+.transfer-actions{display:flex;flex-wrap:wrap;gap:10px 12px;align-items:center;border-top:2px solid #1b456c;padding-top:20px}
+.transfer-actions button{border:1px solid var(--pl-blue);background:var(--pl-blue);color:#fff;padding:10px 14px;font-size:12px;font-weight:800;min-height:42px;cursor:pointer}
+.transfer-actions button:nth-child(2){background:#fff;color:#15588c}
+.transfer-actions button:nth-child(3){border:0;background:transparent;color:#5c6874;text-decoration:underline;text-underline-offset:3px;padding-left:2px;padding-right:2px}
+.transfer-actions button:nth-child(3)[data-pending="true"]{color:#a4472a;font-weight:850}
+.transfer-actions span{margin-left:auto;font-size:11px;color:#536d82;font-variant-numeric:tabular-nums}
+.transfer-privacy{font-size:11px;line-height:1.7;color:#5b7083;margin:14px 0 0}
+.transfer-feedback{border-top:1px solid #b8c9d7;padding:13px 0;margin-top:18px;color:#2a506e;font-size:12px;line-height:1.7}
+.transfer-feedback:empty{display:none}
+.transfer-feedback p{margin:0 0 8px}
+.transfer-feedback ul{margin:0;padding-left:19px}
+.transfer-feedback a{color:#12598b;font-weight:750;text-underline-offset:3px}
+.pl-transfer a:hover,.pl-transfer summary:hover,.transfer-actions button:hover{filter:brightness(.88)}
+.pl-transfer textarea:focus-visible,.pl-transfer select:focus-visible,.pl-transfer summary:focus-visible,.pl-transfer button:focus-visible,.pl-transfer a:focus-visible{outline:3px solid #b96432;outline-offset:3px}
+@media(max-width:900px){.pl-transfer-head,.transfer-workspace{grid-template-columns:1fr;gap:25px}.transfer-guide{display:grid;grid-template-columns:minmax(220px,.7fr) minmax(0,1fr);gap:0 22px}.transfer-guide h3,.transfer-guide>label,.transfer-guide select,.transfer-guide>p{grid-column:1}#transfer-method-guide{grid-column:2;grid-row:1/5}.transfer-method-guide{margin-top:0}.pl-transfer{padding-left:24px;padding-right:24px}}
+@media(max-width:650px){.pl-transfer{padding:56px 18px 72px;scroll-margin-top:56px}.pl-transfer-head{gap:20px}.pl-transfer-head h2{font-size:37px}.transfer-example dl,.transfer-guide{display:block}.transfer-method-guide{margin-top:20px}.transfer-actions span{margin-left:0;width:100%}.pl-hero-actions{display:flex;align-items:stretch}.pl-hero-actions a{margin-top:10px}.pl-transfer legend{font-size:20px}}
+@media(prefers-reduced-motion:reduce){.pl-transfer *{scroll-behavior:auto}}

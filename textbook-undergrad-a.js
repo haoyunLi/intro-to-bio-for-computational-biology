@@ -3,7 +3,7 @@
   const term = (name, definition, source) => [name, definition, source];
   const chapter = ({id,title,subtitle,intuition,mental,mechanism,evidence,project,pitfall,terms,check,sources,prereq=[],core,flow,worked}) => ({
     id,title,subtitle,
-    intro:`${intuition} 本章不从术语表开始，而是先建立一个可以推理的模型，再把英文术语贴到模型上。`,
+    intro:'',
     intuition:[intuition,mental], core,
     goals:['能用自己的话复述核心因果关系',`认识 ${terms.map(item=>item[0].split(' / ')[0]).slice(0,3).join('、')}`,'知道常见数据能支持什么、不能支持什么'],
     prereq, flow,

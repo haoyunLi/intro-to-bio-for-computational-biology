@@ -1,0 +1,51 @@
+.sidebar-route-link,.sidebar-glossary-link{display:block;color:#18557f;font-size:11px;font-weight:750;line-height:1.5;padding:4px 0;text-underline-offset:3px}
+.sidebar-route-link{margin-top:-11px}
+.toc-guided{border-top:1px solid #c4d0d5;padding-top:13px}
+.toc-guided>h2{font:700 12px/1.3 var(--sans);color:#173d5b;margin:0 0 10px}
+.toc-guided-unit{border-top:1px solid #d2dbde}
+.toc-guided-unit summary{list-style:none;display:grid;grid-template-columns:22px minmax(0,1fr) 33px;gap:7px;align-items:baseline;padding:10px 0;cursor:pointer;color:#2c526b;font-size:11px;font-weight:750;line-height:1.4}
+.toc-guided-unit summary::-webkit-details-marker{display:none}
+.toc-guided-unit summary b{font-size:10px;color:#af572b}
+.toc-guided-unit summary small{text-align:right;color:#738997;font-size:10px;font-variant-numeric:tabular-nums}
+.toc-guided-unit>div{padding:0 0 8px 29px}
+.toc-guided-unit a{display:block;padding:6px 8px;color:#496275;font-size:10px;line-height:1.45;border-radius:3px}
+.toc-guided-unit a[aria-current]{background:#dfe9ed;color:#135681;font-weight:800}
+.toc-guided-unit a.is-complete:after{content:' ✓';color:#2b795c}
+.toc-library{border-top:1px solid #aebec7;margin-top:18px;padding-top:9px}
+.toc-library>summary{cursor:pointer;color:#285c7d;font-size:11px;font-weight:750;line-height:1.5;padding:7px 0;min-height:35px}
+.toc-library .toc-stage:first-of-type{margin-top:10px}
+.chapter-route-line{font-size:11px;color:#466f88}
+.book-context>a{color:#125c88;font-weight:750;text-underline-offset:3px}
+.inline-term{appearance:none;border:0;border-bottom:1px dotted currentColor;border-radius:0;background:transparent;color:#175f8c;padding:0;font:inherit;line-height:inherit;cursor:pointer;text-decoration:none}
+.inline-term:hover{color:#a84d21;border-bottom-style:solid}
+.inline-term:focus-visible,.toc-guided-unit summary:focus-visible,.toc-library summary:focus-visible{outline:2px solid #bf632f;outline-offset:3px}
+.term-panel[hidden]{display:none!important}
+.term-panel{position:fixed;z-index:45;right:24px;bottom:24px;width:min(420px,calc(100vw - 32px));max-height:min(75vh,700px);overflow-y:auto;background:#fff;color:#16364e;border:1px solid #aebfc9;border-radius:6px;box-shadow:0 16px 45px rgba(7,29,49,.22);padding:22px 23px 21px}
+.term-panel>button{float:right;border:0;background:transparent;color:#245b7f;font-size:11px;font-weight:750;cursor:pointer;padding:2px 0 7px 10px}
+.term-panel>span{display:block;color:#617989;font-size:10px;font-weight:800;letter-spacing:.08em;padding-right:70px}
+.term-panel h2{font:600 30px/1.2 var(--display);letter-spacing:-.02em;margin:10px 0 12px;color:#143b59}
+.term-panel p{font-size:13px;line-height:1.72;margin:0 0 9px;color:#36546a}
+.term-panel #term-simple{font-size:15px;color:#1d405a}
+.term-panel #term-caution{border-top:1px solid #d7e0e4;padding-top:10px;margin-top:13px}
+.term-panel>div{display:flex;flex-wrap:wrap;gap:8px 16px;margin-top:16px}
+.term-panel a{font-size:11px;font-weight:750;color:#0f5c8b;text-underline-offset:3px}
+.term-panel:focus{outline:none}
+.next-step-preview{max-width:950px;margin:34px auto 0;border-top:1px solid #aebec7;padding:21px 0 9px}
+.next-step-preview span{display:block;color:#536f82;font-size:11px;font-weight:750}
+.next-step-preview p{font:400 18px/1.55 var(--display);color:#1c4868;max-width:65ch;margin:8px 0 9px}
+.next-step-preview a{font-size:12px;font-weight:750;color:#145e90;text-underline-offset:3px}
+.curriculum-panel>summary{cursor:pointer;list-style:none;color:#1a587f;font:750 13px/1.5 var(--sans);padding:13px 0}
+.curriculum-panel>summary::-webkit-details-marker{display:none}
+.curriculum-panel>summary:after{content:' ＋';color:#a85730}
+.curriculum-panel[open]>summary:after{content:' −'}
+.curriculum-panel>summary:focus-visible{outline:2px solid #bf632f;outline-offset:3px}
+.curriculum-panel-content{padding-top:16px}
+.book-bottom-nav{margin-top:24px}
+@media(max-width:760px){
+  .book-header nav a:nth-child(3){display:inline}
+  .book-header nav a:nth-child(n+4){display:none}
+  .term-panel{right:0;bottom:0;width:100vw;max-height:62svh;border-radius:9px 9px 0 0;padding:20px 21px 24px}
+  .term-panel h2{font-size:27px}
+  .next-step-preview p{font-size:16px}
+}
+@media(max-width:490px){.book-header nav a:nth-child(3){display:inline}.book-header nav{gap:9px}.book-header nav a{font-size:9px}}

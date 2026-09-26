@@ -1,0 +1,48 @@
+/* One claim, one visual, then the reasoning steps. Shared by every chapter. */
+.book-hero{padding:42px 0 30px}
+.book-hero h1{margin:0 0 12px;max-width:850px}
+.book-kicker{display:block;letter-spacing:.08em;color:#53718a}
+.book-subtitle{margin:11px 0 22px;max-width:68ch}
+.book-thesis{border-top:1px solid #b9c8d1;padding:20px 0 0;max-width:760px}
+.book-thesis p{margin:0;color:#123a5b;font:600 clamp(22px,2.35vw,31px)/1.45 var(--display);letter-spacing:-.02em;text-wrap:pretty}
+.book-thesis small{display:block;margin-top:10px;color:#536c7f;font-size:14px;line-height:1.7}
+.book-context{display:flex;flex-wrap:wrap;gap:5px 24px;align-items:baseline;margin-top:25px;color:#61798d;font-size:11px}
+.book-context p{margin:0}.book-context .prereq{margin:0;font-size:11px}
+.book-intro{max-width:72ch;margin:30px 0 26px;font-size:16px;line-height:1.85}
+.book-article>.concept-figure{margin:26px 0 38px;padding:16px 0 10px;background:transparent;border:0;border-top:1px solid #c7d2d8;border-bottom:1px solid #c7d2d8;border-radius:0}
+.book-article>.concept-figure .concept-flow>div{background:#f1f4f3;border-color:#d5dddf}
+.chapter-story-map{margin:34px 0 38px;padding:20px 0 0;border-top:1px solid #c7d2d8}
+.chapter-story-map>span{display:block;color:#214b6d;font:700 16px/1.4 var(--display);margin-bottom:13px}
+.chapter-story-map ol{list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 28px;margin:0;padding:0}
+.chapter-story-map li{border-top:1px solid #dce3e5;min-width:0}
+.chapter-story-map a{display:flex;align-items:baseline;gap:13px;min-height:46px;padding:9px 4px 9px 0;color:#2b4c66;font-size:13px;line-height:1.5;font-weight:650}
+.chapter-story-map a:hover{color:#164d82;text-decoration:underline;text-underline-offset:4px}
+.chapter-story-map b{font:800 10px/1 var(--sans);color:#b35426;min-width:18px}
+.chapter-section{scroll-margin-top:82px;padding:35px 0}
+.chapter-section h2{max-width:28ch}
+.chapter-section p{max-width:72ch;line-height:1.85}
+.book-term-line{display:grid;grid-template-columns:180px 1fr;gap:16px;margin:38px 0 0;padding:15px 0;border-top:1px solid #c7d2d8;border-bottom:1px solid #c7d2d8;color:#38556e;font-size:12px;line-height:1.7}
+.book-term-line b{color:#1d4f78}
+.book-goals{margin:16px 0 35px;color:#38556e;font-size:13px}
+.book-goals summary{cursor:pointer;color:#1c5685;font-weight:750;padding:7px 0;min-height:40px}
+.book-goals ul{margin:5px 0 12px;padding-left:22px;line-height:1.7}
+.book-vocab{margin-top:35px}
+.chapter-transfer{margin:44px 0 48px;padding:28px 0 32px;border-top:2px solid #b35426;border-bottom:1px solid #c7d2d8}
+.chapter-transfer>span{display:block;color:#9b4922;font-size:11px;font-weight:800;letter-spacing:.08em}
+.chapter-transfer h2{margin:10px 0 9px;color:#173e60;font:700 clamp(22px,2.6vw,29px)/1.35 var(--display)}
+.chapter-transfer p{max-width:66ch;margin:0 0 14px;color:#35556f;font-size:15px;line-height:1.75}
+.chapter-transfer a{color:#135b91;font-size:13px;font-weight:800;text-decoration:underline;text-underline-offset:4px}
+.chapter-transfer a:hover{color:#9b4922}
+#chapter-motion{margin-top:36px}
+@media(max-width:760px){
+  .book-hero{padding:27px 0 23px}
+  .book-hero h1{margin-bottom:11px}
+  .book-subtitle{margin:10px 0 18px}
+  .book-thesis{padding-top:17px}
+  .book-thesis p{font-size:clamp(21px,6.4vw,27px)}
+  .book-thesis small{font-size:13px}
+  .book-context{margin-top:20px}
+  .book-intro{margin:26px 0 22px}
+  .chapter-story-map ol{grid-template-columns:1fr}
+  .book-term-line{grid-template-columns:1fr;gap:2px}
+}

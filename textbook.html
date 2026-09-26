@@ -9,6 +9,8 @@
   <link rel="stylesheet" href="textbook.css?v=20260921-3">
   <link rel="stylesheet" href="bio-motion.css">
   <link rel="stylesheet" href="textbook-breadth.css?v=20260921-3">
+  <link rel="stylesheet" href="textbook-story.css?v=20260926-1">
+  <link rel="stylesheet" href="learning-support.css?v=20260925-2">
   <script src="textbook-data.js" defer></script>
   <script src="textbook-undergrad-sources.js" defer></script>
   <script src="textbook-part-0.js" defer></script>
@@ -21,46 +23,66 @@
   <script src="textbook-part-7.js" defer></script>
   <script src="textbook-part-8.js" defer></script>
   <script src="textbook-part-9.js" defer></script>
-  <script src="textbook-undergrad-a.js" defer></script>
-  <script src="textbook-genetics-deep.js" defer></script>
+  <script src="textbook-undergrad-a.js?v=20260925-1" defer></script>
+  <script src="textbook-genetics-deep.js?v=20260925-2" defer></script>
   <script src="textbook-genetics-extension.js" defer></script>
   <script src="textbook-undergrad-b.js" defer></script>
   <script src="textbook-immunology-deep.js" defer></script>
   <script src="textbook-undergrad-c.js" defer></script>
   <script src="textbook-metabolism.js" defer></script>
   <script src="textbook-uiuc-expansion.js" defer></script>
-  <script src="textbook-intuition.js" defer></script>
+  <script src="textbook-extension-worked-a.js?v=20260926-1" defer></script>
+  <script src="textbook-extension-worked-b.js?v=20260926-1" defer></script>
+  <script src="textbook-extension-worked-c.js?v=20260926-1" defer></script>
+  <script src="textbook-extension-worked-d.js?v=20260926-1" defer></script>
+  <script src="textbook-intuition.js?v=20260925-1" defer></script>
   <script src="textbook-data-lens.js" defer></script>
+  <script src="textbook-extension-lens-a.js?v=20260926-1" defer></script>
+  <script src="textbook-extension-lens-b.js?v=20260926-1" defer></script>
+  <script src="textbook-core-lens.js?v=20260926-1" defer></script>
   <script src="textbook-terminology.js" defer></script>
-  <script src="uiuc-curriculum.js" defer></script>
+  <script src="uiuc-curriculum.js?v=20260925-1" defer></script>
+  <script src="guided-path.js?v=20260925-2" defer></script>
+  <script src="glossary-data.js?v=20260926-2" defer></script>
+  <script src="glossary-expansion-genetics.js?v=20260926-1" defer></script>
+  <script src="glossary-expansion-data.js?v=20260926-1" defer></script>
+  <script src="glossary-expansion-organisms.js?v=20260926-1" defer></script>
+  <script src="glossary-expansion-systems.js?v=20260926-1" defer></script>
+  <script src="glossary-expansion-metabolism.js?v=20260926-1" defer></script>
+  <script src="glossary-expansion-lab.js?v=20260926-1" defer></script>
+  <script src="glossary-expansion-proteins.js?v=20260926-1" defer></script>
+  <script src="glossary-expansion-pathogens.js?v=20260926-1" defer></script>
+  <script src="glossary-expansion-animals.js?v=20260926-1" defer></script>
   <script src="bio-motion-biology.js" defer></script>
   <script src="bio-motion-data.js" defer></script>
   <script src="bio-motion.js" defer></script>
-  <script src="textbook.js" defer></script>
+  <script src="textbook.js?v=20260926-3" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#chapter">跳到教材正文</a>
   <header class="book-header">
     <a class="book-brand" href="index.html" aria-label="Bio/CS 首页">Bio<span>/</span>CS</a>
-    <nav aria-label="网站导航"><a href="index.html">学习路径</a><a href="textbook.html" aria-current="page">系统教材</a><a href="genetics-lab.html">Genetics Lab</a><a href="project-lab.html">Project Lab</a><a href="data-lab.html">Data Lab</a></nav>
+    <nav aria-label="网站导航"><a href="index.html#guided-route">学习主线</a><a href="textbook.html" aria-current="page">系统教材</a><a href="glossary.html">术语解释</a><a href="project-lab.html">Project Lab</a><a href="data-lab.html">Data Lab</a></nav>
     <span class="book-header-sub">UIUC MCB SPINE · BIOLOGY FOR COMPUTATIONAL MINDS</span>
   </header>
   <div class="book-layout">
     <aside id="book-sidebar" class="book-sidebar" aria-label="教材目录">
       <button type="button" id="toc-close" class="toc-close" aria-label="关闭目录">关闭目录 ×</button>
-      <div class="book-sidebar-top"><span class="eyebrow">A FIELD GUIDE FOR CS READERS</span><h1>从原理理解<br>计算生物学</h1><p id="book-scope">载入课程范围…</p><div class="progress-bar" aria-hidden="true"><span id="book-progress-fill"></span></div><small id="book-progress-label">0 / 0 章已完成</small></div>
+      <div class="book-sidebar-top"><h1>从原理理解<br>计算生物学</h1><p id="book-scope">载入学习主线…</p><div class="progress-bar" aria-hidden="true"><span id="book-progress-fill"></span></div><small id="book-progress-label">0 / 0 步已完成</small><a class="sidebar-route-link" href="index.html#guided-route">查看完整学习主线 →</a><a class="sidebar-glossary-link" href="glossary.html">搜索术语解释 →</a></div>
       <label class="search-label" for="chapter-search">查找章节或术语</label><input id="chapter-search" type="search" placeholder="例如 DNA、enhancer、T cell、metabolomics" autocomplete="off" aria-describedby="search-status">
       <p id="search-status" class="search-status" role="status"></p>
       <nav id="book-toc" class="book-toc" aria-label="教材章节"></nav>
-      <p class="sidebar-note">章节顺序从零基础起步。术语、图例、例题和来源均在正文内。完成进度仅保存在此浏览器。</p>
+      <p class="sidebar-note">先沿主线学，再按项目需要查完整课程库。进度仅保存在此浏览器。</p>
     </aside>
     <main id="chapter" class="book-main" tabindex="-1">
-      <div class="book-topline"><a href="index.html">← 学习路径</a><span id="chapter-position">课程目录</span><button type="button" id="toc-toggle" aria-expanded="false" aria-controls="book-sidebar">打开目录</button></div>
+      <div class="book-topline"><a href="index.html#guided-route">← 学习主线</a><span id="chapter-position">课程目录</span><button type="button" id="toc-toggle" aria-expanded="false" aria-controls="book-sidebar">打开目录</button></div>
       <article id="chapter-body" aria-live="polite"></article>
-      <nav class="book-bottom-nav" aria-label="章节导航"><button type="button" id="prev-chapter">← 上一章</button><button type="button" id="mark-chapter">标记本章已学完</button><button type="button" id="next-chapter">下一章 →</button></nav>
-      <section class="curriculum-panel" id="curriculum" aria-labelledby="curriculum-title"><span class="eyebrow">UIUC-ALIGNED CURRICULUM</span><h2 id="curriculum-title">按先修关系组织的总目录</h2><p>五个阶段对应 UIUC Biology → MCB core → advanced MCB / research 的训练逻辑。Genetics、Metabolism、Immunology、laboratory、Biophysics 与 MCB + Data Science 路线按项目需要加深；Plant Biology 已排除。</p><p class="curriculum-basis">架构依据 <a href="https://catalog.illinois.edu/undergraduate/las/molecular-cellular-biology-bslas/" target="_blank" rel="noopener noreferrer">UIUC MCB BSLAS 2026–2027 ↗</a>、<a href="https://catalog.illinois.edu/undergraduate/las/integrative-biology-bslas/" target="_blank" rel="noopener noreferrer">IB BSLAS ↗</a>、<a href="https://catalog.illinois.edu/undergraduate/las/molecular-cellular-biology-data-science-bslas/" target="_blank" rel="noopener noreferrer">MCB + Data Science ↗</a>、<a href="https://app.mcb.illinois.edu/courses/syllabi/MCB_364_syllabus.pdf" target="_blank" rel="noopener noreferrer">MCB 364 laboratory ↗</a>、<a href="https://app.mcb.illinois.edu/courses/syllabi/BIOP_401_syllabus.pdf" target="_blank" rel="noopener noreferrer">BIOP 401 ↗</a>、<a href="https://app.mcb.illinois.edu/courses/syllabi/MCB_438_syllabus.pdf" target="_blank" rel="noopener noreferrer">MCB 438 Virology ↗</a> 与 <a href="https://app.mcb.illinois.edu/courses/advanced" target="_blank" rel="noopener noreferrer">advanced MCB courses ↗</a>。这是 concept learning map，不是学分替代或选课建议。</p><div id="curriculum-tracks" class="curriculum-tracks"></div><div id="curriculum-grid"></div></section>
+      <div id="next-step-preview" class="next-step-preview"></div>
+      <nav class="book-bottom-nav" aria-label="章节导航"><button type="button" id="prev-chapter">← 上一步</button><button type="button" id="mark-chapter">标记本章已学完</button><button type="button" id="next-chapter">下一步 →</button></nav>
+      <details class="curriculum-panel" id="curriculum"><summary>按 UIUC 课程查看完整 180 章目录</summary><div class="curriculum-panel-content"><span class="eyebrow">UIUC-ALIGNED CURRICULUM</span><h2 id="curriculum-title">课程对照与拓展目录</h2><p>这一层用于查课程范围，不是推荐阅读顺序。请按上方连续主线逐章学习；Genetics、Metabolism、Immunology、laboratory、Biophysics 与 Data Science 主题按项目需要选读。Plant Biology 已排除。</p><p class="curriculum-basis">架构依据 <a href="https://catalog.illinois.edu/undergraduate/las/molecular-cellular-biology-bslas/" target="_blank" rel="noopener noreferrer">UIUC MCB BSLAS 2026–2027 ↗</a>、<a href="https://catalog.illinois.edu/undergraduate/las/integrative-biology-bslas/" target="_blank" rel="noopener noreferrer">IB BSLAS ↗</a>、<a href="https://catalog.illinois.edu/undergraduate/las/molecular-cellular-biology-data-science-bslas/" target="_blank" rel="noopener noreferrer">MCB + Data Science ↗</a>、<a href="https://app.mcb.illinois.edu/courses/syllabi/MCB_364_syllabus.pdf" target="_blank" rel="noopener noreferrer">MCB 364 laboratory ↗</a>、<a href="https://app.mcb.illinois.edu/courses/syllabi/BIOP_401_syllabus.pdf" target="_blank" rel="noopener noreferrer">BIOP 401 ↗</a>、<a href="https://app.mcb.illinois.edu/courses/syllabi/MCB_438_syllabus.pdf" target="_blank" rel="noopener noreferrer">MCB 438 Virology ↗</a> 与 <a href="https://app.mcb.illinois.edu/courses/advanced" target="_blank" rel="noopener noreferrer">advanced MCB courses ↗</a>。这是 concept learning map，不是学分替代或选课建议。</p><div id="curriculum-tracks" class="curriculum-tracks"></div><div id="curriculum-grid"></div></div></details>
       <footer class="book-footer"><p>本站正文为原创教学内容；Chinese 用于直觉解释，biological technical terms 使用 English。科学事实与术语链接至维护机构、教材或数据库文档。内容核对：2026-09-21。</p><a href="README.md">网站与来源说明 ↗</a></footer>
     </main>
   </div>
+  <aside id="term-panel" class="term-panel" role="dialog" aria-modal="false" aria-labelledby="term-name" tabindex="-1" hidden><button type="button" id="term-close" aria-label="关闭术语解释">关闭 ×</button><span>术语解释 · TERM IN CONTEXT</span><h2 id="term-name"></h2><p id="term-simple"></p><p id="term-example"></p><p id="term-caution"></p><div id="term-links"></div></aside>
 </body>
 </html>

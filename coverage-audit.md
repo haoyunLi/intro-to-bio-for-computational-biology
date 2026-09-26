@@ -1,5 +1,14 @@
 # 从头复查：零基础计算生物学网站还能补什么
 
+## 2026-09-26 补全记录
+
+- 原先待补的 509 个 English terms 已逐项加入具体例子与常见误区；术语库现在是 602/602，不再把“有简明释义”误写成“已有完整解释”。每个词仍保留相关章节和来源链接。
+- 逐章复核 102 个拓展章节：其中 73 章原先共用同一个通用“相关结果四步”模板，现改为针对本章对象与机制的逐步例题；其余 29 章保留已有的专属 worked example。拓展章的例题现在放在认识对象之后、密集机制之前。
+- 79 个原先缺少数据语义卡的拓展章与 32 个后续加入的主线章已补卡。全站 180/180 章现均明确“实验信号 → 文件/行单位 → 推断边界”，让一个生物概念能转成项目数据分析问题。
+- `scripts/audit-zero-background.mjs` 现会检查所有术语的例子/误区、全部拓展章的非通用逐步例题、180 章数据卡及其来源；自动通过只说明结构完整，不说明读者已真正理解。
+
+尚未完成的不是“再加多少词”，而是真人零基础学习者的延迟回忆和陌生数据迁移测试；此外 73 个拓展章仍沿用通用小节标题，下一轮应改成每节的结论句。真实完整 cohort 的正式统计分析也仍是独立的后续项目，不能因站内教学案例而宣称完成。
+
 复查日期：2026-09-21。当前网站有 24 门课、180 章、779 个教学小节、218 个去重来源条目，共 11 个 HTML 页面。网站架构按 UIUC 2026–2027 MCB 本科顺序分为共同基础、Molecular Genetics、Cells/Development/Biochemistry、Advanced MCB、Data & Discovery 五阶段；另用 IB 的 non-plant organismal core 与 MCB + Data Science 补充完整 organism 和项目路线。重点内容包括 22 章 Molecular Genetics、10 章 Metabolism & Metabolomics、10 章 Immunology、10 章 Experimental Biology、7 章 Structural Biology & Biophysics、8 章 Infection/Virology/Pharmacology、6 章 Organismal Biology & Behavior 与 6 章 Cell Signaling。Plant Biology 已按学习目标排除。首页与原 UIUC 路径已合并；全章使用 English technical terms，并采用 object → mechanism → evidence → inference boundary 的零基础阅读导航。章节动效只在拥有专属 mechanism 图时显示。
 
 ## 本轮全站复核与修正
