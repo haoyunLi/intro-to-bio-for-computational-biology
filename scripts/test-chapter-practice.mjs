@@ -24,6 +24,12 @@ for (let effect=0; effect<=3; effect+=0.25) {
   const crossed=practice.designModel(effect,true);
   assert.equal(crossed.rank,3);
   assert.equal(crossed.fits,effect===1,'within-batch measurements reject alternative allocations');
+  for(const model of [confused,crossed]) for(const row of model.rows) {
+    const parts=practice.designContributions(model,row);
+    assert.equal(parts.baseline+parts.treatment+parts.batch,row.prediction,'stacked contributions reproduce the displayed full prediction');
+    assert.equal(parts.treatment,effect*row.treatment);
+    assert.equal(parts.batch,(3-effect)*row.batch);
+  }
 }
 assert.equal(practice.matrixRank([[1,0,0],[1,1,1],[1,0,0],[1,1,1]]),2,'repeating confounded rows does not restore rank');
 assert.throws(()=>practice.designModel(NaN),/finite/);
@@ -31,4 +37,15 @@ assert.throws(()=>practice.designModel(4),/between/);
 assert.match(practice.designMarkup(),/原创合成 assay signal/);
 assert.match(practice.designMarkup(),/没有误差条或独立重复/);
 assert.match(practice.attemptForm(),/文本不会自动评分/);
-console.log('PASS · attempt prerequisites, batch/treatment matrix rank, alternative explanations, crossing vs repeated rows, all three questions and synthetic-data boundaries');
+for(let stage=0;stage<4;stage++) {
+  const figure=practice.designFigure(practice.designModel(1,false),stage);
+  assert.match(figure,/黑色空框是观测信号/);
+  assert.match(figure,/不是已经测定的生物贡献/);
+  assert.equal(figure.includes('class="design-contribution baseline"'),stage>=1);
+  assert.equal(figure.includes('class="design-contribution treatment"'),stage>=2);
+  assert.equal(figure.includes('class="design-contribution batch"'),stage>=3);
+}
+assert.match(practice.designStepText(practice.designModel(3,false),3),/总长与黑框始终一样/);
+assert.match(practice.designStepText(practice.designModel(3,true),3),/不一致/);
+assert.match(practice.designStepText(practice.designModel(1,true),0),/四个黑框/);
+console.log('PASS · attempt prerequisites, matrix rank, stacked contribution invariants and staged reveal, indistinguishable hypotheses vs crossed observations, all questions and synthetic-data boundaries');

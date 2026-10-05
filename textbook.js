@@ -128,6 +128,7 @@
     $('#term-panel').focus({preventScroll:true});
   }
   function renderChapter(id, scroll = false) {
+    window.BIOCS_PRACTICE.stopDesignAnimation();
     closeTerm(false);
     const chapter = byId.get(id) || chapters[0];
     if (!chapter) return;
@@ -227,10 +228,17 @@
       status.textContent='已锁定本轮回答。展开理由，比较你的解释与证据边界；这里不自动评分文本。离开本章会清除这份草稿。';
       return;
     }
+    const play=e.target.closest('[data-play-design]');
+    if(play){window.BIOCS_PRACTICE.playDesign(play.closest('.design-exercise'));return;}
+    const stage=e.target.closest('[data-design-back],[data-design-next],[data-design-replay]');
+    if(stage){const section=stage.closest('.design-exercise');const current=Number(section.dataset.designStage);window.BIOCS_PRACTICE.setDesignStage(section,stage.hasAttribute('data-design-replay')?0:current+(stage.hasAttribute('data-design-next')?1:-1));return;}
+    const hypothesis=e.target.closest('[data-design-hypothesis]');
+    if(hypothesis){window.BIOCS_PRACTICE.setDesignHypothesis(hypothesis.closest('.design-exercise'),Number(hypothesis.dataset.designHypothesis));return;}
     const cross=e.target.closest('[data-cross-design]');
     if (cross) {
       const section=cross.closest('.design-exercise');
-      section.outerHTML=window.BIOCS_PRACTICE.designMarkup(cross.dataset.crossDesign==='true',Number(section.querySelector('[data-treatment-effect]').value));
+      window.BIOCS_PRACTICE.stopDesignAnimation();
+      section.outerHTML=window.BIOCS_PRACTICE.designMarkup(cross.dataset.crossDesign==='true',Number(section.querySelector('[data-treatment-effect]').value),Number(section.dataset.designStage));
       return;
     }
     const designButton=e.target.closest('[data-check-design]');
@@ -241,13 +249,13 @@
       const feedback=section.querySelector('[data-design-feedback]');
       feedback.textContent=result.message;
       if (!result.complete) return;
-      section.querySelectorAll('input').forEach(input=>{input.disabled=true;});
+      section.querySelectorAll('.design-questions input').forEach(input=>{input.disabled=true;});
       designButton.disabled=true;
       section.querySelector('[data-retry-design]').hidden=false;
       return;
     }
     const retryDesign=e.target.closest('[data-retry-design]');
-    if (retryDesign) {retryDesign.closest('.design-exercise').outerHTML=window.BIOCS_PRACTICE.designMarkup();return;}
+    if (retryDesign) {window.BIOCS_PRACTICE.stopDesignAnimation();retryDesign.closest('.design-exercise').outerHTML=window.BIOCS_PRACTICE.designMarkup();return;}
     const link=e.target.closest('.chapter-story-map a');
     if (!link) return;
     e.preventDefault();
@@ -258,9 +266,8 @@
   $('#chapter-body').addEventListener('input', e => {
     if (!e.target.matches('[data-treatment-effect]')) return;
     const section=e.target.closest('.design-exercise');
-    const model=window.BIOCS_PRACTICE.designModel(Number(e.target.value),section.dataset.crossed==='true');
-    section.querySelector('[data-model-result]').textContent=window.BIOCS_PRACTICE.designStatus(model);
-    model.rows.forEach((row,i)=>{section.querySelector(`[data-prediction="${i}"]`).textContent=row.prediction.toFixed(1);});
+    window.BIOCS_PRACTICE.stopDesignAnimation();
+    window.BIOCS_PRACTICE.syncDesign(section);
   });
   $('#chapter-body').addEventListener('toggle', e => {
     if (e.target.matches('.check-answer') && e.target.closest('.learning-check')?.dataset.attempted !== 'true') e.target.open=false;
