@@ -47,9 +47,9 @@
   function renderProgress() {
     const mainDone=guided.ids.filter(id=>state.completed.has(id)).length;
     $('#book-progress-fill').style.width = `${mainDone / guided.ids.length * 100}%`;
-    $('#book-progress-label').textContent = `主线 ${mainDone} / ${guided.ids.length} · 全站 ${state.completed.size} / ${chapters.length}`;
+    $('#book-progress-label').textContent = `主线已读 ${mainDone} / ${guided.ids.length} · 全站已读 ${state.completed.size} / ${chapters.length}`;
     $('#mark-chapter').classList.toggle('done', state.completed.has(state.active));
-    $('#mark-chapter').textContent = state.completed.has(state.active) ? '已学完 · 撤销标记' : '标记本章已学完';
+    $('#mark-chapter').textContent = state.completed.has(state.active) ? '已读 · 撤销标记' : '标记本章已读';
   }
   function markInlineTerms(chapter) {
     const candidates = new Map();
@@ -167,12 +167,12 @@
     const worked = chapter.worked ? `<aside class="worked"><h2>WORKED EXAMPLE · 跟着做</h2><h3>${escape(chapter.worked[0])}</h3><ol>${chapter.worked[1].map(x=>`<li>${x}</li>`).join('')}</ol></aside>` : '';
     const readingSections = routeStep ? sectionParts.join('') + worked : sectionParts[0] + worked + sectionParts.slice(1).join('');
     const terms = chapter.terms?.length ? `<section class="book-vocab"><h2>本章术语</h2><div class="vocab-grid">${chapter.terms.map(term=>`<div><strong>${escape(term[0])}</strong><p>${escape(term[1])}</p>${sourceLink(term[2])}</div>`).join('')}</div></section>` : '';
-    const check = chapter.check ? `<section class="book-check"><h2>CHECK YOUR UNDERSTANDING</h2><p>${escape(chapter.check[0])}</p><details><summary>展开答案与理由</summary><p>${chapter.check[1]}</p></details></section>` : '';
+    const check = chapter.check ? `<section class="book-check learning-check" id="chapter-check"><h2>换一个情境，你能解释吗？</h2><p>${escape(chapter.check[0])}</p>${window.BIOCS_PRACTICE.attemptForm()}<details class="check-answer" hidden><summary>对照我的回答，查看答案与理由</summary><p>${chapter.check[1]}</p></details></section>` : '';
     const transfer = routeStep && routeStep.index === routeStep.unit.core.length - 1 ? `<section class="chapter-transfer" aria-label="把本单元应用到自己的数据"><span>单元 ${String(routeStep.unitIndex + 1).padStart(2,'0')} · 主线最后一章</span><h2>把这一步用在自己的数据上</h2><p>${escape(routeStep.unit.transfer[0])}</p><a href="${escape(routeStep.unit.transfer[1])}">去整理自己的项目 →</a></section>` : '';
     const refs = `<section class="book-sources"><h2>来源与继续阅读</h2><ol>${[...sourceKeys].map(key=>`<li>${sourceLink(key)}</li>`).join('')}</ol></section>`;
     const prereq = chapter.prereq?.length ? `<p class="prereq">建议先读：${chapter.prereq.map(id=>`<a href="#${escape(id)}">${escape(byId.get(id)?.title||id)}</a>`).join(' · ')}</p>` : '<p class="prereq">不要求生物学前置知识。</p>';
     const pathLabel=routeStep?`主线 ${navigationIndex+1} / ${guided.ids.length} · ${routeStep.unit.title}`:`拓展章节 · ${chapter.course.title}`;
-    $('#chapter-body').innerHTML = `<div class="book-article"><header class="book-hero"><h1>${escape(chapter.title)}</h1><span class="book-kicker">${escape(chapter.course.title)} · ${escape(chapter.id.toUpperCase())} · ${number+1} / ${chapters.length}</span><p class="book-subtitle">${escape(chapter.subtitle)}</p>${intuitionHTML}<div class="book-context"><a href="index.html#guided-route">${escape(pathLabel)} ↗</a><p>${escape(uiucStage.year)} · ${escape(uiucStage.title)}</p>${prereq}</div></header>${chapter.intro?`<p class="book-intro">${chapter.intro}</p>`:''}${visual}${chapterGuide}${readingSections}${dataBridge}${practiceHTML}<div class="book-term-line"><b>本章 English terms</b><span>${anchorTerms.map(item=>escape(item.split(' / ')[0])).join(' · ')}</span></div><details class="book-goals"><summary>读完本章，你应该能做什么？</summary><ul>${chapter.goals.map(g=>`<li>${escape(g)}</li>`).join('')}</ul></details>${terms}${check}${transfer}${refs}</div>`;
+    $('#chapter-body').innerHTML = `<div class="book-article"><header class="book-hero"><h1>${escape(chapter.title)}</h1><span class="book-kicker">${escape(chapter.course.title)} · ${escape(chapter.id.toUpperCase())} · ${number+1} / ${chapters.length}</span><p class="book-subtitle">${escape(chapter.subtitle)}</p>${intuitionHTML}<div class="book-context"><a href="index.html#guided-route">${escape(pathLabel)} ↗</a><p>${escape(uiucStage.year)} · ${escape(uiucStage.title)}</p>${prereq}</div></header>${chapter.id === "d01" ? '<a class="chapter-practice-link" href="#batch-design-exercise">读图练习：同一个差值，能区分 treatment 与 batch 吗？ ↓</a>' : ""}${chapter.intro?`<p class="book-intro">${chapter.intro}</p>`:''}${visual}${chapterGuide}${readingSections}${dataBridge}${practiceHTML}<div class="book-term-line"><b>本章 English terms</b><span>${anchorTerms.map(item=>escape(item.split(' / ')[0])).join(' · ')}</span></div><details class="book-goals"><summary>读完本章，你应该能做什么？</summary><ul>${chapter.goals.map(g=>`<li>${escape(g)}</li>`).join('')}</ul></details>${terms}${check}${chapter.id === "d01" ? window.BIOCS_PRACTICE.designMarkup() : ""}${transfer}${refs}</div>`;
     markInlineTerms(chapter);
     $('#chapter-position').textContent = pathLabel;
     if(window.BIOCS_MOTION?.scenes?.some(scene=>scene.chapters.includes(chapter.id))){
@@ -201,12 +201,53 @@
     document.title = `${chapter.title} · Bio/CS 零基础教材`;
     renderToc($('#chapter-search').value);
     renderProgress();
-    if (scroll) { $('#chapter').focus({preventScroll:true}); window.scrollTo({top:0,behavior:'instant'}); }
+    const focus=new URLSearchParams(location.search).get('focus');
+    if (['chapter-check','batch-design-exercise'].includes(focus) && document.getElementById(focus)) {
+      requestAnimationFrame(()=>document.getElementById(focus)?.scrollIntoView({block:'start',behavior:'instant'}));
+    } else if (scroll) { $('#chapter').focus({preventScroll:true}); window.scrollTo({top:0,behavior:'instant'}); }
   }
   $('#chapter-search').addEventListener('input', e => renderToc(e.target.value));
   $('#chapter-body').addEventListener('click', e => {
     const term=e.target.closest('.inline-term');
     if (term) {openTerm(term.dataset.term,term);return;}
+    const submit=e.target.closest('[data-submit-attempt]');
+    if (submit) {
+      const section=submit.closest('.learning-check');
+      const answer=section.querySelector('[data-attempt-text]');
+      const confidence=section.querySelector('[data-attempt-confidence]');
+      const error=window.BIOCS_PRACTICE.attemptError(answer.value,confidence.value);
+      const status=section.querySelector('[data-attempt-status]');
+      if (error) {status.textContent=error;answer.setAttribute('aria-invalid',String(!answer.value.trim()));return;}
+      answer.setAttribute('aria-invalid','false');
+      section.dataset.attempted='true';
+      section.querySelector('[data-attempt-snapshot]').textContent=`我的首次回答（${confidence.options[confidence.selectedIndex].text}）：${answer.value.trim()}`;
+      section.querySelector('[data-attempt-snapshot]').hidden=false;
+      answer.readOnly=true;confidence.disabled=true;submit.disabled=true;
+      section.querySelector('.check-answer').hidden=false;
+      status.textContent='已锁定本轮回答。展开理由，比较你的解释与证据边界；这里不自动评分文本。离开本章会清除这份草稿。';
+      return;
+    }
+    const cross=e.target.closest('[data-cross-design]');
+    if (cross) {
+      const section=cross.closest('.design-exercise');
+      section.outerHTML=window.BIOCS_PRACTICE.designMarkup(cross.dataset.crossDesign==='true',Number(section.querySelector('[data-treatment-effect]').value));
+      return;
+    }
+    const designButton=e.target.closest('[data-check-design]');
+    if (designButton) {
+      const section=designButton.closest('.design-exercise');
+      const answers=window.BIOCS_PRACTICE.designQuestions.map((_,i)=>section.querySelector(`input[name="design-${i}"]:checked`)?.value);
+      const result=window.BIOCS_PRACTICE.evaluateDesign(answers);
+      const feedback=section.querySelector('[data-design-feedback]');
+      feedback.textContent=result.message;
+      if (!result.complete) return;
+      section.querySelectorAll('input').forEach(input=>{input.disabled=true;});
+      designButton.disabled=true;
+      section.querySelector('[data-retry-design]').hidden=false;
+      return;
+    }
+    const retryDesign=e.target.closest('[data-retry-design]');
+    if (retryDesign) {retryDesign.closest('.design-exercise').outerHTML=window.BIOCS_PRACTICE.designMarkup();return;}
     const link=e.target.closest('.chapter-story-map a');
     if (!link) return;
     e.preventDefault();
@@ -214,6 +255,16 @@
     target?.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth',block:'start'});
     target?.focus({preventScroll:true});
   });
+  $('#chapter-body').addEventListener('input', e => {
+    if (!e.target.matches('[data-treatment-effect]')) return;
+    const section=e.target.closest('.design-exercise');
+    const model=window.BIOCS_PRACTICE.designModel(Number(e.target.value),section.dataset.crossed==='true');
+    section.querySelector('[data-model-result]').textContent=window.BIOCS_PRACTICE.designStatus(model);
+    model.rows.forEach((row,i)=>{section.querySelector(`[data-prediction="${i}"]`).textContent=row.prediction.toFixed(1);});
+  });
+  $('#chapter-body').addEventListener('toggle', e => {
+    if (e.target.matches('.check-answer') && e.target.closest('.learning-check')?.dataset.attempted !== 'true') e.target.open=false;
+  }, true);
   $('#term-close').addEventListener('click', () => closeTerm());
   document.addEventListener('keydown', e => { if(e.key==='Escape' && !$('#term-panel').hidden) {e.preventDefault();closeTerm();} });
   document.addEventListener('pointerdown', e => {if(!$('#term-panel').hidden && !$('#term-panel').contains(e.target) && !e.target.closest('.inline-term'))closeTerm(false);});

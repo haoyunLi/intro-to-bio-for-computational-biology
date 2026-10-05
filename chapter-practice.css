@@ -1,0 +1,31 @@
+.chapter-attempt { display: grid; gap: 10px; margin: 22px 0; }
+.chapter-attempt label { font-weight: 700; font-size: 14px; line-height: 1.7; }
+.chapter-attempt textarea, .chapter-attempt select { width: 100%; min-width: 0; box-sizing: border-box; font: inherit; color: #153d53; background: #fff; border: 1px solid #778c96; border-radius: 4px; padding: 10px; }
+.chapter-attempt textarea { resize: vertical; caret-color: #12587d; }
+.chapter-attempt select { max-width: 340px; }
+.chapter-attempt button, .design-exercise button { justify-self: start; border: 1px solid #214d6b; border-radius: 4px; background: #214d6b; color: #fff; padding: 10px 16px; font: inherit; cursor: pointer; }
+.chapter-attempt button:disabled, .design-exercise button:disabled, .diagnostic-options button:disabled { opacity: .55; cursor: not-allowed; }
+.chapter-attempt textarea:focus-visible, .chapter-attempt select:focus-visible, .chapter-attempt button:focus-visible, .design-exercise :focus-visible { outline: 3px solid #12587d; outline-offset: 3px; }
+.chapter-attempt textarea[aria-invalid="true"] { border-color: #9c3838; }
+.attempt-snapshot, .design-feedback { white-space: pre-wrap; overflow-wrap: anywhere; }
+.design-exercise { margin: 36px 0; padding: 24px 0; border-top: 1px solid #778c96; border-bottom: 1px solid #ced9db; color: #153d53; line-height: 1.8; }
+.design-exercise h2 { font-family: var(--display); font-size: 24px; margin: 0 0 15px; }
+.design-exercise svg { width: 100%; max-width: 620px; height: auto; }
+.design-exercise svg text { font: 13px sans-serif; fill: #153d53; }
+.design-exercise figure { margin: 25px 0; }
+.design-exercise figcaption { font-size: 13px; }
+.design-questions { display: grid; gap: 22px; margin: 25px 0; }
+.design-questions fieldset { padding: 16px; border: 1px solid #a0b3ba; min-width: 0; }
+.design-questions legend { padding: 0 6px; font-weight: 700; }
+.design-questions label { display: flex; align-items: flex-start; gap: 10px; padding: 8px 0; cursor: pointer; }
+.design-questions input { margin-top: 7px; flex-shrink: 0; accent-color: #214d6b; }
+.design-exercise a { color: #12587d; text-underline-offset: 4px; }
+.chapter-attempt [hidden], .design-exercise [hidden], .learning-check .check-answer[hidden] { display: none; }
+@media (max-width: 760px) { .design-questions fieldset { padding: 10px; } .design-exercise svg text { font-size: 15px; } }
+
+.design-figure-scroll, .design-table-scroll { overflow-x: auto; }
+.design-exercise svg { min-width: 600px; }
+.design-exercise table { border-collapse: collapse; font-size: 14px; width: 100%; min-width: 430px; margin-bottom: 20px; }
+.design-exercise th, .design-exercise td { padding: 10px; border-bottom: 1px solid #a0b3ba; text-align: left; }
+.design-effect-label { display: grid; gap: 10px; font-weight: 700; }
+.design-effect-label input { accent-color: #214d6b; width: 100%; }

@@ -1,0 +1,34 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import vm from 'node:vm';
+import {fileURLToPath} from 'node:url';
+const root=fileURLToPath(new URL('../',import.meta.url));
+const context={window:{}};
+vm.createContext(context);
+vm.runInContext(fs.readFileSync(root+'chapter-practice.js','utf8'),context);
+const practice=context.window.BIOCS_PRACTICE;
+assert.ok(practice.attemptError('   ','high'), 'blank response must not unlock explanation');
+assert.ok(practice.attemptError('I need a control',''), 'confidence is required before reveal');
+assert.equal(practice.attemptError('I need a control','low'),'');
+assert.equal(practice.evaluateDesign(['confounded','within-batch']).complete,false);
+assert.equal(practice.evaluateDesign(['confounded','within-batch','unknown']).complete,false);
+assert.equal(practice.evaluateDesign(['confounded','within-batch','identifiable']).correct,3);
+const wrong=practice.evaluateDesign(['treatment-only','deeper','causal']);
+assert.equal(wrong.correct,0);
+assert.match(wrong.message,/不会拆开重合的两列/);
+assert.match(wrong.message,/precision/);
+for (let effect=0; effect<=3; effect+=0.25) {
+  const confused=practice.designModel(effect,false);
+  assert.equal(confused.rank,2);
+  assert.equal(confused.fits,true,'every split of 3 predicts the original two observations');
+  const crossed=practice.designModel(effect,true);
+  assert.equal(crossed.rank,3);
+  assert.equal(crossed.fits,effect===1,'within-batch measurements reject alternative allocations');
+}
+assert.equal(practice.matrixRank([[1,0,0],[1,1,1],[1,0,0],[1,1,1]]),2,'repeating confounded rows does not restore rank');
+assert.throws(()=>practice.designModel(NaN),/finite/);
+assert.throws(()=>practice.designModel(4),/between/);
+assert.match(practice.designMarkup(),/原创合成 assay signal/);
+assert.match(practice.designMarkup(),/没有误差条或独立重复/);
+assert.match(practice.attemptForm(),/文本不会自动评分/);
+console.log('PASS · attempt prerequisites, batch/treatment matrix rank, alternative explanations, crossing vs repeated rows, all three questions and synthetic-data boundaries');

@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="textbook-breadth.css?v=20260921-3">
   <link rel="stylesheet" href="textbook-story.css?v=20260926-1">
   <link rel="stylesheet" href="learning-support.css?v=20260925-2">
+  <link rel="stylesheet" href="chapter-practice.css?v=20261005-1">
   <script src="textbook-data.js" defer></script>
   <script src="textbook-undergrad-sources.js" defer></script>
   <script src="textbook-part-0.js" defer></script>
@@ -56,7 +57,8 @@
   <script src="bio-motion-biology.js" defer></script>
   <script src="bio-motion-data.js" defer></script>
   <script src="bio-motion.js" defer></script>
-  <script src="textbook.js?v=20260926-3" defer></script>
+  <script src="chapter-practice.js?v=20261005-1" defer></script>
+  <script src="textbook.js?v=20261005-1" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#chapter">跳到教材正文</a>
@@ -68,7 +70,7 @@
   <div class="book-layout">
     <aside id="book-sidebar" class="book-sidebar" aria-label="教材目录">
       <button type="button" id="toc-close" class="toc-close" aria-label="关闭目录">关闭目录 ×</button>
-      <div class="book-sidebar-top"><h1>从原理理解<br>计算生物学</h1><p id="book-scope">载入学习主线…</p><div class="progress-bar" aria-hidden="true"><span id="book-progress-fill"></span></div><small id="book-progress-label">0 / 0 步已完成</small><a class="sidebar-route-link" href="index.html#guided-route">查看完整学习主线 →</a><a class="sidebar-glossary-link" href="glossary.html">搜索术语解释 →</a></div>
+      <div class="book-sidebar-top"><h1>从原理理解<br>计算生物学</h1><p id="book-scope">载入学习主线…</p><div class="progress-bar" aria-hidden="true"><span id="book-progress-fill"></span></div><small id="book-progress-label">0 / 0 步已读</small><a class="sidebar-route-link" href="index.html#guided-route">查看完整学习主线 →</a><a class="sidebar-glossary-link" href="glossary.html">搜索术语解释 →</a></div>
       <label class="search-label" for="chapter-search">查找章节或术语</label><input id="chapter-search" type="search" placeholder="例如 DNA、enhancer、T cell、metabolomics" autocomplete="off" aria-describedby="search-status">
       <p id="search-status" class="search-status" role="status"></p>
       <nav id="book-toc" class="book-toc" aria-label="教材章节"></nav>
@@ -78,7 +80,7 @@
       <div class="book-topline"><a href="index.html#guided-route">← 学习主线</a><span id="chapter-position">课程目录</span><button type="button" id="toc-toggle" aria-expanded="false" aria-controls="book-sidebar">打开目录</button></div>
       <article id="chapter-body" aria-live="polite"></article>
       <div id="next-step-preview" class="next-step-preview"></div>
-      <nav class="book-bottom-nav" aria-label="章节导航"><button type="button" id="prev-chapter">← 上一步</button><button type="button" id="mark-chapter">标记本章已学完</button><button type="button" id="next-chapter">下一步 →</button></nav>
+      <nav class="book-bottom-nav" aria-label="章节导航"><button type="button" id="prev-chapter">← 上一步</button><button type="button" id="mark-chapter">标记本章已读</button><button type="button" id="next-chapter">下一步 →</button></nav>
       <details class="curriculum-panel" id="curriculum"><summary>按 UIUC 课程查看完整 180 章目录</summary><div class="curriculum-panel-content"><span class="eyebrow">UIUC-ALIGNED CURRICULUM</span><h2 id="curriculum-title">课程对照与拓展目录</h2><p>这一层用于查课程范围，不是推荐阅读顺序。请按上方连续主线逐章学习；Genetics、Metabolism、Immunology、laboratory、Biophysics 与 Data Science 主题按项目需要选读。Plant Biology 已排除。</p><p class="curriculum-basis">架构依据 <a href="https://catalog.illinois.edu/undergraduate/las/molecular-cellular-biology-bslas/" target="_blank" rel="noopener noreferrer">UIUC MCB BSLAS 2026–2027 ↗</a>、<a href="https://catalog.illinois.edu/undergraduate/las/integrative-biology-bslas/" target="_blank" rel="noopener noreferrer">IB BSLAS ↗</a>、<a href="https://catalog.illinois.edu/undergraduate/las/molecular-cellular-biology-data-science-bslas/" target="_blank" rel="noopener noreferrer">MCB + Data Science ↗</a>、<a href="https://app.mcb.illinois.edu/courses/syllabi/MCB_364_syllabus.pdf" target="_blank" rel="noopener noreferrer">MCB 364 laboratory ↗</a>、<a href="https://app.mcb.illinois.edu/courses/syllabi/BIOP_401_syllabus.pdf" target="_blank" rel="noopener noreferrer">BIOP 401 ↗</a>、<a href="https://app.mcb.illinois.edu/courses/syllabi/MCB_438_syllabus.pdf" target="_blank" rel="noopener noreferrer">MCB 438 Virology ↗</a> 与 <a href="https://app.mcb.illinois.edu/courses/advanced" target="_blank" rel="noopener noreferrer">advanced MCB courses ↗</a>。这是 concept learning map，不是学分替代或选课建议。</p><div id="curriculum-tracks" class="curriculum-tracks"></div><div id="curriculum-grid"></div></div></details>
       <footer class="book-footer"><p>本站正文为原创教学内容；Chinese 用于直觉解释，biological technical terms 使用 English。科学事实与术语链接至维护机构、教材或数据库文档。内容核对：2026-09-21。</p><a href="README.md">网站与来源说明 ↗</a></footer>
     </main>
