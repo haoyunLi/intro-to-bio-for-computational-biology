@@ -109,4 +109,13 @@
   ]];
   phasing.check = ['同一可靠 phase set 内，两个位点的 GT 都是 1|0。两条 ALT 是 cis 还是 trans？这能否单独说明来自父亲？',
     '它们都位于 haplotype 1，所以是 cis。仅这些 GT 不给 parental origin；需要亲本资料和相应推断/模式。不同 phase set 不能直接比较左右位置。'];
+
+  const survival = byId('r04');
+  survival.sections.push([
+    '五人手算：删失改变之后的 risk set',
+    `<p>这是原创的五人课堂队列，时间单位为月。A–E 都在 t=0 开始观察，研究单一终末事件，没有延迟入组或同时事件。A 在 t=2 发生事件；B 在 t=3 最后确认未发生事件后右删失；C 在 t=4 发生事件；D、E 分别在 t=5、6 最后确认未发生事件后右删失。右删失者后来的事件时间未知。</p><p><strong>Risk set / 风险集</strong>是某一时点之前仍被观察、且尚未发生事件的人。Kaplan–Meier 从 Ŝ(0)=1 开始，在每个事件时点乘 <code>(n−d)/n</code>；n 是事件之前的风险集人数，d 是该时点事件数。本例的删失时点没有事件，因此不直接让曲线下降。</p><div class="lesson-table-wrap"><table class="lesson-table"><thead><tr><th>t（月）</th><th>本时点记录</th><th>时点之前的 n</th><th>d</th><th>更新后的 Ŝ(t)</th></tr></thead><tbody><tr><td>2</td><td>A：event</td><td>5</td><td>1</td><td>1×4/5=0.8</td></tr><tr><td>3</td><td>B：censored</td><td>4</td><td>0</td><td>仍为 0.8；之后只余 3 人</td></tr><tr><td>4</td><td>C：event</td><td>3</td><td>1</td><td>0.8×2/3=8/15≈0.533</td></tr><tr><td>5</td><td>D：censored</td><td>2</td><td>0</td><td>仍为 8/15；之后只余 E</td></tr><tr><td>6</td><td>E：censored</td><td>1</td><td>0</td><td>仍为 8/15；之后无人观察</td></tr></tbody></table></div><p>t=4 的分母是 3：A 已发生事件，B 已结束观察，不能把 B 当成一直未发生事件的人留在分母。曲线尾部不下降只说明没有新的已观察事件；它不保证被删失者永不发生事件，也不能外推到 t=6 之后。后期风险集很小，估计不确定性也需报告。用此估计推断目标人群的生存分布依赖独立删失等假设；若离开观察的原因关联尚未观察到的事件时间，简单 KM 可产生偏差。此例不是个体临床预测。</p>`,
+    ['survivalVignette'],
+  ]);
+  survival.check = ['本例 B 在 t=3 右删失，会立刻使 Ŝ 下降吗？C 在 t=4 发生事件时，n 与 Ŝ 各是多少？诊断时预测能使用六个月后的治疗反应吗？',
+    'B 的删失不直接使 Ŝ 下降，但会把之后的风险集从 4 减到 3。C 的事件之前 n=3，所以 Ŝ=0.8×(3−1)/3=8/15≈0.533；不能保留已删失的 B 当分母。诊断时还不可得的六个月治疗反应属于未来信息，不能作为诊断时预测特征。'];
 })();

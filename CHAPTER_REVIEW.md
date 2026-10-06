@@ -1,6 +1,6 @@
 # Bio/CS 逐章审阅记录
 
-本轮清单：180 章。已逐章阅读并判断：62；结论/修改验证完成：62；尚待阅读：118。
+本轮清单：180 章。已逐章阅读并判断：95；结论/修改验证完成：95；尚待阅读：85。
 
 状态只依据实际阅读正文、公式/例子、图表/实验和练习后手工写入的结论。自动清单导出、渲染检查或通用修复不代表章节已审阅。未改章节也记录保留理由；章节原有来源不等于本轮已逐条访问核验。
 
@@ -103,54 +103,54 @@
 
 | 章节 | 实际状态 | 具体发现 / 保留理由 | 计划或已做修改 | 验证 | 本轮核验来源 |
 | --- | --- | --- | --- | --- | --- |
-| [r01 · TCGA、GDC、GEO 等资源地图](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#r01) | 待审阅 | 尚未逐章审阅 | — | — | — |
-| [r02 · ID、矩阵与跨组学 join](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#r02) | 待审阅 | 尚未逐章审阅 | — | — | — |
-| [r03 · 统计推断：效应、混杂与多重检验](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#r03) | 待审阅 | 尚未逐章审阅 | — | — | — |
-| [r04 · 生存分析与临床预测](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#r04) | 待审阅 | 尚未逐章审阅 | — | — | — |
-| [r05 · 多组学整合：从相关到机制](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#r05) | 待审阅 | 尚未逐章审阅 | — | — | — |
-| [r06 · 第一次完整做 TCGA 研究](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#r06) | 待审阅 | 尚未逐章审阅 | — | — | — |
+| [r01 · TCGA、GDC、GEO 等资源地图](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#r01) | 已审阅 · 无实质补充需要 | 项目/门户/仓库分清TCGA/GDC/GEO/SRA，按问题选择资源并保存版本/权限；已有具体变异-RNA选队列例。 | 保留现有具体解释、例子和练习 | cohort join6步完整body/labels已读：2cases→3samples→4files，筛Tumor后3files仍2cases。；全目录桌面/手机渲染检查通过。 | — |
+| [r02 · ID、矩阵与跨组学 join](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#r02) | 已审阅 · 无实质补充需要 | 表轴/主外键、TCGA实体关系而非任意截barcode、240/500交集选择变化已有清楚例子。 | 保留现有具体解释、例子和练习 | 正文/先修/terms/worked/check和cohort join6步已读；三joined file行仍2独立cases。；全目录桌面/手机渲染检查通过。 | — |
+| [r03 · 统计推断：效应、混杂与多重检验](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#r03) | 已审阅 · 无实质补充需要 | effect/p/causal解释分开；FDR不是单基因错误概率，20000×.05期望1000且不需独立性已准确。 | 保留现有具体解释、例子和练习 | 完整正文和tile泄漏4步已读；期望的线性相加与模型有效性条件核对。；全目录桌面/手机渲染检查通过。 | — |
+| [r04 · 生存分析与临床预测](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#r04) | 已修改并验证 | event/右删失/缺随访与HR解释准确，但目标中的risk set没有实际逐时计算；KM曲线下降机制未展开。 | 补5人原创时间表、n risk和d event的KM乘积，展示删失改变之后分母而不直接使曲线下降。 | 完整正文、先修、worked/terms/check/dataLens已读；本章无额外motion；R survival官方公式/风险集段落已核验。；内容/练习/transfer/术语4脚本通过，1440/375px回答门槛、锁定、无JS错误/失败请求/页面溢出通过；r04桌面/手机表格已视觉查看。 | [1](https://cran.r-project.org/web/packages/survival/vignettes/survival.pdf) |
+| [r05 · 多组学整合：从相关到机制](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#r05) | 已审阅 · 无实质补充需要 | 按CNV/RNA、位置、受体功能问题选模态，测量噪声不由z-score拼接消除；证据表与因果边分开。 | 保留现有具体解释、例子和练习 | 正文/先修/terms/worked/check已读；无额外图或motion，保留现有三层假设追踪。；全目录桌面/手机渲染检查通过。 | — |
+| [r06 · 第一次完整做 TCGA 研究](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#r06) | 已审阅 · 无实质补充需要 | TCGA研究问题→输入版本/实体→逐层模型→验证完整，先修覆盖q04/q05/k01/k02；各层n/交集/缺失都有交接。 | 保留现有具体解释、例子和练习 | 正文/terms/worked/check和cohort join6步已读；真实数据练习链接与所有路由渲染已验证。；全目录桌面/手机渲染检查通过。 | — |
 
 ## 07 · Spatial & Regulatory Biology
 
 | 章节 | 实际状态 | 具体发现 / 保留理由 | 计划或已做修改 | 验证 | 本轮核验来源 |
 | --- | --- | --- | --- | --- | --- |
-| [s01 · Spatial biology：测量单位](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#s01) | 待审阅 | 尚未逐章审阅 | — | — | — |
-| [s02 · Visium HD：空间条形码与 binning](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#s02) | 待审阅 | 尚未逐章审阅 | — | — | — |
-| [s03 · Xenium：原位 RNA 成像](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#s03) | 待审阅 | 尚未逐章审阅 | — | — | — |
-| [s04 · CODEX：多重空间蛋白成像](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#s04) | 待审阅 | 尚未逐章审阅 | — | — | — |
-| [s05 · 其他空间平台与选型](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#s05) | 待审阅 | 尚未逐章审阅 | — | — | — |
-| [s06 · Enhancer：远端调控怎样影响基因](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#s06) | 待审阅 | 尚未逐章审阅 | — | — | — |
-| [s07 · Splicing：从 exon 组合到 RNA 事件](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#s07) | 待审阅 | 尚未逐章审阅 | — | — | — |
-| [s08 · 把空间、enhancer 与 splicing 接回肿瘤研究](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#s08) | 待审阅 | 尚未逐章审阅 | — | — | — |
+| [s01 · Spatial biology：测量单位](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#s01) | 已审阅 · 无实质补充需要 | RNA捕获/原位解码/经典CODEX蛋白三类原理与输出单位、同片层级、位置≠功能完整。 | 保留现有具体解释、例子和练习 | spatial-platforms.svg全部标签已读；bulk4步、bin4步、segmentation7步已读过并复核章节适用假设。；全目录桌面/手机渲染检查通过。 | — |
+| [s02 · Visium HD：空间条形码与 binning](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#s02) | 已审阅 · 无实质补充需要 | bin≠cell、2µm捕获格到8/16µm聚合、输出路径和坐标换算准确，已有具体binning例和先修。 | 保留已有平台机制、单位说明、具体例子和练习 | 完整正文/先修/terms/worked/check/dataLens已读；Space Ranger当前v4.1官方output overview、feature matrix及spatial outputs核验：square_002um/_008um/_016um，UMI矩阵与tissue_positions.parquet；0+1+0+3=4教学bin、4步motion已读。全目录桌面/手机渲染检查通过。 | [1](https://www.10xgenomics.com/support/software/space-ranger/latest/analysis/outputs/output-overview) · [2](https://www.10xgenomics.com/support/software/space-ranger/latest/tutorials/outputs/space-ranger-feature-barcode-matrices) · [3](https://www.10xgenomics.com/support/software/space-ranger/latest/analysis/spatial-outputs) |
+| [s03 · Xenium：原位 RNA 成像](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#s03) | 已审阅 · 无实质补充需要 | RNA点→segmentation→cell-feature matrix、target panel与isoform边界清楚；已区分Q20 RNA counts与新protein feature强度单位。 | 保留已有平台机制、单位说明、具体例子和练习 | 完整正文/先修/terms/worked/check/dataLens已读；当前XOA v4.1官方outputs和protein文档已核验：cell_feature_matrix RNA为Q20且assigned，protein为scaled mean intensity，feature type区分；7步segmentation已读。全目录桌面/手机渲染检查通过。 | [1](https://www.10xgenomics.com/support/software/xenium-onboard-analysis/latest/analysis/xoa-output-understanding-outputs) · [2](https://www.10xgenomics.com/support/software/xenium-onboard-analysis/latest/analysis/protein-data) |
+| [s04 · CODEX：多重空间蛋白成像](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#s04) | 已审阅 · 无实质补充需要 | DNA标签服务抗体循环读出不是DNAvariant；背景/配准/分割影响CD3/panCK假双阳性已有具体QC案例。 | 保留现有具体解释、例子和练习 | 正文/terms/worked/check已读；无额外motion，保留原始通道→边界→背景的查错顺序。；全目录桌面/手机渲染检查通过。 | — |
+| [s05 · 其他空间平台与选型](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#s05) | 已审阅 · 无实质补充需要 | 按分子/读出/输出单位而非平台名字分类，panel/组织/ROI匹配，未进入panel不当缺失已具体解释。 | 保留现有具体解释、例子和练习 | 完整正文/先修/terms/worked/check已读；保留蛋白状态问题倒推目标测量的例子。；全目录桌面/手机渲染检查通过。 | — |
+| [s06 · Enhancer：远端调控怎样影响基因](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#s06) | 已审阅 · 无实质补充需要 | promoter/enhancer/cCRE候选、细胞来源、copy数混杂与扰动证据阶梯完整；与m06先修互补。 | 保留现有具体解释、例子和练习 | 正文/terms/worked/check已读；ATAC peak不直接连最近MYC，保留原有候选标注。；全目录桌面/手机渲染检查通过。 | — |
+| [s07 · Splicing：从 exon 组合到 RNA 事件](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#s07) | 已修改并验证 | 正文正确区分PSI/gene/transcript与蛋白功能；worked的80/20和30/70 raw比例虽称简化，但未明确有效计数机会相同的条件。 | 在已有简化worked明确inclusion/skipping有效长度相等，链接x08归一化例供不同长度情况；不新增重复图。 | 完整正文、先修、worked/terms/check/dataLens已读；rMATS官方effective-length公式在上一批已核验。；内容/练习/transfer/术语4脚本通过，1440/375px回答门槛、锁定、无JS错误/失败请求/页面溢出通过；r04桌面/手机表格已视觉查看。 | [1](https://github.com/Xinglab/rmats-turbo) |
+| [s08 · 把空间、enhancer 与 splicing 接回肿瘤研究](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#s08) | 已审阅 · 无实质补充需要 | 配对病例/相邻切片/图像配准不是同细胞、patient单位、空间背景和每条箭头证据等级已明确。 | 保留现有具体解释、例子和练习 | 完整正文/先修/terms/worked/check已读；TCGA A与CODEX B反例、分割/bin/ROI敏感性完整。；全目录桌面/手机渲染检查通过。 | — |
 
 ## 08 · Biological Data Structures
 
 | 章节 | 实际状态 | 具体发现 / 保留理由 | 计划或已做修改 | 验证 | 本轮核验来源 |
 | --- | --- | --- | --- | --- | --- |
-| [k01 · 一份生物数据是怎么来的](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#k01) | 待审阅 | 尚未逐章审阅 | — | — | — |
-| [k02 · ID、主键与跨表连接](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#k02) | 待审阅 | 尚未逐章审阅 | — | — | — |
-| [k03 · 基因组坐标、build 与基因 ID](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#k03) | 待审阅 | 尚未逐章审阅 | — | — | — |
-| [k04 · RNA 矩阵：count、CPM、TPM 与变换](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#k04) | 待审阅 | 尚未逐章审阅 | — | — | — |
-| [k05 · 变异表：VCF、MAF、CNV 怎么读](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#k05) | 待审阅 | 尚未逐章审阅 | — | — | — |
-| [k06 · QC、批次、缺失值与异常样本](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#k06) | 待审阅 | 尚未逐章审阅 | — | — | — |
-| [k07 · 单细胞对象：AnnData 与伪重复](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#k07) | 待审阅 | 尚未逐章审阅 | — | — | — |
-| [k08 · 空间与影像数据：像素、坐标和分割](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#k08) | 待审阅 | 尚未逐章审阅 | — | — | — |
-| [k09 · 临床表：时间、结局和随访](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#k09) | 待审阅 | 尚未逐章审阅 | — | — | — |
-| [k10 · 从数据到模型：拆分、验证与复现](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#k10) | 待审阅 | 尚未逐章审阅 | — | — | — |
+| [k01 · 一份生物数据是怎么来的](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#k01) | 已审阅 · 无实质补充需要 | case/sample/assay/raw/processed层级与manifest一行粒度已清楚；P01三种文件仍一病例，data-lineage图逐层给出处理与版本。 | 保留现有具体机制、数值例子和练习 | 完整正文/先修/terms/worked/check/dataLens与data-lineage.svg全部标签已读；不把缺事件记录当作未发生事件。；全目录1440/375px渲染检查通过。 | — |
+| [k02 · ID、主键与跨表连接](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#k02) | 已修改并验证 | 键与cardinality正确，但worked第二步写3行“而不是两个独立病例”，与下一步仍2cases矛盾。 | 改为连接后3行仍对应2位独立病例，分开行数与独立研究单位。 | 完整正文/先修/terms/worked/check/dataLens与共用join6步已读；P1两sample/P2一sample得到3行、2cases核算。；内容/练习/transfer/术语4脚本通过，1440/375px回答门槛、锁定、无JS错误/失败请求/页面溢出通过；r04桌面/手机表格已视觉查看。 | — |
+| [k03 · 基因组坐标、build 与基因 ID](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#k03) | 已审阅 · 无实质补充需要 | build、REF/ALT、gene/transcript版本及坐标开闭清楚；VCF POS101对应BED[100,101)已有正确数值例。 | 保留现有具体机制、数值例子和练习 | 完整正文/先修/terms/worked/check/dataLens已读；检查1-based到0-based区间转换，无额外motion。；全目录1440/375px渲染检查通过。 | — |
+| [k04 · RNA 矩阵：count、CPM、TPM 与变换](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#k04) | 已审阅 · 无实质补充需要 | count/CPM/TPM口径与gene表达轴清楚，CPM的100/1000和200/2000同值；未测量不当0，过滤需在训练集估计。 | 保留现有具体机制、数值例子和练习 | 完整正文/先修/terms/worked/check/dataLens及count4步/normalization4步已读；raw read count不当绝对RNA molecules。；全目录1440/375px渲染检查通过。 | — |
+| [k05 · 变异表：VCF、MAF、CNV 怎么读](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#k05) | 已审阅 · 无实质补充需要 | VCF/MAF/segment粒度、caller/PASS/功能意义分开；12 ALT/40 reads=.3不等于30%肿瘤细胞，copy/purity条件已有。 | 保留现有具体机制、数值例子和练习 | 完整正文/先修/terms/worked/check/dataLens已读；不把quality或过滤状态当病理因果证据。；全目录1440/375px渲染检查通过。 | — |
+| [k06 · QC、批次、缺失值与异常样本](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#k06) | 已审阅 · 无实质补充需要 | 按模态检查QC、缺失/0/未测量与筛选偏差；A全肿瘤B全正常的完整混杂不能靠软件恢复已明确。 | 保留现有具体机制、数值例子和练习 | 完整正文/先修/terms/worked/check/dataLens已读；10肿瘤/10正常的不可识别批次例核对，无额外motion。；全目录1440/375px渲染检查通过。 | — |
+| [k07 · 单细胞对象：AnnData 与伪重复](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#k07) | 已审阅 · 无实质补充需要 | AnnData X的obs×var、layers同shape、obsm坐标和非默认raw-count口径准确；4donor×5000cells仍4donor，有pseudobulk层级。 | 保留现有具体机制、数值例子和练习 | 完整正文/先修/terms/worked/check/dataLens及共用segmentation7步已读；细胞数不当生物重复数。；全目录1440/375px渲染检查通过。 | — |
+| [k08 · 空间与影像数据：像素、坐标和分割](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#k08) | 已审阅 · 无实质补充需要 | pixel/µm坐标、registration、polygon分割估计与cell功能分开；25pixels×.5=12.5µm与缩图后的scale变换已具体。 | 保留现有具体机制、数值例子和练习 | 完整正文/先修/terms/worked/check/dataLens及共用bin4步/seg7步已读；缩图一半时1µm/pixel核对。；全目录1440/375px渲染检查通过。 | — |
+| [k09 · 临床表：时间、结局和随访](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#k09) | 已审阅 · 无实质补充需要 | time zero/特征可用时间/endpoint字典与case级随访连接准确；已知last followup删失与无记录缺失分开。 | 保留现有具体机制、数值例子和练习 | 完整正文/先修/terms/worked/check/dataLens已读；诊断时与6个月landmark问题分开，不另加重复KM课。；全目录1440/375px渲染检查通过。 | — |
+| [k10 · 从数据到模型：拆分、验证与复现](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#k10) | 已审阅 · 无实质补充需要 | prediction与mechanism、GroupKFold与外部域验证、fold内预处理和early/late fusion/缺失完整。 | 保留现有具体机制、数值例子和练习 | 完整正文/先修/terms/worked/check/dataLens和共用tile泄漏4步已读；patient分组不能保证跨医院domain外推。；全目录1440/375px渲染检查通过。 | — |
 
 ## 09 · RNA-seq & Quantification
 
 | 章节 | 实际状态 | 具体发现 / 保留理由 | 计划或已做修改 | 验证 | 本轮核验来源 |
 | --- | --- | --- | --- | --- | --- |
-| [q01 · 从组织里的 RNA 到测序文库](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#q01) | 待审阅 | 尚未逐章审阅 | — | — | — |
-| [q02 · 测序仪怎样逐个碱基读出序列](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#q02) | 待审阅 | 尚未逐章审阅 | — | — | — |
-| [q03 · FASTQ：序列和质量值怎么读](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#q03) | 待审阅 | 尚未逐章审阅 | — | — | — |
-| [q04 · 从 FASTQ 到 gene count：比对与定量](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#q04) | 待审阅 | 尚未逐章审阅 | — | — | — |
-| [q05 · Raw count 与 CPM：先校正测序深度](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#q05) | 待审阅 | 尚未逐章审阅 | — | — | — |
-| [q06 · RPKM、FPKM、TPM：为什么还要除以长度](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#q06) | 待审阅 | 尚未逐章审阅 | — | — | — |
-| [q07 · DESeq2 size factor 与 edgeR TMM：处理组成偏差](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#q07) | 待审阅 | 尚未逐章审阅 | — | — | — |
-| [q08 · log、VST、z-score 与批次：不要叫成同一种 normalization](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#q08) | 待审阅 | 尚未逐章审阅 | — | — | — |
-| [q09 · 把测序与归一化接到 TCGA 实际研究](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#q09) | 待审阅 | 尚未逐章审阅 | — | — | — |
+| [q01 · 从组织里的 RNA 到测序文库](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#q01) | 已审阅 · 无实质补充需要 | 取材→RNA选择→cDNA/library→counts全流程，poly(A)/rRNA、index/UMI/PCR歧义与bulk组成已有逐步例子。 | 保留已有具体推导、例子、图表和练习，不重复增加同类面板 | sequencing-journey图全部标签和SBS4步已读；测序分子不等于原始RNA，UMI碰撞和效率条件明确。；全目录桌面/手机渲染检查通过。 | — |
+| [q02 · 测序仪怎样逐个碱基读出序列](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#q02) | 已审阅 · 无实质补充需要 | SBS/TGCA→ACGT方向、cluster拷贝非独立分子、Sanger ddNTP、paired fragment、Phred与长读长原理都已有解释。 | 保留已有具体推导、例子、图表和练习，不重复增加同类面板 | 正文/先修/terms/worked/check/dataLens及SBS4步全部label已读；Q20=.01/Q30=.001/Q40=.0001核算。；全目录桌面/手机渲染检查通过。 | — |
+| [q03 · FASTQ：序列和质量值怎么读](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#q03) | 已审阅 · 无实质补充需要 | FASTQ四行、I的ASCII73−33=Q40、gzip不代表已过滤、R1/R2匹配及read QC≠case QC已具体。 | 保留已有具体推导、例子、图表和练习，不重复增加同类面板 | 正文/先修/terms/worked/check/dataLens和SBS4步/count4步全部label已读；A=2/B=1与多gene丢弃toy规则准确。；全目录桌面/手机渲染检查通过。 | — |
+| [q04 · 从 FASTQ 到 gene count：比对与定量](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#q04) | 已审阅 · 无实质补充需要 | reference/annotation、spliced alignment、estimated counts、effective lengths与fragment计数有完整跨exon例。 | 保留已有具体推导、例子、图表和练习，不重复增加同类面板 | 正文/先修/terms/worked/check/dataLens和count4步已读；GDC官方STAR原始/stranded及FPKM/TPM列定义核验。；全目录桌面/手机渲染检查通过。 | [1](https://docs.gdc.cancer.gov/Data/Bioinformatics_Pipelines/Expression_mRNA_Pipeline/) |
+| [q05 · Raw count 与 CPM：先校正测序深度](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#q05) | 已审阅 · 无实质补充需要 | CPM分母集合/N_*诊断行、纯深度与组成挤占、长度及生物重复均有明确数值推导。 | 保留已有具体推导、例子、图表和练习，不重复增加同类面板 | 完整正文/先修/terms/worked/check/dataLens及normalization4步labels已读；100/1000与200/2000同100000，100/2000=50000。；全目录桌面/手机渲染检查通过。 | — |
+| [q06 · RPKM、FPKM、TPM：为什么还要除以长度](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#q06) | 已审阅 · 无实质补充需要 | RPKM/FPKM/TPM分母与effective lengths清楚，三基因完整feature toy及FPKM-UQ公式已具体，不把相对尺度当绝对分子。 | 保留已有具体推导、例子、图表和练习，不重复增加同类面板 | 完整正文/先修/terms/worked/check/dataLens、normalization-map全部标签与4步motion已读；GDC官方UQ=2000/G=19029/length3000/count1000→8.76核验，TPM/rate列手算正确。；全目录桌面/手机渲染检查通过。 | [1](https://docs.gdc.cancer.gov/Data/Bioinformatics_Pipelines/Expression_mRNA_Pipeline/) |
+| [q07 · DESeq2 size factor 与 edgeR TMM：处理组成偏差](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#q07) | 已审阅 · 无实质补充需要 | median-of-ratios三基因手算、中位数≈1与CPM不同、默认零值限制、TMM/模型/完全混杂边界完整。 | 保留已有具体推导、例子、图表和练习，不重复增加同类面板 | 完整正文/先修/terms/worked/check/dataLens与normalization4步已读；sqrt(700×1700)≈1091及.64/1/1与1/1/1.56中位数核算。；全目录桌面/手机渲染检查通过。 | — |
+| [q08 · log、VST、z-score 与批次：不要叫成同一种 normalization](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#q08) | 已审阅 · 无实质补充需要 | log/VST/z-score/batch目的及单位区分具体，heatmap红色不是不同gene分子数比较，变换训练集拟合已说明。 | 保留已有具体推导、例子、图表和练习，不重复增加同类面板 | 完整正文/先修/terms/worked/check/dataLens已读；零值pseudocount影响、sd与队列变化说明充分，无额外motion。；全目录桌面/手机渲染检查通过。 | — |
+| [q09 · 把测序与归一化接到 TCGA 实际研究](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#q09) | 已审阅 · 无实质补充需要 | TCGA流程/列名/病例配对/完整TPM分母及用途速查完整，有真实文件摘录练习与provenance卡。 | 保留已有具体推导、例子、图表和练习，不重复增加同类面板 | 完整正文/先修/terms/worked/check/dataLens和表格已读；GDC官方当前STAR注释/stranded/count/transformed列与完整feature说明核验。；全目录桌面/手机渲染检查通过。 | [1](https://docs.gdc.cancer.gov/Data/Bioinformatics_Pipelines/Expression_mRNA_Pipeline/) |
 
 ## 10 · Evolutionary Biology
 

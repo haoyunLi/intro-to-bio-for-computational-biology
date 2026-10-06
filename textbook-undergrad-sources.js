@@ -74,5 +74,6 @@ Object.assign(window.BIOCS_SOURCES, {
   ,ebiMetabolomics:['EMBL-EBI Training · Metabolomics: an introduction','https://www.ebi.ac.uk/training/online/courses/metabolomics-introduction/']
   ,metabolights:['EMBL-EBI · MetaboLights','https://www.ebi.ac.uk/metabolights/']
   ,hmdb:['Human Metabolome Database','https://hmdb.ca/']
+  ,survivalVignette:['R survival · Risk sets and Kaplan–Meier estimate (§1.4–2.1)','https://cran.r-project.org/web/packages/survival/vignettes/survival.pdf']
   ,nciImmunotherapy:['NCI · Immunotherapy to Treat Cancer','https://www.cancer.gov/about-cancer/treatment/types/immunotherapy']
 });
