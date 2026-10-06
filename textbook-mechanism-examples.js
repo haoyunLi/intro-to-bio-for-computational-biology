@@ -157,4 +157,49 @@
   ]);
   cancerImmunity.check = ['本例 target 的 HLA I 展示丢失，但可结合的 surface CD19 保留。能否因此断定常规 peptide–HLA I TCR 与 CD19 CAR 都必然无法结合目标？',
     '不能。本例常规 TCR 需要匹配的 peptide–HLA I，展示丢失会损害这一识别；常见 CD19 CAR 直接结合 surface CD19，不经过同一呈递关口。CAR 能结合仍不保证 killing 或临床疗效，其他链路也可能失败；若 CD19 丢失，则其目标识别同样受损。'];
+  const bioenergetics = byId('a01');
+  bioenergetics.sections.push(['算整个 coupled system 的 ΔG',
+    `<p>以下是原创虚构教学账，所有数值均指<strong>同一给定条件</strong>、按每 mol 合并反应的计量系数计算，不能当作细胞中固定的 ATP 水解值。假设合成 A+B→AB 的 ΔG 为 +12 kJ/mol，ATP+H₂O→ADP+Pi 为 −30 kJ/mol；enzyme 通过共享的 activated intermediate 把两步机制上连接。</p><div class="lesson-table-wrap"><table class="lesson-table"><thead><tr><th>过程</th><th>ΔG (kJ/mol)</th><th>判断</th></tr></thead><tbody><tr><td>仅 A+B→AB</td><td>+12</td><td>给定条件下 forward 不利</td></tr><tr><td>ATP hydrolysis</td><td>−30</td><td>给定条件下 forward 有利</td></tr><tr><td>计量匹配且机制耦合的总过程</td><td>+12−30=−18</td><td>总 forward 在热力学上有利</td></tr></tbody></table></div><p>关键是 shared intermediate / enzyme-state change 的连接；在旁边独立水解 ATP、只把数字相加，不会自动驱动 A+B 合成。ΔG&lt;0 也不保证快：activation barrier、substrate supply 和 enzyme activity 仍决定可观察的速度。酶单纯加速一个未耦合反应，不改变其 equilibrium；耦合则改变正在比较的总反应。</p>`, ['osAtpCoupling']]);
+  bioenergetics.worked = ['+12 的反应怎样通过耦合成为 −18？',[
+    '固定条件和计量单位，先写合成 +12 kJ/mol、ATP 水解 −30 kJ/mol。',
+    '确认共享 activated intermediate 将两步连接；合并消去中间体后 ΔGtotal=+12−30=−18 kJ/mol。',
+    '若 ATP 只在旁边独立水解，数字相加不能替代实际机制耦合。',
+    '负 ΔG 是热力学方向判断；仍需动力学证据，不能由此算出 flux。']];
+  bioenergetics.check = ['沿本章虚构条件，另一合成反应 ΔG=+35 kJ/mol，耦合一个 −30 kJ/mol 的 ATP hydrolysis，总 ΔG 是多少？仅加速这条链能让 forward 在此条件下有利吗？',
+    '总 ΔG=+35−30=+5 kJ/mol，给定条件下 forward 仍不利。单纯催化加速不改变这个总 ΔG；需改变条件或耦合计量/机制，并重新计算。不能只因用了 ATP 就认为必定可行。'];
+
+  const glycolysis = byId('a03');
+  glycolysis.sections.push(['一 glucose 的 carbon、ATP 与 NADH 三本账',
+    `<p>限定标准 glucose→2 pyruvate 的完整 glycolysis；不把后续 mitochondrial oxidation 算进来。前半段使用2 ATP，后半段两个3-carbon分支合计产生4 ATP，所以净增 <strong>4−2=2 ATP</strong>，不是4；同时形成2 NADH，carbon账是6→3+3。</p><div class="lesson-table-wrap"><table class="lesson-table"><thead><tr><th>步骤</th><th>ATP 收支（每 glucose）</th><th>redox / carbon</th></tr></thead><tbody><tr><td>investment</td><td>−2</td><td>6-carbon input 进入后续两个分支</td></tr><tr><td>payoff</td><td>+4</td><td>合计2 NADH、2 pyruvate</td></tr><tr><td>glycolysis net</td><td>+2</td><td>2 NADH；2个3-carbon产物</td></tr><tr><td>随后2 pyruvate→2 lactate</td><td>此步不额外生成 ATP</td><td>消耗2 NADH、再生2 NAD⁺</td></tr></tbody></table></div><p>Lactate 分支让 NAD⁺ 回到 glycolysis，而不是再发一轮额外 ATP；将两段合并时 NADH 是被再利用的中间载体。这个账不表示真实 cell 只有此出口，也不意味着必须无氧才产 lactate。</p>`, ['osGlycolysis']]);
+  glycolysis.worked = ['为什么产4 ATP，却只能报净2 ATP？',[
+    '按每个 glucose 固定分母：investment支出2，payoff两个分支合计收入4。',
+    '净ATP=4−2=2，碳从6变成3+3；不能把每分支的产物再重复计算。',
+    '2 pyruvate 转成2 lactate 消耗2 NADH再生2 NAD⁺，这一步不额外产 ATP。',
+    '区分gross ATP形成、net ATP收益与redox carrier再生；有氧cell也可能有lactate出口。']];
+  glycolysis.check = ['按上述完整路径，3 glucose 全经 glycolysis 后都转为 lactate。glycolysis 共形成多少 ATP、净增多少？lactate step 额外生成多少 ATP？',
+    'gross形成3×4=12 ATP，同时investment使用3×2=6，净增6 ATP。lactate step本身额外生成0 ATP；它消耗6 NADH并再生6 NAD⁺。这是限定路径的计量账，不是cell全部能量产量。'];
+
+  const measurement = byId('w01');
+  measurement.worked = ['两轮1:10 dilution 后怎样回算？',[
+    '虚构有色溶液100 μM；每轮体积可加、无损失且充分混合。100 μL stock +900 μL diluent，总体积1000 μL，所以第一轮100×100/1000=10 μM。',
+    '从第一轮取100 μL，再加900 μL，第二轮10×100/1000=1 μM。两轮总 dilution factor=10×10=100。',
+    '若校准后第二轮实测0.8 μM，则原样估计0.8×100=80 μM；不要把两个因子相加成20。',
+    '回算不消除移液损失、校准偏差或累积uncertainty；重复读数很集中也可能稳定地偏离reference。']];
+  measurement.check = ['本例两轮1:10后校准读数为0.6 μM。原样浓度估计多少？若三次都读0.6，是否证明准确？',
+    '总 dilution factor=10×10=100；回算0.6×100=60 μM。三次一致只支持高precision；accuracy仍依赖校准、体积、混合和损失等假设。'];
+
+  const qpcr = byId('w04');
+  qpcr.sections.push(['用一组 Cq 沿着 ΔΔCq 走一遍',
+    `<p>原创虚构数据；假设 target/reference amplification efficiency 均为100%（每cycle倍增）、threshold可比，reference在这两条件中经验证稳定。Control 的 target/reference Cq 为25/20；Treatment 为23/20。先各自相减，再比较：</p><div class="lesson-table-wrap"><table class="lesson-table"><thead><tr><th>条件</th><th>target Cq</th><th>reference Cq</th><th>ΔCq=target−reference</th></tr></thead><tbody><tr><td>Control</td><td>25</td><td>20</td><td>5</td></tr><tr><td>Treatment</td><td>23</td><td>20</td><td>3</td></tr></tbody></table></div><p>ΔΔCq=3−5=−2，reference-normalized fold change=2<sup>−(−2)</sup>=<strong>4</strong>。负的cycle差意味着更早到达threshold，并不是负的分子数量。若 treatment 的 reference Cq 也变成18，则其 ΔCq=23−18=5，公式输出1；这显示 moving baseline 能改变结论，不能凭习惯使用一个未经验证的reference。上述4倍依赖倍增等假设，效率不匹配时应使用适用的效率模型。</p>`, ['qpcrLivak2001']]);
+  qpcr.worked = ['25/20 到23/20怎样得到4倍？',[
+    '固定target/reference定义与100%且匹配的efficiency、稳定reference和可比threshold假设。',
+    'Control ΔCq=25−20=5；Treatment ΔCq=23−20=3。',
+    'ΔΔCq=3−5=−2；fold change=2^(−ΔΔCq)=4。',
+    '若reference自身移动，归一化baseline改变；同一cDNA多个well也不能变成多个biological replicate。']];
+  qpcr.check = ['沿本章假设，Control target/reference 为25/20，Treatment 为24/20。ΔΔCq与fold change是多少？',
+    'Control ΔCq=5，Treatment ΔCq=4；ΔΔCq=−1，fold change=2^1=2。它依赖效率匹配且接近100%、reference稳定、threshold可比等假设；不是Cq相差1在所有实验中都必定2倍。'];
+
+  byId('a06').sections[1][2].push('uniprotCpt1');
+  byId('a07').sections[1][2].push('reactomeNucleotideBiosynthesis','uniprotTyms');
+  byId('z03').sections[1][2].push('assayBindingKinetics');
 })();

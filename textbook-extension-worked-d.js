@@ -14,7 +14,7 @@
     y03:['鸟为什么此刻鸣唱？为什么这种行为存在？',['proximate 问题：今天日长、hormone 与 neural circuit 怎样让它开始唱。','ultimate 问题：在过去环境中，这种行为是否影响求偶或繁殖成功。','两类解释可以同时成立，而且需要不同实验和比较证据。','不能因为一个行为目前看起来有用，就断言它一定为该用途而演化。']],
     y04:['觅食更久一定更好吗？',['给动物两种选择：开阔地食物多但暴露风险高，隐蔽处食物少但安全。','用收益、时间和捕食风险构建简单 optimality model，再预测它停留多久。','实际观察若不合预测，检查模型遗漏的信息、能量限制或环境变化。','“最优”是给定假设下的预测，不表示动物在脑中计算方程。']],
     y05:['动物听到声音，何时它算 signal？',['雄蛙发出鸣声，雌蛙接收并改变择偶；记录 sender、medium、receiver 与 response。','捕食者的脚步声也携带信息，但不是为通知猎物而演化，可先称 cue。','改变背景噪声或声音频率，看接收与行为是否改变。','同一声响对不同 species 和环境未必传递相同信息。']],
-    y06:['同一只鱼耐冷了，是发生进化吗？',['把一群鱼转入较冷水中，数日后个体生理状态改变，这是 acclimation 候选。','若不同环境下同一 genotype 呈现不同 phenotype，可画 reaction norm。','只有跨世代可遗传差异的频率改变，才是在讨论 population adaptation。','短期调节、发育 plasticity 与长期 evolution 需要不同时间尺度和数据。']]
+    y06:['同一只鱼耐冷了，是发生进化吗？',['把一群鱼转入较冷水中，数日后个体生理状态改变，这是 acclimation 候选。','若不同环境下同一 genotype 呈现不同 phenotype，可画 reaction norm。','跨世代 heritable variant 的频率改变属于 evolution；要称 evolutionary adaptation，还需检验 natural selection 与特定环境下的 fitness benefit，不能把 drift 也当作 adaptation。','短期调节、发育 plasticity 与长期 evolution 需要不同时间尺度和数据。']]
   };
   const chapters = window.BIOCS_BOOK.flatMap(course => course.chapters);
   for (const [id, worked] of Object.entries(examples)) {

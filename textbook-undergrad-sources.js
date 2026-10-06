@@ -78,5 +78,11 @@ Object.assign(window.BIOCS_SOURCES, {
   ,assayBindingKinetics:['NCATS Assay Guidance Manual · Analyzing Kinetic Binding Data','https://www.ncbi.nlm.nih.gov/books/NBK569501/']
   ,nciCarEngineering:['NCI · CAR T Cells: Engineering Immune Cells to Treat Cancer','https://www.cancer.gov/about-cancer/treatment/research/car-t-cells']
   ,carAntibodyRecognition1989:['Gross et al. 1989 · Antibody-type specificity without MHC restriction','https://doi.org/10.1073/pnas.86.24.10024']
+  ,osAtpCoupling:['OpenStax Biology 2e · ATP and mechanism coupling','https://openstax.org/books/biology-2e/pages/6-4-atp-adenosine-triphosphate']
+  ,osGlycolysis:['OpenStax Biology 2e · Glycolysis ATP and NADH accounting','https://openstax.org/books/biology-2e/pages/7-2-glycolysis']
+  ,qpcrLivak2001:['Livak & Schmittgen 2001 · Relative expression and ΔΔCT assumptions','https://doi.org/10.1006/meth.2001.1262']
+  ,reactomeNucleotideBiosynthesis:['Reactome · Purine and pyrimidine biosynthesis','https://reactome.org/content/detail/R-HSA-8956320']
+  ,uniprotTyms:['UniProt TYMS · dUMP methylation and one-carbon donor','https://www.uniprot.org/uniprotkb/P04818/entry']
+  ,uniprotCpt1:['UniProt CPT1A · Long-chain acyl transfer and malonyl-CoA inhibition','https://www.uniprot.org/uniprotkb/P50416/entry']
   ,nciImmunotherapy:['NCI · Immunotherapy to Treat Cancer','https://www.cancer.gov/about-cancer/treatment/types/immunotherapy']
 });
