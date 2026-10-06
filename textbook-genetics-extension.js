@@ -8,7 +8,7 @@
     chapter({
       id:'x17', title:'Mosaicism、imprinting、X-inactivation 与 heteroplasmy', subtitle:'同一个人内部也不一定只有一种简单 genotype→phenotype 关系。',
       intuition:'受精卵给出起点，但之后的 somatic mutation、parent-of-origin regulation、随机 X-inactivation 与 mitochondrial segregation 会让同一个体内部出现不同遗传状态。',
-      mental:'把个体想成一棵不断分叉的 cell lineage tree：越晚发生的 mutation 只进入较小分支；有些 allele 的作用还取决于来自父亲还是母亲、位于哪条 X chromosome，或一个细胞含多少 mutant mitochondria。',
+      mental:'把个体想成一棵不断分叉的 cell lineage tree：越晚发生的 mutation 只进入较小分支；有些 allele 的作用还取决于来自父亲还是母亲、位于哪条 X chromosome，或一个细胞的 mtDNA copies 中有多少带 variant（不把 DNA copy 与整个 mitochondrion 当成同一对象）。',
       mechanism:'<strong>Mosaicism</strong>来自 fertilization 后产生并扩增的 genetic difference；若进入 germ cell lineage，下一代风险与 blood VAF 不能简单对应。<strong>Genomic imprinting</strong>通过 parent-of-origin-specific epigenetic state 让部分 locus 主要表达一个 parental allele。XX cell 的一条 X chromosome 在早期发生大范围 inactivation，但部分 gene escape，且不同 cell 的选择可形成 skew。Mitochondria 有多份 genome，<strong>heteroplasmy</strong>与 replicative segregation 使不同 tissue 的 mutant fraction 和 threshold effect 不同。',
       evidence:'Blood、saliva、skin 或 affected tissue 的 deep sequencing 可比较 mosaic fraction；parent–child phasing 帮确定 allele origin；allele-specific RNA 与 methylation 可观察 imprinting 或 X-linked expression；mitochondrial variant 要同时报告 tissue、depth 与 heteroplasmy。未在 blood 检出不能排除 tissue-limited 或 germline mosaicism。',
       project:'变异解释表必须分开 sample tissue、estimated mosaic fraction、phase、parental origin 和 phenotype tissue。Single-cell sequencing 可定位 lineage，但 amplification dropout 与 doublet 会制造假 mosaic。研究 X-linked expression 时把 sex chromosome dosage、escape status 与 cell mixture 纳入模型。',

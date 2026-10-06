@@ -50,4 +50,63 @@
   ]];
   respiration.check = ['沿用表中的短时模型，ETC inhibition 与 uncoupling 都使 mitochondrial ATP synthesis 下降。哪项 readout 有望区分两者，方向是什么？',
     'O₂ consumption：ETC inhibition 使它下降；在底物/O₂/ADP 充足、呼吸未达上限且未损伤系统的 uncoupling 情况，它可上升。两者的 gradient 都可降低。完整细胞的总 ATP 还受 glycolysis 补偿，需单独测量。'];
+  const repair = byId('x04');
+  repair.sections.push([
+    '断裂修好了，序列为何仍可能改变',
+    `<p>用虚构短序列区分 damage 与 mutation：只画一条链的 5′→3′ 顺序，互补链省略。原来是 <code>ACGTTA</code>；在 <code>ACG | TTA</code> 处发生 double-strand break。断裂先改变分子的完整性，并不必然删去某个 base。</p><div class="lesson-table-wrap"><table class="lesson-table"><thead><tr><th>本例后续处理</th><th>连接后的序列</th><th>结果</th></tr></thead><tbody><tr><td>compatible ends 原样连接</td><td>ACGTTA</td><td>恢复原序列</td></tr><tr><td>假定端处理丢掉右端一个 T，再连接</td><td>ACGTA</td><td>1-base deletion：序列已改变</td></tr><tr><td>持续损伤导致细胞死亡</td><td>未得到存活细胞中的修复产物</td><td>不能把全部 damage 都算成后代 mutation</td></tr></tbody></table></div><p>第二行是人为指定的修复结果，不是 NHEJ 必然删 1 base，也不是实际发生率。NHEJ 既可准确连接，也可因端处理形成 indel。Mutation 可来自复制错误或损伤后的复制，也可直接由错误修复产生；不是所有 mutation 都要等下一次完整 chromosome replication。γH2AX、修复产物序列和存活细胞的 variant burden 测的是不同阶段。</p>`,
+    ['nhMutation','cnvRepairMechanisms'],
+  ]);
+  repair.worked = ['从断裂追到一个已形成的 deletion',[
+    '原序列 ACGTTA 在 ACG | TTA 处断开：这是完整性受损，尚不等于已经丢掉一个字母。',
+    '原样连接可恢复 ACGTTA；本例另假定端处理移除右端一个 T。',
+    '连接后得到 ACGTA，长度从 6 变成 5；删除已在修复时形成，不必等待下一轮完整染色体复制。',
+    '若只测到当前 damage response，仍不知道原样修复、带 indel 存活或死亡各占多少；需区分测量阶段。',
+  ]];
+  repair.check = ['本例 ACG | TTA 的右端失去一个 T 后重新连接。结果是什么？这是否必须等到下一次完整 chromosome replication 才成为序列改变？',
+    '结果是 ACGTA，比原来短 1 base，属于 deletion。它已在端处理与重接中形成，不必等待下一轮完整染色体复制；NHEJ 并不必然产生这个结果，也可以原样连接。'];
+
+  const transcription = byId('x05');
+  transcription.sections.push([
+    '两种过程，为什么得到同样两倍的 RNA',
+    `<p>课堂中只考虑一个固定细胞中的 RNA 合成和一阶降解，忽略 export、processing、cell division 与体积变化。设 <code>dR/dt=s−kR</code>：R 是模型 RNA molecules/cell，s 是 molecules/cell/min，k 是 min⁻¹。稳态时 <code>R*=s/k</code>。</p><div class="lesson-table-wrap"><table class="lesson-table"><thead><tr><th>课堂条件</th><th>s</th><th>k</th><th>稳态 R*</th></tr></thead><tbody><tr><td>基线</td><td>10</td><td>0.1</td><td>100</td></tr><tr><td>合成加倍</td><td>20</td><td>0.1</td><td>200</td></tr><tr><td>降解常数减半</td><td>10</td><td>0.05</td><td>200</td></tr></tbody></table></div><p>后两行的终点丰度相同，生成机制却不同。Nascent RNA 标记和 decay time course 有望区分它们；取样时刻、标记时长、细胞分裂与处理步骤仍需纳入。此表是原创模型中的分子数，不是把 raw RNA-seq counts 直接解释为每个 cell 的绝对分子数。真实系统不一定符合一阶稳态假设。</p>`,
+    ['ncbiGeneExpression'],
+  ]);
+  transcription.worked = ['用合成与降解平衡算 RNA 丰度',[
+    '写出模型 dR/dt=s−kR；在稳态把变化率设为 0，得 R*=s/k。',
+    '基线 s=10、k=0.1，R*=100；合成改为 20、k 不变，R*=200。',
+    '保持 s=10、只把 k 改为 0.05，也得到 R*=200。相同终点不能唯一反推 initiation。',
+    '比较 nascent synthesis 与 decay time course，并检查模型的稳态、时间和计量单位；丰度与速率是不同量。',
+  ]];
+  transcription.check = ['沿用本章一阶稳态模型，s=10 molecules/cell/min，k 从 0.1 改为 0.2 min⁻¹。稳态 RNA 数是多少，合成是否下降？',
+    'R*=10/0.2=50 molecules/cell，只有基线的一半。模型中的合成 s 仍是 10；下降来自降解常数增加，不能由较低丰度直接判定 transcription 降低。'];
+
+  const splicing = byId('x08');
+  splicing.sections.push([
+    '先归一化：80 个 inclusion reads 为什么不等于 2/3 PSI',
+    `<p>以 rMATS 的 inclusion-level 计算为例，I、S 是该事件的 inclusion/skipping counts，Lᵢ、Lₛ 是工具给出的 effective form lengths，不是随意取整条 gene 长度。<code>PSI=(I/Lᵢ)/[(I/Lᵢ)+(S/Lₛ)]</code>。JC 与 JCEC 的计数规则不同，必须和对应长度一起使用。</p><p>虚构事件设 <code>I=80，S=40，Lᵢ=200，Lₛ=100</code>：归一化后都是 0.4，PSI=0.5；直接用 <code>80/(80+40)</code> 会得到 2/3。只有两种 effective length 相同且其他模型条件成立时，简化的 raw-count 比例才与这个公式相等。I=S=0 时没有比例信息，rMATS 输出 NA，而不是 PSI=0。低 coverage、mapping 与 biological replicate 仍决定解释可靠性；PSI 不是 protein activity。</p>`,
+    ['rmatsOfficial','rmats'],
+  ]);
+  splicing.worked = ['按事件计数机会计算 PSI',[
+    '记录 inclusion 80、skipping 40；同时取该事件对应的 effective lengths 200 与 100。',
+    '分别归一化：80/200=0.4，40/100=0.4；它们在原始 counts 上有不同计数机会。',
+    '纳入比例为 0.4/(0.4+0.4)=0.5，不能直接把 80/120 当作此工具的结果。',
+    '两个 counts 都为 0 时记缺少信息/NA；比较组别还要保留 biological replicate 和 coverage，不从单次比例推功能。',
+  ]];
+  splicing.check = ['按本章 rMATS 公式，I=60、S=30，Lᵢ=200、Lₛ=100，PSI 是多少？若 I=S=0 呢？',
+    '60/200=0.3、30/100=0.3，所以 PSI=0.3/0.6=0.5，而不是 raw 60/90。两者为 0 时分母为 0，应记 NA/无比例信息，不能解释成完全跳过。'];
+
+  const phasing = byId('x10');
+  phasing.sections.push([
+    '同一 phase set：知道 cis，仍不知道来自谁',
+    `<p>虚构两个 diploid heterozygous 位点，REF/ALT 均按各自记录编码。若它们已可靠定相且处于<strong>同一 phase set</strong>：</p><div class="lesson-table-wrap"><table class="lesson-table"><thead><tr><th>记录</th><th>位点 A 的 GT</th><th>位点 B 的 GT</th><th>两条 ALT 的关系</th></tr></thead><tbody><tr><td>情形 1</td><td>0|1</td><td>0|1</td><td>都在 haplotype 2：cis</td></tr><tr><td>情形 2</td><td>0|1</td><td>1|0</td><td>分在 haplotype 2 与 1：trans</td></tr><tr><td>未定相</td><td>0/1</td><td>0/1</td><td>仅由 GT 无法二选一</td></tr></tbody></table></div><p>将情形 1 两条 haplotype 的编号整体交换，会把两个 GT 都写成 1|0，却保留同一个 cis 关系。编号不是亲本标签。单个样本的 read-backed/statistical phasing 通常不自动确定 parental origin；家系资料和相应推断才可给来源。WhatsHap 的 pedigree 模式可按 paternal|maternal 输出，这是具体模式的约定，不能泛化到所有带 | 的 VCF。不同 phase set 之间也不能直接按左右位置拼接。</p>`,
+    ['whatshapGuide','nhHaplotype'],
+  ]);
+  phasing.worked = ['读 GT，再分清定相与亲本来源',[
+    '同一 phase set 的 A=0|1、B=1|0：A 的 ALT 在 haplotype 2，B 的 ALT 在 haplotype 1。',
+    '因此 ALT 在 trans；0/1、0/1 的未定相记录则同时兼容 cis 和 trans。',
+    '没有亲本资料时，只把它们叫 haplotype 1/2；不要把左侧自动叫 paternal。',
+    '核对 phase set、phasing uncertainty、样本和工具模式，再用于 recessive variant 或 ASE 推断。',
+  ]];
+  phasing.check = ['同一可靠 phase set 内，两个位点的 GT 都是 1|0。两条 ALT 是 cis 还是 trans？这能否单独说明来自父亲？',
+    '它们都位于 haplotype 1，所以是 cis。仅这些 GT 不给 parental origin；需要亲本资料和相应推断/模式。不同 phase set 不能直接比较左右位置。'];
 })();

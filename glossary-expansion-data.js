@@ -68,7 +68,7 @@
     'cCRE':['某区域因 chromatin 或 TF 等证据被标为 candidate regulatory element。','candidate 标签不是该区域调控某个指定 gene 的功能证明。'],
     'ATAC peak':['某 enhancer 候选附近出现 ATAC signal 富集区。','peak 可及不代表 TF 一定结合或 transcription 一定提高。'],
     'Splice junction':['RNA read 跨 exon 2 和 exon 4 的连接，可提示 exon 3 被跳过。','单条 junction read 不能给出完整 isoform 的可靠比例。'],
-    'PSI':['某 exon 的纳入相关 reads 占纳入与跳过相关 reads 的一部分。','PSI 是事件比例，和整个 gene 的总 expression 不是同一量。'],
+    'PSI':['某 exon 的纳入比例；例如 rMATS 先按 effective length 归一化纳入/跳过 counts，再求比例。','PSI 是事件比例，和整个 gene 的总 expression 不是同一量。'],
     'Sample manifest':['一张表列出 patient、sample、section、assay 和文件 ID 的对应关系。','没有时间与组织位置时，同一 case 的文件可能被误当作配对。'],
     'ROI':['从切片选一块肿瘤边缘区域做邻域分析。','ROI 的选取若看过结果再决定，会引入选择偏差。'],
     'Multimodal integration':['先对齐同一病例的 DNA、RNA 与空间切片，再讨论共同模式。','相关信号跨模态出现，不表示它们已构成因果机制。'],

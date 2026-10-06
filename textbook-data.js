@@ -1,6 +1,9 @@
 // Original Chinese teaching text lives in textbook-part-*.js. Sources are linked, not copied.
 window.BIOCS_BOOK = [];
 window.BIOCS_SOURCES = {
+  cnvRepairMechanisms:['Hastings et al. 2009 · Mechanisms of change in gene copy number','https://pmc.ncbi.nlm.nih.gov/articles/PMC2864001/'],
+  rmatsOfficial:['rMATS-turbo · Official output definitions and normalization','https://github.com/Xinglab/rmats-turbo'],
+  whatshapGuide:['WhatsHap · Phasing, phase sets and pedigree mode','https://whatshap.readthedocs.io/en/latest/guide.html'],
   antigenProcessing2013:['Blum, Wearsch & Cresswell 2013 · Pathways of Antigen Processing','https://pmc.ncbi.nlm.nih.gov/articles/PMC4026165/'],
   osOxPhos:['OpenStax Biology 2e · Oxidative Phosphorylation','https://openstax.org/books/biology-2e/pages/7-4-oxidative-phosphorylation'],
   osBloodComponents:['OpenStax Biology 2e · Components of the Blood','https://openstax.org/books/biology-2e/pages/40-2-components-of-the-blood'],
