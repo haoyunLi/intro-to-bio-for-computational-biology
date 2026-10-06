@@ -148,4 +148,13 @@
   ]];
   binding.check = ['沿用本章模型，Kd=5 nM、free L=15 nM 时 occupancy 是多少？能否由此直接说 response 已达到最大值的75%？',
     'θ=15/(5+15)=0.75，即75% sites 被占据。不能直接认定 response 为75%：模型只描述平衡binding，响应还依赖激活、amplification、receptor reserve及其他环节。'];
+
+  const cancerImmunity = byId('i10');
+  cancerImmunity.sections.push([
+    'TCR 与常见 CAR：识别关口怎样改变',
+    `<p>以匹配 peptide–HLA I 的常规 CD8 TCR，与直接识别<strong>细胞表面 CD19</strong>的常见抗体来源 CAR 作机制对照。TCR 识别 peptide 与 HLA 构成的复合物；本例 CAR 的外部 antibody-derived domain 直接结合表面 antigen，内部 signaling/co-stimulatory domains 传递信号，不要求把 CD19 加工成匹配的 peptide–HLA 后才结合。</p><div class="lesson-table-wrap"><table class="lesson-table"><thead><tr><th>识别方式</th><th>目标端必须给出的东西</th><th>直接识别的限制</th></tr></thead><tbody><tr><td>本例常规 CD8 TCR</td><td>匹配的 peptide–HLA I</td><td>有蛋白也未必形成或展示匹配复合物</td></tr><tr><td>本例 CD19 CAR</td><td>可到达、可结合的 surface CD19</td><td>只在细胞内部的蛋白不能由此 CAR 直接识别</td></tr></tbody></table></div><p>在虚构的“其他条件不变”比较中，若 target 丢失 HLA I 展示却保留可结合的 surface CD19，本例 TCR 的识别关口受损；不能把同一 peptide–HLA 缺口直接套到 CD19 CAR。反过来，surface CD19 丢失会破坏这个 CAR 的目标识别。两者在到场、功能抑制和 target death 等关口仍可能失败；能结合不保证能杀伤，也不代表只结合 tumor，正常细胞也可能有同一 antigen。这里限定常见 surface-antigen CAR；针对 peptide–HLA 等其他设计应另查具体识别对象。此表解释机制，不预测个体疗效。</p>`,
+    ['nciCarEngineering','carAntibodyRecognition1989'],
+  ]);
+  cancerImmunity.check = ['本例 target 的 HLA I 展示丢失，但可结合的 surface CD19 保留。能否因此断定常规 peptide–HLA I TCR 与 CD19 CAR 都必然无法结合目标？',
+    '不能。本例常规 TCR 需要匹配的 peptide–HLA I，展示丢失会损害这一识别；常见 CD19 CAR 直接结合 surface CD19，不经过同一呈递关口。CAR 能结合仍不保证 killing 或临床疗效，其他链路也可能失败；若 CD19 丢失，则其目标识别同样受损。'];
 })();

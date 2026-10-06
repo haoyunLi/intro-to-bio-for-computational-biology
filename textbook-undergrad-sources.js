@@ -76,5 +76,7 @@ Object.assign(window.BIOCS_SOURCES, {
   ,hmdb:['Human Metabolome Database','https://hmdb.ca/']
   ,survivalVignette:['R survival · Risk sets and Kaplan–Meier estimate (§1.4–2.1)','https://cran.r-project.org/web/packages/survival/vignettes/survival.pdf']
   ,assayBindingKinetics:['NCATS Assay Guidance Manual · Analyzing Kinetic Binding Data','https://www.ncbi.nlm.nih.gov/books/NBK569501/']
+  ,nciCarEngineering:['NCI · CAR T Cells: Engineering Immune Cells to Treat Cancer','https://www.cancer.gov/about-cancer/treatment/research/car-t-cells']
+  ,carAntibodyRecognition1989:['Gross et al. 1989 · Antibody-type specificity without MHC restriction','https://doi.org/10.1073/pnas.86.24.10024']
   ,nciImmunotherapy:['NCI · Immunotherapy to Treat Cancer','https://www.cancer.gov/about-cancer/treatment/types/immunotherapy']
 });

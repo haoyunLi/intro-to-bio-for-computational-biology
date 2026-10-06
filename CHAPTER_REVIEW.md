@@ -1,6 +1,6 @@
 # Bio/CS 逐章审阅记录
 
-本轮清单：180 章。已逐章阅读并判断：123；结论/修改验证完成：123；尚待阅读：57。
+本轮清单：180 章。已逐章阅读并判断：151；结论/修改验证完成：147；尚待阅读：29。
 
 状态只依据实际阅读正文、公式/例子、图表/实验和练习后手工写入的结论。自动清单导出、渲染检查或通用修复不代表章节已审阅。未改章节也记录保留理由；章节原有来源不等于本轮已逐条访问核验。
 
@@ -209,51 +209,51 @@
 
 | 章节 | 实际状态 | 具体发现 / 保留理由 | 计划或已做修改 | 验证 | 本轮核验来源 |
 | --- | --- | --- | --- | --- | --- |
-| [i01 · 屏障、innate sensing 与 inflammation](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#i01) | 待审阅 | 尚未逐章审阅 | — | — | — |
-| [i02 · Complement、phagocytosis 与先天效应](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#i02) | 待审阅 | 尚未逐章审阅 | — | — | — |
+| [i01 · 屏障、innate sensing 与 inflammation](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#i01) | 已审阅 · 无实质补充需要 | PRR的pattern specificity/PAMP-DAMP、resolution主动过程、handling诱导signature与PBMC非组织免疫准确；CRP源不明的check具体。 | 保留已有具体机制、反例与证据链练习 | 完整正文/先修/terms/worked/check/dataLens已读；这些章无额外motion；全目录桌面/手机渲染检查通过。 | — |
+| [i02 · Complement、phagocytosis 与先天效应](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#i02) | 已审阅 · 无实质补充需要 | C3b标记/C3a-C5a炎症/C5b9终末、吞噬→杀灭与NK整合抑制/激活分开；comp库存非activation具体。 | 保留已有具体机制、反例与证据链练习 | 完整正文/先修/terms/worked/check/dataLens已读；这些章无额外motion；全目录桌面/手机渲染检查通过。 | — |
 | [i03 · Antigen processing、MHC 与 T-cell recognition](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#i03) | 已修改并验证 | MHC I/II和功能证据区分正确，但只有文字要求读者自行画两路线，worked通用。 | 补起点/加工位置/MHC/CD8-CD4路线表，TAP阻断推演、cross-presentation例外及具体检查题。 | 完整正文/先修/术语/dataLens/worked/check已读；新例手算与Bio四脚本通过；1440/375px worked/表格正常，提交解释与信心后才可展开具体答案，回答锁定与无页面溢出/脚本错误通过。；原创worked截图已目视检查；发布后同项检查通过。 | [1](https://pmc.ncbi.nlm.nih.gov/articles/PMC4026165/) |
-| [i04 · B cell、antibody 与 clonal selection](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#i04) | 待审阅 | 尚未逐章审阅 | — | — | — |
-| [i05 · Tolerance、memory、vaccine 与 tumor immunity](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#i05) | 待审阅 | 尚未逐章审阅 | — | — | — |
-| [i06 · Receptor diversity 与 lymphocyte development](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#i06) | 待审阅 | 尚未逐章审阅 | — | — | — |
-| [i07 · T-cell activation、effector function 与 migration](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#i07) | 待审阅 | 尚未逐章审阅 | — | — | — |
-| [i08 · Infection、vaccines 与 commensal microbes](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#i08) | 待审阅 | 尚未逐章审阅 | — | — | — |
-| [i09 · Allergy、chronic inflammation 与 autoimmunity](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#i09) | 待审阅 | 尚未逐章审阅 | — | — | — |
-| [i10 · Cancer immunology 与 immunotherapy evidence chain](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#i10) | 待审阅 | 尚未逐章审阅 | — | — | — |
+| [i04 · B cell、antibody 与 clonal selection](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#i04) | 已审阅 · 无实质补充需要 | VDJ→antigen选择→SHM/affinity→constant switch→plasma/memory顺序准确；同specificity改变isotype与总IgG非neutralization反例清楚。 | 保留已有具体机制、反例与证据链练习 | 完整正文/先修/terms/worked/check/dataLens已读；这些章无额外motion；全目录桌面/手机渲染检查通过。 | — |
+| [i05 · Tolerance、memory、vaccine 与 tumor immunity](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#i05) | 已审阅 · 无实质补充需要 | central/peripheral tolerance、recall memory、checkpoint调节/免疫损伤完整；CD8数量非疗效充分证据且有pretreatment时间条件。 | 保留已有具体机制、反例与证据链练习 | 完整正文/先修/terms/worked/check/dataLens已读；这些章无额外motion；全目录桌面/手机渲染检查通过。 | — |
+| [i06 · Receptor diversity 与 lymphocyte development](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#i06) | 已审阅 · 无实质补充需要 | VDJ somatic生成与感染后clone扩增分开，B编辑与T positive/negative selection和残余peripheral tolerance清楚。 | 保留已有具体机制、反例与证据链练习 | 完整正文/先修/terms/worked/check/dataLens已读；这些章无额外motion；全目录桌面/手机渲染检查通过。 | — |
+| [i07 · T-cell activation、effector function 与 migration](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#i07) | 已审阅 · 无实质补充需要 | TCR-peptide-MHC/co-stimulation/cytokine三类输入→迁移→杀伤→收缩/memory完整，blood特异T不等已到tumor的例子具体。 | 保留已有具体机制、反例与证据链练习 | 完整正文/先修/terms/worked/check/dataLens已读；这些章无额外motion；全目录桌面/手机渲染检查通过。 | — |
+| [i08 · Infection、vaccines 与 commensal microbes](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#i08) | 已审阅 · 无实质补充需要 | 平台改变expression/presentation/adjuvant、entry niche和不同protection endpoint、时间配对与菌群组成约束完整。 | 保留已有具体机制、反例与证据链练习 | 完整正文/先修/terms/worked/check/dataLens已读；这些章无额外motion；全目录桌面/手机渲染检查通过。 | — |
+| [i09 · Allergy、chronic inflammation 与 autoimmunity](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#i09) | 已审阅 · 无实质补充需要 | target/location/timing/regulation区分过敏、自免、慢炎；IgE/mast、其他effector、autoantibody非充分因果都有解释。 | 保留已有具体机制、反例与证据链练习 | 完整正文/先修/terms/worked/check/dataLens已读；这些章无额外motion；全目录桌面/手机渲染检查通过。 | — |
+| [i10 · Cancer immunology 与 immunotherapy evidence chain](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#i10) | 已修改并验证 | 癌免疫六关口与HLA/入场缺口例完整；但只称CAR-T engineered recognition，没有解释常见surface antigen CAR与peptide-HLA TCR的识别差别。 | 补CD19式抗体来源CAR直接识别表面antigen与常规TCR的peptide-HLA对照；HLA缺失不能一概外推到此CAR，antigen loss仍会失败。 | 完整正文/先修/terms/worked/check/dataLens已读；NCI现代CAR识别结构及Gross1989作者摘要已核验；四内容/练习脚本、1440/375px门槛与锁定及无错误/失败请求/页面溢出通过；新表桌面/手机均已视觉检查。 | [1](https://www.cancer.gov/about-cancer/treatment/research/car-t-cells) · [2](https://doi.org/10.1073/pnas.86.24.10024) |
 
 ## 16 · Neuroscience
 
 | 章节 | 实际状态 | 具体发现 / 保留理由 | 计划或已做修改 | 验证 | 本轮核验来源 |
 | --- | --- | --- | --- | --- | --- |
-| [n01 · Membrane potential 与 action potential](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#n01) | 待审阅 | 尚未逐章审阅 | — | — | — |
-| [n02 · Synapse、neurotransmitter 与 integration](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#n02) | 待审阅 | 尚未逐章审阅 | — | — | — |
-| [n03 · Neural circuit：从反射到分布式计算](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#n03) | 待审阅 | 尚未逐章审阅 | — | — | — |
-| [n04 · 感觉、运动与 perception](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#n04) | 待审阅 | 尚未逐章审阅 | — | — | — |
-| [n05 · Plasticity、learning、memory 与 behavior](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#n05) | 待审阅 | 尚未逐章审阅 | — | — | — |
+| [n01 · Membrane potential 与 action potential](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#n01) | 已审阅 · 无实质补充需要 | Na/K pump维持长时程离子梯度与快速gated-channel AP分开；all-or-none、rate code、轴突再生与短时停pump不立即归零有具体解释。 | 保留AP链与pump暂停反例 | 完整正文/先修/terms/worked/check/dataLens逐章已读；无额外motion；已有全目录桌面/手机渲染验证。 | — |
+| [n02 · Synapse、neurotransmitter 与 integration](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#n02) | 已审阅 · 无实质补充需要 | Ca进入→vesicle释放→ionotropic/metabotropic→时空整合完整；递质效应依受体/梯度，GABA发展期例及calcium≠spike防误读。 | 保留突触机制、解剖邻近不等于功能连接的练习 | 完整正文/先修/terms/worked/check/dataLens逐章已读；无额外motion；已有全目录桌面/手机渲染验证。 | — |
+| [n03 · Neural circuit：从反射到分布式计算](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#n03) | 已修改并验证 | 分布式/recurrent反馈与病灶/刺激/解码的推断边界充分；但把带interneuron链称最简单reflex，遗漏monosynaptic同名肌兴奋支路。 | 改为含interneuron的示例，明确stretch reflex单突触支路 | 完整正文/先修/terms/worked/check/dataLens已读；本批四内容/练习脚本与1440/375px实际渲染、练习门槛/锁定、无页面错误/失败请求/页面溢出通过。 | [1](https://www.ncbi.nlm.nih.gov/books/NBK10809/) |
+| [n04 · 感觉、运动与 perception](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#n04) | 已审阅 · 无实质补充需要 | physical transduction、noisy coding、context/prior到decision/action链完整；模糊图像例解释同刺激不同感知，反应时含motor且trial嵌套。 | 保留感官编码与心理物理学控制对照 | 完整正文/先修/terms/worked/check/dataLens逐章已读；无额外motion；已有全目录桌面/手机渲染验证。 | — |
+| [n05 · Plasticity、learning、memory 与 behavior](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#n05) | 已修改并验证 | LTP/LTD依protocol，acquisition/retention分离，IEG marker非memory content；Learning term却链接population ecology。 | Learning来源改到本章Neuroscience教材 | 完整正文/先修/terms/worked/check/dataLens已读；本批四内容/练习脚本与1440/375px实际渲染、练习门槛/锁定、无页面错误/失败请求/页面溢出通过。 | — |
 
 ## 17 · Ecology
 
 | 章节 | 实际状态 | 具体发现 / 保留理由 | 计划或已做修改 | 验证 | 本轮核验来源 |
 | --- | --- | --- | --- | --- | --- |
-| [o01 · Ecological scale、niche 与 distribution](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#o01) | 待审阅 | 尚未逐章审阅 | — | — | — |
-| [o02 · Population growth 与 life history](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#o02) | 待审阅 | 尚未逐章审阅 | — | — | — |
-| [o03 · Species interaction 与 food web](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#o03) | 待审阅 | 尚未逐章审阅 | — | — | — |
-| [o04 · Energy flow 与 biogeochemical cycle](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#o04) | 待审阅 | 尚未逐章审阅 | — | — | — |
-| [o05 · Biodiversity、disturbance 与 conservation](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#o05) | 待审阅 | 尚未逐章审阅 | — | — | — |
+| [o01 · Ecological scale、niche 与 distribution](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#o01) | 已审阅 · 无实质补充需要 | habitat/niche、abiotic/biotic与dispersal区分；未检出可能未到达或检测不足，空间blocked validation与地点尺度明确。 | 保留空白地图与缺失观测推断边界 | 完整正文/先修/terms/worked/check/dataLens逐章已读；无额外motion；已有全目录桌面/手机渲染验证。 | — |
+| [o02 · Population growth 与 life history](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#o02) | 已审阅 · 无实质补充需要 | 100+30−20+5−8=107的人口会计例可检查；exponential/logistic假设、动态K、年龄阶段与过程/测量噪声分开。 | 保留已有数值例、密度与增长边界 | 完整正文/先修/terms/worked/check/dataLens逐章已读；无额外motion；已有全目录桌面/手机渲染验证。 | — |
+| [o03 · Species interaction 与 food web](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#o03) | 已修改并验证 | 直接/间接路径、top-down/bottom-up与correlation非interaction充分；主要类比使用plant，不符本轮用户非植物教学偏好。 | 换原创明确假设的predator→protist→bacterium链，保留真实反馈限制 | 完整正文/先修/terms/worked/check/dataLens已读；本批四内容/练习脚本与1440/375px实际渲染、练习门槛/锁定、无页面错误/失败请求/页面溢出通过。 | — |
+| [o04 · Energy flow 与 biogeochemical cycle](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#o04) | 已修改并验证 | energy耗散与matter循环、GPP−resp=NPP、10%并非定律、stock/flux单位边界充分；森林练习可换到微生物对象。 | 用微生物biomass存量与每小时净增长flux替换森林题 | 完整正文/先修/terms/worked/check/dataLens已读；本批四内容/练习脚本与1440/375px实际渲染、练习门槛/锁定、无页面错误/失败请求/页面溢出通过。 | — |
+| [o05 · Biodiversity、disturbance 与 conservation](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#o05) | 已审阅 · 无实质补充需要 | 相同10species也可functional/genetic多样性不同；resistance/recovery需轨迹，richness≠evenness，BACI与检出偏差有解释。 | 保留多样性和恢复曲线的具体判别题 | 完整正文/先修/terms/worked/check/dataLens逐章已读；无额外motion；已有全目录桌面/手机渲染验证。 | — |
 
 ## 18 · Metabolism & Metabolomics
 
 | 章节 | 实际状态 | 具体发现 / 保留理由 | 计划或已做修改 | 验证 | 本轮核验来源 |
 | --- | --- | --- | --- | --- | --- |
-| [a01 · Bioenergetics：为什么反应会向前走](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#a01) | 待审阅 | 尚未逐章审阅 | — | — | — |
-| [a02 · Redox、electron carrier 与 metabolic flux](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#a02) | 待审阅 | 尚未逐章审阅 | — | — | — |
-| [a03 · Glycolysis、fermentation 与 gluconeogenesis](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#a03) | 待审阅 | 尚未逐章审阅 | — | — | — |
-| [a04 · Pentose phosphate pathway、NADPH 与 biosynthesis](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#a04) | 待审阅 | 尚未逐章审阅 | — | — | — |
+| [a01 · Bioenergetics：为什么反应会向前走](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#a01) | 已审阅 · 待修改 | ΔG与ΔG°′、enzyme降低barrier不改equilibrium、flux≠enzymeRNA清楚；coupling仍只有盒图和通用worked，没有可算的合并ΔG。 | 补明确假设的+12与−30 kJ/mol耦合账，区分机制连接与独立ATP水解 | 完整正文/先修/terms/worked/check/dataLens逐章已读；无额外motion。 | — |
+| [a02 · Redox、electron carrier 与 metabolic flux](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#a02) | 已审阅 · 无实质补充需要 | carbon/electron双账、NADH/NADPH的enzyme/compartment/ratio分工明确；citrate pool可由入流与出流改变，终点不识别flux。 | 保留已有redox与pool/flux推断题 | 完整正文/先修/terms/worked/check/dataLens逐章已读；无额外motion。 | — |
+| [a03 · Glycolysis、fermentation 与 gluconeogenesis](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#a03) | 已审阅 · 待修改 | investment/payoff/fermentation/Cori路径完整，有氧lactate与ECAR非唯一glycolysis信号已限定；没有实际2/4/net2 ATP账。 | 补一glucose两丙酮酸的ATP/NADH与lactate再生NAD⁺账 | 完整正文/先修/terms/worked/check/dataLens逐章已读；无额外motion。 | — |
+| [a04 · Pentose phosphate pathway、NADPH 与 biosynthesis](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#a04) | 已审阅 · 无实质补充需要 | oxidative PPP NADPH与nonoxidative carbon重排分开；G6PD/RBC背景、ROS probe限制与RNA非flux，具体岔路worked充分。 | 保留glucose-6-P分流与NADPH/ROS补偿反例 | 完整正文/先修/terms/worked/check/dataLens逐章已读；无额外motion。 | — |
 | [a05 · TCA cycle 与 oxidative phosphorylation](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#a05) | 已修改并验证 | TCA、供能与代谢物库存/速率说明准确；缺O2/gradient/ATP的机制方向对照，complex II不泵质子未明确。 | 补三扰动方向表、uncoupling推演与readout题；明确I/III/IV泵、II只传电子。 | 完整正文/先修/术语/dataLens/worked/check已读；新例手算与Bio四脚本通过；1440/375px worked/表格正常，提交解释与信心后才可展开具体答案，回答锁定与无页面溢出/脚本错误通过。；原创worked截图已目视检查；发布后同项检查通过。 | [1](https://openstax.org/books/biology-2e/pages/7-4-oxidative-phosphorylation) |
-| [a06 · Lipid metabolism：storage、β-oxidation 与 synthesis](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#a06) | 待审阅 | 尚未逐章审阅 | — | — | — |
-| [a07 · Amino acid、nitrogen 与 nucleotide metabolism](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#a07) | 待审阅 | 尚未逐章审阅 | — | — | — |
-| [a08 · Metabolic integration：fed、fasted 与 diabetes](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#a08) | 待审阅 | 尚未逐章审阅 | — | — | — |
-| [a09 · Cancer & immune metabolism](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#a09) | 待审阅 | 尚未逐章审阅 | — | — | — |
-| [a10 · Metabolomics 与 isotope tracing](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#a10) | 待审阅 | 尚未逐章审阅 | — | — | — |
+| [a06 · Lipid metabolism：storage、β-oxidation 与 synthesis](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#a06) | 已审阅 · 待修改 | 储存/β-oxidation/synthesis三路与carnitine门、fed/fasted例可用；却称避免同一compartment同时合成氧化，前文已经定位cytosol与mitochondria。 | 改为同一cell，明确malonyl-CoA抑制CPT1的长链入口 | 完整正文/先修/terms/worked/check/dataLens逐章已读；无额外motion。 | — |
+| [a07 · Amino acid、nitrogen 与 nucleotide metabolism](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#a07) | 已审阅 · 待修改 | carbon/nitrogen两路、glutamine来源/清除与血pool限制准确；把purine/pyrimidine合并称都需one-carbon，须区分purine环与dTMP步骤。 | 拆开purine一碳与pyrimidine环构建、dTMP一碳供体 | 完整正文/先修/terms/worked/check/dataLens逐章已读；无额外motion。 | — |
+| [a08 · Metabolic integration：fed、fasted 与 diabetes](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#a08) | 已审阅 · 无实质补充需要 | fed/fasted多器官fuel交换，glucose浓度由appearance/clearance合成；补偿性高insulin非强response，clamp/HbA1c不同时间窗。 | 保留禁食器官图和高insulin判别题 | 完整正文/先修/terms/worked/check/dataLens逐章已读；无额外motion。 | — |
+| [a09 · Cancer & immune metabolism](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#a09) | 已审阅 · 无实质补充需要 | Warburg不等于失去mitochondria，ATP/biomass/redox需求与地域nutrient竞争分开；bulk混合及培养基/患者依赖边界完整。 | 保留tumor/T-cell空间供需与替代抑制路径worked | 完整正文/先修/terms/worked/check/dataLens逐章已读；无额外motion。 | — |
+| [a10 · Metabolomics 与 isotope tracing](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#a10) | 已审阅 · 无实质补充需要 | feature→annotation→standard/MSMS链、adduct/isomer、peak非浓度、QC/blank/内标和tracer模型完整；水池同库存不同周转例具体。 | 保留已有原创水池例、未知feature不可编造机制的练习 | 完整正文/先修/terms/worked/check/dataLens逐章已读；无额外motion。 | — |
 
 ## 19 · Experimental Cell & Molecular Biology
 
