@@ -1,6 +1,6 @@
 # Bio/CS 逐章审阅记录
 
-本轮清单：180 章。已逐章阅读并判断：13；结论/修改验证完成：13；尚待阅读：167。
+本轮清单：180 章。已逐章阅读并判断：23；结论/修改验证完成：23；尚待阅读：157。
 
 状态只依据实际阅读正文、公式/例子、图表/实验和练习后手工写入的结论。自动清单导出、渲染检查或通用修复不代表章节已审阅。未改章节也记录保留理由；章节原有来源不等于本轮已逐条访问核验。
 
@@ -39,7 +39,7 @@
 | [x06 · Promoter、enhancer 与 transcription factor](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#x06) | 待审阅 | 尚未逐章审阅 | — | — | — |
 | [x07 · Chromatin remodeling、histone mark 与 DNA methylation](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#x07) | 待审阅 | 尚未逐章审阅 | — | — | — |
 | [x08 · RNA processing、alternative splicing 与 regulatory RNA](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#x08) | 待审阅 | 尚未逐章审阅 | — | — | — |
-| [x09 · Mendelian probability、pedigree 与 Bayes](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#x09) | 待审阅 | 尚未逐章审阅 | — | — | — |
+| [x09 · Mendelian probability、pedigree 与 Bayes](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#x09) | 已修改并验证 | 机制已提Bayes，但worked是通用四步且未实际重归一化；未表现时排除aa需完全外显假设。 | 补prior×likelihood表、完全外显2/3、80%外显5/8及aa posterior1/16题。 | 完整正文/先修/术语/dataLens/worked/check已读；新例手算与Bio四脚本通过；待浏览器；1440/375px worked/表格正常，提交解释与信心后才可展开具体答案，回答锁定与无页面溢出/脚本错误通过。 | [1](https://openstax.org/books/biology-2e/pages/12-2-characteristics-and-traits) |
 | [x10 · Linkage、recombination、LD 与 phasing](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#x10) | 待审阅 | 尚未逐章审阅 | — | — | — |
 | [x11 · Penetrance、expressivity、epistasis 与 pleiotropy](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#x11) | 待审阅 | 尚未逐章审阅 | — | — | — |
 | [x12 · Quantitative trait、heritability 与 polygenic model](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#x12) | 待审阅 | 尚未逐章审阅 | — | — | — |
@@ -58,13 +58,13 @@
 
 | 章节 | 实际状态 | 具体发现 / 保留理由 | 计划或已做修改 | 验证 | 本轮核验来源 |
 | --- | --- | --- | --- | --- | --- |
-| [m01 · DNA 复制、校对与修复](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#m01) | 待审阅 | 尚未逐章审阅 | — | — | — |
-| [m02 · Central Dogma：信息如何流动](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#m02) | 待审阅 | 尚未逐章审阅 | — | — | — |
-| [m03 · 转录：从 DNA 写出 RNA](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#m03) | 待审阅 | 尚未逐章审阅 | — | — | — |
-| [m04 · RNA 加工、剪接与转录本](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#m04) | 待审阅 | 尚未逐章审阅 | — | — | — |
-| [m05 · 密码子、翻译与蛋白结构](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#m05) | 待审阅 | 尚未逐章审阅 | — | — | — |
-| [m06 · 基因调控与表观遗传](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#m06) | 待审阅 | 尚未逐章审阅 | — | — | — |
-| [m07 · 从变异到表型：证据链](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#m07) | 待审阅 | 尚未逐章审阅 | — | — | — |
+| [m01 · DNA 复制、校对与修复](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#m01) | 已审阅 · 无实质补充需要 | 半保留/leading-lagging、复制/PCR/测序三层与2n/4C区分已有完整例子和动画。 | 保留具体机制、算例、图表与练习；无需重复新增相同内容 | TACG→ATGC互补方向手算；复制5步与周期5步说明/标签已逐步读。 | — |
+| [m02 · Central Dogma：信息如何流动](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#m02) | 已审阅 · 无实质补充需要 | 序列信息而非丰度同步、四类RNA和逆转录/RNA复制已有解释；配对测量表反例足够。 | 保留具体机制、算例、图表与练习；无需重复新增相同内容 | 原始结构图、转录与翻译各5步、DNA→RNA→protein层级与check已核对。 | — |
+| [m03 · 转录：从 DNA 写出 RNA](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#m03) | 已审阅 · 无实质补充需要 | template/coding方向、TSS与AUG、负链坐标已具体拆开，并有明确短序列手算。 | 保留具体机制、算例、图表与练习；无需重复新增相同内容 | TAC CGA ATT→AUG GCU UAA、TAC→AUG核对；负链沿坐标减小与UTR说明正确。 | — |
+| [m04 · RNA 加工、剪接与转录本](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#m04) | 已审阅 · 无实质补充需要 | 80/20与20/80总量同为100的isoform例已有；junction只支持局部连接与0count界限清楚。 | 保留具体机制、算例、图表与练习；无需重复新增相同内容 | sum和方向核对；剪接动画与g02相同已逐步读，保留gene/transcript量测限制。 | — |
+| [m05 · 密码子、翻译与蛋白结构](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#m05) | 已审阅 · 无实质补充需要 | 标准codon、Stop非氨基酸、N→C、frameshift实际字符串和变异后果表完整。 | 保留具体机制、算例、图表与练习；无需重复新增相同内容 | AUGCGCUUAA→AUG/CGC/UUA/A…正确；Met–Ala–Stop及翻译5帧核对。 | — |
+| [m06 · 基因调控与表观遗传](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#m06) | 已审阅 · 无实质补充需要 | 可及性/甲基化/RNA测量层级与nearest-gene假设分开，调控含RNA和蛋白层而非只列TF。 | 保留具体机制、算例、图表与练习；无需重复新增相同内容 | enhancer动画6步与g02相同已读，候选→接触→扰动强度逐级表达，没有误认因果。 | — |
+| [m07 · 从变异到表型：证据链](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#m07) | 已审阅 · 无实质补充需要 | variant→跨层机制→患者结果证据链已有病例样本时间表，明确一患者多文件不是n=3。 | 保留具体机制、算例、图表与练习；无需重复新增相同内容 | caseP01/T01前/T02后示例与独立单位检查题核对；先修g05/m05/m06覆盖所需概念。 | — |
 
 ## 03 · Cell Biology
 
@@ -211,7 +211,7 @@
 | --- | --- | --- | --- | --- | --- |
 | [i01 · 屏障、innate sensing 与 inflammation](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#i01) | 待审阅 | 尚未逐章审阅 | — | — | — |
 | [i02 · Complement、phagocytosis 与先天效应](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#i02) | 待审阅 | 尚未逐章审阅 | — | — | — |
-| [i03 · Antigen processing、MHC 与 T-cell recognition](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#i03) | 待审阅 | 尚未逐章审阅 | — | — | — |
+| [i03 · Antigen processing、MHC 与 T-cell recognition](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#i03) | 已修改并验证 | MHC I/II和功能证据区分正确，但只有文字要求读者自行画两路线，worked通用。 | 补起点/加工位置/MHC/CD8-CD4路线表，TAP阻断推演、cross-presentation例外及具体检查题。 | 完整正文/先修/术语/dataLens/worked/check已读；新例手算与Bio四脚本通过；待浏览器；1440/375px worked/表格正常，提交解释与信心后才可展开具体答案，回答锁定与无页面溢出/脚本错误通过。 | [1](https://pmc.ncbi.nlm.nih.gov/articles/PMC4026165/) |
 | [i04 · B cell、antibody 与 clonal selection](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#i04) | 待审阅 | 尚未逐章审阅 | — | — | — |
 | [i05 · Tolerance、memory、vaccine 与 tumor immunity](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#i05) | 待审阅 | 尚未逐章审阅 | — | — | — |
 | [i06 · Receptor diversity 与 lymphocyte development](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#i06) | 待审阅 | 尚未逐章审阅 | — | — | — |
@@ -248,7 +248,7 @@
 | [a02 · Redox、electron carrier 与 metabolic flux](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#a02) | 待审阅 | 尚未逐章审阅 | — | — | — |
 | [a03 · Glycolysis、fermentation 与 gluconeogenesis](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#a03) | 待审阅 | 尚未逐章审阅 | — | — | — |
 | [a04 · Pentose phosphate pathway、NADPH 与 biosynthesis](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#a04) | 待审阅 | 尚未逐章审阅 | — | — | — |
-| [a05 · TCA cycle 与 oxidative phosphorylation](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#a05) | 待审阅 | 尚未逐章审阅 | — | — | — |
+| [a05 · TCA cycle 与 oxidative phosphorylation](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#a05) | 已修改并验证 | TCA、供能与代谢物库存/速率说明准确；缺O2/gradient/ATP的机制方向对照，complex II不泵质子未明确。 | 补三扰动方向表、uncoupling推演与readout题；明确I/III/IV泵、II只传电子。 | 完整正文/先修/术语/dataLens/worked/check已读；新例手算与Bio四脚本通过；待浏览器；1440/375px worked/表格正常，提交解释与信心后才可展开具体答案，回答锁定与无页面溢出/脚本错误通过。 | [1](https://openstax.org/books/biology-2e/pages/7-4-oxidative-phosphorylation) |
 | [a06 · Lipid metabolism：storage、β-oxidation 与 synthesis](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#a06) | 待审阅 | 尚未逐章审阅 | — | — | — |
 | [a07 · Amino acid、nitrogen 与 nucleotide metabolism](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#a07) | 待审阅 | 尚未逐章审阅 | — | — | — |
 | [a08 · Metabolic integration：fed、fasted 与 diabetes](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#a08) | 待审阅 | 尚未逐章审阅 | — | — | — |

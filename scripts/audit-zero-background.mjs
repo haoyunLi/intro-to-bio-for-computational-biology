@@ -11,6 +11,7 @@ const files = [
   'textbook-immunology-deep.js', 'textbook-undergrad-c.js', 'textbook-metabolism.js',
   'textbook-uiuc-expansion.js',
   'textbook-extension-worked-a.js', 'textbook-extension-worked-b.js', 'textbook-extension-worked-c.js', 'textbook-extension-worked-d.js',
+  'textbook-mechanism-examples.js',
   'textbook-intuition.js', 'textbook-data-lens.js', 'textbook-extension-lens-a.js', 'textbook-extension-lens-b.js', 'textbook-core-lens.js', 'textbook-terminology.js', 'uiuc-curriculum.js',
   'guided-path.js', 'glossary-data.js', 'glossary-expansion-genetics.js', 'glossary-expansion-data.js', 'glossary-expansion-organisms.js', 'glossary-expansion-systems.js',
   'glossary-expansion-metabolism.js', 'glossary-expansion-lab.js', 'glossary-expansion-proteins.js',
