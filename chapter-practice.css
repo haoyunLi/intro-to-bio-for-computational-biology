@@ -40,6 +40,13 @@
 .design-motion-note { font-size: 13px; }
 .design-numeric-table, .design-self-check { border-top: 1px solid #ced9db; padding: 15px 0; }
 .design-numeric-table summary, .design-self-check summary { cursor: pointer; font-weight: 700; }
-.design-exercise[data-playing="true"] .design-contribution { transform-box: fill-box; transform-origin: left center; animation: design-segment-reveal 400ms ease-out both; }
+.design-exercise[data-playing="true"][data-design-stage="1"] .design-contribution.baseline,
+.design-exercise[data-playing="true"][data-design-stage="2"] .design-contribution.treatment,
+.design-exercise[data-playing="true"][data-design-stage="3"] .design-contribution.batch { transform-box: fill-box; transform-origin: left center; animation: design-segment-reveal 400ms ease-out both; }
+.design-contribution.decreasing { transform-origin: right center !important; }
 @keyframes design-segment-reveal { from { transform: scaleX(0); opacity: .3; } to { transform: scaleX(1); opacity: 1; } }
 @media (prefers-reduced-motion: reduce) { .design-exercise[data-playing="true"] .design-contribution { animation: none; } }
+.design-effect-label { grid-template-columns: 1fr auto; }
+.design-effect-label input { grid-column: 1 / -1; }
+.design-effect-label output { font-variant-numeric: tabular-nums; }
+.design-exercise svg .design-row-label { font-weight: 700; }

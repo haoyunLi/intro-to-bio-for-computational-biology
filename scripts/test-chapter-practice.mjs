@@ -17,7 +17,7 @@ const wrong=practice.evaluateDesign(['treatment-only','deeper','causal']);
 assert.equal(wrong.correct,0);
 assert.match(wrong.message,/不会拆开重合的两列/);
 assert.match(wrong.message,/precision/);
-for (let effect=0; effect<=3; effect+=0.25) {
+for (let effect=-2; effect<=5; effect+=0.25) {
   const confused=practice.designModel(effect,false);
   assert.equal(confused.rank,2);
   assert.equal(confused.fits,true,'every split of 3 predicts the original two observations');
@@ -33,7 +33,17 @@ for (let effect=0; effect<=3; effect+=0.25) {
 }
 assert.equal(practice.matrixRank([[1,0,0],[1,1,1],[1,0,0],[1,1,1]]),2,'repeating confounded rows does not restore rank');
 assert.throws(()=>practice.designModel(NaN),/finite/);
-assert.throws(()=>practice.designModel(4),/between/);
+assert.throws(()=>practice.designModel(6),/demonstration range/);
+assert.throws(()=>practice.designModel(-3),/demonstration range/);
+const signed=practice.designModel(-1,false);
+assert.equal(signed.fits,true);
+assert.deepEqual(Array.from(signed.rows,row=>row.prediction),[5,8]);
+const signedCrossed=practice.designModel(-1,true);
+assert.deepEqual(Array.from(signedCrossed.rows,row=>row.prediction),[5,4,9,8]);
+assert.deepEqual(Array.from(signedCrossed.rows,row=>row.value),[5,6,7,8]);
+assert.equal(signedCrossed.fits,false);
+assert.match(practice.designFigure(signed,3),/data-contribution="-1" data-start="5" data-end="4"/);
+assert.match(practice.designStatus(signed),/正负都不能/);
 assert.match(practice.designMarkup(),/原创合成 assay signal/);
 assert.match(practice.designMarkup(),/没有误差条或独立重复/);
 assert.match(practice.attemptForm(),/文本不会自动评分/);
@@ -45,7 +55,7 @@ for(let stage=0;stage<4;stage++) {
   assert.equal(figure.includes('class="design-contribution treatment"'),stage>=2);
   assert.equal(figure.includes('class="design-contribution batch"'),stage>=3);
 }
-assert.match(practice.designStepText(practice.designModel(3,false),3),/总长与黑框始终一样/);
+assert.match(practice.designStepText(practice.designModel(3,false),3),/负|−1/);
 assert.match(practice.designStepText(practice.designModel(3,true),3),/不一致/);
 assert.match(practice.designStepText(practice.designModel(1,true),0),/四个黑框/);
-console.log('PASS · attempt prerequisites, matrix rank, stacked contribution invariants and staged reveal, indistinguishable hypotheses vs crossed observations, all questions and synthetic-data boundaries');
+console.log('PASS · attempt prerequisites, matrix rank, signed contribution invariants and staged reveal, indistinguishable hypotheses vs crossed observations, all questions and synthetic-data boundaries');

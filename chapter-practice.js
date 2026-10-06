@@ -28,21 +28,21 @@
     return rank;
   }
   function designModel(treatmentEffect=1, crossed=false) {
-    if (!Number.isFinite(treatmentEffect) || treatmentEffect<0 || treatmentEffect>3) throw new RangeError('effect must be finite and between 0 and 3');
+    if (!Number.isFinite(treatmentEffect) || treatmentEffect<-2 || treatmentEffect>5) throw new RangeError('effect must be finite and within the demonstration range -2 to 5');
     const batchEffect=3-treatmentEffect;
     const observed=crossed ? [[0,0,5],[1,0,6],[0,1,7],[1,1,8]] : [[0,0,5],[1,1,8]];
     const rows=observed.map(([treatment,batch,value])=>({treatment,batch,value,prediction:5+treatmentEffect*treatment+batchEffect*batch}));
     return {treatmentEffect,batchEffect,rows,rank:matrixRank(rows.map(row=>[1,row.treatment,row.batch])),fits:rows.every(row=>Math.abs(row.value-row.prediction)<1e-10)};
   }
   function designStatus(model) {
-    return `β treatment=${model.treatmentEffect.toFixed(2)}，β batch=${model.batchEffect.toFixed(2)}；当前预测${model.fits?'匹配':'不匹配'}全部观测。Design matrix rank=${model.rank}/3。${model.rank<3?'两列完全重合，只能识别两种效应的和 3；拖动参数仍得到同样读数。':'两列可区分；在无 interaction 的加性模型下，treatment 差 1、batch 差 2。可识别不等于估计精确，更不等于已证因果。'}`;
+    return `β treatment=${model.treatmentEffect.toFixed(2)}，β batch=${model.batchEffect.toFixed(2)}；当前预测${model.fits?'匹配':'不匹配'}全部观测。Design matrix rank=${model.rank}/3（含 intercept 的模型矩阵；图中 baseline 固定为 5）。${model.rank<3?'Treatment 与 batch 两列完全重合，只能识别两种效应的和 3，连 treatment 的正负都不能据此确定；演示滑块的范围不是由读数推断的界限。':'两列可区分；在无 interaction 的加性模型下，treatment 差 1、batch 差 2。可识别不等于估计精确，更不等于已证因果。'}`;
   }
   const designQuestions = [
     {prompt:'1. 最初 control/batch 1=5、treated/batch 2=8，直接支持什么？', choices:[
       ['treatment-only','Treatment 单独使信号增加 3'],
       ['confounded','观测差为 3，但 treatment 与 batch 完全重合；不能唯一分配两个效应'],
       ['batch-only','Batch 单独使信号增加 3，treatment 一定无效']
-    ], answer:'confounded', feedback:'观察差 3 可以是 treatment、batch 或二者之和。增加相同两组的重复或把 batch 加进公式，不会拆开重合的两列。'},
+    ], answer:'confounded', feedback:'观察差 +3 也可以是 treatment −1 与 batch +4 之和，不能证明 treatment 为正。增加相同两组的重复或把 batch 加进公式，不会拆开重合的两列。'},
     {prompt:'2. 哪种对照/补充设计能区分这两个解释？', choices:[
       ['deeper','只对原来的两组测得更深'],
       ['within-batch','在各 batch 内都放 control 与 treated，记录独立生物重复，并在可行时随机分配和处理'],
@@ -69,27 +69,32 @@
     return {baseline:5,treatment:model.treatmentEffect*row.treatment,batch:model.batchEffect*row.batch};
   }
   function designFigure(model, stage=0) {
-    const height=150+model.rows.length*80;
+    const height=150+model.rows.length*165;
     const color={baseline:'#d6dfe3',treatment:'#225e78',batch:'#a75b20'};
     const x=220, scale=44;
-    return `<svg viewBox="0 0 750 ${height}" role="img" aria-labelledby="design-figure-title design-figure-desc"><title id="design-figure-title">${designStages[stage]}：${model.rank===2?'完全混杂':'批次内交叉'}设计</title><desc id="design-figure-desc">黑色空框是观测信号。灰色、蓝色与棕色堆叠段分别是假设的 baseline、treatment 与 batch；不是已经测定的生物贡献。${model.rows.map(row=>`${row.treatment?'Treated':'Control'}/batch ${row.batch+1}：观测${row.value}，完整假设预测${row.prediction.toFixed(2)}`).join('；')}。</desc><text x="8" y="26">Observed signal：黑框</text><text x="220" y="26">当前假设：灰 baseline · 蓝 treatment · 棕 batch</text>${model.rows.map((row,i)=>{
-      const y=60+i*80, parts=designContributions(model,row);
+    return `<svg viewBox="0 0 750 ${height}" role="img" aria-labelledby="design-figure-title design-figure-desc"><title id="design-figure-title">${designStages[stage]}：${model.rank===2?'完全混杂':'批次内交叉'}设计</title><desc id="design-figure-desc">黑色空框是观测信号。灰色段、蓝色箭头与棕色箭头分别是假设的 baseline、treatment 与 batch；向右增加、向左减少，不是已经测定的生物贡献。${model.rows.map(row=>`${row.treatment?'Treated':'Control'}/batch ${row.batch+1}：观测${row.value}，完整假设预测${row.prediction.toFixed(2)}`).join('；')}。</desc><text x="8" y="26">Observed signal：黑框</text><text x="220" y="26">假设贡献：灰 baseline → 蓝 treatment → 棕 batch</text>${model.rows.map((row,i)=>{
+      const y=66+i*165, parts=designContributions(model,row);
       const segments=[['baseline',parts.baseline,1],['treatment',parts.treatment,2],['batch',parts.batch,3]];
       let offset=0;
-      const stack=segments.map(([name,value,reveal])=>{
-        const left=x+offset*scale;offset+=value;
-        return stage>=reveal&&value>0?`<rect class="design-contribution ${name}" x="${left}" y="${y+6}" width="${value*scale}" height="25" fill="${color[name]}"><title>假设 ${name}=${value.toFixed(2)}</title></rect>`:'';
+      const stack=segments.map(([name,value,reveal],j)=>{
+        const start=offset;offset+=value;
+        if(stage<reveal)return '';
+        const left=x+start*scale, end=x+offset*scale, center=y+8+j*27;
+        const direction=Math.sign(value), tip=Math.min(8,Math.abs(value)*scale/2);
+        const arrow=value===0?'':name==='baseline'?`<rect class="design-contribution baseline" x="${left}" y="${center-7}" width="${value*scale}" height="14" fill="${color[name]}"/>`:`<path class="design-contribution ${name}${value<0?' decreasing':''}" data-contribution="${value}" data-start="${start}" data-end="${offset}" d="M${left} ${center-6}H${end-direction*tip}V${center-10}L${end} ${center}L${end-direction*tip} ${center+10}V${center+6}H${left}Z" fill="${color[name]}"><title>假设 ${name}=${value.toFixed(2)}，${value<0?'向左减少':'向右增加'}</title></path>`;
+        const connector=j===0?'':`<path d="M${left} ${center-20}V${center-8}" stroke="#778c96" stroke-dasharray="2 2"/>`;
+        return `${connector}${arrow}<text x="8" y="${center+4}">${name} ${value>0?'+':''}${value.toFixed(2)}</text>`;
       }).join('');
       const partial=stage===0?null:parts.baseline+(stage>=2?parts.treatment:0)+(stage>=3?parts.batch:0);
       const delta=row.prediction-row.value;
-      return `<text x="8" y="${y+23}">${row.treatment?'Treated':'Control'} / batch ${row.batch+1}</text>${stack}<rect x="${x}" y="${y}" width="${row.value*scale}" height="38" fill="none" stroke="#153d53" stroke-width="2"/><text x="${x+row.value*scale+10}" y="${y+13}">观测 ${row.value}</text><text x="220" y="${y+59}">${partial===null?'尚未拆分假设的贡献':`假设分解：5${stage>=2?` + treatment ${parts.treatment.toFixed(2)}`:''}${stage>=3?` + batch ${parts.batch.toFixed(2)}`:''} = ${partial.toFixed(2)}`}${stage===3?`；预测−观测 ${delta.toFixed(2)}`:''}</text>`;
-    }).join('')}<path d="M220 ${height-65}h396" fill="none" stroke="#607582"/>${[0,4,8].map(value=>`<path d="M${x+value*scale} ${height-65}v7" stroke="#607582"/><text x="${x+value*scale}" y="${height-40}" text-anchor="middle">${value}</text>`).join('')}<text x="220" y="${height-12}">Synthetic log-scale signal · arbitrary units · 从零起的同一比例尺</text></svg>`;
+      return `<text class="design-row-label" x="8" y="${y-16}">${row.treatment?'Treated':'Control'} / batch ${row.batch+1}</text>${stack}<rect x="${x}" y="${y+82}" width="${row.value*scale}" height="20" fill="none" stroke="#153d53" stroke-width="2"/><text x="${x+row.value*scale+10}" y="${y+97}">观测 ${row.value}</text>${stage===3?`<path data-full-prediction="${row.prediction}" d="M${x+row.prediction*scale} ${y+76}V${y+107}" stroke="#153d53" stroke-width="2"/>`:''}<text x="220" y="${y+126}">${partial===null?'尚未拆分假设的贡献':`假设：5${stage>=2?` + (${parts.treatment.toFixed(2)})`:''}${stage>=3?` + (${parts.batch.toFixed(2)})`:''} = ${partial.toFixed(2)}`}${stage===3?`；预测−观测 ${delta.toFixed(2)}`:''}</text>`;
+    }).join('')}<path d="M220 ${height-65}h440" fill="none" stroke="#607582"/>${[0,5,10].map(value=>`<path d="M${x+value*scale} ${height-65}v7" stroke="#607582"/><text x="${x+value*scale}" y="${height-40}" text-anchor="middle">${value}</text>`).join('')}<text x="220" y="${height-12}">Synthetic log-scale signal · arbitrary units · 从零起的同一比例尺</text></svg>`;
   }
   function designStepText(model, stage) {
     if (stage===0) return model.rank===2?'先只看黑框：control / batch 1 是 5，treated / batch 2 是 8。差 3 是观测；它尚未告诉我们哪一种因素造成差异。':'先看四个黑框：control / batch 1 是 5，treated / batch 1 是 6，control / batch 2 是 7，treated / batch 2 是 8。这些是新增组合后的观测值，还没有拆成机制贡献。';
     if (stage===1) return '先假设一个共同 baseline=5。灰色段是模型的起点，不是额外测到的组成。接下来只对 treated 加入 treatment 项。';
     if (stage===2) return `蓝色段：β treatment=${model.treatmentEffect.toFixed(2)} × treated 指标（0 或 1）。Treatment 只影响 treated；同一 batch 的 control 不加这一项。棕色 batch 项尚未加入。`;
-    return `棕色段：β batch=${model.batchEffect.toFixed(2)} × batch 2 指标（0 或 1）。${model.rank===2?'只有两个对角组合，蓝与棕怎样分配都可合计为 3。试解释 A/B/C：颜色段变化，但总长与黑框始终一样。':'在每个 batch 内都有两种 treatment 状态，批次内的差给 treatment 独立信息。试解释 A/B：6 与 7 两个新黑框会与假设总长不一致；解释 C 才匹配此示意的四个读数。'}`;
+    return `棕色项：β batch=${model.batchEffect.toFixed(2)} × batch 2 指标（0 或 1）。${model.rank===2?'只有两个对角组合，蓝与棕相加都可为 3。试解释 D：treatment −1 使信号减少，batch +4 抵消并超过它，最终仍为 8。观测差 +3 不能证明 treatment 为正。':'在每个 batch 内都有两种 treatment 状态，批次内的差给 treatment 独立信息。试解释 A/B/D：6 与 7 两个新黑框会与假设的终点不一致；解释 C 才匹配此示意的四个读数。'}`;
   }
   function stopDesignAnimation() {
     if (designTimer!==null) {window.clearTimeout(designTimer);designTimer=null;}
@@ -97,6 +102,7 @@
       activeDesign.dataset.playing='false';
       const button=activeDesign.querySelector('[data-play-design]');
       if(button) {button.textContent='播放分解';button.setAttribute('aria-pressed','false');}
+      activeDesign.querySelector('[data-design-step-text]').setAttribute('aria-live','polite');
     }
     activeDesign=null;
   }
@@ -105,6 +111,7 @@
     stage=Math.max(0,Math.min(3,stage));section.dataset.designStage=String(stage);
     section.querySelector('.design-figure-scroll').innerHTML=designFigure(model,stage);
     section.querySelector('[data-design-step-text]').textContent=designStepText(model,stage);
+    section.querySelector('[data-design-step-text]').setAttribute('aria-live',section.dataset.playing==='true'?'off':'polite');
     section.querySelector('[data-design-step-label]').textContent=`${stage+1}/4 · ${designStages[stage]}`;
     section.querySelector('[data-model-result]').textContent=designStatus(model);
     model.rows.forEach((row,i)=>{section.querySelector(`[data-prediction="${i}"]`).textContent=row.prediction.toFixed(2);});
@@ -114,6 +121,7 @@
     play.disabled=isReducedMotion();play.setAttribute('aria-pressed',String(section.dataset.playing==='true'));
     play.textContent=section.dataset.playing==='true'?'暂停':'播放分解';
     section.querySelector('.design-motion-note').textContent=isReducedMotion()?'系统减少动态效果已启用：请手动逐步查看静态分解。':'播放只在点击后开始；每步停留 2.4 秒，可暂停或重播。改变假设会暂停播放。';
+    section.querySelector('[data-treatment-output]').textContent=model.treatmentEffect.toFixed(2);
     section.querySelectorAll('[data-design-hypothesis]').forEach(button=>button.setAttribute('aria-pressed',String(Number(button.dataset.designHypothesis)===model.treatmentEffect)));
   }
   function setDesignStage(section, stage) {stopDesignAnimation();syncDesign(section,stage);}
@@ -126,7 +134,7 @@
     stopDesignAnimation();activeDesign=section;section.dataset.playing='true';
     if(Number(section.dataset.designStage)===3)syncDesign(section,0);else syncDesign(section);
     const tick=()=>{
-      if(!section.isConnected||isReducedMotion()){stopDesignAnimation();return;}
+      if(!section.isConnected||isReducedMotion()||window.document.hidden){stopDesignAnimation();return;}
       const next=Number(section.dataset.designStage)+1;syncDesign(section,next);
       if(next>=3){stopDesignAnimation();return;}
       designTimer=window.setTimeout(tick,2400);
@@ -136,6 +144,7 @@
   if(typeof window.matchMedia==='function')window.matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change',()=>{
     stopDesignAnimation();const section=window.document.querySelector('.design-exercise');if(section)syncDesign(section);
   });
+  window.document?.addEventListener('visibilitychange',()=>{if(window.document.hidden)stopDesignAnimation();});
   function designMarkup(crossed=false,treatmentEffect=1,stage=0) {
     const model=designModel(treatmentEffect,crossed);
     const labels=model.rows.map(row=>`${row.treatment?'Treated':'Control'} / batch ${row.batch+1}`);
@@ -143,13 +152,13 @@
       <h2 id="design-title">同一个信号，哪些机制解释还分不开？</h2>
       <p>把 observed signal 的黑框保留不动，再改变假设的 treatment 与 batch 分解。原创合成 assay signal，任意 log-scale 单位；每个组合只有一个示意观测，没有误差条或独立重复。这不是 RNA-seq raw counts，不用于 DESeq2 拟合。</p>
       <p class="design-equation">signal = <span>baseline 5</span> + <span class="treatment-term">β treatment × treated</span> + <span class="batch-term">β batch × batch 2</span></p>
-      <p>两项指标各为 0/1；假设没有 interaction。起初两种效应的和固定为 3。蓝、棕段是待比较的假设，不是测定的 biological mechanism。</p>
-      <label class="design-effect-label">假设的 β treatment<input data-treatment-effect type="range" min="0" max="3" step="0.25" value="${treatmentEffect}"></label>
-      <div class="design-hypotheses" role="group" aria-label="比较同样差值的三个解释"><button data-design-hypothesis="3" aria-pressed="${treatmentEffect===3}">解释 A：treatment 3 + batch 0</button><button data-design-hypothesis="0" aria-pressed="${treatmentEffect===0}">解释 B：treatment 0 + batch 3</button><button data-design-hypothesis="1" aria-pressed="${treatmentEffect===1}">解释 C：treatment 1 + batch 2</button></div>
+      <p>两项指标各为 0/1；假设没有 interaction。两种效应的和固定为 3，但各项可以为负。滑块 −2 到 5 只是演示范围，不是由观测推断的界限。蓝、棕箭头是待比较的假设，不是测定的 biological mechanism。</p>
+      <label class="design-effect-label">假设的 β treatment<output data-treatment-output>${treatmentEffect.toFixed(2)}</output><input aria-label="假设的 β treatment" data-treatment-effect type="range" min="-2" max="5" step="0.25" value="${treatmentEffect}"></label>
+      <div class="design-hypotheses" role="group" aria-label="比较同样差值的四个解释"><button data-design-hypothesis="3" aria-pressed="${treatmentEffect===3}">解释 A：treatment 3 + batch 0</button><button data-design-hypothesis="0" aria-pressed="${treatmentEffect===0}">解释 B：treatment 0 + batch 3</button><button data-design-hypothesis="1" aria-pressed="${treatmentEffect===1}">解释 C：treatment 1 + batch 2</button><button data-design-hypothesis="-1" aria-pressed="${treatmentEffect===-1}">解释 D：treatment −1 + batch 4</button></div>
       <div class="design-playback"><button data-design-back ${stage===0?'disabled':''}>← 分解上一步</button><button data-play-design aria-pressed="false" ${isReducedMotion()?'disabled':''}>播放分解</button><button data-design-next ${stage===3?'disabled':''}>分解下一步 →</button><button data-design-replay>重播分解</button></div>
       <p class="design-motion-note">${isReducedMotion()?'系统减少动态效果已启用：请手动逐步查看静态分解。':'播放只在点击后开始；每步停留 2.4 秒，可暂停或重播。改变假设会暂停播放。'}</p>
       <h3 data-design-step-label>${stage+1}/4 · ${designStages[stage]}</h3>
-      <figure><div class="design-figure-scroll" role="region" tabindex="0" aria-label="合成信号图，窄屏可左右滑动">${designFigure(model,stage)}</div><figcaption>黑框=观测；色块=当前假设的加性贡献。窄屏可左右滑动查看完整图与读数。</figcaption></figure>
+      <figure><div class="design-figure-scroll" role="region" tabindex="0" aria-label="合成信号图，窄屏可左右滑动">${designFigure(model,stage)}</div><figcaption>黑框=观测；灰色段与分层箭头=当前假设的加性贡献，向右增加、向左减少；竖线=完整预测终点。所有行共用从 0 起的比例尺。窄屏可左右滑动。</figcaption></figure>
       <p data-design-step-text role="status" aria-live="polite">${designStepText(model,stage)}</p>
       <button type="button" data-cross-design="${!crossed}">${crossed?'回到完全混杂设计':'加入批次内 control / treated'}</button><p>加入新组合改变可用信息；切换会清空本题回答。改变假设不会改动观测数据。</p>
       <p data-model-result role="status" aria-live="polite">${designStatus(model)}</p>
