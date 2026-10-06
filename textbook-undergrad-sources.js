@@ -75,5 +75,6 @@ Object.assign(window.BIOCS_SOURCES, {
   ,metabolights:['EMBL-EBI · MetaboLights','https://www.ebi.ac.uk/metabolights/']
   ,hmdb:['Human Metabolome Database','https://hmdb.ca/']
   ,survivalVignette:['R survival · Risk sets and Kaplan–Meier estimate (§1.4–2.1)','https://cran.r-project.org/web/packages/survival/vignettes/survival.pdf']
+  ,assayBindingKinetics:['NCATS Assay Guidance Manual · Analyzing Kinetic Binding Data','https://www.ncbi.nlm.nih.gov/books/NBK569501/']
   ,nciImmunotherapy:['NCI · Immunotherapy to Treat Cancer','https://www.cancer.gov/about-cancer/treatment/types/immunotherapy']
 });

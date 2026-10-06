@@ -1,6 +1,6 @@
 # Bio/CS 逐章审阅记录
 
-本轮清单：180 章。已逐章阅读并判断：95；结论/修改验证完成：95；尚待阅读：85。
+本轮清单：180 章。已逐章阅读并判断：123；结论/修改验证完成：123；尚待阅读：57。
 
 状态只依据实际阅读正文、公式/例子、图表/实验和练习后手工写入的结论。自动清单导出、渲染检查或通用修复不代表章节已审阅。未改章节也记录保留理由；章节原有来源不等于本轮已逐条访问核验。
 
@@ -156,54 +156,54 @@
 
 | 章节 | 实际状态 | 具体发现 / 保留理由 | 计划或已做修改 | 验证 | 本轮核验来源 |
 | --- | --- | --- | --- | --- | --- |
-| [e01 · 共同祖先与演化证据](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#e01) | 待审阅 | 尚未逐章审阅 | — | — | — |
-| [e02 · 怎样读一棵系统发育树](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#e02) | 待审阅 | 尚未逐章审阅 | — | — | — |
-| [e03 · 群体怎样随世代改变](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#e03) | 待审阅 | 尚未逐章审阅 | — | — | — |
-| [e04 · 适应度、自然选择与权衡](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#e04) | 待审阅 | 尚未逐章审阅 | — | — | — |
-| [e05 · 物种形成与宏演化](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#e05) | 待审阅 | 尚未逐章审阅 | — | — | — |
+| [e01 · 共同祖先与演化证据](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#e01) | 已审阅 · 无实质补充需要 | 同源/趋同/现代灵长类共同祖先有明确误解例；跨物种ortholog与树模型、采样、不同证据层级已说明。 | 保留已有机制解释、具体反例及练习 | 完整正文/先修/terms/worked/check/dataLens已读；这些章无额外motion；全目录1440/375px渲染检查通过。 | — |
+| [e02 · 怎样读一棵系统发育树](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#e02) | 已审阅 · 无实质补充需要 | ((A,B),C)旋转例具体，root/branch length单位与bootstrap不是全树正确概率、gene tree≠species tree完整。 | 保留已有机制解释、具体反例及练习 | 完整正文/先修/terms/worked/check/dataLens已读；这些章无额外motion；全目录1440/375px渲染检查通过。 | — |
+| [e03 · 群体怎样随世代改变](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#e03) | 已修改并验证 | 四种群体过程与read-level VAF区别准确，但worked仍通用四步；红蓝珠类比未实际算下一代频率与分母。 | 补haploid虚构群体40/60、后代贡献2/1→80/(80+60)=4/7，并用中性有限抽样说明同方向改变不自动证明选择。 | 完整正文/先修/terms/worked/check/dataLens已读；OpenStax作者人口遗传频率定义与选择/漂变机制核验；无额外motion。；四内容/练习脚本通过；1440/375px门槛与锁定、无错误/失败请求/页面溢出通过；e03手机正文已视觉查看。 | [1](https://openstax.org/books/biology-2e/pages/19-1-population-evolution) |
+| [e04 · 适应度、自然选择与权衡](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#e04) | 已审阅 · 无实质补充需要 | 寿命更长但后代更少的fitness反例、环境与频率依赖、proxy和权衡准确，保留已有例子。 | 保留已有机制解释、具体反例及练习 | 完整正文/先修/terms/worked/check/dataLens已读；这些章无额外motion；全目录1440/375px渲染检查通过。 | — |
+| [e05 · 物种形成与宏演化](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#e05) | 已审阅 · 无实质补充需要 | 地理隔离→重逢/交配/后代/基因流的动物例，species操作定义与cluster非species边界明确。 | 保留已有机制解释、具体反例及练习 | 完整正文/先修/terms/worked/check/dataLens已读；这些章无额外motion；全目录1440/375px渲染检查通过。 | — |
 
 ## 11 · Microbiology & Diversity
 
 | 章节 | 实际状态 | 具体发现 / 保留理由 | 计划或已做修改 | 验证 | 本轮核验来源 |
 | --- | --- | --- | --- | --- | --- |
-| [u01 · Bacteria、Archaea 与真核细胞](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#u01) | 待审阅 | 尚未逐章审阅 | — | — | — |
-| [u02 · Virus：寄生于细胞的信息包](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#u02) | 待审阅 | 尚未逐章审阅 | — | — | — |
-| [u03 · 微生物代谢与生长](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#u03) | 待审阅 | 尚未逐章审阅 | — | — | — |
-| [u04 · Microbiome：群落而不是物种名单](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#u04) | 待审阅 | 尚未逐章审阅 | — | — | — |
-| [u05 · 抗菌药、耐药与水平基因转移](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#u05) | 待审阅 | 尚未逐章审阅 | — | — | — |
+| [u01 · Bacteria、Archaea 与真核细胞](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#u01) | 已审阅 · 无实质补充需要 | 细菌/古菌的结构和谱系分开，plasmid/nucleoid与16S/genome/isolate测量边界清楚，已有比较例。 | 保留已有机制解释、具体反例及练习 | 完整正文/先修/terms/worked/check/dataLens已读；这些章无额外motion；全目录1440/375px渲染检查通过。 | — |
+| [u02 · Virus：寄生于细胞的信息包](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#u02) | 已审阅 · 无实质补充需要 | 病毒无自身ribosome、入侵到release路径与PCR核酸≠infectivity具体，host range含细胞内兼容性。 | 保留已有机制解释、具体反例及练习 | 完整正文/先修/terms/worked/check/dataLens已读；这些章无额外motion；全目录1440/375px渲染检查通过。 | — |
+| [u03 · 微生物代谢与生长](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#u03) | 已审阅 · 无实质补充需要 | carbon/energy/electron受体三问、无氧呼吸≠fermentation、OD/CFU单位和同培养轨迹非独立样本准确。 | 保留已有机制解释、具体反例及练习 | 完整正文/先修/terms/worked/check/dataLens已读；这些章无额外motion；全目录1440/375px渲染检查通过。 | — |
+| [u04 · Microbiome：群落而不是物种名单](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#u04) | 已审阅 · 无实质补充需要 | 10%→20%微生物相对丰度与不变绝对数量例，stool空间/代谢功能/反向因果及metadata完整。 | 保留已有机制解释、具体反例及练习 | 完整正文/先修/terms/worked/check/dataLens已读；这些章无额外motion；全目录1440/375px渲染检查通过。 | — |
+| [u05 · 抗菌药、耐药与水平基因转移](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#u05) | 已修改并验证 | 药靶/HGT/MIC/基因潜力与phenotype解释准确；mental用草/除草剂不合用户无植物偏好，resistance的“生长或存活”定义会与tolerance混淆。 | 换为细菌已存抗性变异的直接例；按j06已核验定义区分更高浓度生长的MIC与相同MIC下较慢杀灭/少数persister。 | 完整正文/先修/terms/worked/check/dataLens已读；复用第一批Balaban2019作者共识核验；无额外motion。；四内容/练习脚本通过；1440/375px门槛与锁定、无错误/失败请求/页面溢出通过；e03手机正文已视觉查看。 | [1](https://pmc.ncbi.nlm.nih.gov/articles/PMC7136161/) |
 
 ## 12 · Animal & Human Physiology
 
 | 章节 | 实际状态 | 具体发现 / 保留理由 | 计划或已做修改 | 验证 | 本轮核验来源 |
 | --- | --- | --- | --- | --- | --- |
-| [h01 · Homeostasis：活系统如何稳住内部环境](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#h01) | 待审阅 | 尚未逐章审阅 | — | — | — |
-| [h02 · 上皮、屏障与体液区室](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#h02) | 待审阅 | 尚未逐章审阅 | — | — | — |
-| [h03 · 循环与呼吸：把气体送到组织](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#h03) | 待审阅 | 尚未逐章审阅 | — | — | — |
-| [h04 · 肾脏：过滤、选择性回收与排出](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#h04) | 待审阅 | 尚未逐章审阅 | — | — | — |
-| [h05 · 内分泌：慢一些、远一些的协调信号](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#h05) | 待审阅 | 尚未逐章审阅 | — | — | — |
-| [h06 · 消化、吸收与全身代谢](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#h06) | 待审阅 | 尚未逐章审阅 | — | — | — |
-| [h07 · 动物生殖与生命周期](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#h07) | 待审阅 | 尚未逐章审阅 | — | — | — |
+| [h01 · Homeostasis：活系统如何稳住内部环境](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#h01) | 已审阅 · 无实质补充需要 | 负/正反馈与终止、动态set point/代偿、正常终点不足以判控制健康已有准确glucose反例；h05细化gland→response回路。 | 保留已有机制、反例与练习，不添加重复面板 | 完整正文/先修/terms/worked/check/dataLens已读；本章无额外motion；全目录桌面/手机渲染检查通过。 | — |
+| [h02 · 上皮、屏障与体液区室](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#h02) | 已修改并验证 | 上皮/跨cell和旁cell/区室与药物吸收例清楚；flow把所有lumen说成与外界连通，需限定肠腔例。 | 将flow写为肠腔与本例的外界连通空间，不泛化血管等lumen。 | 完整正文/先修/terms/worked/check/dataLens已读；四内容/练习脚本与1440/375px门槛、锁定、无错误/请求失败/页面溢出检查通过。 | — |
+| [h03 · 循环与呼吸：把气体送到组织](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#h03) | 已审阅 · 无实质补充需要 | 通气/扩散/Hb携带/灌注/利用分开；98% saturation但低Hb的反例具体，artery/vein按心脏方向定义准确。 | 保留已有机制、反例与练习，不添加重复面板 | 完整正文/先修/terms/worked/check/dataLens已读；本章无额外motion；全目录桌面/手机渲染检查通过。 | — |
+| [h04 · 肾脏：过滤、选择性回收与排出](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#h04) | 已审阅 · 无实质补充需要 | filtered−reabsorbed+secreted的100−90=10/100−95=5例具体，浓度与尿量/时间、eGFR代理与生成/清除机制完整。 | 保留已有机制、反例与练习，不添加重复面板 | 完整正文/先修/terms/worked/check/dataLens已读；本章无额外motion；全目录桌面/手机渲染检查通过。 | — |
+| [h05 · 内分泌：慢一些、远一些的协调信号](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#h05) | 已审阅 · 无实质补充需要 | axis负反馈、peptide/steroid receptor、时刻/脉冲/结合蛋白和target resistance完整；高insulin不等强response例具体。 | 保留已有机制、反例与练习，不添加重复面板 | 完整正文/先修/terms/worked/check/dataLens已读；本章无额外motion；全目录桌面/手机渲染检查通过。 | — |
+| [h06 · 消化、吸收与全身代谢](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#h06) | 已修改并验证 | 正文已指出脂质经lymph，但首个mental路线把所有营养物放进portal route，范围不一致。 | 将portal路线限定glucose等水溶性营养物，明确多数长链脂质先经lymph。 | 完整正文/先修/terms/worked/check/dataLens已读；四内容/练习脚本与1440/375px门槛、锁定、无错误/请求失败/页面溢出检查通过。 | — |
+| [h07 · 动物生殖与生命周期](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#h07) | 已修改并验证 | germcell→gamete→embryo机制和嵌套例清楚；pitfall把自我身份列作biological sex测量，与变量层级不一致。 | 分别定义chromosome/gonad/hormone/anatomy的sex相关测量与gender identity，保留自报/隐私原则。 | 完整正文/先修/terms/worked/check/dataLens已读；四内容/练习脚本与1440/375px门槛、锁定、无错误/请求失败/页面溢出检查通过。 | [1](https://www.who.int/health-topics/gender) |
 
 ## 13 · Cell Signaling & Interactions
 
 | 章节 | 实际状态 | 具体发现 / 保留理由 | 计划或已做修改 | 验证 | 本轮核验来源 |
 | --- | --- | --- | --- | --- | --- |
-| [l01 · Ligand–receptor：先分清“结合”与“响应”](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#l01) | 待审阅 | 尚未逐章审阅 | — | — | — |
-| [l02 · GPCR 与 second messenger](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#l02) | 待审阅 | 尚未逐章审阅 | — | — | — |
-| [l03 · RTK、RAS–MAPK 与 PI3K–AKT](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#l03) | 待审阅 | 尚未逐章审阅 | — | — | — |
-| [l04 · JAK–STAT、TGF-β、Wnt 与 Notch](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#l04) | 待审阅 | 尚未逐章审阅 | — | — | — |
-| [l05 · Feedback、crosstalk 与 signaling dynamics](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#l05) | 待审阅 | 尚未逐章审阅 | — | — | — |
-| [l06 · 从 scRNA/spatial 推断 cell–cell communication](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#l06) | 待审阅 | 尚未逐章审阅 | — | — | — |
+| [l01 · Ligand–receptor：先分清“结合”与“响应”](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#l01) | 已修改并验证 | binding/activation/response四层与Kd≠EC50清楚，但worked通用，半occupancy说法没有1:1/free ligand/equilibrium假设或实际计算。 | 补原创建模θ=Lfree/(Kd+Lfree)，5nM Kd下.5/5/50nM对应约.091/.5/.909，避免把occupancy当response。 | 完整正文/先修/terms/worked/check/dataLens已读；正在核验binding公式与assay条件，无额外motion。；NCATS作者手册简单bimolecular模型、Kd=koff/kon、plateau equation与free-ligand depletion条件已读；三浓度手算与15/(5+15)=.75核对；4脚本/1440和375px检查通过，桌面/手机新表格已视觉查看。 | [1](https://www.ncbi.nlm.nih.gov/books/NBK569501/) |
+| [l02 · GPCR 与 second messenger](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#l02) | 已审阅 · 无实质补充需要 | Gs/Gi/Gq→cAMP或IP3/DAG/Ca与GTP关闭/GRK/arrestin完整；秒分钟biosensor而非RNA终点，已有位置链例。 | 保留已有分子机制、情境例和证据链练习 | 完整正文/先修/terms/worked/check/dataLens已读；本章无额外motion；全目录桌面/手机渲染检查通过。 | — |
+| [l03 · RTK、RAS–MAPK 与 PI3K–AKT](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#l03) | 已审阅 · 无实质补充需要 | RTK docking/adaptor、RAS–MAPK/PI3K–AKT及PTEN/feedback，phospho与total/后期分裂分开，已有inhibitor+rescue例。 | 保留已有分子机制、情境例和证据链练习 | 完整正文/先修/terms/worked/check/dataLens已读；本章无额外motion；全目录桌面/手机渲染检查通过。 | — |
+| [l04 · JAK–STAT、TGF-β、Wnt 与 Notch](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#l04) | 已审阅 · 无实质补充需要 | 四条最短机制路线及canonical Wnt/Notch contact条件清楚，TGFβ情境可反向，已有远距离Notch反例。 | 保留已有分子机制、情境例和证据链练习 | 完整正文/先修/terms/worked/check/dataLens已读；本章无额外motion；全目录桌面/手机渲染检查通过。 | — |
+| [l05 · Feedback、crosstalk 与 signaling dynamics](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#l05) | 已审阅 · 无实质补充需要 | 同面积不同pulse/duration、bulk平均错过异步与真实time-lapse不同于pseudotime完整；5分钟轨迹实验例有检验性。 | 保留已有分子机制、情境例和证据链练习 | 完整正文/先修/terms/worked/check/dataLens已读；本章无额外motion；全目录桌面/手机渲染检查通过。 | — |
+| [l06 · 从 scRNA/spatial 推断 cell–cell communication](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#l06) | 已修改并验证 | 五格证据链、不同距离假设、database偏倚/score非浓度/供体重复明确；实际相邻RNA候选例完整。 | 将worked的patient/section改为患者比较以patient为生物重复，section/cell pair嵌套，不算独立病例。 | 完整正文/先修/terms/worked/check/dataLens已读；本章无额外motion；全目录桌面/手机渲染检查通过。；4脚本与1440/375px新句、回答门槛/锁定、无错误/请求失败/页面溢出检查通过。 | — |
 
 ## 14 · Developmental Biology
 
 | 章节 | 实际状态 | 具体发现 / 保留理由 | 计划或已做修改 | 验证 | 本轮核验来源 |
 | --- | --- | --- | --- | --- | --- |
-| [v01 · Cell fate：同一 genome 为什么长成不同细胞](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#v01) | 待审阅 | 尚未逐章审阅 | — | — | — |
-| [v02 · Morphogen 与 positional information](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#v02) | 待审阅 | 尚未逐章审阅 | — | — | — |
-| [v03 · Morphogenesis：形状从细胞行为中涌现](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#v03) | 待审阅 | 尚未逐章审阅 | — | — | — |
-| [v04 · Stem cell、niche 与 tissue renewal](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#v04) | 待审阅 | 尚未逐章审阅 | — | — | — |
-| [v05 · Development、regeneration 与 cancer 的共同逻辑](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#v05) | 待审阅 | 尚未逐章审阅 | — | — | — |
+| [v01 · Cell fate：同一 genome 为什么长成不同细胞](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#v01) | 已审阅 · 无实质补充需要 | 调控景观类比声明非实际地形，GRN/chromatin/不对称division与reprogramming、state≠lineage/velocity假设完整。 | 保留原有具体机制、情境例和练习 | 完整正文/先修/terms/worked/check/dataLens已读；无额外motion；全目录桌面/手机渲染检查通过。 | — |
+| [v02 · Morphogen 与 positional information](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#v02) | 已审阅 · 无实质补充需要 | source→transport/binding/degrade→threshold/competence完整，浓度与暴露时间例具体，gene gradient非morphogen充分证据。 | 保留原有具体机制、情境例和练习 | 完整正文/先修/terms/worked/check/dataLens已读；无额外motion；全目录桌面/手机渲染检查通过。 | — |
+| [v03 · Morphogenesis：形状从细胞行为中涌现](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#v03) | 已审阅 · 无实质补充需要 | apical constriction/intercalation/adhesion→sheet变形有具体机制例；partial EMT与marker≠invasion、embryo分组明确。 | 保留原有具体机制、情境例和练习 | 完整正文/先修/terms/worked/check/dataLens已读；无额外motion；全目录桌面/手机渲染检查通过。 | — |
+| [v04 · Stem cell、niche 与 tissue renewal](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#v04) | 已修改并验证 | self-renewal/niche功能定义与marker/culture限制正确，但worked要求多种成熟cell，排除了limited-lineage stem cell。 | 改为长期自我更新并产生所定义组织/阶段的分化后代，不统一要求多种cell types。 | 完整正文/先修/terms/worked/check/dataLens已读；4脚本及1440/375px回答门槛/锁定、无错误/失败请求/页面溢出检查通过；主文已声明成人stem lineage range有限。；作者摘要通过Europe PMC公开API读取，报告成人mouse prostate单能stem pools；未宣称全文核验。 | [1](https://doi.org/10.1038/ncb2600) |
+| [v05 · Development、regeneration 与 cancer 的共同逻辑](https://haoyunli.github.io/intro-to-bio-for-computational-biology/textbook.html#v05) | 已审阅 · 无实质补充需要 | 正常/修复/肿瘤复用工具与termination、cell-cycle共享混杂完整；胎儿signature≠来源/完整回到胚胎的例子充分。 | 保留原有具体机制、情境例和练习 | 完整正文/先修/terms/worked/check/dataLens已读；无额外motion；全目录桌面/手机渲染检查通过。 | — |
 
 ## 15 · Immunology
 

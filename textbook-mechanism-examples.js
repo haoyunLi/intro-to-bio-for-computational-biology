@@ -118,4 +118,34 @@
   ]);
   survival.check = ['本例 B 在 t=3 右删失，会立刻使 Ŝ 下降吗？C 在 t=4 发生事件时，n 与 Ŝ 各是多少？诊断时预测能使用六个月后的治疗反应吗？',
     'B 的删失不直接使 Ŝ 下降，但会把之后的风险集从 4 减到 3。C 的事件之前 n=3，所以 Ŝ=0.8×(3−1)/3=8/15≈0.533；不能保留已删失的 B 当分母。诊断时还不可得的六个月治疗反应属于未来信息，不能作为诊断时预测特征。'];
+
+  const evolution = byId('e03');
+  evolution.sections.push([
+    '手算一代：先数 allele copies，再比较后代贡献',
+    `<p>原创的 haploid 课堂模型：100 个个体在该位点各有一个 allele，其中 A 有 40 个、a 有 60 个，因此 <code>p(A)=40/100=0.4</code>。假定没有 mutation 或 migration，A 个体在指定环境中的后代贡献恰为每个 2 个、a 恰为每个 1 个，且后代保留亲本 allele。</p><p>下一代的 A 为 <code>40×2=80</code>，a 为 <code>60×1=60</code>，所以 <code>p′(A)=80/(80+60)=4/7≈0.571</code>。分母也增长了，不能只把原频率乘 2 而报 0.8。这里人为固定了贡献，只展示 selection 的确定性计算；真实的繁殖、存活和抽样都有随机性。</p><p>另看中性模型：两种 allele 的后代贡献相同，下一代仅从 allele pool 独立、有放回地抽取 4 个 copies。可能恰好抽到 3 个 A、1 个 a，于是观察频率为 0.75；这不需要 A 有优势。这次抽样代表有限群体生成下一代的 toy genetic drift。若只是从一个已存在的大群体测 4 个个体，那是 sampling uncertainty，而不是该大群体本身一定改变。真实项目必须区分群体变化与测量抽样，多个独立群体、更多世代与贡献测量才有望区分解释。此处 allele copies 也不是测序 reads 的分母。</p>`,
+    ['osPopulationEvolution'],
+  ]);
+  evolution.worked = ['用后代贡献重新计算频率',[
+    'haploid toy 起点 A=40、a=60；每个个体该位点有一个 allele，A 频率为 0.4。',
+    '在固定贡献 2 与 1 下，下一代 A=80、a=60，总数为 140。',
+    'A 的下一代频率为 80/140=4/7；不能把起点频率乘 2 后继续用原分母。',
+    '中性有限抽样也可能提高 A 的频率；明确生成群体的 drift 与抽样测量误差，再比较多个世代与贡献。',
+  ]];
+  evolution.check = ['沿用本章 haploid 固定贡献模型，若 A 与 a 都恰好各贡献 2 个后代，下一代 p(A) 是多少？只看到频率上升就能证明 selection 吗？',
+    'A=80、a=120，p(A)=80/(80+120)=0.4；共同增加不改变比例。只见频率上升不能证明 selection：有限群体的 genetic drift、migration、mutation 或测量抽样也可能改变观察值，需要额外证据。'];
+
+  const binding = byId('l01');
+  binding.sections.push([
+    '先算 occupancy：Kd 是浓度尺度，不是开关',
+    `<p>原创的简单可逆结合模型：<code>R+L ⇌ RL</code>，只有一类相互独立的 1:1 binding sites，没有 cooperativity 或其他竞争 ligand，并已达到 equilibrium。这里 L 指<strong>free ligand concentration</strong>，不是把加入的总量直接当游离量。由 <code>Kd=[R][L]/[RL]</code>，占据比例 <code>θ=[RL]/([R]+[RL])=L/(Kd+L)</code>。θ 无量纲，L 与 Kd 的浓度单位须一致。</p><div class="lesson-table-wrap"><table class="lesson-table"><thead><tr><th>Free L（nM）</th><th>Kd（nM）</th><th>Occupancy θ</th></tr></thead><tbody><tr><td>0.5</td><td>5</td><td>0.5/5.5≈0.091</td></tr><tr><td>5</td><td>5</td><td>5/10=0.5</td></tr><tr><td>50</td><td>5</td><td>50/55≈0.909</td></tr></tbody></table></div><p>L 低于 Kd 仍有 binding；等于 Kd 时在本模型下为一半占据，而非“刚开始有信号”。若受体大量消耗 ligand，free L 与加样浓度不再接近，需要处理质量守恒；若未达平衡、存在不同位点或协同性，也不能直接套这个表。Occupancy 还不能直接替代 downstream effect：antagonist 可结合而不产生相同激活，signal amplification 和 receptor reserve 也可改变曲线。EC50 是指定 response 曲线的半最大浓度，不能由此表认定必为 5 nM。</p>`,
+    ['assayBindingKinetics'],
+  ]);
+  binding.worked = ['用 free ligand 算受体占据，再问响应',[
+    '声明单类独立 1:1 sites、可逆结合且达到平衡；取 free L，而非未经核对的总加样浓度。',
+    '设 Kd=5 nM、free L=0.5 nM，θ=0.5/(5+0.5)≈0.091；低于 Kd 并不等于完全没有 binding。',
+    'free L=5 nM 时 θ=0.5，50 nM 时约0.909；θ 是比例，不是浓度。',
+    '另外测 activation 与指定 downstream response；此 occupancy 模型没有给出 EC50 或最终 phenotype。',
+  ]];
+  binding.check = ['沿用本章模型，Kd=5 nM、free L=15 nM 时 occupancy 是多少？能否由此直接说 response 已达到最大值的75%？',
+    'θ=15/(5+15)=0.75，即75% sites 被占据。不能直接认定 response 为75%：模型只描述平衡binding，响应还依赖激活、amplification、receptor reserve及其他环节。'];
 })();
