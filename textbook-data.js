@@ -1,6 +1,9 @@
 // Original Chinese teaching text lives in textbook-part-*.js. Sources are linked, not copied.
 window.BIOCS_BOOK = [];
 window.BIOCS_SOURCES = {
+  osBloodComponents:['OpenStax Biology 2e · Components of the Blood','https://openstax.org/books/biology-2e/pages/40-2-components-of-the-blood'],
+  antibioticPersistence2019:['Balaban et al. 2019 · Definitions and guidelines for research on antibiotic persistence','https://pmc.ncbi.nlm.nih.gov/articles/PMC7136161/'],
+  plowrightSpillover:['Plowright et al. 2017 · Pathways to zoonotic spillover','https://www.nature.com/articles/nrmicro.2017.45'],
   osTransportPassive:['OpenStax Biology 2e · Passive Transport','https://openstax.org/books/biology-2e/pages/5-2-passive-transport'],
   osTransportActive:['OpenStax Biology 2e · Active Transport','https://openstax.org/books/biology-2e/pages/5-3-active-transport'],
   osEndomembrane:['OpenStax Biology 2e · Endomembrane System and Proteins','https://openstax.org/books/biology-2e/pages/4-4-the-endomembrane-system-and-proteins'],

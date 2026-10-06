@@ -38,7 +38,10 @@
   };
 
   const convert = value => {
-    if (typeof value === 'string') return englishize(value);
+    // Authors introduce technical terms in context. Dictionary substitution in
+    // prose corrupts ordinary verbs (组织、翻译、复制) and compounds such as 激酶.
+    // Preserve Chinese explanations; English labels are normalized separately.
+    if (typeof value === 'string') return spaceMixedScripts(value);
     if (Array.isArray(value)) return value.map(convert);
     if (value && typeof value === 'object') {
       Object.keys(value).forEach(key => { value[key] = convert(value[key]); });
@@ -48,7 +51,7 @@
 
   (window.BIOCS_BOOK || []).forEach(course => {
     course.title = courseTitles[course.code] || englishize(course.title);
-    course.description = englishize(course.description);
+    course.description = spaceMixedScripts(course.description);
     course.chapters.forEach(chapter => {
       Object.keys(chapter).forEach(key => {
         if (key === 'terms') return;
@@ -57,7 +60,7 @@
       chapter.terms = (chapter.terms || []).map(item => {
         const raw = String(item[0]);
         const label = raw.includes(' / ') ? raw.split(' / ')[0].trim() : englishize(raw);
-        return [label, englishize(item[1]), item[2]];
+        return [label, spaceMixedScripts(item[1]), item[2]];
       });
     });
   });
