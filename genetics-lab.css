@@ -12,5 +12,6 @@ body{background:#f7faff;color:#10264b}.gl-header{position:sticky;top:0;z-index:2
 /* Match the main curriculum while keeping the causal controls visually distinct. */
 body{background:var(--paper);color:var(--ink)}.gl-header{background:rgba(255,255,255,.97);border-color:var(--line);gap:28px}.gl-header nav{gap:21px;min-width:0}.gl-header nav a{white-space:nowrap}.gl-header>span{white-space:nowrap;flex:0 0 auto}.gl-hero{padding-top:72px;padding-bottom:70px;grid-template-columns:minmax(0,1.15fr) minmax(300px,.65fr);gap:64px}.gl-hero h1{font-size:clamp(49px,5.7vw,78px);line-height:1.1;letter-spacing:-.04em}.gl-hero p{color:#4f6578}.gl-model h2,.gl-next h2{letter-spacing:-.04em;text-wrap:balance}.logic-chain>div{background:#eef2f3;border-top-color:#5f91bb}.gl-explanation{background:#eef2f3;border-left-width:3px}.gl-next{padding-top:68px}
 @media(max-width:1280px){.gl-header>span{display:none}}
+@media(max-width:850px){.gl-hero{grid-template-columns:minmax(0,1fr);gap:35px}}
 @media(max-width:620px){.gl-header{gap:16px}.gl-header nav a:nth-child(n+3){display:none}.gl-hero{padding-top:44px}.gl-hero h1{font-size:clamp(42px,12vw,49px);line-height:1.08}.gl-hero p{font-size:15px}.gl-model h2{font-size:clamp(31px,9vw,35px)}}
 .gl-explanation{border-left:0;border-top:1px solid #7a9cba}.output-meter i{transition:none}.logic-chain>div,.fraction>div{border-top-width:1px}

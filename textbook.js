@@ -163,7 +163,7 @@
       (chapter.image[3] || []).forEach(key => sourceKeys.add(key));
       visual = `<figure class="concept-figure"><div class="book-image-scroll"><img src="${escape(chapter.image[0])}" alt="${escape(chapter.image[1])}" loading="lazy"></div><figcaption>原创教学示意 · ${escape(chapter.image[2])} 图像依据 ${(chapter.image[3]||[]).map(sourceLink).join(' · ')}。手机端可左右滑动查看。</figcaption></figure>`;
     } else if (chapter.flow) {
-      visual = `<figure class="concept-figure"><div class="concept-flow" role="img" aria-label="${escape(chapter.flow.map(x=>x[0]).join('，然后'))}">${chapter.flow.map((item,i)=>`${i?'<span aria-hidden="true">→</span>':''}<div><b>${escape(item[0])}</b><small>${escape(item[1])}</small></div>`).join('')}</div><figcaption>原创概念图 · 简化关系，细节和限制见正文；依据本章来源。</figcaption></figure>`;
+      visual = window.BIOCS_FLOWS.render(chapter);
     }
     const worked = chapter.worked ? `<aside class="worked"><h2>WORKED EXAMPLE · 跟着做</h2><h3>${escape(chapter.worked[0])}</h3><ol>${chapter.worked[1].map(x=>`<li>${x}</li>`).join('')}</ol></aside>` : '';
     const readingSections = routeStep ? sectionParts.join('') + worked : sectionParts[0] + worked + sectionParts.slice(1).join('');

@@ -1,6 +1,7 @@
 /* Pure teaching models first; DOM wiring below. */
 (function () {
   'use strict';
+  const signalResponseMax=2;
   function regulationModel(access, tf, contact, repressor) {
     const open=Number(access), t=Number(tf)/100, c=Number(contact)/100;
     const potential=open*t*(0.2+0.8*c);
@@ -24,9 +25,17 @@
       inputs.push(input);values.push(state);
     }
     const peak=Math.max(...values),duration=values.filter(v=>v>.55).length;
-    return {inputs,values,peak,duration,late};
+    const inputTotal=inputs.reduce((sum,input)=>sum+input,0),endpoint=values[steps-1];
+    return {inputs,values,peak,duration,late,inputTotal,endpoint};
   }
-  const api={regulationModel,vafModel,signalModel};
+  function signalDescription(pattern,feedback,model) {
+    if(pattern==='sustained') {
+      if(Number(feedback)===0)return '持续输入且没有负反馈：响应向平台累积，不是 adaptation';
+      return model.peak-model.endpoint>=.01?'持续输入仍在，响应受负反馈影响从峰值部分回落；不等于完全回到基线':'持续输入包含负反馈，但当前轨迹未见明显峰后回落，不能只凭 feedback 非零就声称 adaptation';
+    }
+    return pattern==='pulsed'?'重复 pulse 的响应取决于间隔、残留状态与负反馈':'短 pulse 结束后的回落主要反映输入撤除，不能单凭回落判断 adaptation';
+  }
+  const api={regulationModel,vafModel,signalModel,signalDescription,signalResponseMax};
   if(typeof module!=='undefined'&&module.exports)module.exports=api;
   if(typeof window!=='undefined')window.BIOCS_GENETICS_LAB=api;
   if(typeof document==='undefined')return;
@@ -51,11 +60,11 @@
     $('#vaf-explanation').innerHTML=`期望 ALT contribution = purity × CCF × mutant copies = <b>${model.alt.toFixed(2)}</b>；总 copy contribution 同时包含肿瘤与正常细胞 = <b>${model.denominator.toFixed(2)}</b>。所以 VAF 约为 <b>${pct(model.vaf*100)}</b>，它不是 CCF 的直接同义词。`;
   }
   function renderSignal(){
-    const pattern=document.querySelector('input[name="pattern"]:checked').value,feedback=$('#feedback').value,model=signalModel(pattern,feedback),max=Math.max(...model.values,1);
+    const pattern=document.querySelector('input[name="pattern"]:checked').value,feedback=$('#feedback').value,model=signalModel(pattern,feedback);
     $('#feedback-value').textContent=pct(feedback);$('#signal-peak').textContent=model.peak.toFixed(2);$('#signal-duration').textContent=`${model.duration} / 24`;$('#signal-late').textContent=model.late.toFixed(2);
-    $('#signal-chart').replaceChildren(...model.values.map((value,i)=>{const col=document.createElement('div');const bar=document.createElement('i');const input=document.createElement('span');bar.style.height=`${value/max*100}%`;bar.title=`t${i+1}: response ${value.toFixed(2)}`;input.className=model.inputs[i]?'input-on':'';col.append(bar,input);return col;}));
-    const labels={short:'短 pulse 会在输入结束后回落',sustained:'持续输入会与 feedback 竞争并出现 adaptation',pulsed:'重复 pulse 让系统反复越过 threshold'};
-    $('#signal-explanation').innerHTML=`<b>${labels[pattern]}</b>。当前 feedback=${pct(feedback)}，peak=${model.peak.toFixed(2)}，超过阈值 ${model.duration} 个时间点，late target 累积=${model.late.toFixed(2)}。最后一根柱无法概括这段历史。`;
+    $('#signal-chart').replaceChildren(...model.values.map((value,i)=>{const col=document.createElement('div');const bar=document.createElement('i');const input=document.createElement('span');bar.style.height=`${value/signalResponseMax*100}%`;bar.title=`t${i+1}: input ${model.inputs[i]}, response ${value.toFixed(2)}`;input.className=model.inputs[i]?'input-on':'';col.append(bar,input);return col;}));
+    $('#signal-chart').setAttribute('aria-label',`24 个时间点的模拟响应，统一纵轴 0–2 教学单位；输入总量 ${model.inputTotal}，峰值 ${model.peak.toFixed(2)}，终点 ${model.endpoint.toFixed(2)}`);
+    $('#signal-explanation').innerHTML=`<b>${signalDescription(pattern,feedback,model)}</b>。当前 feedback=${pct(feedback)}，总输入 Σu=${model.inputTotal}，peak=${model.peak.toFixed(2)}，超过阈值 0.55 的时间点有 ${model.duration} 个，late target 累积=${model.late.toFixed(2)}。模式间的输入总量不同，因此这里同时改变剂量与时间形状；只改变 feedback 才保持同一输入。柱高始终使用共同的 0–2 响应刻度。`;
   }
   $('#reg-form').addEventListener('input',renderRegulation);$('#vaf-form').addEventListener('input',renderVaf);$('#signal-form').addEventListener('input',renderSignal);
   $('#reg-reset').addEventListener('click',()=>{document.querySelector('input[name="access"][value="1"]').checked=true;$('#tf').value=65;$('#contact').value=55;$('#repressor').checked=false;renderRegulation();});
