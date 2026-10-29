@@ -988,6 +988,62 @@ window.BIOCS_OMICS_MAP = {
       "group": "cb"
     },
     {
+      "id": "sc13",
+      "title": "EmptyDrops、SoupX 与 CellBender：先区分没有 cell 和 cell 里混入 RNA",
+      "short": "EmptyDrops、SoupX 与 CellBender",
+      "summary": "Barcode calling 与 background correction 是两次不同的判断。",
+      "group": "methods"
+    },
+    {
+      "id": "sc14",
+      "title": "Doublet detection：为什么 expected rate、capture 和 cell-type composition 必须一起看",
+      "short": "Doublet detection",
+      "summary": "模拟混合profile可以帮助排序，但不能提供全知的双细胞标签。",
+      "group": "methods"
+    },
+    {
+      "id": "sc15",
+      "title": "HVG、PCs 与 k 的 sensitivity：怎样判断 cluster 不是参数偶然",
+      "short": "HVG、PCs 与 k 的 sensitivity",
+      "summary": "把“看起来差不多”变成邻居、marker 和 donor 层面的稳定性检查。",
+      "group": "methods"
+    },
+    {
+      "id": "sc16",
+      "title": "Harmony、Anchors 与 scVI：Integration 该修正什么，怎样避免修掉 biology",
+      "short": "Harmony、Anchors 与 scVI",
+      "summary": "比较模型的输入、假设和输出，而不是只比较混合后的UMAP。",
+      "group": "methods"
+    },
+    {
+      "id": "sc17",
+      "title": "Reference mapping 与 Open-set annotation：什么时候应该说 Unknown",
+      "short": "Reference mapping 与 Open-set annotation",
+      "summary": "Top label、confidence 和 reference coverage 是三件不同的事。",
+      "group": "methods"
+    },
+    {
+      "id": "sc18",
+      "title": "Milo 与 cluster-level Differential abundance：从重叠邻域到 sample-level contrast",
+      "short": "Milo 与 cluster-level Differential abundance",
+      "summary": "研究连续state的比例变化时，先明确一条检验对应哪个区域。",
+      "group": "methods"
+    },
+    {
+      "id": "sc19",
+      "title": "Slingshot 与 Pseudotime：root、branch 和 sampling 怎样改变故事",
+      "short": "Slingshot 与 Pseudotime",
+      "summary": "从静态状态排序走向发育解释，需要额外的方向证据。",
+      "group": "methods"
+    },
+    {
+      "id": "sc20",
+      "title": "CITE-seq、WNN 与 scATAC LSI：多一种 modality，不等于多一份相同数据",
+      "short": "CITE-seq、WNN 与 scATAC LSI",
+      "summary": "RNA、protein 与 accessibility 各自有测量尺度和噪声，先分开理解再组合。",
+      "group": "methods"
+    },
+    {
       "id": "sc01",
       "title": "scRNA-seq 与 snRNA-seq：一个 count 如何找到它的 cell",
       "short": "scRNA-seq 与 snRNA-seq",
@@ -1070,6 +1126,62 @@ window.BIOCS_OMICS_MAP = {
       "short": "完整项目",
       "summary": "让每一次处理都能追溯到研究问题、数据单位与验证边界。",
       "group": "sc"
+    },
+    {
+      "id": "sp01",
+      "title": "Spatial deconvolution 与 Cell mapping：先判断reference能否识别答案",
+      "short": "Spatial deconvolution 与 Cell mapping",
+      "summary": "RCTD、Cell2location与Tangram的输出单位、假设和设置各不相同。",
+      "group": "sp"
+    },
+    {
+      "id": "sp02",
+      "title": "Registration：Rigid、Affine 与 Nonrigid 的选择和误差预算",
+      "short": "Registration",
+      "summary": "同一坐标看起来对齐，还要证明误差小于你要研究的空间尺度。",
+      "group": "sp"
+    },
+    {
+      "id": "sp03",
+      "title": "Segmentation 与 Transcript assignment：方法家族、参数与错误类型",
+      "short": "Segmentation 与 Transcript assignment",
+      "summary": "把Nuclei expansion、Cellpose、Baysor与Proseg放到相同输入和评价问题下比较。",
+      "group": "sp"
+    },
+    {
+      "id": "sp04",
+      "title": "Spatial graph：Radius、kNN、Grid 与权重怎样改变问题",
+      "short": "Spatial graph",
+      "summary": "邻居不是数据天然附带的事实，而是需要解释的建模选择。",
+      "group": "sp"
+    },
+    {
+      "id": "sp05",
+      "title": "Spatially variable genes：Moran’s I、SPARK-X与null的区别",
+      "short": "Spatially variable genes",
+      "summary": "先问表达是否随位置变化，再区分composition、within-type变化和技术梯度。",
+      "group": "sp"
+    },
+    {
+      "id": "sp06",
+      "title": "Spatial domains与Smoothing：连续区域是证据还是模型偏好",
+      "short": "Spatial domains与Smoothing",
+      "summary": "BayesSpace、graph方法和简单diffusion都需要检查boundary保留。",
+      "group": "sp"
+    },
+    {
+      "id": "sp07",
+      "title": "Spatial communication：CellChat、NicheNet与可检验的Ligand–target假说",
+      "short": "Spatial communication",
+      "summary": "从完整complex、distance、target response到独立验证，每一层都要有证据。",
+      "group": "sp"
+    },
+    {
+      "id": "sp08",
+      "title": "Spatial validation：Block、Donor、Calibration与Risk–coverage",
+      "short": "Spatial validation",
+      "summary": "先定义要推广到哪里，再决定怎样留出数据和报告不确定性。",
+      "group": "sp"
     }
   ],
   "groups": [
@@ -1087,6 +1199,16 @@ window.BIOCS_OMICS_MAP = {
       "id": "sc",
       "title": "Single-cell → Spatial · 扩展到细胞与组织位置",
       "description": "从barcodes、UMIs与donor-aware inference，走到registration、assignment、spatial graph、niche和独立验证。"
+    },
+    {
+      "id": "methods",
+      "title": "Single-cell methods · 选择、设置与失败诊断",
+      "description": "详细拆解EmptyDrops、doublets、graph sensitivity、integration、reference mapping、differential abundance、trajectory和multimodal。"
+    },
+    {
+      "id": "sp",
+      "title": "Spatial methods · 从测量到独立验证",
+      "description": "比较deconvolution、registration、segmentation、spatial graph、SVG、domains、communication与blocked validation。"
     }
   ]
 };

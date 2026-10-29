@@ -121,3 +121,9 @@ Playback is available only for expression time and population generation. It sta
 `omics-workbench.html` inherits the existing Bio/CS reading system. Three biological questions open Bulk, Single-cell or Spatial learning routes; six numeric experiments sit above the chapter library, reproducible R downloads and searchable source-to-topic mapping. Current parameter values, formulas, tables and original SVG geometry share one model state. Scientific diagrams keep local scrolling at 640px; mobile prose and controls remain within the viewport.
 
 GSEA alone advances its ranked walk with optional 700ms playback, manual stepping and a full-ranking action. Playback stops on parameter/topic changes, a hidden document and reduced motion. Reset explicitly clears both the current model parameters and prediction answer. Native controls preserve focus and disable prediction checking until an answer exists. No measurements or inferential significance are invented for the synthetic examples.
+
+## Single-cell and Spatial Methods Lab
+
+`singlecell-spatial-lab.html` extends the same Read/Operate layout without changing the visual identity: six experiment tabs, prediction before explanation, native controls, a parameter-derived SVG, numerical readouts and a full intermediate table. A method-choice table connects tasks, candidate methods, settings and limitations. Every plot names synthetic inputs and keeps a 640px local scroll area with a visible mobile cue.
+
+Graph smoothing alone has optional 800ms playback, with manual previous/next controls up to eight steps. Parameter changes reset the sequence, while hidden-page and reduced-motion changes stop it. Irrelevant controls are disabled. Reset clears both parameters and prediction; replaced tab/reset controls retain keyboard focus. Raw observations, reconstructed profiles, unknown weights and undefined statistics remain explicitly distinct in labels.

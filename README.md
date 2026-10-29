@@ -1,16 +1,16 @@
 # Bio/CS · 从代码到细胞
 
-一个面向**没有系统生物学背景**的计算研究者的学习网站。核心目标是先建立可以推理的 biology mental model，再把模型接到真实项目里的材料、实验、行列、单位、分母、ID 关系和 inference boundary。主教材现有 **24 门课、221 章、960 个教学小节、307 个去重来源条目**。解释使用 Chinese，biological technical terms 统一使用 English。全站以 [UIUC 2026–2027 MCB BSLAS](https://catalog.illinois.edu/undergraduate/las/molecular-cellular-biology-bslas/) 的先修结构为骨架：共同生物基础 → MCB 250/251 Molecular Genetics → MCB 252/253 Cells, Tissues & Development → MCB 354 Biochemical Basis → advanced MCB / research；再用 [IB BSLAS](https://catalog.illinois.edu/undergraduate/las/integrative-biology-bslas/) 的 non-plant organismal core 与 [MCB + Data Science](https://catalog.illinois.edu/undergraduate/las/molecular-cellular-biology-data-science-bslas/) 补全完整 organism 和计算项目视角。
+一个面向**没有系统生物学背景**的计算研究者的学习网站。核心目标是先建立可以推理的 biology mental model，再把模型接到真实项目里的材料、实验、行列、单位、分母、ID 关系和 inference boundary。主教材现有 **24 门课、237 章、1041 个教学小节、348 个去重来源条目**。解释使用 Chinese，biological technical terms 统一使用 English。全站以 [UIUC 2026–2027 MCB BSLAS](https://catalog.illinois.edu/undergraduate/las/molecular-cellular-biology-bslas/) 的先修结构为骨架：共同生物基础 → MCB 250/251 Molecular Genetics → MCB 252/253 Cells, Tissues & Development → MCB 354 Biochemical Basis → advanced MCB / research；再用 [IB BSLAS](https://catalog.illinois.edu/undergraduate/las/integrative-biology-bslas/) 的 non-plant organismal core 与 [MCB + Data Science](https://catalog.illinois.edu/undergraduate/las/molecular-cellular-biology-data-science-bslas/) 补全完整 organism 和计算项目视角。
 
 内容重点为 22 章 **Molecular Genetics**、6 章 **Cell Signaling**、10 章 **Metabolism & Metabolomics** 和 10 章 **Immunology**。本轮再按 UIUC laboratory 与 advanced-course 结构加入 10 章 **Experimental Cell & Molecular Biology**、7 章 **Structural Biology & Biophysics**、8 章 **Infection, Virology & Pharmacology**、6 章 **Organismal Biology & Behavior**。本科广度还覆盖 evolution、microbiology、physiology、development、neuroscience 和 ecology；按当前学习目标不纳入 Plant Biology。
 
-`index.html` 是唯一课程导航：先显示 **13 个连续单元、78 个先修顺序核对过的核心步骤**，每个单元末尾再给一个“换成自己的数据”的迁移问题；Deep Genetics、Immune × Metabolism 与 MCB + Data Science 是选读主题，UIUC 五阶段课程对照与完整 221 章目录是参考层。旧 `uiuc-path.html` 只负责保留旧链接并重定向到首页。教材侧栏默认显示同一条主线，“下一步”沿主线移动；全部 221 章都保留在可展开目录和搜索中，旧进度不丢失。`glossary.html` 提供可搜索的 711 个 English terms；**全部 711 个**都有简明释义、具体例子、常见误区及相关章节，其中 93 个核心概念默认先展示。正文首次遇到的关键术语可直接点开解释。每章增加 zero-background map，先拆清 object、mechanism、evidence 与 inference boundary；143 个拓展章节现有各章专属的逐步例题，全部 221 章都给出 assay signal、data unit 与 inference boundary 的桥接卡。`project-lab.html` 先用 fictional composite patient 的四个 longitudinal specimens，把 Genetics、raw assay、signaling dynamics、tumor immunity、metabolism 与 claim building 串成一条证据链；最后用“自己的项目”工作页把 biological question、sample、assay、数值分母、analysis design、有限结论和替代解释写成一个可检查的草稿。方法提示还包括 spatial bin-to-cell、pseudobulk pathway age 与 methylation age 三类分析场景，用来练习独立单位、原始测量、数据泄漏和结论边界，不代表本站知道读者当前的真实数据。这个检查只验证结构是否覆盖关键问题，不会替读者判定科学正确性，也不上传真实数据。`genetics-lab.html` 提供 chromatin/TF/enhancer contact、purity/CNV/CCF→VAF 和 signaling dynamics 三个可操作因果模型；`motion-lab.html` 只保留 **16 个有明确机制状态变化的原创图解、79 个步骤**。
+`index.html` 是唯一课程导航：先显示 **13 个连续单元、78 个先修顺序核对过的核心步骤**，每个单元末尾再给一个“换成自己的数据”的迁移问题；Deep Genetics、Immune × Metabolism 与 MCB + Data Science 是选读主题，UIUC 五阶段课程对照与完整 237 章目录是参考层。旧 `uiuc-path.html` 只负责保留旧链接并重定向到首页。教材侧栏默认显示同一条主线，“下一步”沿主线移动；全部 237 章都保留在可展开目录和搜索中，旧进度不丢失。`glossary.html` 提供可搜索的 756 个 English terms；**全部 756 个**都有简明释义、具体例子、常见误区及相关章节，其中 93 个核心概念默认先展示。正文首次遇到的关键术语可直接点开解释。每章增加 zero-background map，先拆清 object、mechanism、evidence 与 inference boundary；159 个拓展章节现有各章专属的逐步例题，全部 237 章都给出 assay signal、data unit 与 inference boundary 的桥接卡。`project-lab.html` 先用 fictional composite patient 的四个 longitudinal specimens，把 Genetics、raw assay、signaling dynamics、tumor immunity、metabolism 与 claim building 串成一条证据链；最后用“自己的项目”工作页把 biological question、sample、assay、数值分母、analysis design、有限结论和替代解释写成一个可检查的草稿。方法提示还包括 spatial bin-to-cell、pseudobulk pathway age 与 methylation age 三类分析场景，用来练习独立单位、原始测量、数据泄漏和结论边界，不代表本站知道读者当前的真实数据。这个检查只验证结构是否覆盖关键问题，不会替读者判定科学正确性，也不上传真实数据。`genetics-lab.html` 提供 chromatin/TF/enhancer contact、purity/CNV/CCF→VAF 和 signaling dynamics 三个可操作因果模型；`motion-lab.html` 只保留 **16 个有明确机制状态变化的原创图解、79 个步骤**。
 
 零基础段包括测量信号与生物对象、DNA/RNA、数量/浓度/通量、物理尺度、基因结构、蛋白结构、酶动力学、复制叉、细胞周期、实验对照、PCR/RT-qPCR、遗传概率、单倍型、Hardy–Weinberg 和肿瘤纯度下的 VAF。B01–B05 与 G01–G06 另加 11 个“先猜再揭示”数据对象/分母练习。具体增补和后续缺口见 [`coverage-audit.md`](coverage-audit.md)。
 
 ## 本地预览
 
-全站现有 13 个 HTML 页面、221 章教材与 12 课复习。教材侧栏默认按 13 个连续单元分组，课程对照和拓展章节按需展开；每章标明所在 UIUC 阶段，并提供 intuition、English term anchors、zero-background map、worked example、understanding check 与 sources。
+全站现有 14 个 HTML 页面、237 章教材与 12 课复习。教材侧栏默认按 13 个连续单元分组，课程对照和拓展章节按需展开；每章标明所在 UIUC 阶段，并提供 intuition、English term anchors、zero-background map、worked example、understanding check 与 sources。
 
 建议用本地 HTTP 服务打开 `index.html`；真实队列页通过 `fetch` 读取随站点保存的 JSON 快照，直接以 `file://` 打开会被浏览器拦截。可在本目录运行：
 
@@ -31,7 +31,7 @@ npx serve .
 
 ## 内容与来源
 
-- 系统教材按知识依赖排成 24 门课、221 章。原有 chemistry、cell biology、cancer、omics、TCGA、spatial biology 和 sequencing 路线完整保留；Genetics、Metabolism、Immunology、laboratory reasoning、biophysics、infection/pharmacology 与 organismal behavior 做了重点加深。全章使用“intuition → object/scale → mechanism → evidence → project use → inference boundary”的读法。
+- 系统教材按知识依赖排成 24 门课、237 章。原有 chemistry、cell biology、cancer、omics、TCGA、spatial biology 和 sequencing 路线完整保留；Genetics、Metabolism、Immunology、laboratory reasoning、biophysics、infection/pharmacology 与 organismal behavior 做了重点加深。全章使用“intuition → object/scale → mechanism → evidence → project use → inference boundary”的读法。
 - Data Lab 使用虚构的教学数据，交互展示 case/sample join、raw count/CPM、VCF/BED 坐标、tile/患者级拆分、SBS 循环、三条 FASTQ read 的质量/比对/计数路径、五种表达尺度、四种缺失状态，以及 nucleus-only、5 µm-style、过度扩张和配准偏移下的空间细胞分割误差。每种表达尺度都显示数值含义、适用问题、不能直接回答的问题和下一步；分割练习逐点列出 true assignment → observed assignment。每个练习都链接官方格式或方法文档。
 - Foundations Lab 的序列和数字是虚构教学模型；它展示改变序列、细胞组成和文库深度如何改变可观察值。页面写明模型假设、零值与证据边界，并链接原始论文或官方文档。
 - 机制图解只在章节拥有专属 causal process 时出现：复制、转录、剪接、翻译、细胞周期、受体信号、膜运输、enhancer、测序、read→count、归一化、bulk 混合、spatial binning、细胞分割、cohort join 和数据泄漏。播放器仍提供播放/暂停、逐步查看和 reduced-motion；没有专属机制图的章节不再出现泛化装饰动效。
@@ -48,13 +48,13 @@ npx serve .
 - `index.html`、`guided-path.js`、`guided-path.css`、`uiuc-path.css`、`uiuc-path.js`：13 单元连续学习主线、选读主题与 UIUC 课程对照
 - `uiuc-path.html`：兼容旧链接的重定向页
 - `uiuc-curriculum.js`：UIUC 课程结构、阶段、advanced clusters 与 supporting sciences 元数据
-- `textbook.html`、`learning-support.css`：系统教材；默认连续主线，完整 24 门课、221 章可搜索、可展开
-- `glossary.html`、`glossary.js`、`glossary.css`、`glossary-data.js`、`glossary-expansion-*.js`：711 个带例子与误区的 English term 索引与章内解释
+- `textbook.html`、`learning-support.css`：系统教材；默认连续主线，完整 24 门课、237 章可搜索、可展开
+- `glossary.html`、`glossary.js`、`glossary.css`、`glossary-data.js`、`glossary-expansion-*.js`：756 个带例子与误区的 English term 索引与章内解释
 - `textbook-data.js`、`textbook-part-*.js`：来源库与原创章节内容
 - `textbook-undergrad-*.js`、`textbook-genetics-deep.js`、`textbook-genetics-extension.js`、`textbook-metabolism.js`、`textbook-immunology-deep.js`、`textbook-uiuc-expansion.js`：本科广度、22 章 Molecular Genetics、10 章 Metabolism、10 章 Immunology，以及 UIUC laboratory、biophysics、infection/pharmacology 与 organismal behavior 扩展
 - `textbook-intuition.js`、`textbook-terminology.js`、`legacy-terminology.js`：全章 intuition 与全站 English technical-term display policy
 - `textbook-extension-worked-*.js`：把拓展章的通用模板替换为该章专属的逐步例题
-- `textbook-data-lens.js`、`textbook-extension-lens-*.js`、`textbook-core-lens.js`：全部 221 章的生物概念→数据语义卡片
+- `textbook-data-lens.js`、`textbook-extension-lens-*.js`、`textbook-core-lens.js`：全部 237 章的生物概念→数据语义卡片
 - `textbook.css`、`textbook.js`：教材布局、搜索、导航与本地进度
 - `genetics-lab.html`、`.css`、`.js`：enhancer 调控、VAF 分母与 signaling dynamics 三个因果模型
 - `project-lab.html`、`.css`、`.js`、`project-transfer.css`、`project-transfer.js`：一位 fictional composite patient 的四时间点、六层证据链、四种 raw assay 判读、resistance dynamics、tumor–immune–metabolism 假说检验，以及读者自己项目的八问工作页
@@ -72,7 +72,7 @@ npx serve .
 - `assets/*.svg`：原创示意图与图标
 - `coverage-audit.md`、`teaching-design-roadmap.md`：从零基础复查后的已补内容、逐章扩写与教学设计清单
 
-本次 Omics 扩展核对日期：2026-10-28；既有材料的数据快照保留原查询日期。可运行 `node scripts/audit-zero-background.mjs` 检查课程结构、711 个术语解释、143 个拓展例题、221 张数据语义卡及学习顺序，运行 `node scripts/test-project-transfer.mjs` 检查项目工作页。主线解决“下一步读什么”，术语库解决“遇到词时在哪里解释”；自动检查与代理模拟阅读不等同于零基础真人可理解性验证，更不能保证每位读者仅靠本站就掌握每个专题。
+本次 Omics 扩展核对日期：2026-10-28；既有材料的数据快照保留原查询日期。可运行 `node scripts/audit-zero-background.mjs` 检查课程结构、756 个术语解释、159 个拓展例题、237 张数据语义卡及学习顺序，运行 `node scripts/test-project-transfer.mjs` 检查项目工作页。主线解决“下一步读什么”，术语库解决“遇到词时在哪里解释”；自动检查与代理模拟阅读不等同于零基础真人可理解性验证，更不能保证每位读者仅靠本站就掌握每个专题。
 
 ## Mechanism Workbench · 2026-10-28
 
@@ -89,3 +89,13 @@ npx serve .
 六个实验依次解释 Sample ID/design、median-ratio normalization、ORA background、GSEA running sum、Cells→Donors 和 Bin→Cell assignment。控制参数会重新计算图、数值表和手算步骤；GSEA 支持逐 gene 播放、暂停及 reduced-motion。示例均标明合成数据、方法假设与推断边界。
 
 验证：`node scripts/test-omics-workbench.mjs` 交叉核对 R 的 hypergeometric/BH 数值及完整参数域内的守恒、rank、边界；`node scripts/test-omics-curriculum.mjs` 检查章节、35 张 SVG、来源映射和代码换行；`node scripts/test-singlecell-spatial.mjs` 检查 donor aggregation/spatial 数值。三份 R recipes 已实际运行：base-R 与 Single-cell/Spatial 脚本通过；Bulk recipe 在默认库执行 edgeR/limma，并在已有额外库执行 DESeq2/edgeR/limma、ORA/GSEA 全流程。脚本在缺包时明确记录，未自动安装依赖。STAR 等外部工具示例是命令模板，并未运行真实测序流程。
+
+## Single-cell and Spatial methods lab
+
+[方法实验](singlecell-spatial-lab.html) 新增六个参数实验：Ambient RNA mixture、neighbors/smoothing、Integration identifiability、Deconvolution sensitivity、Cell composition 与 held-out validation。每个实验都有预测题、数值图、中间计算、设置、优缺点、真实方法链接与推断边界。新课程 sc13–sc20 与 sp01–sp08 增加 16 章、81 sections 和 16 张定量图；Omics 库现共有 51 章。
+
+方法覆盖 EmptyDrops、SoupX/CellBender、scDblFinder/Scrublet、HVG/graph sensitivity、Harmony/Seurat/scVI、reference mapping/abstain、Milo/scCODA、Slingshot/PAGA、WNN/Signac、RCTD/Cell2location/Tangram、registration、Cellpose/Baysor/Proseg、spatial graphs、SPARK-X、domains、CellChat/NicheNet 和 spatial block/donor validation。模型名称不能替代输入、测量单位和统计假设。
+
+`node scripts/test-methods-math.mjs` 覆盖六个实验的独立预期值和参数域内不变量；`node scripts/test-singlecell-methods.mjs`、`node scripts/test-spatial-methods.mjs` 核对新章节与例题。`Rscript recipes/singlecell-spatial-methods-checks.R` 独立复核六个实验的算术。新章八个 Base R examples 与 Python 坐标变换已运行；完整包级分析模板有明确标注，未声称运行真实单细胞/空间数据。
+
+本轮同时修复 Omics 材料搜索的空格/连字符匹配、实验切换时的路径一致性和旧资源入口的失效 anchor。

@@ -12,7 +12,7 @@ const files = [
   'textbook-uiuc-expansion.js',
   'textbook-extension-worked-a.js', 'textbook-extension-worked-b.js', 'textbook-extension-worked-c.js', 'textbook-extension-worked-d.js',
   'textbook-mechanism-examples.js',
-  'textbook-intuition.js', 'textbook-data-lens.js', 'textbook-extension-lens-a.js', 'textbook-extension-lens-b.js', 'textbook-core-lens.js', 'textbook-mechanism-expansion.js', 'textbook-cb592.js', 'textbook-bulk-functional.js', 'textbook-singlecell-spatial.js', 'textbook-terminology.js', 'uiuc-curriculum.js',
+  'textbook-intuition.js', 'textbook-data-lens.js', 'textbook-extension-lens-a.js', 'textbook-extension-lens-b.js', 'textbook-core-lens.js', 'textbook-mechanism-expansion.js', 'textbook-cb592.js', 'textbook-bulk-functional.js', 'textbook-singlecell-spatial.js', 'textbook-singlecell-methods.js', 'textbook-spatial-methods.js', 'textbook-terminology.js', 'uiuc-curriculum.js',
   'guided-path.js', 'glossary-data.js', 'glossary-expansion-genetics.js', 'glossary-expansion-data.js', 'glossary-expansion-organisms.js', 'glossary-expansion-systems.js',
   'glossary-expansion-metabolism.js', 'glossary-expansion-lab.js', 'glossary-expansion-proteins.js',
   'glossary-expansion-pathogens.js', 'glossary-expansion-animals.js'
@@ -42,7 +42,7 @@ const sourceKeys = chapter => [
 const plainLength = chapter => (chapter.sections || []).reduce((sum, section) => sum + section[1].replace(/<[^>]+>/g, '').length, 0);
 
 if (book.length !== 24) errors.push(`expected 24 courses; found ${book.length}`);
-if (chapters.length !== 221) errors.push(`expected 221 chapters; found ${chapters.length}`);
+if (chapters.length !== 237) errors.push(`expected 237 chapters; found ${chapters.length}`);
 if (ids.size !== chapters.length) errors.push('chapter IDs are not unique');
 if (chapters.some(chapter => /^p\d+$/i.test(chapter.id) || /Plant Biology|植物生物学/.test(chapter.title))) errors.push('Plant Biology content is still present');
 if (new Set(guided.ids).size !== guided.ids.length) errors.push('guided path repeats a chapter');
@@ -67,7 +67,7 @@ for (const term of glossary.entries.values()) {
   if (!term.example || term.example.length < 12) errors.push(`glossary term ${term.label} lacks a concrete example`);
   if (!term.caution || term.caution.length < 12) errors.push(`glossary term ${term.label} lacks a misconception or boundary`);
 }
-if (extensionChapters.length !== 143) errors.push(`expected 143 extension chapters; found ${extensionChapters.length}`);
+if (extensionChapters.length !== 159) errors.push(`expected 159 extension chapters; found ${extensionChapters.length}`);
 for (const chapter of extensionChapters) {
   if (!chapter.worked || chapter.worked[0] === '四步读懂一个相关结果') errors.push(`${chapter.id}: extension chapter still has a generic worked example`);
   if (!chapter.worked?.[1] || chapter.worked[1].length < 3) errors.push(`${chapter.id}: extension chapter lacks a stepwise worked example`);
