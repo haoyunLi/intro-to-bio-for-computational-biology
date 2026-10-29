@@ -84,5 +84,5 @@
       sources:['nciCancer','vafPurityPaper','gdcDNA','gdcVCF','nhMutation'], prereq:['x14','x18'], core:'Evolution / 演化', flow:[['Ancestor','共享早期事件'],['Branching','空间/时间分叉'],['Selection','环境与治疗'],['Resistance','clone 扩张与验证']]
     })
   );
-  course.description = '22 章深入连接 chromosome、replication、repair、regulation、inheritance、molecular QTL、immunogenetics 与 tumor evolution。';
+  course.description = '深入连接 chromosome、replication、repair、regulation、inheritance、molecular QTL、immunogenetics 与 tumor evolution。';
 })();

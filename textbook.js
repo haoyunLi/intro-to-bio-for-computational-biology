@@ -6,6 +6,7 @@
   const glossary = window.BIOCS_GLOSSARY;
   const chapters = courses.flatMap(course => course.chapters.map((chapter, index) => ({...chapter, course, index})));
   const allChapterIds = chapters.map(chapter => chapter.id);
+  const navigationFor = id => window.BIOCS_CHAPTER_NAV.resolve(id, guided.ids, allChapterIds);
   const byId = new Map(chapters.map(ch => [ch.id, ch]));
   const state = {active: chapters[0]?.id, completed: new Set()};
   const key = 'biocs-textbook-progress-v1';
@@ -135,9 +136,11 @@
     state.active = chapter.id;
     const number = chapters.indexOf(chapter), sourceKeys = new Set();
     const routeStep = guided.unitByChapter[chapter.id];
-    const navigationIds = routeStep ? guided.ids : allChapterIds;
-    const navigationIndex = navigationIds.indexOf(chapter.id);
-    const nextId = navigationIds[navigationIndex + 1];
+    const navigation = navigationFor(chapter.id);
+    const regulationStep = navigation.kind === 'regulation';
+    const navigationIds = navigation.ids;
+    const navigationIndex = navigation.index;
+    const nextId = navigation.nextId;
     const uiucStage=uiuc.stageByCourse[chapter.course.code];
     const intuition=chapter.intuition||window.BIOCS_INTUITION?.[chapter.id];
     const anchorTerms=(chapter.terms||[]).slice(0,4).map(item=>item[0]);
@@ -154,7 +157,8 @@
     })() : '';
     const sectionParts = chapter.sections.map((section, i) => {
       (section[2] || []).forEach(key => sourceKeys.add(key));
-      return `<section class="chapter-section" id="step-${escape(chapter.id)}-${i+1}" tabindex="-1"><span class="section-count">${String(i+1).padStart(2,'0')} / ${escape(chapter.id.toUpperCase())}</span><h2>${escape(section[0])}</h2><div>${section[1]}</div><div class="chapter-refs">${(section[2]||[]).map(sourceLink).join(' · ')}</div></section>`;
+      const sectionBody = i === 0 ? window.BIOCS_CHAPTER_NAV.omitRepeatedOpening(section[1], intuition?.[1]) : section[1];
+      return `<section class="chapter-section" id="step-${escape(chapter.id)}-${i+1}" tabindex="-1"><span class="section-count">${String(i+1).padStart(2,'0')} / ${escape(chapter.id.toUpperCase())}</span><h2>${escape(section[0])}</h2><div>${sectionBody}</div><div class="chapter-refs">${(section[2]||[]).map(sourceLink).join(' · ')}</div></section>`;
     });
     (chapter.terms||[]).forEach(term => sourceKeys.add(term[2]));
     (chapter.more||[]).forEach(key => sourceKeys.add(key));
@@ -176,8 +180,9 @@
     const methodLink=methodLabs[chapter.id]?`<a class="chapter-practice-link" href="singlecell-spatial-lab.html#${methodLabs[chapter.id]}">方法实验：改变参数、检查中间值与失败情形 →</a>`:'';
     const regulationLabs={rb01:'models',rb02:'models',rb03:'lineage',rb04:'motif',rb05:'enhancer',rb06:'complex',rb07:'lr',rb08:'models',x06:'motif',x14:'lineage',l06:'lr'};
     const regulationLink=regulationLabs[chapter.id]?`<a class="chapter-practice-link" href="regulation-lab.html#${regulationLabs[chapter.id]}">实验模型与调控：改变量、看计算、判断证据 →</a>`:'';
-    const pathLabel=routeStep?`主线 ${navigationIndex+1} / ${guided.ids.length} · ${routeStep.unit.title}`:`拓展章节 · ${chapter.course.title}`;
-    $('#chapter-body').innerHTML = `<div class="book-article"><header class="book-hero"><h1>${escape(chapter.title)}</h1><span class="book-kicker">${escape(chapter.course.title)} · ${escape(chapter.id.toUpperCase())} · ${number+1} / ${chapters.length}</span><p class="book-subtitle">${escape(chapter.subtitle)}</p>${intuitionHTML}<div class="book-context"><a href="index.html#guided-route">${escape(pathLabel)} ↗</a><p>${escape(uiucStage.year)} · ${escape(uiucStage.title)}</p>${prereq}</div></header>${chapter.id === "d01" ? '<a class="chapter-practice-link" href="#batch-design-exercise">读图练习：同一个差值，能区分 treatment 与 batch 吗？ ↓</a>' : ""}${chapter.intro?`<p class="book-intro">${chapter.intro}</p>`:''}${/^(cb|om|sc)\d+$/.test(chapter.id)?`<a class="chapter-practice-link" href="omics-workbench.html#${({cb02:"alignment",cb07:"ora",om03:"alignment",om04:"normalization",om09:"ora",om10:"gsea",sc06:"pseudobulk",sc07:"gsea",sc08:"spatial",sc09:"spatial",sc10:"spatial",sc11:"spatial",sc12:"spatial"})[chapter.id]||"curriculum"}">到 Omics Workbench：改参数、看中间值、对照课程材料 →</a>`:""}${methodLink}${regulationLink}${visual}${chapterGuide}${readingSections}${dataBridge}${practiceHTML}<div class="book-term-line"><b>本章 English terms</b><span>${anchorTerms.map(item=>escape(item.split(' / ')[0])).join(' · ')}</span></div><details class="book-goals"><summary>读完本章，你应该能做什么？</summary><ul>${chapter.goals.map(g=>`<li>${escape(g)}</li>`).join('')}</ul></details>${terms}${check}${chapter.id === "d01" ? window.BIOCS_PRACTICE.designMarkup() : ""}${transfer}${refs}</div>`;
+    const pathLabel=routeStep?`主线 ${navigationIndex+1} / ${guided.ids.length} · ${routeStep.unit.title}`:regulationStep?`选读专题 ${navigationIndex+1} / ${navigationIds.length} · 实验模型与调控证据`:`拓展章节 · ${chapter.course.title}`;
+    const pathHref=regulationStep?'index.html#regulation-route':'index.html#guided-route';
+    $('#chapter-body').innerHTML = `<div class="book-article"><header class="book-hero"><h1>${escape(chapter.title)}</h1><span class="book-kicker">${escape(chapter.course.title)} · ${escape(chapter.id.toUpperCase())} · ${number+1} / ${chapters.length}</span><p class="book-subtitle">${escape(chapter.subtitle)}</p>${intuitionHTML}<div class="book-context"><a href="${pathHref}">${escape(pathLabel)} ↗</a><p>${escape(uiucStage.year)} · ${escape(uiucStage.title)}</p>${prereq}</div></header>${chapter.id === "d01" ? '<a class="chapter-practice-link" href="#batch-design-exercise">读图练习：同一个差值，能区分 treatment 与 batch 吗？ ↓</a>' : ""}${chapter.intro?`<p class="book-intro">${chapter.intro}</p>`:''}${/^(cb|om|sc)\d+$/.test(chapter.id)?`<a class="chapter-practice-link" href="omics-workbench.html#${({cb02:"alignment",cb07:"ora",om03:"alignment",om04:"normalization",om09:"ora",om10:"gsea",sc06:"pseudobulk",sc07:"gsea",sc08:"spatial",sc09:"spatial",sc10:"spatial",sc11:"spatial",sc12:"spatial"})[chapter.id]||"curriculum"}">到 Omics Workbench：改参数、看中间值、对照课程材料 →</a>`:""}${methodLink}${regulationLink}${visual}${chapterGuide}${readingSections}${dataBridge}${practiceHTML}<div class="book-term-line"><b>本章 English terms</b><span>${anchorTerms.map(item=>escape(item.split(' / ')[0])).join(' · ')}</span></div><details class="book-goals"><summary>读完本章，你应该能做什么？</summary><ul>${chapter.goals.map(g=>`<li>${escape(g)}</li>`).join('')}</ul></details>${terms}${check}${chapter.id === "d01" ? window.BIOCS_PRACTICE.designMarkup() : ""}${transfer}${refs}</div>`;
     markInlineTerms(chapter);
     $('#chapter-position').textContent = pathLabel;
     if(window.BIOCS_MOTION?.scenes?.some(scene=>scene.chapters.includes(chapter.id))){
@@ -192,9 +197,13 @@
     }
     $('#prev-chapter').disabled = navigationIndex === 0;
     $('#next-chapter').disabled = !nextId;
-    $('#prev-chapter').textContent = routeStep ? '← 上一步' : '← 上一章';
-    $('#next-chapter').textContent = routeStep ? '下一步 →' : '下一章 →';
-    if (routeStep && nextId) {
+    $('#prev-chapter').textContent = routeStep ? '← 上一步' : regulationStep ? '← 本专题上一步' : '← 目录上一章';
+    $('#next-chapter').textContent = routeStep ? '下一步 →' : regulationStep ? '本专题下一步 →' : '目录下一章 →';
+    if (regulationStep && nextId) {
+      $('#next-step-preview').innerHTML=`<span>接下来 · 本专题 ${navigationIndex+2} / ${navigationIds.length}</span><p>${escape(byId.get(nextId)?.subtitle || '继续连接实验模型、观测信号与证据。')}</p><a href="#${escape(nextId)}">${escape(byId.get(nextId)?.title || nextId)} →</a><p><a href="index.html#regulation-route">返回专题顺序</a></p>`;
+    } else if (regulationStep) {
+      $('#next-step-preview').innerHTML='<span>实验模型与调控证据 · 专题已到终点</span><p>回看 model、lineage、调控与通信中的证据区别，再用 Perturbation Logic 检查自己的机制解释。</p><a href="index.html#regulation-route">返回专题目录 →</a> · <a href="regulation-lab.html">用六个互动实验检验理解 →</a>';
+    } else if (routeStep && nextId) {
       const nextStep=guided.unitByChapter[nextId];
       const transition=nextStep.unit.id!==routeStep.unit.id?routeStep.unit.bridge:(byId.get(nextId)?.subtitle || '继续把本章的对象与机制接到下一步。');
       $('#next-step-preview').innerHTML=`<span>接下来 · 主线 ${navigationIndex+2} / ${guided.ids.length}</span><p>${escape(transition)}</p><a href="#${escape(nextId)}">${escape(byId.get(nextId)?.title || nextId)} →</a>`;
@@ -310,8 +319,8 @@
     }
   });
   mobile.addEventListener('change', () => closeToc());
-  $('#prev-chapter').addEventListener('click', () => { const ids=guided.unitByChapter[state.active]?guided.ids:allChapterIds; const i=ids.indexOf(state.active); if(i>0) location.hash=ids[i-1]; });
-  $('#next-chapter').addEventListener('click', () => { const ids=guided.unitByChapter[state.active]?guided.ids:allChapterIds; const i=ids.indexOf(state.active); if(i<ids.length-1) location.hash=ids[i+1]; });
+  $('#prev-chapter').addEventListener('click', () => { const ids=navigationFor(state.active).ids; const i=ids.indexOf(state.active); if(i>0) location.hash=ids[i-1]; });
+  $('#next-chapter').addEventListener('click', () => { const ids=navigationFor(state.active).ids; const i=ids.indexOf(state.active); if(i<ids.length-1) location.hash=ids[i+1]; });
   $('#mark-chapter').addEventListener('click', () => { if(state.completed.has(state.active))state.completed.delete(state.active);else state.completed.add(state.active);save();renderProgress();renderToc($('#chapter-search').value); });
   window.addEventListener('hashchange', () => { const id=location.hash.slice(1); if (byId.has(id)) renderChapter(id, true); });
   renderCurriculum();

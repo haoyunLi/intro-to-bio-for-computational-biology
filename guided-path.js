@@ -24,7 +24,7 @@
       transfer:['看到 expression 变化时，写出两种可能的调控解释，以及 assay 无法区分的部分。','project-lab.html#transfer-alternative'],
       bridge:'gene 表达不是细胞的全部；执行过程还要消耗原料和能量。',
       core:['m06','x01','x02','x05','x06','x08'],
-      explore:['x07','x16','x19','x20','rb04','rb05'], practice:['genetics-lab.html#regulation','调节 enhancer 与 TF，检验多条件调控']
+      explore:['x07','rb04','rb05','x16','x19','x20'], practice:['genetics-lab.html#regulation','调节 enhancer 与 TF，检验多条件调控']
     },
     {
       id:'energy', title:'细胞如何运转', question:'有 gene 和 enzyme，反应为什么仍可能不发生？',
@@ -38,9 +38,9 @@
       id:'coordination', title:'细胞怎样协作', question:'同一条信号，为什么在不同 cell 中有不同结果？',
       outcome:'能把 receptor、signaling、cell cycle、cell fate 和 tissue context 放在同一张图上。',
       transfer:['你的结果是一个时间点的状态，还是一段 signaling trajectory？写出不能反推的过程。','project-lab.html#transfer-claim'],
-      bridge:'细胞环境会影响一个 variant 的后果；接着把变化放回家系与群体。',
+      bridge:'前面解释了细胞如何响应环境。接下来追问：DNA 中的 variant 从哪里来，又怎样在家系与群体中传递？',
       core:['c04','c05','c06','h01','l01','l04','v01'],
-      explore:['l02','l03','l05','v02','v03','rb06','rb07'], practice:['genetics-lab.html#dynamics','比较短 pulse、持续信号与 feedback']
+      explore:['l02','l03','l05','rb06','rb07','v02','v03'], practice:['genetics-lab.html#dynamics','比较短 pulse、持续信号与 feedback']
     },
     {
       id:'inheritance', title:'变化怎样被继承', question:'一个 variant 怎样从 DNA 走到家系或群体？',
@@ -70,9 +70,9 @@
       id:'measurement', title:'实验先产生信号', question:'怎样从材料走到一个可信的实验读数？',
       outcome:'能辨认独立样本、RNA library、sequencing read、measurement 与 control。',
       transfer:['为自己的文件写出 case → sample → aliquot → assay → read 的来源链。','project-lab.html#transfer-object'],
-      bridge:'控制和测量清楚后，再学习常用的分子与细胞实验。',
+      bridge:'材料来源、实验单位和测量信号清楚后，再用具体 assay 检验机制；需要选择培养或组织模型时，可先读本单元的 Model Systems 拓展。',
       core:['d01','q01','q02','w01','w02','w03'],
-      explore:['w10','z06','rb01','rb02'], practice:['data-lab.html#sbs','动手看 sequencing 循环和原始信号']
+      explore:['rb01','rb02','w10','z06'], practice:['data-lab.html#sbs','动手看 sequencing 循环和原始信号']
     },
     {
       id:'assays', title:'实验怎样检验机制', question:'PCR、Western blot、显微图分别能证明什么？',
