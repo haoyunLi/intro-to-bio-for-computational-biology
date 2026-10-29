@@ -74,7 +74,7 @@
       while (walker.nextNode()) nodes.push(walker.currentNode);
     }
     for (const node of nodes) {
-      if (used.size >= 8 || node.parentElement?.closest('a,button,code,pre,summary,.chapter-refs,.data-bridge-sources')) continue;
+      if (used.size >= 8 || node.parentElement?.closest('a,button,code,pre,summary,svg,.chapter-refs,.data-bridge-sources')) continue;
       const value = node.textContent;
       const lower = value.toLocaleLowerCase();
       let cursor = 0;

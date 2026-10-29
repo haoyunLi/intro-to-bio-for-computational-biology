@@ -101,7 +101,7 @@
   const entries = new Map();
   for (const course of window.BIOCS_BOOK || []) for (const chapter of course.chapters) for (const term of chapter.terms || []) {
     const key = normalized(term[0]);
-    if (!entries.has(key)) entries.set(key, {label:term[0], simple:term[1], example:'', caution:'', category:'其他术语', chapterId:chapter.id, sourceKey:term[2]});
+    if (!entries.has(key)) entries.set(key, {label:term[0], simple:term[1], example:term[3] || '', caution:term[4] || '', category:'其他术语', chapterId:chapter.id, sourceKey:term[2]});
   }
   for (const [label, detail] of Object.entries(curated)) {
     const key = normalized(label);

@@ -60,7 +60,7 @@
       chapter.terms = (chapter.terms || []).map(item => {
         const raw = String(item[0]);
         const label = raw.includes(' / ') ? raw.split(' / ')[0].trim() : englishize(raw);
-        return [label, spaceMixedScripts(item[1]), item[2]];
+        return [label, spaceMixedScripts(item[1]), item[2], ...item.slice(3).map(spaceMixedScripts)];
       });
     });
   });
