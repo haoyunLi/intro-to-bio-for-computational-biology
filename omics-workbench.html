@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Omics Workbench · CB_592 → Bulk → Single-cell → Spatial · Bio/CS</title>
+  <meta name="description" content="把 CB_592 与 Bulk RNA-seq demos 接到 Single-cell 和 Spatial：逐步理解数据单位、参数、统计推断与生物学边界。">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="omics-workbench.css">
+  <script src="omics-math.js" defer></script><script src="omics-curriculum-map.js" defer></script><script src="omics-workbench.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">跳到正文</a>
+<header class="ow-header"><a class="ow-brand" href="index.html">Bio/CS</a><nav aria-label="网站导航"><a href="index.html#guided-route">生物基础</a><a href="textbook.html#d04">系统教材</a><a href="data-lab.html">Data Lab</a></nav></header>
+<main id="main">
+  <section class="ow-intro"><h1>从生物问题，走到可以解释的分析。</h1><p>沿着 CB_592 和 RNA-seq demos，先理解一个数怎样产生，再把 Bulk 的分析思路迁移到 Single-cell 与 Spatial。所有交互数字都是原创 synthetic examples。</p>
+    <div class="ow-questions" role="group" aria-label="选择研究问题">
+      <button data-path="bulk" aria-pressed="true">组织平均表达改变了吗？<span>Bulk RNA-seq</span></button>
+      <button data-path="single-cell" aria-pressed="false">哪类 cells 在改变？<span>Single-cell</span></button>
+      <button data-path="spatial" aria-pressed="false">变化发生在哪里？<span>Spatial</span></button>
+    </div><div id="ow-route" aria-live="polite"></div>
+    <nav class="ow-jumps" aria-label="本页内容"><a href="#experiment">动手计算</a><a href="#curriculum">详细课程</a><a href="#recipes">运行代码</a><a href="#coverage">材料覆盖对照</a></nav>
+  </section>
+  <section id="experiment" class="ow-section"><h2>改变一个设置，看中间数值怎样变。</h2>
+    <div class="ow-tabs" role="group" aria-label="选择分析实验"></div><div id="ow-lab"></div>
+  </section>
+  <section id="curriculum" class="ow-section"><h2>从基础到项目，逐章拆开。</h2><p>每章都有 Input / Output、逐步例题、设置与排错、证据边界和来源。保留原有生物主线，按问题补读这些方法。</p><div id="ow-chapters"></div></section>
+  <section id="recipes" class="ow-section"><h2>把步骤放进代码。</h2><p>下载的脚本使用 synthetic data，保留 sample ID、raw counts 和 design 检查；运行前阅读文件开头的依赖与输入约定。示例设置是起点，需要按 assay、replicates 和研究问题检查。</p>
+    <ul class="ow-downloads"><li><a href="recipes/bulk-functional-workflow.R" download>Bulk DE → ORA / GSEA · R script</a><span>三种 DE 方法、共同输入、完整 ranking 与自定义 gene sets。</span></li><li><a href="recipes/singlecell-spatial-transfer.R" download>Single-cell → Spatial · R script</a><span>Raw-count aggregation、paired design、assignment sensitivity 与 spatial statistic。</span></li><li><a href="recipes/omics-hand-calculations.R" download>六个实验的手算核对 · Base R</a><span>不依赖第三方包，核对当前网页模型的关键数值。</span></li></ul>
+  </section>
+  <section id="coverage" class="ow-section"><h2>你的材料，接到了哪一章？</h2><p id="ow-coverage-summary"></p><p>下面覆盖当前提供的教学主题。讲义原件、作业答案、个人信息及原始数据不会随站点发布；讲解和图形为原创重述。Single-cell / Spatial 的新增部分会单独标明。</p><label for="ow-source-filter">搜索文件名或主题</label><input id="ow-source-filter" type="search" placeholder="例如 Lecture 7、GSEA、PCA、Assignment"><p id="ow-source-status" role="status"></p><div id="ow-source-table"></div><details class="ow-corrections"><summary>容易混淆的公式与分析选择</summary><div id="ow-corrections"></div></details></section>
+</main>
+<footer class="ow-footer"><a href="index.html">回到 Bio/CS</a><a href="https://haoyunli.github.io/deep-learning-atlas/#/practice?research=spatial">关联算法：EM / RL / Assignment uncertainty</a><span>更新：2026-10-28</span></footer>
+</body></html>

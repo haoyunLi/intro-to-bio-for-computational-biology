@@ -114,3 +114,10 @@ Playback is available only for expression time and population generation. It sta
 - **Don't** shrink scientific axes into unreadable mobile labels or rely on color alone to distinguish curves.
 - **Don't** treat seeded paths, toy curve shapes or playback as measured data or independent evidence of a biological mechanism.
 - **Don't** describe the model reset as clearing quiz progress; the implemented reset scope is parameters and derivation step.
+
+
+## Omics Workbench extension
+
+`omics-workbench.html` inherits the existing Bio/CS reading system. Three biological questions open Bulk, Single-cell or Spatial learning routes; six numeric experiments sit above the chapter library, reproducible R downloads and searchable source-to-topic mapping. Current parameter values, formulas, tables and original SVG geometry share one model state. Scientific diagrams keep local scrolling at 640px; mobile prose and controls remain within the viewport.
+
+GSEA alone advances its ranked walk with optional 700ms playback, manual stepping and a full-ranking action. Playback stops on parameter/topic changes, a hidden document and reduced motion. Reset explicitly clears both the current model parameters and prediction answer. Native controls preserve focus and disable prediction checking until an answer exists. No measurements or inferential significance are invented for the synthetic examples.

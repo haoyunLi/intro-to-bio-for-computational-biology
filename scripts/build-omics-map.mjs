@@ -1,0 +1,10 @@
+import fs from 'node:fs';
+import vm from 'node:vm';
+const root=new URL('../',import.meta.url);
+const context={window:{BIOCS_BOOK:[{code:'05',chapters:[]},{code:'06',chapters:[]}],BIOCS_SOURCES:{},BIOCS_INTUITION:{},BIOCS_DATA_LENS:{}}};vm.createContext(context);
+for(const file of ['textbook-cb592.js','textbook-bulk-functional.js','textbook-singlecell-spatial.js'])vm.runInContext(fs.readFileSync(new URL(file,root),'utf8'),context,{filename:file});
+const chapters=context.window.BIOCS_BOOK.flatMap(c=>c.chapters).map(c=>({id:c.id,title:c.title,short:c.title.split(/[：:]/)[0],summary:c.subtitle,group:c.id.startsWith('cb')?'cb':c.id.startsWith('om')?'bulk':'sc'})).sort((a,b)=>a.group.localeCompare(b.group)||a.id.localeCompare(b.id));
+const coverage=JSON.parse(fs.readFileSync(new URL('data/omics-source-coverage.json',root),'utf8'));
+const data={...coverage,chapters,groups:[{id:'cb',title:'CB_592 · R、Statistics 与测量基础',description:'从数据结构和ID对齐，走到统计设计、regularization、quantification与PSI；基础生物机制链接原有章节。'},{id:'bulk',title:'Bulk RNA-seq · 从 Raw counts 到 Functional analysis',description:'沿提供的demos拆开14步DE比较和15步functional analysis，保留normalization、contrast、background与完整ranking的区别。'},{id:'sc',title:'Single-cell → Spatial · 扩展到细胞与组织位置',description:'从barcodes、UMIs与donor-aware inference，走到registration、assignment、spatial graph、niche和独立验证。'}]};
+fs.writeFileSync(new URL('omics-curriculum-map.js',root),'// Generated from the original lesson registry and curated topic inventory.\nwindow.BIOCS_OMICS_MAP = '+JSON.stringify(data,null,2)+';\n');
+console.log(`Built Omics map: ${chapters.length} chapters, ${coverage.files.length} source mappings`);
