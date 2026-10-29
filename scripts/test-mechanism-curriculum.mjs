@@ -18,7 +18,7 @@ const all = w.BIOCS_BOOK.flatMap(c => c.chapters);
 const ids = new Set(all.map(c => c.id));
 const added = all.filter(c => /^r(?:07|08|09|10|11|12)$/.test(c.id));
 assert.equal(added.length, 6);
-assert.equal(all.length, 237);
+assert.equal(all.length, 245);
 assert.equal(ids.size, all.length);
 for (const c of added) {
   assert.ok(c.intuition.length >= 2 && c.goals.length >= 3);

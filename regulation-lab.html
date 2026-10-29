@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Model Systems & Regulation Lab · Bio/CS</title>
+  <meta name="description" content="用六个可复算实验理解 in vivo/in vitro、somatic/germline、TF motif、enhancer、receptor complex 与 Ligand–Receptor inference。">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="omics-workbench.css"><link rel="stylesheet" href="regulation-lab.css">
+  <script src="regulation-math.js" defer></script><script src="regulation-lab.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到正文</a>
+  <header class="ow-header"><a class="ow-brand" href="index.html">Bio/CS</a><nav aria-label="网站导航"><a href="textbook.html#rb01">概念与实验模型</a><a href="singlecell-spatial-lab.html">Single-cell / Spatial</a><a href="omics-workbench.html">Omics Workbench</a></nav></header>
+  <main id="main">
+    <section class="ow-intro"><h1>从实验模型，到调控证据。</h1><p>改变一个参数，沿着输入、机制、中间量和输出走四步。先区分我们测到了什么，再判断它能支持哪一种 biological claim。六个实验均为原创 synthetic teaching examples。</p></section>
+    <nav class="reg-tabs" aria-label="选择机制实验">
+      <a id="models" href="#models">Model systems · 实验单位</a><a id="lineage" href="#lineage">Lineage · 变异来源</a><a id="motif" href="#motif">TF motif · 序列打分</a><a id="enhancer" href="#enhancer">Enhancer · 候选靶基因</a><a id="complex" href="#complex">Receptor complex · 结合</a><a id="lr" href="#lr">Ligand–Receptor · 推断</a>
+    </nav>
+    <section id="regulation-lab" class="reg-lab" aria-label="机制计算实验"><p>正在载入计算。若未显示，请刷新；完整概念说明也可从 <a href="textbook.html#rb01">系统教材</a>阅读。</p></section>
+    <section class="ow-section reg-contract"><h2>把计算结果变成下一项可检验的问题。</h2><ol class="ow-steps"><li>写清 biological question、material 和 independent unit。In vitro 不是“假的 biology”，in vivo 也不会自动排除 confounding。</li><li>把每项证据放在正确层级：sequence、accessibility、occupancy、expression、activity 或 phenotype。</li><li>保留 alternative explanations。改变参数会影响数值，换 database、cell labels、donor structure 和 experimental context 也会改变结论。</li><li>用独立 assay、time course、perturbation 或 rescue 检查需要的因果连接。候选关系不等于已经证实的机制。</li></ol><p><a href="textbook.html#rb08">继续理解 Perturbation、Rescue 与 Epistasis</a> · <a href="project-lab.html#your-project">记录自己的证据边界</a></p></section>
+  </main>
+  <footer class="ow-footer"><a href="textbook.html#rb01">返回系统教材</a><a href="https://haoyunli.github.io/deep-learning-atlas/#/concepts/biology-regulation-inference">关联 AI / ML 学习路径</a><span>原创模型 · 科学来源见各实验</span></footer>
+</body>
+</html>

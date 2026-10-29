@@ -38,10 +38,13 @@
   <script src="textbook-singlecell-spatial.js?v=20261028-2" defer></script>
   <script src="textbook-singlecell-methods.js?v=20261028-3" defer></script>
   <script src="textbook-spatial-methods.js?v=20261028-3" defer></script>
+  <script src="textbook-regulation-bridge.js?v=20261029-1" defer></script>
+  <script src="biology-search.js?v=20261029-1" defer></script>
   <script src="textbook-terminology.js" defer></script>
   <script src="uiuc-curriculum.js?v=20260925-1" defer></script>
   <script src="guided-path.js?v=20260925-2" defer></script>
   <script src="uiuc-path.js?v=20260925-3" defer></script>
+  <link rel="stylesheet" href="regulation-links.css?v=20261029-1">
 </head>
 <body>
   <a class="skip-link" href="#guided-route">跳到学习主线</a>
@@ -73,8 +76,21 @@
       </div>
     </section>
 
+    <section class="regulation-route" id="regulation-route" aria-labelledby="regulation-route-title">
+      <h2 id="regulation-route-title">实验模型、遗传来源与调控证据</h2>
+      <p>沿这条选读路径，把 in vivo / in vitro、somatic / germline、Enhancer、TF 和 Ligand–Receptor 连起来：先明确对象，再看测量，最后选择验证。</p>
+      <ol>
+        <li><strong>选实验模型</strong><a href="textbook.html#rb01">Model Systems</a> · <a href="textbook.html#rb02">Cell Lines / Organoids</a></li>
+        <li><strong>辨遗传来源</strong><a href="textbook.html#rb03">Somatic / Germline / De novo</a></li>
+        <li><strong>追调控证据</strong><a href="textbook.html#rb04">TF Activity</a> · <a href="textbook.html#rb05">Enhancer–Gene Linking</a></li>
+        <li><strong>判断通信</strong><a href="textbook.html#rb06">Ligand–Receptor / Complex</a> · <a href="textbook.html#rb07">Communication Inference</a></li>
+        <li><strong>检验机制</strong><a href="textbook.html#rb08">Perturbation / Rescue / Epistasis</a></li>
+      </ol>
+      <p><a href="regulation-lab.html">打开六个互动实验 →</a> · <a href="https://haoyunli.github.io/deep-learning-atlas/#/concepts/biology-regulation-inference">到 AI/ML 站拆解对应算法 ↗</a></p>
+    </section>
+
     <section class="guided-route" id="guided-route" aria-labelledby="guided-title">
-      <div class="guided-route-intro"><div><h2 id="guided-title">按一条主线学过去。</h2><p>13 个连续单元、78 个先修顺序已核对的核心章节。每一步都回答「上一章为什么是下一章的前提」；每个单元末尾再把知识换成你自己数据中的一个判断。完整 237 章保留为参考库，深入内容按项目需要选读。</p></div><div class="guided-resume"><span id="guided-progress">载入进度…</span><a id="guided-next" href="textbook.html#b01">从第一步开始 →</a><a href="glossary.html">不认识术语？在这里查，也能在章内点开</a></div></div>
+      <div class="guided-route-intro"><div><h2 id="guided-title">按一条主线学过去。</h2><p>13 个连续单元、78 个先修顺序已核对的核心章节。每一步都回答「上一章为什么是下一章的前提」；每个单元末尾再把知识换成你自己数据中的一个判断。完整 245 章保留为参考库，深入内容按项目需要选读。</p></div><div class="guided-resume"><span id="guided-progress">载入进度…</span><a id="guided-next" href="textbook.html#b01">从第一步开始 →</a><a href="glossary.html">不认识术语？在这里查，也能在章内点开</a></div></div>
       <div id="guided-units" class="guided-units"></div>
     </section>
 

@@ -16,7 +16,7 @@
   };
   function render() {
     const query = $('#glossary-search').value.trim().toLocaleLowerCase();
-    const selected = query ? all.filter(entry => [entry.label,entry.simple,entry.example,entry.caution].join(' ').toLocaleLowerCase().includes(query)).sort((a,b) => Number(b.label.toLocaleLowerCase().startsWith(query)) - Number(a.label.toLocaleLowerCase().startsWith(query)) || a.label.localeCompare(b.label,'en')) : browseAll ? all.slice().sort((a,b)=>a.label.localeCompare(b.label,'en')) : glossary.essentials.map(name => glossary.get(name));
+    const selected = query ? all.filter(entry => window.BIOCS_SEARCH.matches([entry.label,entry.simple,entry.example,entry.caution].join(' '), query)).sort((a,b) => Number(b.label.toLocaleLowerCase().startsWith(query)) - Number(a.label.toLocaleLowerCase().startsWith(query)) || a.label.localeCompare(b.label,'en')) : browseAll ? all.slice().sort((a,b)=>a.label.localeCompare(b.label,'en')) : glossary.essentials.map(name => glossary.get(name));
     const visible = selected.slice(0, limit);
     const grouped = new Map();
     for (const entry of visible) {

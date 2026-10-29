@@ -8,7 +8,7 @@ const ctx={window:{}};vm.createContext(ctx);
 for(const file of files)vm.runInContext(fs.readFileSync(new URL(file,root),'utf8'),ctx,{filename:file});
 vm.runInContext(fs.readFileSync(new URL('omics-curriculum-map.js',root),'utf8'),ctx);
 const all=ctx.window.BIOCS_BOOK.flatMap(c=>c.chapters),ids=new Set(all.map(c=>c.id)),chapters=all.filter(c=>/^(cb|om|sc|sp)\d+$/.test(c.id));
-assert.equal(chapters.length,51);assert.equal(all.length,237);
+assert.equal(chapters.length,51);assert.equal(all.length,245);
 for(const chapter of chapters){
  assert.ok(chapter.sections.length>=4,chapter.id+' detailed sections');
  const html=chapter.sections.map(s=>s[1]).join(' ');

@@ -1,4 +1,4 @@
-/* One prerequisite-consistent sequence through the 180-chapter reference library.
+/* One prerequisite-consistent sequence through the reference library.
    This editorial learning path is not a claim about UIUC course credit. */
 (() => {
   const units = [
@@ -24,7 +24,7 @@
       transfer:['看到 expression 变化时，写出两种可能的调控解释，以及 assay 无法区分的部分。','project-lab.html#transfer-alternative'],
       bridge:'gene 表达不是细胞的全部；执行过程还要消耗原料和能量。',
       core:['m06','x01','x02','x05','x06','x08'],
-      explore:['x07','x16','x19','x20'], practice:['genetics-lab.html#regulation','调节 enhancer 与 TF，检验多条件调控']
+      explore:['x07','x16','x19','x20','rb04','rb05'], practice:['genetics-lab.html#regulation','调节 enhancer 与 TF，检验多条件调控']
     },
     {
       id:'energy', title:'细胞如何运转', question:'有 gene 和 enzyme，反应为什么仍可能不发生？',
@@ -40,7 +40,7 @@
       transfer:['你的结果是一个时间点的状态，还是一段 signaling trajectory？写出不能反推的过程。','project-lab.html#transfer-claim'],
       bridge:'细胞环境会影响一个 variant 的后果；接着把变化放回家系与群体。',
       core:['c04','c05','c06','h01','l01','l04','v01'],
-      explore:['l02','l03','l05','v02','v03'], practice:['genetics-lab.html#dynamics','比较短 pulse、持续信号与 feedback']
+      explore:['l02','l03','l05','v02','v03','rb06','rb07'], practice:['genetics-lab.html#dynamics','比较短 pulse、持续信号与 feedback']
     },
     {
       id:'inheritance', title:'变化怎样被继承', question:'一个 variant 怎样从 DNA 走到家系或群体？',
@@ -48,7 +48,7 @@
       transfer:['把一个 variant 放回 allele、genotype、cell 与 patient 四个尺度，别把它们当同一个分母。','project-lab.html#transfer-object'],
       bridge:'家系与群体有自己的分母；肿瘤样本还需要考虑 purity、copy number 和 clone。',
       core:['g03','g04','g05','g06','e01','e03','x09','x10'],
-      explore:['x11','x12','x13','x17'], practice:['textbook.html#x09','跟着 worked example 更新家系中的条件概率']
+      explore:['x11','x12','x13','x17','rb03'], practice:['textbook.html#x09','跟着 worked example 更新家系中的条件概率']
     },
     {
       id:'somatic', title:'从 DNA 损伤到肿瘤 clone', question:'25% VAF 是否意味着 25% 癌细胞带 mutation？',
@@ -72,7 +72,7 @@
       transfer:['为自己的文件写出 case → sample → aliquot → assay → read 的来源链。','project-lab.html#transfer-object'],
       bridge:'控制和测量清楚后，再学习常用的分子与细胞实验。',
       core:['d01','q01','q02','w01','w02','w03'],
-      explore:['w10','z06'], practice:['data-lab.html#sbs','动手看 sequencing 循环和原始信号']
+      explore:['w10','z06','rb01','rb02'], practice:['data-lab.html#sbs','动手看 sequencing 循环和原始信号']
     },
     {
       id:'assays', title:'实验怎样检验机制', question:'PCR、Western blot、显微图分别能证明什么？',
@@ -80,7 +80,7 @@
       transfer:['说明你选的 assay 直接看到什么，以及需要哪种 control 才敢比较。','project-lab.html#transfer-measurement'],
       bridge:'实验信号经处理才成为数据文件；下一单元沿处理链读懂它们。',
       core:['w04','w05','w06','w07','w09'],
-      explore:['w08','d05','d06'], practice:['data-lab.html','用交互题练习从观察到结论']
+      explore:['w08','d05','d06','rb08'], practice:['data-lab.html','用交互题练习从观察到结论']
     },
     {
       id:'raw-data', title:'从样本走到数据表', question:'一条 read、一个 gene count 或 VCF row 是怎样来的？',

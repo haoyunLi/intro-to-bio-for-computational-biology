@@ -1,0 +1,32 @@
+.regulation-route {
+  padding: 36px clamp(20px, 5vw, 80px);
+  border-block: 1px solid #d6dfe9;
+  background: #fff;
+  color: #14284b;
+}
+.regulation-route h2 {
+  margin: 0 0 16px;
+  font: 600 clamp(25px, 3vw, 32px)/1.45 Georgia, "Songti SC", serif;
+}
+.regulation-route p { max-width: 75ch; font-size: 15px; line-height: 1.85; }
+.regulation-route ol {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 16px 26px;
+  padding-left: 22px;
+  margin: 24px 0;
+}
+.regulation-route li { padding-left: 4px; font-size: 14px; line-height: 1.75; }
+.regulation-route li strong { display: block; font-size: 16px; }
+.regulation-route a {
+  display: inline-block;
+  min-height: 44px;
+  padding-block: 9px;
+  color: #245fbd;
+  text-underline-offset: 4px;
+}
+.regulation-route a:hover { text-decoration-thickness: 2px; }
+.regulation-route a:focus-visible { outline: 3px solid #245fbd; outline-offset: 3px; }
+.regulation-route ::selection { background: #d7e6ff; color: #14284b; }
+@media (max-width: 850px) { .regulation-route ol { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 420px) { .regulation-route ol { grid-template-columns: 1fr; gap: 8px; } }
